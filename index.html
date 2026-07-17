@@ -1,266 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Connect TT | Phones & Repairs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Connect TT - Trinidad & Tobago's Trusted Phone Store</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
 
-<style>
+        /* Navigation Header */
+        header {
+            background-color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #0b1d3a;
+            letter-spacing: -1px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #111;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
 
-*{
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+        /* Hero Section */
+        .hero {
+            /* Replace the URL with your actual store background image */
+            background: linear-gradient(rgba(10, 20, 35, 0.8), rgba(10, 20, 35, 0.8)), url('store-background.jpg') center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        .hero-subtitle {
+            color: #00b4d8;
+            letter-spacing: 3px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .hero h1 {
+            font-size: 56px;
+            margin: 0 0 10px 0;
+            font-weight: 900;
+        }
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
 
-body{
-margin:0;
-background:#050505;
-color:white;
-}
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary { background-color: #0056b3; color: white; }
+        .btn-secondary { background-color: transparent; border: 2px solid white; color: white; }
+        .btn-whatsapp { background-color: #25D366; color: white; }
 
-header{
-padding:25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#090909;
-border-bottom:1px solid #222;
-}
+        /* Trust Signals Bar */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            background-color: #0b1320;
+            color: white;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .feature-item h4 { margin: 0 0 5px 0; font-size: 15px; }
+        .feature-item p { margin: 0; font-size: 13px; color: #aaa; }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#00eaff;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-}
-
-
-.hero{
-padding:70px 20px;
-text-align:center;
-background:
-radial-gradient(circle,#003b4a,#050505 60%);
-}
-
-.hero h1{
-font-size:45px;
-margin-bottom:15px;
-}
-
-.hero span{
-color:#00eaff;
-}
-
-.hero p{
-font-size:18px;
-color:#ccc;
-}
-
-.button{
-display:inline-block;
-margin-top:25px;
-padding:15px 35px;
-background:#00eaff;
-color:#000;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-}
-
-
-.section{
-padding:40px 20px;
-text-align:center;
-}
-
-
-.cards{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-
-.card{
-background:#111;
-border:1px solid #222;
-border-radius:20px;
-padding:25px;
-width:280px;
-box-shadow:0 0 20px rgba(0,234,255,.15);
-}
-
-
-.card h2{
-color:#00eaff;
-}
-
-
-.products{
-background:#080808;
-}
-
-
-.price{
-font-size:22px;
-font-weight:bold;
-color:#00eaff;
-}
-
-
-.badge{
-background:#00eaff;
-color:#000;
-padding:8px 15px;
-border-radius:20px;
-display:inline-block;
-font-weight:bold;
-}
-
-
-footer{
-padding:25px;
-text-align:center;
-background:#000;
-color:#aaa;
-}
-
-
-</style>
-
+        /* Quick Repair Preview Section */
+        .repairs-preview {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .repairs-preview h3 { font-size: 32px; color: #0b1d3a; margin-bottom: 10px;}
+        .repairs-preview p { color: #555; max-width: 600px; margin: 0 auto; }
+    </style>
 </head>
-
-
 <body>
 
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">URBAN CONNECT TT</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Shop Phones</a>
+            <a href="#">Repairs</a>
+            <a href="#">Accessories</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
 
-<header>
+    <!-- Main Hero Section -->
+    <section class="hero">
+        <div class="hero-subtitle">WELCOME TO</div>
+        <h1>URBAN CONNECT TT</h1>
+        <h2>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h2>
+        <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
+        
+        <div class="btn-group">
+            <button class="btn btn-primary">Shop Phones</button>
+            <button class="btn btn-secondary">Book a Repair</button>
+            <button class="btn btn-whatsapp">WhatsApp Us</button>
+        </div>
+    </section>
 
-<div class="logo">
-Urban Connect TT
-</div>
+    <!-- Trust Features Banner -->
+    <section class="features">
+        <div class="feature-item">
+            <div>
+                <h4>90-DAY WARRANTY</h4>
+                <p>Shop with confidence</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div>
+                <h4>OPEN BOX & BRAND NEW</h4>
+                <p>Quality you can trust</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div>
+                <h4>NATIONWIDE DELIVERY</h4>
+                <p>Fast & reliable</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div>
+                <h4>LOWEST PRICES</h4>
+                <p>We beat the competition</p>
+            </div>
+        </div>
+    </section>
 
-<nav>
-<a href="#">Home</a>
-<a href="#">Phones</a>
-<a href="#">Repairs</a>
-</nav>
-
-</header>
-
-
-
-<section class="hero">
-
-<div class="badge">
-90 Days Warranty
-</div>
-
-<h1>
-Premium Phones.<br>
-<span>Better Prices.</span>
-</h1>
-
-
-<p>
-Brand New • Open Box • eSIM Options<br>
-Trinidad's Trusted Phone Store
-</p>
-
-
-<a class="button" href="#">
-Shop Now
-</a>
-
-
-</section>
-
-
-
-
-<section class="section products">
-
-<h1>Featured Phones</h1>
-
-
-<div class="cards">
-
-
-<div class="card">
-<h2>iPhone 15</h2>
-<p>128GB Available</p>
-<div class="price">$3,299</div>
-</div>
-
-
-<div class="card">
-<h2>iPhone 14 Pro</h2>
-<p>Premium Performance</p>
-<div class="price">Available Soon</div>
-</div>
-
-
-<div class="card">
-<h2>iPhone 13</h2>
-<p>Great Value</p>
-<div class="price">Contact Us</div>
-</div>
-
-
-</div>
-
-</section>
-
-
-
-
-
-<section class="section">
-
-
-<h1>Our Services</h1>
-
-
-<div class="cards">
-
-
-<div class="card">
-<h2>📱 Phone Sales</h2>
-<p>Latest smartphones at competitive prices.</p>
-</div>
-
-
-<div class="card">
-<h2>🔧 Repairs</h2>
-<p>Screens, batteries, charging issues and more.</p>
-</div>
-
-
-<div class="card">
-<h2>🛡 Warranty</h2>
-<p>Shop with confidence.</p>
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-<footer>
-
-Urban Connect TT © 2026<br>
-Nationwide Lowest Prices
-
-</footer>
-
+    <!-- Services Introduction -->
+    <section class="repairs-preview">
+        <h3>EXPERT REPAIRS DONE RIGHT</h3>
+        <p>From screen replacements to premium black glass repairs, our certified technicians have you covered.</p>
+    </section>
 
 </body>
 </html>
