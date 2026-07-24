@@ -6,21 +6,20 @@
     <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Montserrat (various weights) -->
+    <!-- Google Fonts: Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         /* =========================================================
            Visual Overhaul: Urban Connect TT Dark Tech Design
-           Based on User Image 1 (image_1.png)
            ========================================================= */
 
-        /* Core Variables & Colors (Updated) */
+        /* Core Variables & Colors */
         :root {
             --primary-dark: #0A1224; /* Deep dark blue background */
             --primary-blue: #0E1F3D; /* Rich navy blue for cards/banners */
             --accent-cyan: #0EDFEF;  /* Bright cyan/blue accent for highlights */
-            --accent-green: #25D366; /* Specific WhatsApp green */
+            --accent-green: #25D366; /* WhatsApp green */
             --text-light: #FFFFFF;
             --text-gray: #A0B0C4;  /* Gray secondary text on dark bg */
             --bg-light: #F8F9FA;
@@ -34,7 +33,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-            letter-spacing: -0.2px; /* Replicate design tight feel */
+            letter-spacing: -0.2px;
         }
 
         body {
@@ -43,7 +42,7 @@
             line-height: 1.5;
         }
 
-        h1, h2, h3, .nav-links a { font-weight: 800; } /* Forced heavy bolding */
+        h1, h2, h3, .nav-links a { font-weight: 800; }
 
         /* --- Top Bar (Dark) --- */
         .top-bar {
@@ -84,7 +83,6 @@
 
         /* --- Hero Section (Dark & Atmospheric) --- */
         .hero {
-            /* REPLICATED GRADIENT & IMAGE FROM IMAGE 1 (via placeholder) */
             background: linear-gradient(rgba(10, 18, 36, 0.92), rgba(10, 18, 36, 0.98)), url('https://via.placeholder.com/1500x800') center/cover;
             color: var(--text-light);
             text-align: center;
@@ -95,7 +93,8 @@
         .hero h2 { font-size: 2.5rem; font-weight: 700; margin: 25px 0; line-height: 1.3;}
         .hero p { font-size: 1.3rem; margin-bottom: 50px; color: var(--text-gray); }
         .hero-buttons { display: flex; justify-content: center; gap: 20px; }
-        .btn { padding: 18px 40px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; display: inline-flex; align-items: center; gap: 12px; transition: all 0.3s; }
+        
+        .btn { padding: 16px 35px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 12px; transition: all 0.3s; cursor: pointer;}
         .btn i { font-size: 1.2rem; }
         .btn-primary { background-color: var(--accent-cyan); color: #0A1426; border: 2px solid var(--accent-cyan); }
         .btn-primary:hover { background-color: #FFF; border-color: #FFF; }
@@ -103,8 +102,10 @@
         .btn-outline:hover { background: rgba(255,255,255,0.1); }
         .btn-whatsapp { background-color: var(--accent-green); color: #FFF; border: 2px solid var(--accent-green); }
         .btn-whatsapp:hover { opacity: 0.9; }
+        .btn-card { width: 100%; justify-content: center; background-color: #0A1426; color: #FFF; }
+        .btn-card:hover { background-color: var(--accent-cyan); color: #0A1426; }
 
-        /* --- Key Features Banner (Blue) --- */
+        /* --- Key Features Banner --- */
         .features-banner {
             background-color: var(--primary-blue);
             color: #FFF;
@@ -118,26 +119,28 @@
         .feature-item strong { display: block; font-size: 1rem; font-weight: 800;}
         .feature-item p { font-size: 0.9rem; color: var(--text-gray); margin: 0; }
 
-        /* --- Product Section --- */
+        /* --- Products Section --- */
         .products-section { padding: 80px 60px; background-color: #FFF; color: #333; }
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 2rem; color: #0A1426; text-transform: uppercase; letter-spacing: -0.5px;}
         .btn-text { text-decoration: none; color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem;}
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .product-card {
             background: #FFF; border: 1px solid var(--border-color-light); border-radius: 12px;
             padding: 25px; text-align: center; transition: all 0.3s ease; position: relative;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); border-color: transparent;}
-        .product-card img { max-width: 100%; height: auto; margin-bottom: 20px; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: transparent;}
+        .product-card img { max-width: 100%; height: 220px; object-fit: contain; margin-bottom: 20px; }
         .product-card h3 { font-size: 1.2rem; margin-bottom: 8px; color: #0A1426;}
-        .product-card .specs { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
-        .product-card .price { font-size: 1.6rem; font-weight: 900; color: var(--accent-cyan); margin-bottom: 20px; }
-        .badge { position: absolute; top: 15px; left: 15px; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; color: #FFF; text-transform: uppercase;}
+        .product-card .specs { font-size: 0.85rem; color: #666; margin-bottom: 15px; }
+        .product-card .price { font-size: 1.5rem; font-weight: 900; color: #0A1426; margin-bottom: 20px; }
+        .product-card .price span { color: var(--accent-cyan); }
+        .badge { position: absolute; top: 15px; left: 15px; padding: 6px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; color: #FFF; text-transform: uppercase;}
         .badge.new { background-color: #0A1426; }
         .badge.open-box { background-color: var(--primary-blue); }
 
-        /* --- Repairs Section (Dark Blue) --- */
+        /* --- Repairs Section --- */
         .repairs-section {
             background-color: var(--primary-blue); color: #FFF;
             display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; padding: 80px 60px;
@@ -145,15 +148,14 @@
         }
         .repairs-content h2 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2;}
         .repairs-content p { color: var(--text-gray); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6; }
-        .repairs-content .btn { margin-top: 20px; }
-        .repairs-list { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px;}
-        .repairs-list ul { list-style: none; }
-        .repairs-list li { margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; font-weight: 600;}
+        .repairs-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px;}
+        .repairs-list ul { list-style: none; display: contents; }
+        .repairs-list li { font-size: 1.05rem; display: flex; align-items: center; gap: 15px; font-weight: 600; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color-dark);}
         .repairs-list i { color: var(--accent-cyan); font-size: 1.3rem; }
 
         /* --- Trust / Reviews Section --- */
         .trust-section {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 2fr; justify-content: center; align-items: center; gap: 30px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); justify-content: center; align-items: center; gap: 30px;
             padding: 60px; background-color: #FFF; color: #333; border-bottom: 1px solid var(--border-color-light);
             text-align: center;
         }
@@ -172,11 +174,12 @@
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 60px 60px;
             border-top: 1px solid var(--border-color-dark); font-size: 0.95rem;
         }
-        .footer-col { display: flex; align-items: flex-start; gap: 20px; }
-        .footer-col i { font-size: 1.8rem; color: var(--accent-cyan); flex-shrink: 0; }
-        .footer-col strong { display: block; font-size: 1.1rem; font-weight: 800; color: #FFF; margin-bottom: 8px;}
-        .footer-col p { color: var(--text-gray); line-height: 1.6; }
-        .footer-col .footer-socials { display: flex; gap: 20px; margin-top: 15px; font-size: 1.5rem; }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
+        .footer-col i { font-size: 1.5rem; color: var(--accent-cyan); }
+        .footer-col strong { display: block; font-size: 1.1rem; font-weight: 800; color: #FFF;}
+        .footer-col p, .footer-col a { color: var(--text-gray); line-height: 1.6; text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--accent-cyan); }
+        .footer-col .footer-socials { display: flex; gap: 20px; margin-top: 5px; }
         .footer-socials i { color: #FFF; cursor: pointer; font-size: 1.4rem; transition: color 0.3s; }
         .footer-socials i:hover { color: var(--accent-cyan); }
 
@@ -198,14 +201,23 @@
             .hero h2 { font-size: 2rem; }
             .features-banner, footer, .trust-section, .navbar, .top-bar { padding-left: 30px; padding-right: 30px; }
             .repairs-section { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .repairs-list { justify-content: center; }
-            .trust-section { grid-template-columns: 1fr 1fr; }
+            .repairs-list { grid-template-columns: 1fr; }
+            footer { grid-template-columns: 1fr 1fr; }
+            .features-banner { flex-wrap: wrap; gap: 30px; }
+        }
+        @media (max-width: 600px) {
+            .hero-title { font-size: 2.8rem; }
+            .top-bar { display: none; } /* Hide top bar on mobile for cleanliness */
+            .navbar { padding: 15px 20px; }
+            .nav-links { display: none; } /* Mobile menu placeholder */
+            .hero-buttons { flex-direction: column; }
+            footer { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Info Bar (Corrected Icons & Placement) -->
+    <!-- Top Info Bar -->
     <div class="top-bar">
         <div class="top-info">
             <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
@@ -219,7 +231,7 @@
         </div>
     </div>
 
-    <!-- Main Navigation (White) -->
+    <!-- Main Navigation -->
     <nav class="navbar">
         <div class="logo">
             <h1 class="logo-text">URBAN<span>CONNECT</span>TT</h1>
@@ -239,7 +251,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section (Atmospheric Dark Mode) -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h4>WELCOME TO</h4>
@@ -247,7 +259,6 @@
             <h2>TRINIDAD & TOBAGO'S <br> TRUSTED PHONE STORE</h2>
             <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
             <div class="hero-buttons">
-                <!-- Corrected Colors (Image 1) -->
                 <a href="#" class="btn btn-primary"><i class="fa-solid fa-mobile-screen"></i> SHOP PHONES</a>
                 <a href="#" class="btn btn-outline"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR</a>
                 <a href="https://wa.me/18683308360" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WHATSAPP US</a>
@@ -255,7 +266,7 @@
         </div>
     </section>
 
-    <!-- Key Features Banner (Updated Colors) -->
+    <!-- Key Features Banner -->
     <div class="features-banner">
         <div class="feature-item">
             <i class="fa-solid fa-shield-halved"></i>
@@ -294,473 +305,145 @@
         </div>
     </div>
 
-    <!-- Products Section (SHOP OUR LATEST PHONES) -->
+    <!-- Products Section -->
     <section class="products-section">
         <div class="section-header">
             <h2>SHOP OUR LATEST PHONES</h2>
             <a href="#" class="btn-text">VIEW ALL PHONES <i class="fa-solid fa-chevron-right"></i></a>
         </div>
         <div class="product-grid">
-            <!-- REPLICATED PRODUCTS FROM IMAGE 1 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200x250" alt="iPhone 15 Pro Max">
-                <h3>iPhone 15 Pro MaxI understand. Let's fix that. The issue is that the first code provided created the **structure** of the website but lacked the specific visual styling (the rich dark colors, heavy bold fonts, spacing, and glowing accents) shown in your provided design image (WhatsApp Image 2026-07-24 at 10.03.22 AM.jpeg).
-
-I have completely overhauled the visual styling within the single `index.html` file to reflect the professional, high-end, modern dark tech aesthetic of your design, including:
-
-1.  **Correct Color Palette:** Applied the deep, dark navy background, rich primary blue, bright accent cyan, and green for WhatsApp.
-2.  **Typography:** Forced bold Montserrat fonts for titles and clean spacing for body text.
-3.  **Hero Section Intensity:** Added a deeper, complex gradient overlay to simulate the specific dark atmosphere from the design photo.
-4.  **Card and Button Styling:** Designed the detailed product cards with badges, prices, and button colors (Blue for Phones, Dark for Repairs, Green for WhatsApp) with the correct visual weight.
-5.  **Icon & Feature Styling:** Tightly styled the feature banner and repair lists with secondary cyan accents.
-6.  **Floating Button:** Corrected the placement and color of the green WhatsApp icon.
-
-### Updated Steps:
-1.  **Delete** the old `index.html` file in your GitHub repository.
-2.  **Create a new file** named exactly `index.html`.
-3.  **Copy and paste** the entire code below into it.
-4.  **Commit** and save.
-5.  **Wait 1 minute,** and then hard refresh (`Ctrl + F5` or `Cmd + Shift + R`) your GitHub Pages link.
-
-***
-
-### 1. The Updated All-in-One Code (`index.html`)
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
-    <!-- Google Fonts: Montserrat (various weights) -->
-    <link href="[https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap](https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap)" rel="stylesheet">
-    
-    <style>
-        /* =========================================================
-           Visual Overhaul: Urban Connect TT Dark Tech Design
-           Based on User Image 1 (image_1.png)
-           ========================================================= */
-
-        /* Core Variables & Colors (Updated) */
-        :root {
-            --primary-dark: #0A1224; /* Deep dark blue background */
-            --primary-blue: #0E1F3D; /* Rich navy blue for cards/banners */
-            --accent-cyan: #0EDFEF;  /* Bright cyan/blue accent for highlights */
-            --accent-green: #25D366; /* Specific WhatsApp green */
-            --text-light: #FFFFFF;
-            --text-gray: #A0B0C4;  /* Gray secondary text on dark bg */
-            --bg-light: #F8F9FA;
-            --border-color-dark: #1C3358;
-            --border-color-light: #E0E0E0;
-        }
-
-        /* Base Reset & Typography */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: -0.2px; /* Replicate design tight feel */
-        }
-
-        body {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        h1, h2, h3, .nav-links a { font-weight: 800; } /* Forced heavy bolding */
-
-        /* --- Top Bar (Dark) --- */
-        .top-bar {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 60px;
-            font-size: 0.8rem;
-            border-bottom: 1px solid var(--border-color-dark);
-        }
-        .top-info span { margin-right: 25px; display: inline-flex; align-items: center; gap: 8px; }
-        .top-info i { color: var(--accent-cyan); }
-        .top-socials { display: flex; gap: 15px; }
-        .top-socials i { cursor: pointer; transition: color 0.3s; }
-        .top-socials i:hover { color: var(--accent-cyan); }
-
-        /* --- Main Navigation (White) --- */
-        .navbar {
-            background-color: #FFFFFF;
-            color: #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 60px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: sticky; top: 0; z-index: 1000;
-        }
-        .logo-text { font-weight: 900; color: #0A1426; font-size: 2.2rem; letter-spacing: -1.5px;}
-        .logo-text span { color: var(--accent-cyan); }
-        .nav-links { display: flex; list-style: none; gap: 30px; }
-        .nav-links a { text-decoration: none; color: #333; font-weight: 700; font-size: 0.9rem; transition: color 0.3s;}
-        .nav-links a.active { color: var(--accent-cyan); position: relative; }
-        .nav-links a.active:after { content:''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent-cyan); }
-        .nav-icons { display: flex; align-items: center; gap: 25px; }
-        .nav-icons i { font-size: 1.3rem; cursor: pointer; color: #333;}
-
-        /* --- Hero Section (Dark & Atmospheric) --- */
-        .hero {
-            /* REPLICATED GRADIENT & IMAGE FROM IMAGE 1 (via placeholder) */
-            background: linear-gradient(rgba(10, 18, 36, 0.92), rgba(10, 18, 36, 0.98)), url('[https://via.placeholder.com/1500x800](https://via.placeholder.com/1500x800)') center/cover;
-            color: var(--text-light);
-            text-align: center;
-            padding: 120px 20px;
-        }
-        .hero h4 { color: var(--accent-cyan); font-size: 1rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; }
-        .hero-title { font-size: 5.5rem; font-weight: 900; margin: 0; line-height: 1; letter-spacing: -2px;}
-        .hero h2 { font-size: 2.5rem; font-weight: 700; margin: 25px 0; line-height: 1.3;}
-        .hero p { font-size: 1.3rem; margin-bottom: 50px; color: var(--text-gray); }
-        .hero-buttons { display: flex; justify-content: center; gap: 20px; }
-        .btn { padding: 18px 40px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; display: inline-flex; align-items: center; gap: 12px; transition: all 0.3s; }
-        .btn i { font-size: 1.2rem; }
-        .btn-primary { background-color: var(--accent-cyan); color: #0A1426; border: 2px solid var(--accent-cyan); }
-        .btn-primary:hover { background-color: #FFF; border-color: #FFF; }
-        .btn-outline { background-color: transparent; color: #FFF; border: 2px solid #FFF; }
-        .btn-outline:hover { background: rgba(255,255,255,0.1); }
-        .btn-whatsapp { background-color: var(--accent-green); color: #FFF; border: 2px solid var(--accent-green); }
-        .btn-whatsapp:hover { opacity: 0.9; }
-
-        /* --- Key Features Banner (Blue) --- */
-        .features-banner {
-            background-color: var(--primary-blue);
-            color: #FFF;
-            display: flex;
-            justify-content: space-around;
-            padding: 40px 60px;
-            border-bottom: 1px solid var(--border-color-dark);
-        }
-        .feature-item { display: flex; align-items: center; gap: 20px; text-align: left; }
-        .feature-item i { font-size: 2.2rem; color: var(--accent-cyan); }
-        .feature-item strong { block; font-size: 1rem; font-weight: 800;}
-        .feature-item p { font-size: 0.9rem; color: var(--text-gray); margin: 0; }
-
-        /* --- Product Section --- */
-        .products-section { padding: 80px 60px; background-color: #FFF; color: #333; }
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2rem; color: #0A1426; text-transform: uppercase; letter-spacing: -0.5px;}
-        .btn-text { text-decoration: none; color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem;}
-        .product-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-        .product-card {
-            background: #FFF; border: 1px solid var(--border-color-light); border-radius: 12px;
-            padding: 25px; text-align: center; transition: all 0.3s ease; position: relative;
-        }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); border-color: transparent;}
-        .product-card img { max-width: 100%; height: auto; margin-bottom: 20px; }
-        .product-card h3 { font-size: 1.2rem; margin-bottom: 8px; color: #0A1426;}
-        .product-card .specs { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
-        .product-card .price { font-size: 1.6rem; font-weight: 900; color: var(--accent-cyan); margin-bottom: 20px; }
-        .badge { absolute; top: 15px; left: 15px; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; color: #FFF; text-transform: uppercase;}
-        .badge.new { background-color: #0A1426; }
-        .badge.open-box { background-color: var(--primary-blue); }
-
-        /* --- Repairs Section (Dark Blue) --- */
-        .repairs-section {
-            background-color: var(--primary-blue); color: #FFF;
-            grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; padding: 80px 60px;
-            border-bottom: 1px solid var(--border-color-dark);
-        }
-        .repairs-content h2 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2;}
-        .repairs-content p { color: var(--text-gray); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6; }
-        .repairs-content .btn { margin-top: 20px; }
-        .repairs-list { grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px;}
-        .repairs-list ul { list-style: none; }
-        .repairs-list li { margin-bottom: 20px; font-size: 1.1rem; align-items: center; gap: 15px; font-weight: 600;}
-        .repairs-list i { color: var(--accent-cyan); font-size: 1.3rem; }
-
-        /* --- Trust / Reviews Section --- */
-        .trust-section {
-            grid-template-columns: 2fr 1fr 1fr 1fr 2fr; justify-content: center; align-items: center; gap: 30px;
-            padding: 60px; background-color: #FFF; color: #333; border-bottom: 1px solid var(--border-color-light);
-            text-align: center;
-        }
-        .trust-item strong { block; font-size: 1.1rem; font-weight: 800; color: #0A1426; line-height: 1.3; margin-top: 15px;}
-        .trust-item.rating h2 { font-size: 3rem; margin: 10px 0; font-weight: 900; color: #0A1426;}
-        .stars { color: #FFD700; font-size: 1.8rem; letter-spacing: 2px;}
-        .btn-outline-small { padding: 10px 20px; border: 2px solid var(--border-color-dark); color: #0A1426; text-decoration: none; border-radius: 5px; margin-top: 15px; font-size: 0.85rem; font-weight: 800; transition: all 0.3s;}
-        .btn-outline-small:hover { background-color: #0A1426; color: #FFF; border-color: transparent;}
-        .trust-item i { color: var(--accent-cyan); font-size: 2.5rem; }
-        .trust-item.payments p { font-weight: 700; color: #0A1426; margin-bottom: 15px; font-size: 0.9rem;}
-        .payment-icons { gap: 15px; color: #0A1426; font-size: 2.2rem;}
-
-        /* --- Footer (Dark) --- */
-        footer {
-            background-color: var(--primary-dark); color: #FFF;
-            grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 60px 60px;
-            border-top: 1px solid var(--border-color-dark); font-size: 0.95rem;
-        }
-        .footer-col { gap: 20px; }
-        .footer-col i { font-size: 1.8rem; color: var(--accent-cyan); flex-shrink: 0; }
-        .footer-col strong { block; font-size: 1.1rem; font-weight: 800; color: #FFF; margin-bottom: 8px;}
-        .footer-col p { color: var(--text-gray); line-height: 1.6; }
-        .footer-col .footer-socials { gap: 20px; margin-top: 15px; font-size: 1.5rem; }
-        .footer-socials i { color: #FFF; cursor: pointer; font-size: 1.4rem; transition: color 0.3s; }
-        .footer-socials i:hover { color: var(--accent-cyan); }
-
-        /* --- Floating WhatsApp Icon --- */
-        .floating-whatsapp {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: var(--accent-green); color: #FFF;
-            width: 65px; height: 65px; border-radius: 50%;
-            justify-content: center; align-items: center;
-            font-size: 2.5rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            text-decoration: none; z-index: 1100;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .floating-whatsapp:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
-
-        /* Responsive Fixes */
-        @media (max-width: 1024px) {
-            .hero-title { font-size: 4rem; }
-            .hero h2 { font-size: 2rem; }
-            .features-banner, footer, .trust-section, .navbar, .top-bar { padding-left: 30px; padding-right: 30px; }
-            .repairs-section { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .repairs-list { justify-content: center; }
-            .trust-section { grid-template-columns: 1fr 1fr; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Top Info Bar (Corrected Icons & Placement) -->
-    <div class="top-bar">
-        <div class="top-info">
-            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
-            <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
-            <span><i class="fa-regular fa-clock"></i> Mon - Fri 9AM - 5PM • Sat 8AM - 5PM • Sun 8AM - 3PM</span>
-        </div>
-        <div class="top-socials">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-tiktok"></i>
-        </div>
-    </div>
-
-    <!-- Main Navigation (White) -->
-    <nav class="navbar">
-        <div class="logo">
-            <h1 class="logo-text">URBAN<span>CONNECT</span>TT</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active">HOME</a></li>
-            <li><a href="#">SHOP PHONES <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a></li>
-            <li><a href="#">REPAIRS</a></li>
-            <li><a href="#">ACCESSORIES</a></li>
-            <li><a href="#">ABOUT US</a></li>
-            <li><a href="#">CONTACT US</a></li>
-        </ul>
-        <div class="nav-icons">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <i class="fa-regular fa-user"></i>
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-    </nav>
-
-    <!-- Hero Section (Atmospheric Dark Mode) -->
-    <section class="hero">
-        <div class="hero-content">
-            <h4>WELCOME TO</h4>
-            <h1 class="hero-title">URBAN CONNECT TT</h1>
-            <h2>TRINIDAD & TOBAGO'S <br> TRUSTED PHONE STORE</h2>
-            <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
-            <div class="hero-buttons">
-                <!-- Corrected Colors (Image 1) -->
-                <a href="#" class="btn btn-primary"><i class="fa-solid fa-mobile-screen"></i> SHOP PHONES</a>
-                <a href="#" class="btn btn-outline"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR</a>
-                <a href="[https://wa.me/18683308360](https://wa.me/18683308360)" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> WHATSAPP US</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Features Banner (Updated Colors) -->
-    <div class="features-banner">
-        <div class="feature-item">
-            <i class="fa-solid fa-shield-halved"></i>
-            <div>
-                <strong>90-DAY WARRANTY</strong>
-                <p>Shop with confidence</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <i class="fa-solid fa-box-open"></i>
-            <div>
-                <strong>OPEN BOX & BRAND NEW</strong>
-                <p>Quality you can trust</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <i class="fa-solid fa-truck-fast"></i>
-            <div>
-                <strong>NATIONWIDE DELIVERY</strong>
-                <p>Fast & reliable</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <i class="fa-solid fa-tag"></i>
-            <div>
-                <strong>LOWEST PRICES</strong>
-                <p>We beat the competition</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <i class="fa-solid fa-headset"></i>
-            <div>
-                <strong>EXPERT SUPPORT</strong>
-                <p>We're here to help</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Products Section (SHOP OUR LATEST PHONES) -->
-    <section class="products-section">
-        <div class="section-header">
-            <h2>SHOP OUR LATEST PHONES</h2>
-            <a href="#" class="btn-text">VIEW ALL PHONES <i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-        <div class="product-grid">
-            <!-- REPLICATED PRODUCTS FROM IMAGE 1 -->
-            <div class="product-card">
-                <img src="[https://via.placeholder.com/200x250](https://via.placeholder.com/200x250)" alt="iPhone 15 Pro Max">
-                <h3>iPhone 15 Pro Max</h3>
-                <p class="specs">256GB • Natural Titanium</p>
-                <p class="price">TT$6,999</p>
-                <span class="badge new">Brand New</span>
-            </div>
-            <div class="product-card">
-                <img src="[https://via.placeholder.com/200x250](https://via.placeholder.com/200x250)" alt="iPhone 14 Pro">
-                <h3>iPhone 14 Pro</h3>
-                <p class="specs">128GB • Deep Purple</p>
-                <p class="price">TT$4,299</p>
-                <span class="badge open-box">Open Box</span>
-            </div>
-            <div class="product-card">
-                <img src="[https://via.placeholder.com/200x250](https://via.placeholder.com/200x250)" alt="iPhone 13">
-                <h3>iPhone 13</h3>
-                <p class="specs">128GB • Midnight</p>
-                <p class="price">TT$2,999</p>
-                <span class="badge open-box">Open Box</span>
-            </div>
-            <div class="product-card">
-                <img src="[https://via.placeholder.com/200x250](https://via.placeholder.com/200x250)" alt="iPhone 12">
-                <h3>iPhone 12</h3>
-                <p class="specs">128GB • Blue</p>
-                <p class="price">TT$2,199</p>
-                <span class="badge open-box">Open Box</span>
-            </div>
-            <div class="product-card">
-                <img src="[https://via.placeholder.com/200x250](https://via.placeholder.com/200x250)" alt="iPhone 15">
-                <h3>iPhone 15</h3>
-                <p class="specs">128GB • Pink</p>
-                <p class="price">TT$3,299</p>
-                <span class="badge new">Brand New</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Repairs Section (EXPERT REPAIRS DONE RIGHT) -->
-    <section class="repairs-section">
-        <div class="repairs-image">
-            <!-- Corrected Broken Phone Graphics (via placeholder) -->
-            <img src="[https://via.placeholder.com/400x500](https://via.placeholder.com/400x500)" alt="Broken iPhone Repair Trinidad">
-        </div>
-        <div class="repairs-content">
-            <h2>EXPERT REPAIRS<br>DONE RIGHT</h2>
-            <p>From screen replacements to water damage,<br>we've got you covered.</p>
             
-            <div class="repairs-list">
-                <ul>
-                    <li><i class="fa-solid fa-mobile-screen"></i> Screen Replacement</li>
-                    <li><i class="fa-solid fa-battery-full"></i> Battery Replacement</li>
-                    <li><i class="fa-solid fa-plug"></i> Charging Port Repair</li>
-                </ul>
-                <ul>
-                    <li><i class="fa-solid fa-droplet"></i> Water Damage</li>
-                    <li><i class="fa-solid fa-camera"></i> Camera Repair</li>
-                    <li><i class="fa-solid fa-ellipsis"></i> & More</li>
-                </ul>
+            <!-- Card 1 -->
+            <div class="product-card">
+                <span class="badge new">Brand New</span>
+                <img src="https://via.placeholder.com/200x250?text=iPhone+15+Pro+Max" alt="iPhone 15 Pro Max">
+                <div>
+                    <h3>iPhone 15 Pro Max</h3>
+                    <p class="specs">256GB • Titanium Black • Unlocked</p>
+                    <div class="price">TT <span>$8,499</span></div>
+                    <a href="#" class="btn btn-card"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                </div>
             </div>
-            <!-- Replicated Button Styling -->
-            <a href="#" class="btn btn-outline">BOOK A REPAIR NOW <i class="fa-solid fa-arrow-right"></i></a>
+
+            <!-- Card 2 -->
+            <div class="product-card">
+                <span class="badge open-box">Open Box</span>
+                <img src="https://via.placeholder.com/200x250?text=Samsung+S24+Ultra" alt="Samsung Galaxy S24 Ultra">
+                <div>
+                    <h3>Galaxy S24 Ultra</h3>
+                    <p class="specs">512GB • Titanium Gray • Unlocked</p>
+                    <div class="price">TT <span>$7,899</span></div>
+                    <a href="#" class="btn btn-card"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="product-card">
+                <span class="badge open-box">Open Box</span>
+                <img src="https://via.placeholder.com/200x250?text=iPhone+14+Pro" alt="iPhone 14 Pro">
+                <div>
+                    <h3>iPhone 14 Pro</h3>
+                    <p class="specs">128GB • Deep Purple • Unlocked</p>
+                    <div class="price">TT <span>$5,999</span></div>
+                    <a href="#" class="btn btn-card"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="product-card">
+                <span class="badge new">Brand New</span>
+                <img src="https://via.placeholder.com/200x250?text=Samsung+A54" alt="Samsung Galaxy A54">
+                <div>
+                    <h3>Galaxy A54 5G</h3>
+                    <p class="specs">256GB • Awesome Graphite • Dual SIM</p>
+                    <div class="price">TT <span>$2,399</span></div>
+                    <a href="#" class="btn btn-card"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Trust / Footer Meta Section -->
+    <!-- Repairs Section -->
+    <section class="repairs-section">
+        <div class="repairs-content">
+            <h2>EXPERT PHONE REPAIRS IN TUNAPUNA</h2>
+            <p>Cracked screen? Battery draining fast? Water damage? Our certified technicians provide fast, reliable repairs using top-quality replacement parts—most done while you wait!</p>
+            <a href="https://wa.me/18683308360" class="btn btn-primary" target="_blank"><i class="fa-solid fa-wrench"></i> GET A REPAIR ESTIMATE</a>
+        </div>
+        <div class="repairs-list">
+            <li><i class="fa-solid fa-mobile-screen-button"></i> Screen Replacement</li>
+            <li><i class="fa-solid fa-battery-full"></i> Battery Replacement</li>
+            <li><i class="fa-solid fa-droplet"></i> Water Damage Repair</li>
+            <li><i class="fa-solid fa-plug"></i> Charging Port Fix</li>
+            <li><i class="fa-solid fa-microchip"></i> Motherboard Repair</li>
+            <li><i class="fa-solid fa-unlock"></i> Unlocking & Software</li>
+        </div>
+    </section>
+
+    <!-- Trust / Reviews Section -->
     <section class="trust-section">
         <div class="trust-item rating">
-            <p>GOOGLE RATING</p>
-            <h2>4.9 <span class="stars">★★★★★</span></h2>
-            <p>Based on 200+ reviews</p>
-            <a href="#" class="btn-outline-small">SEE REVIEWS</a>
+            <div class="stars">★★★★★</div>
+            <h2>4.9 / 5</h2>
+            <strong>RATED ON GOOGLE REVIEWS</strong>
+            <a href="#" class="btn-outline-small">READ OUR REVIEWS</a>
         </div>
         <div class="trust-item">
-            <i class="fa-regular fa-circle-check"></i>
-            <strong>QUALITY<br>PRODUCTS</strong>
+            <i class="fa-solid fa-users"></i>
+            <strong>5,000+ HAPPY CUSTOMERS</strong>
         </div>
         <div class="trust-item">
-            <i class="fa-solid fa-shield-check"></i>
-            <strong>TRUSTED BY<br>THOUSANDS</strong>
-        </div>
-        <div class="trust-item">
-            <i class="fa-regular fa-thumbs-up"></i>
-            <strong>100% SATISFACTION<br>GUARANTEED</strong>
+            <i class="fa-solid fa-shield-halved"></i>
+            <strong>100% QUALITY GUARANTEE</strong>
         </div>
         <div class="trust-item payments">
-            <p>WE ACCEPT</p>
+            <p>WE ACCEPT ALL MAJOR PAYMENTS</p>
             <div class="payment-icons">
-                <i class="fa-brands fa-cc-visa"></i>
-                <i class="fa-brands fa-cc-mastercard"></i>
-                <i class="fa-brands fa-apple-pay"></i>
+                <i class="fa-regular fa-credit-card"></i>
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <i class="fa-solid fa-building-columns"></i>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Updated Correct Dark Mode) -->
+    <!-- Footer -->
     <footer>
         <div class="footer-col">
-            <i class="fa-solid fa-location-dot"></i>
-            <div>
-                <strong>ADDRESS</strong>
-                <p>59 Eastern Main Road,<br>Tunapuna</p>
-            </div>
-        </div>
-        <div class="footer-col">
-            <i class="fa-solid fa-phone"></i>
-            <div>
-                <strong>PHONE</strong>
-                <p>(868) 330-8360</p>
-            </div>
-        </div>
-        <div class="footer-col">
-            <i class="fa-regular fa-clock"></i>
-            <div>
-                <strong>HOURS</strong>
-                <p>Mon - Fri 9AM - 5PM<br>Sat 8AM - 5PM<br>Sun 8AM - 3PM</p>
-            </div>
-        </div>
-        <div class="footer-col">
-            <strong>FOLLOW US</strong>
+            <h2 class="logo-text" style="color: #FFF; font-size: 1.8rem;">URBAN<span style="color: var(--accent-cyan);">CONNECT</span></h2>
+            <p>Trinidad & Tobago's premier destination for high-quality smartphones, accessories, and reliable electronics repair.</p>
             <div class="footer-socials">
                 <i class="fa-brands fa-instagram"></i>
                 <i class="fa-brands fa-facebook-f"></i>
                 <i class="fa-brands fa-tiktok"></i>
             </div>
         </div>
+        <div class="footer-col">
+            <strong>QUICK LINKS</strong>
+            <a href="#">Shop iPhones</a>
+            <a href="#">Shop Samsung</a>
+            <a href="#">Open Box Deals</a>
+            <a href="#">Book a Repair</a>
+            <a href="#">Warranty Policy</a>
+        </div>
+        <div class="footer-col">
+            <strong>CUSTOMER SUPPORT</strong>
+            <a href="#">Contact Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Return Policy</a>
+            <a href="#">Frequently Asked Questions</a>
+            <a href="#">Track My Order</a>
+        </div>
+        <div class="footer-col">
+            <strong>VISIT OUR STORE</strong>
+            <p><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna, Trinidad</p>
+            <p><i class="fa-solid fa-phone"></i> (868) 330-8360</p>
+            <p><i class="fa-brands fa-whatsapp"></i> (868) 330-8360</p>
+        </div>
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="[https://wa.me/18683308360](https://wa.me/18683308360)" class="floating-whatsapp" target="_blank">
+    <a href="https://wa.me/18683308360" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
