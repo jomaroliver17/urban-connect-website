@@ -1,187 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Connect TT - Trinidad & Tobago's Trusted Phone Store</title>
-    <style>
-        /* Base Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f6f8;
-            color: #333;
-        }
+/* Base Reset & Variables */
+:root {
+    --primary-dark: #0A1426;
+    --primary-blue: #0E2A54;
+    --accent-blue: #1C51D3;
+    --text-light: #FFFFFF;
+    --text-dark: #333333;
+    --bg-light: #F8F9FA;
+    --border-color: #E0E0E0;
+}
 
-        /* Navigation Header */
-        header {
-            background-color: #fff;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: 900;
-            color: #0b1d3a;
-            letter-spacing: -1px;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #111;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
 
-        /* Hero Section */
-        .hero {
-            /* Replace the URL with your actual store background image */
-            background: linear-gradient(rgba(10, 20, 35, 0.8), rgba(10, 20, 35, 0.8)), url('store-background.jpg') center/cover;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-        }
-        .hero-subtitle {
-            color: #00b4d8;
-            letter-spacing: 3px;
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .hero h1 {
-            font-size: 56px;
-            margin: 0 0 10px 0;
-            font-weight: 900;
-        }
-        .hero h2 {
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-        .hero p {
-            font-size: 18px;
-            color: #ccc;
-            margin-bottom: 40px;
-        }
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
 
-        /* Buttons */
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-primary { background-color: #0056b3; color: white; }
-        .btn-secondary { background-color: transparent; border: 2px solid white; color: white; }
-        .btn-whatsapp { background-color: #25D366; color: white; }
+/* Top Bar */
+.top-bar {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    font-size: 0.8rem;
+}
+.top-info span { margin-right: 20px; }
+.top-info i { margin-right: 5px; color: #6EA8FF; }
+.top-socials i { margin-left: 15px; cursor: pointer; }
 
-        /* Trust Signals Bar */
-        .features {
-            display: flex;
-            justify-content: space-around;
-            background-color: #0b1320;
-            color: white;
-            padding: 40px 20px;
-            flex-wrap: wrap;
-        }
-        .feature-item {
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .feature-item h4 { margin: 0 0 5px 0; font-size: 15px; }
-        .feature-item p { margin: 0; font-size: 13px; color: #aaa; }
+/* Navbar */
+.navbar {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.logo-text { font-weight: 800; color: var(--primary-dark); font-size: 1.8rem; letter-spacing: -1px;}
+.logo-text span { color: var(--accent-blue); }
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; }
+.nav-links a.active { border-bottom: 2px solid var(--accent-blue); color: var(--accent-blue); }
+.nav-icons i { margin-left: 20px; font-size: 1.2rem; cursor: pointer; }
 
-        /* Quick Repair Preview Section */
-        .repairs-preview {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #fff;
-        }
-        .repairs-preview h3 { font-size: 32px; color: #0b1d3a; margin-bottom: 10px;}
-        .repairs-preview p { color: #555; max-width: 600px; margin: 0 auto; }
-    </style>
-</head>
-<body>
+/* Hero Section */
+.hero {
+    /* Replace background URL with your actual store interior photo */
+    background: linear-gradient(rgba(10, 20, 38, 0.8), rgba(10, 20, 38, 0.9)), url('https://via.placeholder.com/1500x800') center/cover;
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 20px;
+}
+.hero h4 { color: #6EA8FF; font-size: 1rem; letter-spacing: 2px; margin-bottom: 10px; }
+.hero-title { font-size: 5rem; font-weight: 800; margin: 0; line-height: 1; }
+.hero h2 { font-size: 2.2rem; font-weight: 600; margin: 20px 0; }
+.hero p { font-size: 1.2rem; margin-bottom: 40px; }
+.hero-buttons { display: flex; justify-content: center; gap: 15px; }
+.btn { padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; }
+.btn-primary { background-color: var(--accent-blue); color: #FFF; border: 2px solid var(--accent-blue); }
+.btn-outline { background-color: transparent; color: #FFF; border: 2px solid #FFF; }
+.btn-whatsapp { background-color: #FFF; color: #25D366; border: 2px solid #FFF; }
 
-    <!-- Header & Navigation -->
-    <header>
-        <div class="logo">URBAN CONNECT TT</div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Shop Phones</a>
-            <a href="#">Repairs</a>
-            <a href="#">Accessories</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-        </nav>
-    </header>
+/* Features Banner */
+.features-banner {
+    background-color: var(--primary-blue);
+    color: #FFF;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 40px;
+}
+.feature-item { display: flex; align-items: center; gap: 15px; }
+.feature-item i { font-size: 2rem; color: #6EA8FF; }
+.feature-item strong { display: block; font-size: 0.9rem; }
+.feature-item p { font-size: 0.8rem; color: #B0C4DE; margin: 0; }
 
-    <!-- Main Hero Section -->
-    <section class="hero">
-        <div class="hero-subtitle">WELCOME TO</div>
-        <h1>URBAN CONNECT TT</h1>
-        <h2>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h2>
-        <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
-        
-        <div class="btn-group">
-            <button class="btn btn-primary">Shop Phones</button>
-            <button class="btn btn-secondary">Book a Repair</button>
-            <button class="btn btn-whatsapp">WhatsApp Us</button>
-        </div>
-    </section>
+/* Products Section */
+.products-section { padding: 60px 40px; background-color: #FFF; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.btn-text { text-decoration: none; color: var(--accent-blue); font-weight: 600; }
+.product-grid { display: flex; justify-content: space-between; gap: 20px; }
+.product-card {
+    background: #FFF; border: 1px solid var(--border-color); border-radius: 10px;
+    padding: 20px; text-align: center; flex: 1; transition: transform 0.3s;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.product-card img { max-width: 100%; height: auto; margin-bottom: 15px; }
+.product-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
+.product-card .specs { font-size: 0.8rem; color: #666; margin-bottom: 15px; }
+.product-card .price { font-size: 1.4rem; font-weight: 700; color: var(--accent-blue); margin-bottom: 15px; }
+.badge { padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; color: #FFF; }
+.badge.new { background-color: var(--primary-dark); }
+.badge.open-box { background-color: var(--primary-blue); }
 
-    <!-- Trust Features Banner -->
-    <section class="features">
-        <div class="feature-item">
-            <div>
-                <h4>90-DAY WARRANTY</h4>
-                <p>Shop with confidence</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div>
-                <h4>OPEN BOX & BRAND NEW</h4>
-                <p>Quality you can trust</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div>
-                <h4>NATIONWIDE DELIVERY</h4>
-                <p>Fast & reliable</p>
-            </div>
-        </div>
-        <div class="feature-item">
-            <div>
-                <h4>LOWEST PRICES</h4>
-                <p>We beat the competition</p>
-            </div>
-        </div>
-    </section>
+/* Repairs Section */
+.repairs-section {
+    background-color: var(--primary-dark); color: #FFF;
+    display: flex; align-items: center; justify-content: space-between; padding: 60px 40px;
+}
+.repairs-content h2 { font-size: 2.5rem; margin-bottom: 15px; }
+.repairs-content p { color: #B0C4DE; margin-bottom: 30px; line-height: 1.6; }
+.repairs-list { display: flex; gap: 40px; }
+.repairs-list ul { list-style: none; }
+.repairs-list li { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.repairs-list i { color: var(--accent-blue); width: 20px; }
 
-    <!-- Services Introduction -->
-    <section class="repairs-preview">
-        <h3>EXPERT REPAIRS DONE RIGHT</h3>
-        <p>From screen replacements to premium black glass repairs, our certified technicians have you covered.</p>
-    </section>
+/* Trust Section */
+.trust-section {
+    display: flex; justify-content: space-around; align-items: center;
+    padding: 40px; background-color: #FFF; border-bottom: 1px solid var(--border-color);
+}
+.trust-item { text-align: center; }
+.trust-item.rating h2 { font-size: 2.5rem; margin: 10px 0; }
+.stars { color: #FFD700; font-size: 1.5rem; }
+.btn-outline-small { display: inline-block; padding: 8px 15px; border: 1px solid var(--accent-blue); color: var(--accent-blue); text-decoration: none; border-radius: 5px; margin-top: 10px; font-size: 0.8rem; font-weight: 600;}
+.trust-item i { margin-bottom: 10px; color: var(--primary-dark); }
+.payment-icons { display: flex; gap: 15px; margin-top: 10px; color: var(--primary-dark); }
 
-</body>
-</html>
+/* Footer */
+footer {
+    background-color: var(--primary-dark); color: #FFF;
+    display: flex; justify-content: space-around; padding: 40px; font-size: 0.9rem;
+}
+.footer-col { display: flex; gap: 15px; }
+.footer-col i { font-size: 1.5rem; color: #6EA8FF; }
+.footer-col p { color: #B0C4DE; margin-top: 5px; line-height: 1.5; }
+.footer-socials { display: flex; gap: 15px; margin-top: 10px; }
+.footer-socials i { font-size: 1.2rem; cursor: pointer; color: #FFF;}
+
+/* Floating WhatsApp */
+.floating-whatsapp {
+    position: fixed; bottom: 30px; right: 30px;
+    background-color: #25D366; color: #FFF;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-decoration: none; z-index: 1000;
+}
