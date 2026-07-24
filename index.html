@@ -4,69 +4,354 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --primary-dark: #0A1224; --primary-blue: #0E1F3D; --accent-cyan: #0EDFEF; --accent-green: #25D366; --text-gray: #A0B0C4; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #FFF; color: #333; }
-        
-        /* Layout Helpers */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Header/Nav */
-        .top-nav { background: var(--primary-dark); color: #FFF; padding: 10px 0; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
-        .main-nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EEE; }
-        
-        /* Hero */
-        .hero { background: linear-gradient(rgba(10, 18, 36, 0.9), rgba(10, 18, 36, 0.9)), url('https://via.placeholder.com/1500x600'); padding: 100px 20px; text-align: center; color: #FFF; }
-        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
-        .btn { padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 700; }
-        .btn-blue { background: #007bff; color: #FFF; }
-        .btn-outline { border: 2px solid #FFF; color: #FFF; }
-        .btn-white { background: #FFF; color: #333; }
+        /* =========================================================
+           Visual Overhaul: Clean Minimalist Design (iSupply Style)
+           ========================================================= */
 
-        /* Product Grid */
-        .section-title { text-align: center; margin: 50px 0; font-size: 2rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .card { border: 1px solid #EEE; padding: 20px; text-align: center; border-radius: 10px; }
-        .card img { width: 100%; height: 200px; object-fit: contain; }
-        .price { color: #007bff; font-weight: 900; font-size: 1.2rem; }
-        .badge { display: inline-block; padding: 5px 10px; background: #000; color: #FFF; font-size: 0.7rem; margin-top: 10px; }
+        :root {
+            --primary-dark: #0A1224; 
+            --primary-blue: #0E1F3D; 
+            --accent-cyan: #0EDFEF;  
+            --accent-green: #25D366; 
+            --text-light: #FFFFFF;
+            --text-gray: #A0B0C4;  
+            --bg-light: #F8F9FA;
+            --border-color-dark: #1C3358;
+            --border-color-light: #E0E0E0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; letter-spacing: -0.2px; }
+        body { background-color: #FFF; color: #333; line-height: 1.5; }
+        h1, h2, h3, .nav-links a { font-weight: 800; } 
+
+        /* --- Top Bar & Nav (Kept Dark/Modern for Brand Identity) --- */
+        .top-bar { background-color: var(--primary-dark); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 10px 60px; font-size: 0.8rem; }
+        .top-info span { margin-right: 25px; display: inline-flex; align-items: center; gap: 8px; }
+        .top-info i { color: var(--accent-cyan); }
+        .top-socials { display: flex; gap: 15px; }
+        .top-socials i { cursor: pointer; transition: color 0.3s; }
+        .top-socials i:hover { color: var(--accent-cyan); }
+
+        .navbar { background-color: #FFFFFF; color: #333; display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #EEE;}
+        .logo-text { font-weight: 900; color: #0A1426; font-size: 2.2rem; letter-spacing: -1.5px;}
+        .logo-text span { color: var(--accent-cyan); }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 700; font-size: 0.9rem; transition: color 0.3s;}
+        .nav-links a.active { color: var(--accent-cyan); }
+        .nav-icons { display: flex; align-items: center; gap: 25px; }
+        .nav-icons i { font-size: 1.3rem; cursor: pointer; color: #333;}
+
+        /* --- Product Section (CLEAN MINIMALIST STYLE) --- */
+        .products-section { padding: 60px; background-color: #FFF; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2rem; color: #0A1426; text-transform: uppercase; margin-bottom: 15px;}
+        
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 40px 20px; 
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: transparent; 
+            border: none; 
+            padding: 10px; 
+            text-align: center; 
+            transition: transform 0.3s ease; 
+        }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-card img { 
+            width: 100%; 
+            max-width: 180px; 
+            height: 200px; 
+            object-fit: contain; 
+            margin-bottom: 20px; 
+        }
+        .product-card h3 { 
+            font-size: 1.05rem; 
+            color: #333; 
+            font-weight: 800; 
+            margin-bottom: 8px; 
+            line-height: 1.3;
+        }
+        .product-card .price { 
+            font-size: 0.95rem; 
+            color: #777; 
+            font-weight: 600; 
+            margin-bottom: 12px; 
+        }
+        .badge { 
+            display: inline-block; 
+            padding: 6px 14px; 
+            border-radius: 4px; 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
+        .badge.out-of-stock { background-color: #000; color: #FFF; }
+        .badge.in-stock { background-color: var(--accent-green); color: #FFF; }
+        .badge.promo { background-color: #FF3B30; color: #FFF; } /* Red for promos */
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .navbar, .top-bar, .products-section { padding-left: 20px; padding-right: 20px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="top-nav container">
-        <span>59 Eastern Main Road, Tunapuna | (868) 330-8360</span>
-        <span>Mon - Fri 9AM - 5PM</span>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-info">
+            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
+        </div>
+        <div class="top-socials">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
     </div>
-    
-    <nav class="main-nav container">
-        <div style="font-weight:900; font-size:1.5rem;">URBAN CONNECT TT</div>
-        <div>HOME | SHOP PHONES | REPAIRS | CONTACT</div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1 class="logo-text">URBAN<span>CONNECT</span>TT</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">SHOP PHONES</a></li>
+            <li><a href="#">REPAIRS</a></li>
+            <li><a href="#">ACCESSORIES</a></li>
+        </ul>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
     </nav>
 
-    <section class="hero">
-        <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
-        <div class="btn-group">
-            <a href="#" class="btn btn-blue">SHOP PHONES</a>
-            <a href="#" class="btn btn-outline">BOOK A REPAIR</a>
-            <a href="#" class="btn btn-white">WHATSAPP US</a>
+    <!-- Products Section (Clean Minimalist Style) -->
+    <section class="products-section">
+        <div class="section-header">
+            <h2>SHOP APPLE iPHONES</h2>
+        </div>
+        
+        <div class="product-grid">
+            
+            <!-- ====== BRAND NEW ====== -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 17 Pro Max 1TB<br>[Brand New]</h3>
+                <p class="price">From $13399.0</p>
+                <span class="badge in-stock">IN STOCK</span>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 17 Pro Max 512GB<br>[Brand New]</h3>
+                <p class="price">From $11999.0</p>
+                <span class="badge in-stock">IN STOCK</span>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 17 Pro Max 256GB<br>[Brand New]</h3>
+                <p class="price">From $10499.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 17 Pro 512GB<br>[Brand New]</h3>
+                <p class="price">From $10599.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 17 Pro 256GB<br>[Brand New]</h3>
+                <p class="price">From $9599.0</p>
+                <!-- Example of out of stock badge -->
+                <span class="badge out-of-stock">OUT OF STOCK</span>
+            </div>
+
+            <!-- ====== eSIM MODELS ====== -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 16 Pro Max 512GB<br>- eSIM</h3>
+                <p class="price">From $6999.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 16 Pro Max 256GB<br>- eSIM</h3>
+                <p class="price">From $6399.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 16 Pro 512GB<br>- eSIM</h3>
+                <p class="price">From $5999.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 16 Pro 256GB<br>- eSIM</h3>
+                <p class="price">From $5699.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 16 Plus 256GB<br>- eSIM</h3>
+                <p class="price">From $4999.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 16 256GB<br>- eSIM</h3>
+                <p class="price">From $4799.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 16 128GB<br>- eSIM</h3>
+                <p class="price">From $4499.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 15 Pro Max 512GB<br>- eSIM</h3>
+                <p class="price">From $5199.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 15 Pro Max 256GB<br>- eSIM</h3>
+                <p class="price">From $4899.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 15 Pro 512GB<br>- eSIM</h3>
+                <p class="price">From $4599.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 15 Pro 256GB<br>- eSIM</h3>
+                <p class="price">From $4399.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 15 Plus 256GB<br>- eSIM</h3>
+                <p class="price">From $3799.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 15 256GB<br>- eSIM</h3>
+                <p class="price">From $3599.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 15 128GB<br>- eSIM</h3>
+                <p class="price">From $3299.0</p>
+            </div>
+
+            <!-- ====== OPEN BOX ====== -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 17 256GB<br>[Open Box]</h3>
+                <p class="price">From $5999.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 14 Pro Max 512GB<br>[Open Box]</h3>
+                <p class="price">From $4499.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 14 Pro Max 256GB<br>[Open Box]</h3>
+                <p class="price">From $4199.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 14 Pro 512GB<br>[Open Box]</h3>
+                <p class="price">From $3799.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 14 Pro 256GB<br>[Open Box]</h3>
+                <p class="price">From $3599.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 14 Plus 256GB<br>[Open Box]</h3>
+                <p class="price">From $2799.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 14 256GB<br>[Open Box]</h3>
+                <p class="price">From $2699.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 14 128GB<br>[Open Box]</h3>
+                <p class="price">From $2499.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 13 Pro Max 1TB<br>[Open Box]</h3>
+                <p class="price">From $3899.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 13 Pro Max 512GB<br>[Open Box]</h3>
+                <p class="price">From $3750.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 13 Pro Max 256GB<br>[Open Box]</h3>
+                <p class="price">From $3599.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 13 Pro 256GB<br>[Open Box]</h3>
+                <p class="price">From $2999.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 13 256GB<br>[Open Box]</h3>
+                <p class="price">From $2399.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 13 128GB<br>[Open Box]</h3>
+                <p class="price">From $2199.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 13 Mini Standard<br>[Open Box]</h3>
+                <p class="price">From $1899.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 12 Pro Max 256GB<br>[Open Box]</h3>
+                <p class="price">From $2599.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 12 Pro 256GB<br>[Open Box]</h3>
+                <p class="price">From $2299.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 12 128GB<br>[Open Box]</h3>
+                <p class="price">From $1799.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 12 64GB<br>[Open Box]</h3>
+                <p class="price">From $1499.0</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200x250" alt="Phone">
+                <h3>iPhone 12 Mini 128GB<br>[Open Box]</h3>
+                <p class="price">From $1499.0</p>
+            </div>
         </div>
     </section>
 
-    <div class="container">
-        <h2 class="section-title">SHOP OUR LATEST PHONES</h2>
-        <div class="grid">
-            <!-- Product Example -->
-            <div class="card">
-                <img src="https://via.placeholder.com/200" alt="Phone">
-                <h3>iPhone 15 Pro Max</h3>
-                <p>256GB • Natural Titanium</p>
-                <div class="price">TT$6,999</div>
-                <div class="badge">BRAND NEW</div>
-            </div>
-            <!-- Repeat for other phones -->
-        </div>
-    </div>
 </body>
 </html>
