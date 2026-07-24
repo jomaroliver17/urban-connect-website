@@ -19,7 +19,7 @@
             --primary-blue: #0E1F3D; 
             --accent-cyan: #0EDFEF;  
             --accent-green: #25D366; 
-            --accent-orange: #FF6B00; /* Summer promo accent */
+            --accent-orange: #FF6B00; 
             --text-light: #FFFFFF;
             --text-gray: #A0B0C4;  
             --bg-light: #F8F9FA;
@@ -43,7 +43,7 @@
 
         h1, h2, h3, .nav-links a { font-weight: 800; }
 
-        /* --- Top Bar (Dark) --- */
+        /* --- Top Bar --- */
         .top-bar {
             background-color: var(--primary-dark);
             color: var(--text-light);
@@ -60,7 +60,7 @@
         .top-socials i { cursor: pointer; transition: color 0.3s; }
         .top-socials i:hover { color: var(--accent-cyan); }
 
-        /* --- Main Navigation (White) --- */
+        /* --- Main Navigation --- */
         .navbar {
             background-color: #FFFFFF;
             color: #333;
@@ -78,11 +78,10 @@
         .nav-links a.active { color: var(--accent-cyan); position: relative; }
         .nav-links a.active:after { content:''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent-cyan); }
         .nav-icons { display: flex; align-items: center; gap: 25px; }
-        .nav-icons i { font-size: 1.3rem; cursor: pointer; color: #333;}
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(10, 18, 36, 0.85), rgba(10, 18, 36, 0.95)), url('https://via.placeholder.com/1500x800') center/cover;
+            background: linear-gradient(rgba(10, 18, 36, 0.85), rgba(10, 18, 36, 0.95)), url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1500&q=80') center/cover;
             color: var(--text-light);
             text-align: center;
             padding: 100px 20px;
@@ -108,8 +107,6 @@
         .btn { padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; cursor: pointer; border: none;}
         .btn-primary { background-color: var(--accent-cyan); color: #0A1426; }
         .btn-primary:hover { background-color: #FFF; }
-        .btn-outline { background-color: transparent; color: #FFF; border: 2px solid #FFF; }
-        .btn-outline:hover { background: rgba(255,255,255,0.1); }
         .btn-whatsapp { background-color: var(--accent-green); color: #FFF; }
         .btn-whatsapp:hover { opacity: 0.9; }
         .btn-card { width: 100%; justify-content: center; background-color: #0A1426; color: #FFF; margin-top: 15px;}
@@ -142,26 +139,38 @@
         }
         .filter-btn.active, .filter-btn:hover { background: #0A1426; color: #FFF; }
 
-        /* Product Grid */
+        /* Product Grid & Card Styling */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
         .product-card {
             background: #FFF; border: 1px solid var(--border-color-light); border-radius: 12px;
             padding: 25px; text-align: center; transition: all 0.3s ease; position: relative;
             display: flex; flex-direction: column; justify-content: space-between;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden;
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
         
-        .badge { position: absolute; top: 15px; left: 15px; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; color: #FFF; text-transform: uppercase;}
+        /* Product Images with Hover Zoom */
+        .product-image-container {
+            width: 100%; height: 220px; display: flex; align-items: center; justify-content: center;
+            margin: 15px 0; overflow: hidden; border-radius: 8px;
+        }
+        .product-image-container img {
+            max-height: 100%; max-width: 100%; object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        .product-card:hover .product-image-container img {
+            transform: scale(1.08);
+        }
+
+        .badge { position: absolute; top: 15px; left: 15px; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; color: #FFF; text-transform: uppercase; z-index: 2;}
         .badge.brand-new { background-color: #0A1426; }
         .badge.esim { background-color: #1E6091; }
         .badge.open-box { background-color: var(--accent-orange); }
 
-        .phone-icon { font-size: 4rem; color: #0A1426; margin: 30px 0 20px 0; }
         .product-card h3 { font-size: 1.25rem; margin-bottom: 5px; color: #0A1426;}
         .product-card .specs { font-size: 0.85rem; color: #666; margin-bottom: 15px; font-weight: 600;}
         .product-card .price { font-size: 1.6rem; font-weight: 900; color: #0A1426; }
-        .product-card .price span { color: #25D366; font-size: 1rem; display: block; font-weight: 700;}
+        .product-card .price span { color: #25D366; font-size: 0.95rem; display: block; font-weight: 700;}
 
         /* --- Footer --- */
         footer {
@@ -207,7 +216,7 @@
     <!-- Top Info Bar -->
     <div class="top-bar">
         <div class="top-info">
-            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-solid fa-location-dot"></i> #59 Eastern Main Road, Tunapuna</span>
             <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
             <span><i class="fa-regular fa-clock"></i> 90-Day Warranty on All Devices</span>
         </div>
@@ -275,7 +284,9 @@
             <!-- ================= BRAND NEW ================= -->
             <div class="product-card filter-item brand-new">
                 <span class="badge brand-new">Brand New</span>
-                <i class="fa-solid fa-mobile-screen phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Titanium">
+                </div>
                 <h3>iPhone 17 Pro</h3>
                 <p class="specs">256GB • Fully Functional • Warranty</p>
                 <div class="price">TT $9,599 <span>In Stock • Tunapuna</span></div>
@@ -284,7 +295,9 @@
 
             <div class="product-card filter-item brand-new">
                 <span class="badge brand-new">Brand New</span>
-                <i class="fa-solid fa-mobile-screen phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Titanium">
+                </div>
                 <h3>iPhone 17 Pro</h3>
                 <p class="specs">512GB • Fully Functional • Warranty</p>
                 <div class="price">TT $10,599 <span>In Stock • Tunapuna</span></div>
@@ -293,7 +306,9 @@
 
             <div class="product-card filter-item brand-new">
                 <span class="badge brand-new">Brand New</span>
-                <i class="fa-solid fa-mobile-screen phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max Titanium">
+                </div>
                 <h3>iPhone 17 Pro Max</h3>
                 <p class="specs">256GB • Fully Functional • Warranty</p>
                 <div class="price">TT $10,499 <span>In Stock • Tunapuna</span></div>
@@ -302,7 +317,9 @@
 
             <div class="product-card filter-item brand-new">
                 <span class="badge brand-new">Brand New</span>
-                <i class="fa-solid fa-mobile-screen phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max Titanium">
+                </div>
                 <h3>iPhone 17 Pro Max</h3>
                 <p class="specs">512GB • Fully Functional • Warranty</p>
                 <div class="price">TT $11,999 <span>In Stock • Tunapuna</span></div>
@@ -311,7 +328,9 @@
 
             <div class="product-card filter-item brand-new">
                 <span class="badge brand-new">Brand New</span>
-                <i class="fa-solid fa-mobile-screen phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max 1TB">
+                </div>
                 <h3>iPhone 17 Pro Max</h3>
                 <p class="specs">1TB Ultimate Storage • Warranty</p>
                 <div class="price">TT $13,399 <span>Limited Stock Available</span></div>
@@ -321,7 +340,9 @@
             <!-- ================= ESIM MODELS ================= -->
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro Max">
+                </div>
                 <h3>iPhone 16 Pro Max</h3>
                 <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $6,999 <span>In Stock • Tunapuna</span></div>
@@ -330,7 +351,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro Max">
+                </div>
                 <h3>iPhone 16 Pro Max</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $6,399 <span>In Stock • Tunapuna</span></div>
@@ -339,7 +362,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro">
+                </div>
                 <h3>iPhone 16 Pro</h3>
                 <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $5,999 <span>In Stock • Tunapuna</span></div>
@@ -348,7 +373,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro">
+                </div>
                 <h3>iPhone 16 Pro</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $5,699 <span>In Stock • Tunapuna</span></div>
@@ -357,7 +384,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Plus">
+                </div>
                 <h3>iPhone 16 Plus</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,999 <span>In Stock • Tunapuna</span></div>
@@ -366,7 +395,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 16">
+                </div>
                 <h3>iPhone 16</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,799 <span>In Stock • Tunapuna</span></div>
@@ -375,7 +406,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 16">
+                </div>
                 <h3>iPhone 16</h3>
                 <p class="specs">128GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,499 <span>In Stock • Tunapuna</span></div>
@@ -384,7 +417,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro Max">
+                </div>
                 <h3>iPhone 15 Pro Max</h3>
                 <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $5,199 <span>In Stock • Tunapuna</span></div>
@@ -393,7 +428,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro Max">
+                </div>
                 <h3>iPhone 15 Pro Max</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,899 <span>In Stock • Tunapuna</span></div>
@@ -402,7 +439,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro">
+                </div>
                 <h3>iPhone 15 Pro</h3>
                 <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,599 <span>In Stock • Tunapuna</span></div>
@@ -411,7 +450,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro">
+                </div>
                 <h3>iPhone 15 Pro</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,399 <span>In Stock • Tunapuna</span></div>
@@ -420,7 +461,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Plus">
+                </div>
                 <h3>iPhone 15 Plus</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $3,799 <span>In Stock • Tunapuna</span></div>
@@ -429,7 +472,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 15">
+                </div>
                 <h3>iPhone 15</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $3,599 <span>In Stock • Tunapuna</span></div>
@@ -438,7 +483,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 15">
+                </div>
                 <h3>iPhone 15</h3>
                 <p class="specs">128GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $3,299 <span>In Stock • Tunapuna</span></div>
@@ -447,7 +494,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro Max">
+                </div>
                 <h3>iPhone 14 Pro Max</h3>
                 <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,499 <span>In Stock • Tunapuna</span></div>
@@ -456,7 +505,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro Max">
+                </div>
                 <h3>iPhone 14 Pro Max</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $4,199 <span>In Stock • Tunapuna</span></div>
@@ -465,7 +516,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro">
+                </div>
                 <h3>iPhone 14 Pro</h3>
                 <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $3,799 <span>In Stock • Tunapuna</span></div>
@@ -474,7 +527,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro">
+                </div>
                 <h3>iPhone 14 Pro</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $3,599 <span>In Stock • Tunapuna</span></div>
@@ -483,7 +538,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Plus">
+                </div>
                 <h3>iPhone 14 Plus</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $2,799 <span>In Stock • Tunapuna</span></div>
@@ -492,7 +549,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 14">
+                </div>
                 <h3>iPhone 14</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $2,699 <span>In Stock • Tunapuna</span></div>
@@ -501,7 +560,9 @@
 
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
-                <i class="fa-solid fa-mobile-screen-button phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 14">
+                </div>
                 <h3>iPhone 14</h3>
                 <p class="specs">128GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $2,499 <span>In Stock • Tunapuna</span></div>
@@ -511,7 +572,9 @@
             <!-- ================= OPEN BOX MODELS ================= -->
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 17">
+                </div>
                 <h3>iPhone 17</h3>
                 <p class="specs">256GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $5,999 <span>Summer Special</span></div>
@@ -520,7 +583,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro Max">
+                </div>
                 <h3>iPhone 13 Pro Max</h3>
                 <p class="specs">1TB • Huge Storage • Warranty</p>
                 <div class="price">TT $3,899 <span>In Stock • Tunapuna</span></div>
@@ -529,7 +594,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro Max">
+                </div>
                 <h3>iPhone 13 Pro Max</h3>
                 <p class="specs">512GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $3,750 <span>In Stock • Tunapuna</span></div>
@@ -538,7 +605,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro Max">
+                </div>
                 <h3>iPhone 13 Pro Max</h3>
                 <p class="specs">256GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $3,599 <span>In Stock • Tunapuna</span></div>
@@ -547,7 +616,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro">
+                </div>
                 <h3>iPhone 13 Pro</h3>
                 <p class="specs">256GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $2,999 <span>In Stock • Tunapuna</span></div>
@@ -556,7 +627,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 13">
+                </div>
                 <h3>iPhone 13</h3>
                 <p class="specs">256GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $2,399 <span>In Stock • Tunapuna</span></div>
@@ -565,7 +638,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 13">
+                </div>
                 <h3>iPhone 13</h3>
                 <p class="specs">128GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $2,199 <span>In Stock • Tunapuna</span></div>
@@ -574,7 +649,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Mini">
+                </div>
                 <h3>iPhone 13 Mini</h3>
                 <p class="specs">Compact & Powerful • Warranty</p>
                 <div class="price">TT $1,899 <span>In Stock • Tunapuna</span></div>
@@ -583,7 +660,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12 Pro Max">
+                </div>
                 <h3>iPhone 12 Pro Max</h3>
                 <p class="specs">256GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $2,599 <span>In Stock • Tunapuna</span></div>
@@ -592,7 +671,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12 Pro">
+                </div>
                 <h3>iPhone 12 Pro</h3>
                 <p class="specs">256GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $2,299 <span>In Stock • Tunapuna</span></div>
@@ -601,7 +682,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12">
+                </div>
                 <h3>iPhone 12</h3>
                 <p class="specs">128GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $1,799 <span>In Stock • Tunapuna</span></div>
@@ -610,7 +693,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12">
+                </div>
                 <h3>iPhone 12</h3>
                 <p class="specs">64GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $1,499 <span>Best Budget Deal</span></div>
@@ -619,7 +704,9 @@
 
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
-                <i class="fa-solid fa-box-open phone-icon"></i>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=500&q=80" alt="iPhone 12 Mini">
+                </div>
                 <h3>iPhone 12 Mini</h3>
                 <p class="specs">128GB • Compact & Powerful • Warranty</p>
                 <div class="price">TT $1,499 <span>Best Budget Deal</span></div>
