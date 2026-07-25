@@ -1,372 +1,993 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple Inventory & Accessories Store</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Stripe JS SDK Groundwork -->
-  <script src="https://js.stripe.com/v3/"></script>
-</head>
-<body class="bg-slate-50 text-slate-900 font-sans min-h-screen pb-16">
-
-  <!-- Header -->
-  <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold tracking-tight">iStore <span class="text-blue-400 font-light">Select</span></h1>
-      <button onclick="toggleCart()" class="relative bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg font-medium transition flex items-center gap-2">
-        <span>Cart</span>
-        <span id="cart-count" class="bg-white text-blue-900 px-2 py-0.5 rounded-full text-xs font-bold">0</span>
-      </button>
-    </div>
-  </header>
-
-  <main class="max-w-7xl mx-auto px-4 mt-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
     
-    <!-- iPhone Device Section -->
-    <section>
-      <h2 class="text-3xl font-extrabold tracking-tight mb-2">Select Your iPhone</h2>
-      <p class="text-slate-600 mb-6">Click any base or Pro model to configure colors, storage, and live pricing.</p>
-      
-      <!-- Device Grid -->
-      <div id="device-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </section>
+    <style>
+        :root {
+            --bg-dark: #070D18;
+            --bg-navy: #0A1628;
+            --primary-blue: #0A58CA;
+            --primary-blue-hover: #084298;
+            --accent-green: #25D366;
+            --text-main: #111827;
+            --text-light: #FFFFFF;
+            --text-gray: #6B7280;
+            --bg-light: #FFFFFF;
+            --bg-offwhite: #F8FAFC;
+            --border-light: #E5E7EB;
+            --border-dark: #1E293B;
+            --card-btn-dark: #0F172A;
+        }
 
-    <!-- Accessories Section -->
-    <section class="mt-16">
-      <div class="border-t border-slate-200 pt-10">
-        <h2 class="text-3xl font-extrabold tracking-tight mb-2">Essential Accessories</h2>
-        <p class="text-slate-600 mb-6">Add premium cases, screen protection, and audio gear to your order.</p>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: var(--bg-dark); color: var(--text-light);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 50px; font-size: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .top-info { display: flex; gap: 25px; flex-wrap: wrap; }
+        .top-info span { display: inline-flex; align-items: center; gap: 8px; color: #D1D5DB; }
+        .top-info i { color: #60A5FA; }
+        .top-socials { display: flex; gap: 15px; }
+        .top-socials i { cursor: pointer; color: #FFF; font-size: 0.95rem; transition: color 0.2s; }
+        .top-socials i:hover { color: #60A5FA; }
+
+        /* --- Main Navigation --- */
+        .navbar {
+            background-color: #FFFFFF; display: flex; justify-content: space-between;
+            align-items: center; padding: 15px 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-box img { 
+            height: 45px; /* Adjust this to fit your uploaded logo */
+            object-fit: contain;
+        }
         
-        <div id="accessories-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-      </div>
-    </section>
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #111827; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+        
+        .nav-icons { display: flex; align-items: center; gap: 20px; font-size: 1.1rem; color: #111827; }
+        .nav-icons i { cursor: pointer; transition: color 0.2s; }
+        .nav-icons i:hover { color: var(--primary-blue); }
 
-  </main>
+        /* --- Hero Section --- */
+        .hero {
+            /* Replace the URL below with your actual composite store image */
+            background: linear-gradient(to right, rgba(7, 13, 24, 0.85) 0%, rgba(10, 22, 40, 0.75) 100%),
+                        url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--text-light); text-align: center; padding: 120px 20px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; color: #60A5FA; text-transform: uppercase; margin-bottom: 15px; }
+        
+        /* Central Logo Image */
+        .hero-logo-img { max-width: 500px; width: 100%; margin-bottom: 20px; }
 
-  <!-- Slide-over Cart Panel -->
-  <div id="cart-panel" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-end">
-    <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl animate-slide-in">
-      <div class="p-4 bg-slate-900 text-white flex justify-between items-center">
-        <h3 class="text-lg font-bold">Your Shopping Cart</h3>
-        <button onclick="toggleCart()" class="text-slate-400 hover:text-white text-xl">&times;</button>
-      </div>
-      
-      <!-- Cart Items -->
-      <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4">
-        <p class="text-slate-500 text-center py-8">Your cart is currently empty.</p>
-      </div>
+        .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; color: #D1D5DB; margin-bottom: 40px; }
+        
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; border: 2px solid transparent; text-transform: uppercase; }
+        .btn-blue { background-color: var(--primary-blue); color: #FFF; }
+        .btn-blue:hover { background-color: var(--primary-blue-hover); }
+        .btn-dark { background-color: transparent; color: #FFF; border-color: rgba(255,255,255,0.3); }
+        .btn-dark:hover { background-color: rgba(255,255,255,0.1); border-color: #FFF; }
+        .btn-white { background-color: #FFF; color: #111827; }
+        .btn-white:hover { background-color: #F3F4F6; }
+        .btn-white i { color: var(--accent-green); font-size: 1.2rem; }
 
-      <!-- Cart Footer & Stripe Trigger -->
-      <div class="p-4 border-t border-slate-200 bg-slate-50">
-        <div class="flex justify-between text-lg font-bold mb-4">
-          <span>Total:</span>
-          <span id="cart-total">$0</span>
+        /* --- Trust Badges Bar --- */
+        .trust-bar {
+            background-color: var(--bg-navy); padding: 25px 50px;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .trust-item { display: flex; align-items: center; gap: 15px; color: #FFF; }
+        .trust-icon {
+            width: 45px; height: 45px; border-radius: 12px; background: rgba(255,255,255,0.05);
+            display: flex; align-items: center; justify-content: center; color: #60A5FA; font-size: 1.4rem; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .trust-text h4 { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; }
+        .trust-text p { font-size: 0.75rem; color: #9CA3AF; }
+
+        /* --- Dynamic Product Section --- */
+        .carousel-section { padding: 70px 50px; max-width: 1600px; margin: 0 auto; background: #FFF; }
+        .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 2px solid #F3F4F6; padding-bottom: 15px;}
+        .section-header-row h2 { font-size: 1.8rem; font-weight: 800; color: #111827; text-transform: uppercase; }
+        .view-all-btn { color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.9rem; border: 1px solid var(--primary-blue); padding: 8px 16px; border-radius: 6px; }
+        .view-all-btn:hover { background: var(--primary-blue); color: #FFF; }
+        
+        .carousel-container { position: relative; display: flex; align-items: center; }
+        .arrow-btn {
+            width: 50px; height: 50px; border-radius: 50%; background: #FFF; border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: #111827; cursor: pointer; position: absolute; z-index: 10; transition: all 0.2s;
+        }
+        .arrow-btn:hover { background: var(--primary-blue); color: #FFF; border-color: var(--primary-blue); }
+        .arrow-left { left: -25px; }
+        .arrow-right { right: -25px; }
+
+        .product-track { display: flex; gap: 30px; overflow-x: auto; scroll-behavior: smooth; padding: 15px 10px 40px; scrollbar-width: none; }
+        .product-track::-webkit-scrollbar { display: none; }
+
+        .product-card {
+            background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 12px;
+            padding: 25px; min-width: 280px; max-width: 280px; flex-shrink: 0;
+            display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: transparent; }
+        
+        .product-image-box { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .product-image-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
+
+        .product-info h3 { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
+        .product-info .specs { font-size: 0.85rem; color: #6B7280; margin-bottom: 15px; font-weight: 500;}
+        .product-info .price { font-size: 1.6rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 15px; }
+        
+        .badge-tag { display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #FFF; margin-top: auto; align-self: flex-start; }
+        .badge-brand-new { background-color: #111827; }
+        .badge-open-box { background-color: #4B5563; }
+        .badge-esim { background-color: #0369A1; }
+
+        /* --- Accessories Section (NEW) --- */
+        .accessories-section { padding: 70px 50px; background: var(--bg-offwhite); }
+        .accessories-header { font-size: 1.8rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 40px; }
+        
+        .accessories-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
+        }
+        
+        .accessory-card {
+            background: #FFF; border-radius: 12px; border: 1px solid var(--border-light);
+            padding: 30px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .accessory-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        
+        .acc-icon {
+            font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .acc-title { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
+        .acc-sub { font-size: 0.8rem; color: #6B7280; margin-bottom: 20px; }
+        .acc-price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
+        
+        .acc-btn {
+            background: var(--card-btn-dark); color: #FFF; width: 100%; padding: 12px;
+            border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+            transition: background 0.2s; margin-top: auto;
+        }
+        .acc-btn:hover { background: #1E293B; }
+
+        /* --- Expert Repairs Banner (UPDATED to match photo) --- */
+        .repairs-banner {
+            background-color: var(--bg-navy);
+            color: #FFF; display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 40px;
+            padding: 0 50px 0 0; align-items: center; border-top: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+        
+        .repairs-img-container {
+            height: 100%; min-height: 350px;
+            background: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=800&q=80') center left/cover no-repeat;
+        }
+
+        .repairs-center { padding: 50px 0; }
+        .repairs-center h2 { font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase;}
+        .repairs-center p { color: #D1D5DB; font-size: 1rem; margin-bottom: 25px; max-width: 300px; }
+        .repairs-center .btn-outline-light { 
+            display: inline-block; padding: 12px 24px; border: 2px solid rgba(255,255,255,0.3); 
+            color: #FFF; text-decoration: none; font-weight: 700; border-radius: 6px; font-size: 0.85rem; 
+            transition: 0.2s; text-transform: uppercase;
+        }
+        .repairs-center .btn-outline-light:hover { background: #FFF; color: var(--bg-navy); }
+        
+        .repairs-grid-right { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;
+        }
+        .repair-item-row { display: flex; align-items: center; gap: 15px; }
+        .repair-icon-box {
+            font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9;
+        }
+        .repair-item-row span { font-size: 0.95rem; font-weight: 400; color: #E5E7EB; }
+
+        /* --- Social Proof & Payment Section --- */
+        .proof-section {
+            background: #FFF; padding: 50px; border-bottom: 1px solid var(--border-light);
+            display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; align-items: center;
+        }
+        .google-rating { text-align: center; border-right: 1px solid var(--border-light); padding-right: 20px; }
+        .google-rating h4 { font-size: 0.8rem; font-weight: 700; color: #6B7280; text-transform: uppercase; margin-bottom: 5px; }
+        .google-rating .score { font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; }
+        .google-rating .stars { color: #FBBF24; font-size: 1.3rem; margin: 8px 0; }
+        .google-rating p { font-size: 0.8rem; color: #6B7280; margin-bottom: 12px; }
+        .btn-outline { display: inline-block; padding: 8px 20px; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; transition: 0.2s;}
+        .btn-outline:hover { background: var(--primary-blue); color: #FFF; }
+
+        .trust-badges-center { display: flex; justify-content: space-around; text-align: center; }
+        .badge-col i { font-size: 2.5rem; color: #374151; margin-bottom: 15px; }
+        .badge-col h5 { font-size: 0.9rem; font-weight: 800; color: #111827; text-transform: uppercase; }
+
+        .payment-types { text-align: center; border-left: 1px solid var(--border-light); padding-left: 20px; }
+        .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 10px; text-transform: uppercase; }
+        .payment-types .sub-text { font-size: 0.75rem; color: #6B7280; margin-bottom: 15px; font-weight: 400; text-transform: none; }
+        .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 2.2rem; color: #111827; }
+        
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-dark); color: #FFF;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+            padding: 60px 50px; font-size: 0.85rem;
+        }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 15px; line-height: 1.6; font-size: 0.9rem;}
+        .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; }
+        .footer-social-icons { display: flex; gap: 15px; margin-top: 10px; }
+        .footer-social-icons a {
+            width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem;
+        }
+        .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--accent-green); color: #FFF;
+            width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 2.2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); text-decoration: none; z-index: 1100; transition: transform 0.2s;
+        }
+        .floating-whatsapp:hover { transform: scale(1.08); }
+
+        /* --- Product Modal with Color Changing Logic --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center;
+            padding: 20px; backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: #FFF; border-radius: 16px; width: 100%; max-width: 900px;
+            display: flex; overflow: hidden; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .modal-close {
+            position: absolute; top: 20px; right: 20px; background: #F3F4F6; border: none;
+            width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; color: #111827; transition: 0.2s; z-index: 10;
+        }
+        .modal-close:hover { background: #E5E7EB; }
+
+        .modal-left { width: 50%; background: #F8FAFC; padding: 40px; display: flex; align-items: center; justify-content: center; position: relative;}
+        .modal-left img { max-width: 100%; max-height: 400px; object-fit: contain; transition: opacity 0.3s ease; }
+        
+        .modal-right { width: 50%; padding: 40px; display: flex; flex-direction: column; }
+        .modal-title { font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #111827; line-height: 1.1;}
+        .modal-condition { display: inline-block; padding: 4px 10px; background: #111827; color: #FFF; font-size: 0.75rem; font-weight: 700; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; align-self: flex-start; }
+        .modal-price { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
+
+        .variant-group { margin-bottom: 25px; }
+        .variant-group h4 { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 12px; text-transform: uppercase; }
+        .variant-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        
+        .var-btn {
+            padding: 12px 18px; border: 2px solid #E5E7EB; border-radius: 8px; background: #FFF;
+            font-size: 0.95rem; font-weight: 700; color: #374151; cursor: pointer; transition: all 0.2s;
+        }
+        .var-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .var-btn.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #FFF; }
+
+        /* Color Swatches */
+        .color-btn {
+            width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 0 0 1px #D1D5DB;
+            cursor: pointer; transition: all 0.2s; position: relative;
+        }
+        .color-btn:hover { transform: scale(1.1); }
+        .color-btn.active { box-shadow: 0 0 0 2px var(--primary-blue); }
+
+        .modal-buy-btn {
+            margin-top: auto; padding: 18px; border-radius: 8px; background: var(--accent-green); color: #FFF;
+            text-align: center; font-size: 1.1rem; font-weight: 800; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; border: none; cursor: pointer; text-transform: uppercase;
+        }
+        .modal-buy-btn:hover { background: #20BA56; }
+        
+        .payment-info-modal { text-align: center; font-size: 0.75rem; color: #6B7280; margin-top: 15px; }
+        .payment-info-modal i { color: #111827; font-size: 1rem; margin: 0 3px; vertical-align: middle;}
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .repairs-banner { grid-template-columns: 1fr; padding: 0; }
+            .repairs-img-container { min-height: 250px; }
+            .repairs-center, .repairs-grid-right { padding: 30px; }
+            .repairs-grid-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+            
+            .proof-section, footer { grid-template-columns: 1fr 1fr; }
+            .trust-bar { justify-content: center; }
+            .google-rating, .payment-types { border: none; padding: 0; }
+            .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
+            .modal-left, .modal-right { width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .top-bar, .nav-links { display: none; }
+            .navbar, .carousel-section, .proof-section, footer, .accessories-section { padding: 30px 20px; }
+            .proof-section, footer, .repairs-grid-right { grid-template-columns: 1fr; }
+            .arrow-left { left: 0; }
+            .arrow-right { right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-info">
+            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
+            <span><i class="fa-regular fa-clock"></i> Mon - Fri 9AM - 5PM • Sat 8AM - 5PM • Sun 8AM - 3PM</span>
         </div>
-        <button onclick="initiateStripeCheckout()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-lg transition shadow">
-          Proceed to Stripe Checkout
-        </button>
-        <p class="text-xs text-center text-slate-400 mt-2">Secured 256-bit SSL Encryption via Stripe</p>
-      </div>
+        <div class="top-socials">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
     </div>
-  </div>
 
-  <script>
-    // 1. INVENTORY DATA ARCHITECTURE (Base & Pro Models)
-    const deviceCatalog = [
-      // iPhone 12 Series
-      {
-        id: "ip12", name: "iPhone 12", basePrice: 499,
-        colors: ["Black", "White", "Red", "Green", "Blue", "Purple"],
-        storage: [{ gb: "64GB", add: 0 }, { gb: "128GB", add: 50 }, { gb: "256GB", add: 100 }]
-      },
-      {
-        id: "ip12p", name: "iPhone 12 Pro", basePrice: 699,
-        colors: ["Graphite", "Silver", "Gold", "Pacific Blue"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 200 }]
-      },
-      // iPhone 13 Series
-      {
-        id: "ip13", name: "iPhone 13", basePrice: 599,
-        colors: ["Starlight", "Midnight", "Blue", "Pink", "Green", "Red"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 200 }]
-      },
-      {
-        id: "ip13p", name: "iPhone 13 Pro Max", basePrice: 899,
-        colors: ["Graphite", "Gold", "Silver", "Sierra Blue", "Alpine Green"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 250 }, { gb: "1TB", add: 400 }]
-      },
-      // iPhone 14 Series
-      {
-        id: "ip14", name: "iPhone 14 Plus", basePrice: 699,
-        colors: ["Midnight", "Starlight", "Blue", "Purple", "Yellow"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 250 }]
-      },
-      {
-        id: "ip14p", name: "iPhone 14 Pro Max", basePrice: 999,
-        colors: ["Space Black", "Silver", "Gold", "Deep Purple"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 250 }, { gb: "1TB", add: 450 }]
-      },
-      // iPhone 15 Series
-      {
-        id: "ip15", name: "iPhone 15", basePrice: 799,
-        colors: ["Black", "Blue", "Green", "Yellow", "Pink"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 250 }]
-      },
-      {
-        id: "ip15p", name: "iPhone 15 Pro Max", basePrice: 1199,
-        colors: ["Black Titanium", "White Titanium", "Blue Titanium", "Natural Titanium"],
-        storage: [{ gb: "256GB", add: 0 }, { gb: "512GB", add: 200 }, { gb: "1TB", add: 400 }]
-      },
-      // iPhone 16 Series
-      {
-        id: "ip16", name: "iPhone 16", basePrice: 799,
-        colors: ["Ultramarine", "Teal", "Pink", "White", "Black"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 250 }]
-      },
-      {
-        id: "ip16p", name: "iPhone 16 Pro Max", basePrice: 1199,
-        colors: ["Black Titanium", "White Titanium", "Natural Titanium", "Desert Titanium"],
-        storage: [{ gb: "256GB", add: 0 }, { gb: "512GB", add: 200 }, { gb: "1TB", add: 400 }]
-      },
-      // iPhone 17 Series (Updated Colors)
-      {
-        id: "ip17", name: "iPhone 17", basePrice: 799,
-        colors: ["Lavender", "Mist Blue", "Black", "White", "Sage Green"],
-        storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 100 }, { gb: "512GB", add: 250 }]
-      },
-      {
-        id: "ip17p", name: "iPhone 17 Pro Max", basePrice: 1299,
-        colors: ["Cosmic Orange", "Silver", "Blue"],
-        storage: [{ gb: "256GB", add: 0 }, { gb: "512GB", add: 200 }, { gb: "1TB", add: 400 }, { gb: "2TB", add: 700 }]
-      }
-    ];
-
-    // 2. ACCESSORIES INVENTORY
-    const accessoriesCatalog = [
-      { id: "acc-case", name: "Protective Phone Case", price: 120, displayPrice: "$80 - $150 (Avg: $120)", desc: "Durable drop-proof cases in multiple finishes." },
-      { id: "acc-hydro", name: "Clear Hydrogel Screen Protector", price: 100, displayPrice: "$100", desc: "Self-healing ultra-thin impact protection." },
-      { id: "acc-priv", name: "Privacy Screen Protector", price: 150, displayPrice: "$150", desc: "28-degree anti-spy tinted tempered glass." },
-      { id: "acc-air", name: "AirPods (4th Gen)", price: 1300, displayPrice: "$1,300", desc: "Next-gen spatial audio with active noise control." }
-    ];
-
-    // State Management
-    let activeSelections = {};
-    let shoppingCart = [];
-
-    // Initialize Selections
-    deviceCatalog.forEach(dev => {
-      activeSelections[dev.id] = { color: dev.colors[0], storageIndex: 0 };
-    });
-
-    // 3. RENDER DEVICES WITH COLLAPSIBLE PANELS
-    function renderDevices() {
-      const grid = document.getElementById("device-grid");
-      grid.innerHTML = deviceCatalog.map(dev => {
-        const sel = activeSelections[dev.id];
-        const currentPrice = dev.basePrice + dev.storage[sel.storageIndex].add;
-        
-        return `
-          <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-            <!-- Card Header / Trigger -->
-            <div onclick="toggleDevicePanel('${dev.id}')" class="p-5 bg-slate-900 text-white cursor-pointer flex justify-between items-center">
-              <div>
-                <h3 class="font-bold text-lg">${dev.name}</h3>
-                <span class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Configure Device</span>
-              </div>
-              <div class="text-right">
-                <span id="price-${dev.id}" class="text-xl font-extrabold text-emerald-400">$${currentPrice}</span>
-                <span class="block text-[10px] text-slate-400">Click to expand</span>
-              </div>
-            </div>
-
-            <!-- Expandable Configurator Panel -->
-            <div id="panel-${dev.id}" class="hidden p-5 bg-white border-t border-slate-100 space-y-4">
-              <!-- Color Selector -->
-              <div>
-                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">
-                  Color: <span id="color-label-${dev.id}" class="text-slate-900">${sel.color}</span>
-                </label>
-                <div class="flex flex-wrap gap-2">
-                  ${dev.colors.map((c, idx) => `
-                    <button onclick="selectColor('${dev.id}', '${c}', this)" 
-                      class="px-3 py-1.5 text-xs font-semibold rounded-md border ${idx === 0 ? 'border-blue-600 bg-blue-50 text-blue-800' : 'border-slate-300 text-slate-700 hover:bg-slate-50'} transition">
-                      ${c}
-                    </button>
-                  `).join('')}
-                </div>
-              </div>
-
-              <!-- Storage Selector (Triggers Price Adjustments) -->
-              <div>
-                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Storage Size</label>
-                <div class="grid grid-cols-3 gap-2">
-                  ${dev.storage.map((st, idx) => `
-                    <button onclick="selectStorage('${dev.id}', ${idx}, this)"
-                      class="py-2 text-center rounded-md border font-semibold text-xs transition ${idx === 0 ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300 text-slate-700 hover:bg-slate-50'}">
-                      ${st.gb}
-                      <span class="block text-[10px] font-normal ${idx === 0 ? 'text-blue-200' : 'text-slate-400'}">${st.add > 0 ? `+$${st.add}` : 'Base'}</span>
-                    </button>
-                  `).join('')}
-                </div>
-              </div>
-
-              <!-- Add to Cart Action -->
-              <button onclick="addDeviceToCart('${dev.id}')" class="w-full mt-2 bg-slate-900 hover:bg-blue-600 text-white font-bold py-2.5 rounded-lg transition text-sm flex justify-center items-center gap-2">
-                <span>Add to Cart</span>
-              </button>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // 4. RENDER ACCESSORIES
-    function renderAccessories() {
-      const grid = document.getElementById("accessories-grid");
-      grid.innerHTML = accessoriesCatalog.map(acc => `
-        <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between shadow-sm">
-          <div>
-            <h3 class="font-bold text-slate-900">${acc.name}</h3>
-            <p class="text-xs text-slate-500 mt-1">${acc.desc}</p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
-            <span class="font-bold text-emerald-600">${acc.displayPrice}</span>
-            <button onclick="addAccessoryToCart('${acc.id}')" class="bg-slate-100 hover:bg-slate-900 hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition">
-              + Add
-            </button>
-          </div>
+    <!-- Main Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo-box">
+            <!-- Upload your actual logo image and replace this src -->
+            <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#" class="active">HOME</a></li>
+            <li><a href="#phones">SHOP PHONES</a></li>
+            <li><a href="#repairs">REPAIRS</a></li>
+            <li><a href="#accessories">ACCESSORIES</a></li>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="#contact">CONTACT US</a></li>
+        </ul>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-user"></i>
+            <a href="https://wa.me/18683308360" target="_blank" style="color: #111827; position: relative;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span style="position: absolute; top:-8px; right:-10px; background:var(--primary-blue); color:#FFF; font-size:0.6rem; font-weight:bold; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center;">2</span>
+            </a>
         </div>
-      `).join('');
-    }
+    </nav>
 
-    // UI Interactive Handlers
-    function toggleDevicePanel(id) {
-      const panel = document.getElementById(`panel-${id}`);
-      panel.classList.toggle("hidden");
-    }
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-welcome">WELCOME TO</div>
+        <!-- Upload your actual logo image and replace this src -->
+        <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT" class="hero-logo-img">
+        
+        <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
+        <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
+        <div class="hero-buttons">
+            <a href="#phones" class="btn btn-blue"><i class="fa-solid fa-mobile-screen"></i> SHOP PHONES</a>
+            <a href="#repairs" class="btn btn-dark"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR</a>
+            <a href="https://wa.me/18683308360" target="_blank" class="btn btn-white"><i class="fa-brands fa-whatsapp"></i> WHATSAPP US</a>
+        </div>
+    </section>
 
-    function selectColor(devId, color, btn) {
-      activeSelections[devId].color = color;
-      document.getElementById(`color-label-${devId}`).innerText = color;
-      
-      const parent = btn.parentElement;
-      Array.from(parent.children).forEach(child => {
-        child.className = "px-3 py-1.5 text-xs font-semibold rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50 transition";
-      });
-      btn.className = "px-3 py-1.5 text-xs font-semibold rounded-md border border-blue-600 bg-blue-50 text-blue-800 transition";
-    }
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-regular fa-square-check"></i></div>
+            <div class="trust-text"><h4>90-Day Warranty</h4><p>Shop with confidence</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-box-open"></i></div>
+            <div class="trust-text"><h4>Open Box & Brand New</h4><p>Quality you can trust</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="trust-text"><h4>Nationwide Delivery</h4><p>Fast & reliable</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-tags"></i></div>
+            <div class="trust-text"><h4>Lowest Prices</h4><p>We beat the competition</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-credit-card"></i></div>
+            <div class="trust-text"><h4>Card Payments Accepted</h4><p>Safe & secure checkout</p></div>
+        </div>
+    </div>
 
-    function selectStorage(devId, index, btn) {
-      activeSelections[devId].storageIndex = index;
-      const dev = deviceCatalog.find(d => d.id === devId);
-      const newPrice = dev.basePrice + dev.storage[index].add;
-      
-      // Dynamic Price Update
-      document.getElementById(`price-${devId}`).innerText = `$${newPrice}`;
-      
-      const parent = btn.parentElement;
-      Array.from(parent.children).forEach(child => {
-        child.className = "py-2 text-center rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold text-xs transition";
-        child.querySelector("span").className = "block text-[10px] font-normal text-slate-400";
-      });
-      btn.className = "py-2 text-center rounded-md border border-blue-600 bg-blue-600 text-white font-semibold text-xs transition";
-      btn.querySelector("span").className = "block text-[10px] font-normal text-blue-200";
-    }
-
-    // 5. CART & STRIPE CHECKOUT PREPARATION
-    function addDeviceToCart(devId) {
-      const dev = deviceCatalog.find(d => d.id === devId);
-      const sel = activeSelections[devId];
-      const storageObj = dev.storage[sel.storageIndex];
-      const finalPrice = dev.basePrice + storageObj.add;
-
-      shoppingCart.push({
-        type: "device",
-        id: `${dev.id}-${sel.color}-${storageObj.gb}`,
-        name: dev.name,
-        color: sel.color,
-        storage: storageObj.gb,
-        price: finalPrice
-      });
-
-      updateCartUI();
-      toggleDevicePanel(devId); // Close panel after adding
-    }
-
-    function addAccessoryToCart(accId) {
-      const acc = accessoriesCatalog.find(a => a.id === accId);
-      shoppingCart.push({
-        type: "accessory",
-        id: `${acc.id}-${Date.now()}`,
-        name: acc.name,
-        price: acc.price
-      });
-      updateCartUI();
-    }
-
-    function removeFromCart(index) {
-      shoppingCart.splice(index, 1);
-      updateCartUI();
-    }
-
-    function toggleCart() {
-      document.getElementById("cart-panel").classList.toggle("hidden");
-    }
-
-    function updateCartUI() {
-      document.getElementById("cart-count").innerText = shoppingCart.length;
-      const cartContainer = document.getElementById("cart-items");
-      const totalEl = document.getElementById("cart-total");
-
-      if (shoppingCart.length === 0) {
-        cartContainer.innerHTML = `<p class="text-slate-500 text-center py-8">Your cart is currently empty.</p>`;
-        totalEl.innerText = "$0";
-        return;
-      }
-
-      let total = 0;
-      cartContainer.innerHTML = shoppingCart.map((item, idx) => {
-        total += item.price;
-        return `
-          <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-200">
-            <div>
-              <h4 class="font-bold text-sm text-slate-900">${item.name}</h4>
-              ${item.type === 'device' ? `<p class="text-xs text-slate-500">${item.color} | ${item.storage}</p>` : ''}
-              <span class="text-xs font-bold text-emerald-600">$${item.price}</span>
+    <!-- Product Carousel Section -->
+    <section class="carousel-section" id="phones">
+        <div class="section-header-row">
+            <h2>SHOP OUR LATEST PHONES</h2>
+            <a href="#phones" class="view-all-btn">VIEW ALL PHONES ></a>
+        </div>
+        <div class="carousel-container">
+            <button class="arrow-btn arrow-left" onclick="slideCarousel(-350)"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="product-track" id="productTrack">
+                <!-- Javascript will inject all phones here -->
             </div>
-            <button onclick="removeFromCart(${idx})" class="text-slate-400 hover:text-red-600 font-bold text-sm px-2">&times;</button>
-          </div>
-        `;
-      }).join('');
+            <button class="arrow-btn arrow-right" onclick="slideCarousel(350)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
 
-      totalEl.innerText = `$${total.toLocaleString()}`;
-    }
+    <!-- Accessories Section (NEW based on your screenshot) -->
+    <section class="accessories-section" id="accessories">
+        <h2 class="accessories-header">ACCESSORIES</h2>
+        
+        <div class="accessories-grid">
+            <!-- Card 1 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3 class="acc-title">Premium Phone Cases</h3>
+                <p class="acc-sub">Various Styles & Colors</p>
+                <div class="acc-price">TT$80 - $150</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20Premium%20Phone%20Cases." class="acc-btn">Order via WhatsApp</a>
+            </div>
 
-    // 6. STRIPE INTEGRATION PAYLOAD GENERATOR
-    function initiateStripeCheckout() {
-      if (shoppingCart.length === 0) {
-        alert("Please add at least one device or accessory to your cart before proceeding.");
-        return;
-      }
+            <!-- Card 2 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-regular fa-square"></i></div>
+                <h3 class="acc-title">Clear Hydrogel Screen Protector</h3>
+                <p class="acc-sub">Crystal Clear Protection</p>
+                <div class="acc-price">TT$100</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Clear%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
+            </div>
 
-      // Format payload for your backend Stripe Checkout Session
-      const stripePayload = shoppingCart.map(item => ({
-        name: item.type === 'device' ? `${item.name} (${item.color}, ${item.storage})` : item.name,
-        amount: item.price * 100, // Stripe expects amounts in cents
-        currency: "usd",
-        quantity: 1
-      }));
+            <!-- Card 3 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-eye-slash"></i></div>
+                <h3 class="acc-title">Privacy Hydrogel Screen Protector</h3>
+                <p class="acc-sub">Anti-Spy Protection</p>
+                <div class="acc-price">TT$150</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Privacy%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
+            </div>
 
-      console.log("--- STRIPE CHECKOUT PAYLOAD READY ---", stripePayload);
-      
-      // Temporary user notification until API backend is linked
-      alert(`Ready for Stripe Checkout!\n\nTotal Items: ${shoppingCart.length}\nTotal Value: $${shoppingCart.reduce((sum, i) => sum + i.price, 0).toLocaleString()}\n\nPayload has been logged to the browser console for Stripe Session API integration.`);
-    }
+            <!-- Card 4 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-headphones"></i></div>
+                <h3 class="acc-title">AirPods 4th Gen</h3>
+                <p class="acc-sub">Brand New in Box</p>
+                <div class="acc-price">TT$1,300</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20AirPods%204th%20Gen." class="acc-btn">Order via WhatsApp</a>
+            </div>
+        </div>
+    </section>
 
-    // Initial Render
-    renderDevices();
-    renderAccessories();
-  </script>
+    <!-- Expert Repairs Banner (UPDATED layout) -->
+    <section class="repairs-banner" id="repairs">
+        <!-- Replace URL with your specific broken phone picture if desired -->
+        <div class="repairs-img-container"></div>
+        
+        <div class="repairs-center">
+            <h2>EXPERT REPAIRS<br>DONE RIGHT</h2>
+            <p>From screen replacements to water damage, we've got you covered.</p>
+            <a href="https://wa.me/18683308360?text=I%20would%20like%20to%20book%20a%20repair%20for%20my%20device." target="_blank" class="btn-outline-light">BOOK A REPAIR NOW →</a>
+        </div>
+        
+        <div class="repairs-grid-right">
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-mobile-button"></i></div><span>Screen Replacement</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-droplet"></i></div><span>Water Damage</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-car-battery"></i></div><span>Battery Replacement</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-camera"></i></div><span>Camera Repair</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-plug"></i></div><span>Charging Port Repair</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-ellipsis"></i></div><span>& More Services</span></div>
+        </div>
+    </section>
+
+    <!-- Social Proof & Payment Section -->
+    <section class="proof-section">
+        <div class="google-rating">
+            <h4>Google Rating</h4>
+            <div class="score">4.9</div>
+            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p>Based on 200+ reviews</p>
+            <a href="#" class="btn-outline">SEE REVIEWS</a>
+        </div>
+        <div class="trust-badges-center">
+            <div class="badge-col">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h5>Quality<br>Products</h5>
+            </div>
+            <div class="badge-col">
+                <i class="fa-regular fa-circle-check"></i>
+                <h5>Trusted by<br>Thousands</h5>
+            </div>
+            <div class="badge-col">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <h5>100% Satisfaction<br>Guaranteed</h5>
+            </div>
+        </div>
+        <div class="payment-types">
+            <p>Card Payments Accepted</p>
+            <div class="sub-text">Pay easily for devices and repairs via Linx, Visa, or Mastercard.</div>
+            <div class="pay-icons">
+                <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
+                <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
+                <i class="fa-brands fa-apple-pay" style="color: #000;"></i>
+                <i class="fa-solid fa-credit-card" style="color: #6B7280;"></i> <!-- Representing Linx/Debit -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-col">
+            <h4>ADDRESS</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span>59 Eastern Main Road,<br>Tunapuna</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>PHONE</h4>
+            <p><i class="fa-solid fa-phone"></i> <span>(868) 330-8360</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>HOURS</h4>
+            <p><i class="fa-regular fa-clock"></i> <span>Mon - Fri 9AM - 5PM<br>Sat 8AM - 5PM<br>Sun 8AM - 3PM</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>FOLLOW US</h4>
+            <div class="footer-social-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/18683308360" class="floating-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <!-- Dynamic Product Modal -->
+    <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="document.getElementById('productModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="modal-left">
+                <img id="modalImg" src="" alt="Phone Image">
+            </div>
+            <div class="modal-right">
+                <div class="modal-condition" id="modalCondition">Brand New</div>
+                <h2 class="modal-title" id="modalTitle">iPhone</h2>
+                <div class="modal-price" id="modalPrice">TT$0</div>
+
+                <div class="variant-group">
+                    <h4>Storage Capacity</h4>
+                    <div class="variant-options" id="storageOptions">
+                        <!-- Storage buttons injected here -->
+                    </div>
+                </div>
+
+                <div class="variant-group">
+                    <h4>Color</h4>
+                    <div class="variant-options" id="colorOptions">
+                        <!-- Color swatches injected here -->
+                    </div>
+                </div>
+
+                <a href="#" id="modalBuyBtn" target="_blank" class="modal-buy-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                </a>
+                
+                <!-- Payment callout inside the modal -->
+                <div class="payment-info-modal">
+                    Secure payment available in-store via 
+                    <i class="fa-brands fa-cc-visa"></i> 
+                    <i class="fa-brands fa-cc-mastercard"></i> 
+                    Linx / Credit Card
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sideways scrolling
+        function slideCarousel(offset) {
+            const track = document.getElementById('productTrack');
+            track.scrollBy({ left: offset, behavior: 'smooth' });
+        }
+
+        // ==========================================
+        // PHONE DATA ENGINE (Expanded Color Palette)
+        // ==========================================
+        const allPhonesData = [
+            // --- iPhone 17 Series ---
+            {
+                id: '17promax', name: 'iPhone 17 Pro Max', condition: 'Brand New', badgeClass: 'badge-brand-new',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
+                storage: [ {gb:'256GB', price:10499}, {gb:'512GB', price:11999}, {gb:'1TB', price:13399} ],
+                colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '17pro', name: 'iPhone 17 Pro', condition: 'Brand New', badgeClass: 'badge-brand-new',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
+                storage: [ {gb:'256GB', price:9599}, {gb:'512GB', price:10599} ],
+                colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '17', name: 'iPhone 17', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'256GB', price:5999} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
+
+            // --- iPhone 16 Series ---
+            {
+                id: '16promax', name: 'iPhone 16 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
+                storage: [ {gb:'256GB', price:6399}, {gb:'512GB', price:6999} ],
+                colors: [
+                    { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '16pro', name: 'iPhone 16 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
+                storage: [ {gb:'256GB', price:5699}, {gb:'512GB', price:5999} ],
+                colors: [ 
+                    { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '16plus', name: 'iPhone 16+', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'256GB', price:4999} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
+            {
+                id: '16', name: 'iPhone 16', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'128GB', price:4499}, {gb:'256GB', price:4799} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
+
+            // --- iPhone 15 Series ---
+            {
+                id: '15promax', name: 'iPhone 15 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
+                storage: [ {gb:'256GB', price:4899}, {gb:'512GB', price:5199} ],
+                colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' }
+                ]
+            },
+            {
+                id: '15pro', name: 'iPhone 15 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
+                storage: [ {gb:'256GB', price:4399}, {gb:'512GB', price:4599} ],
+                colors: [ 
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' } 
+                ]
+            },
+            {
+                id: '15plus', name: 'iPhone 15+', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'256GB', price:3799} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
+            {
+                id: '15', name: 'iPhone 15', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'128GB', price:3299}, {gb:'256GB', price:3599} ],
+                colors: [
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
+
+            // --- iPhone 14 Series ---
+            {
+                id: '14promax', name: 'iPhone 14 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg',
+                storage: [ {gb:'256GB', price:4199}, {gb:'512GB', price:4499} ],
+                colors: [
+                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '14pro', name: 'iPhone 14 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg',
+                storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3799} ],
+                colors: [ 
+                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '14plus', name: 'iPhone 14+', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
+                storage: [ {gb:'256GB', price:2799} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
+                ]
+            },
+            {
+                id: '14', name: 'iPhone 14', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
+                storage: [ {gb:'128GB', price:2499}, {gb:'256GB', price:2699} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
+                ]
+            },
+
+            // --- iPhone 13 Series ---
+            {
+                id: '13promax', name: 'iPhone 13 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg',
+                storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3750}, {gb:'1TB', price:3899} ],
+                colors: [
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
+                ]
+            },
+            {
+                id: '13pro', name: 'iPhone 13 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg',
+                storage: [ {gb:'256GB', price:2999} ],
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
+                ]
+            },
+            {
+                id: '13', name: 'iPhone 13', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg',
+                storage: [ {gb:'128GB', price:2199}, {gb:'256GB', price:2399} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Green', hex: '#3E5846', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
+                ]
+            },
+            {
+                id: '13mini', name: 'iPhone 13 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg',
+                storage: [ {gb:'128GB', price:1899} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
+                ]
+            },
+
+            // --- iPhone 12 Series ---
+            {
+                id: '12promax', name: 'iPhone 12 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg',
+                storage: [ {gb:'256GB', price:2599} ],
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '12pro', name: 'iPhone 12 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg',
+                storage: [ {gb:'256GB', price:2299} ],
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '12', name: 'iPhone 12', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg',
+                storage: [ {gb:'64GB', price:1499}, {gb:'128GB', price:1799} ],
+                colors: [
+                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Green', hex: '#E1F8E9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' }
+                ]
+            },
+            {
+                id: '12mini', name: 'iPhone 12 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg',
+                storage: [ {gb:'128GB', price:1499} ],
+                colors: [ 
+                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Green', hex: '#B2E2C8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' }
+                ]
+            }
+        ];
+
+        let currentSelection = { phoneObj: null, gb: null, price: null, colorObj: null };
+
+        // Generate the Carousel HTML dynamically based on the JS object
+        function populateCarousel() {
+            const track = document.getElementById('productTrack');
+            allPhonesData.forEach(phone => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.onclick = () => openPhoneModal(phone.id);
+                
+                card.innerHTML = `
+                    <div class="product-image-box">
+                        <img src="${phone.defaultImg}" alt="${phone.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${phone.name}</h3>
+                        <p class="specs">${phone.storage[0].gb} • ${phone.colors.length} Color(s)</p>
+                        <div class="price">TT$${phone.storage[0].price.toLocaleString()}</div>
+                    </div>
+                    <div class="badge-tag ${phone.badgeClass}">${phone.condition}</div>
+                `;
+                track.appendChild(card);
+            });
+        }
+
+        // Initialize Carousel
+        populateCarousel();
+
+        function openPhoneModal(id) {
+            const data = allPhonesData.find(p => p.id === id);
+            if(!data) return;
+
+            currentSelection.phoneObj = data;
+            currentSelection.gb = data.storage[0].gb;
+            currentSelection.price = data.storage[0].price;
+            currentSelection.colorObj = data.colors[0]; // Set default color
+
+            // Populate Modal Text
+            document.getElementById('modalTitle').innerText = data.name;
+            document.getElementById('modalCondition').innerText = data.condition;
+            
+            // Set Badge Styling inside Modal
+            const condBadge = document.getElementById('modalCondition');
+            condBadge.className = `modal-condition ${data.badgeClass}`;
+            
+            renderStorageOptions(data.storage);
+            renderColorOptions(data.colors);
+            updateModalDisplay(); // Also updates image
+
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function renderStorageOptions(storageArray) {
+            const container = document.getElementById('storageOptions');
+            container.innerHTML = '';
+            storageArray.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = `var-btn ${opt.gb === currentSelection.gb ? 'active' : ''}`;
+                btn.innerText = opt.gb;
+                btn.onclick = () => {
+                    currentSelection.gb = opt.gb;
+                    currentSelection.price = opt.price;
+                    renderStorageOptions(storageArray);
+                    updateModalDisplay();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderColorOptions(colorsArray) {
+            const container = document.getElementById('colorOptions');
+            container.innerHTML = '';
+            colorsArray.forEach(color => {
+                const btn = document.createElement('button');
+                btn.className = `color-btn ${color.name === currentSelection.colorObj.name ? 'active' : ''}`;
+                btn.style.backgroundColor = color.hex;
+                btn.title = color.name; // Tooltip on hover
+                
+                btn.onclick = () => {
+                    currentSelection.colorObj = color;
+                    renderColorOptions(colorsArray); // Re-render to update active border
+                    updateModalDisplay(); // Updates the picture!
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function updateModalDisplay() {
+            // Update the Image based on selected color object
+            const imgElement = document.getElementById('modalImg');
+            imgElement.style.opacity = 0; // Fade out effect
+            setTimeout(() => {
+                imgElement.src = currentSelection.colorObj.img;
+                imgElement.style.opacity = 1; // Fade in effect
+            }, 150);
+            
+            // Update Price
+            document.getElementById('modalPrice').innerText = `TT$${currentSelection.price.toLocaleString()}`;
+            
+            // Update WhatsApp Link
+            const waNumber = '18683308360';
+            const msg = `Hi Urban Connect TT! I'm interested in the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price}. I'd like to pay via Card/Cash. Is this available?`;
+            const encodedMsg = encodeURIComponent(msg);
+            document.getElementById('modalBuyBtn').href = `https://wa.me/${waNumber}?text=${encodedMsg}`;
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'productModal') {
+                document.getElementById('productModal').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
