@@ -3,238 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Connect TT | Top Tech & Repairs</title>
+    <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
         /* =========================================================
-           Visual Overhaul: Urban Connect TT Dark Tech Design
+           Visual Overhaul: Matching the Clean E-Commerce Mockup
            ========================================================= */
 
         :root {
-            --primary-dark: #0A1224; 
-            --primary-blue: #0E1F3D; 
-            --accent-cyan: #0EDFEF;  
-            --accent-green: #25D366; 
-            --accent-orange: #FF6B00; 
+            --bg-dark: #070D18;
+            --bg-navy: #0A1628;
+            --bg-blue-bar: #081222;
+            --primary-blue: #0056D2;
+            --primary-blue-hover: #0041A0;
+            --accent-green: #25D366;
+            --text-main: #111827;
             --text-light: #FFFFFF;
-            --text-gray: #A0B0C4;  
-            --bg-light: #F8F9FA;
-            --border-color-dark: #1C3358;
-            --border-color-light: #E0E0E0;
+            --text-gray: #6B7280;
+            --text-light-gray: #9CA3AF;
+            --bg-light: #F8FAFC;
+            --border-light: #E5E7EB;
+            --border-dark: #1E293B;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: -0.2px;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        h1, h2, h3, .nav-links a { font-weight: 800; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; }
 
         /* --- Top Bar --- */
         .top-bar {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 60px;
-            font-size: 0.8rem;
-            border-bottom: 1px solid var(--border-color-dark);
+            background-color: var(--bg-dark); color: var(--text-light);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 50px; font-size: 0.8rem; border-bottom: 1px solid var(--border-dark);
         }
-        .top-info span { margin-right: 25px; display: inline-flex; align-items: center; gap: 8px; }
-        .top-info i { color: var(--accent-cyan); }
+        .top-info { display: flex; gap: 25px; flex-wrap: wrap; }
+        .top-info span { display: inline-flex; align-items: center; gap: 8px; color: #D1D5DB; }
+        .top-info i { color: #3B82F6; }
         .top-socials { display: flex; gap: 15px; }
-        .top-socials i { cursor: pointer; transition: color 0.3s; }
-        .top-socials i:hover { color: var(--accent-cyan); }
+        .top-socials i { cursor: pointer; color: #FFF; font-size: 0.95rem; transition: color 0.2s; }
+        .top-socials i:hover { color: #3B82F6; }
 
         /* --- Main Navigation --- */
         .navbar {
-            background-color: #FFFFFF;
-            color: #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 60px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background-color: #FFFFFF; display: flex; justify-content: space-between;
+            align-items: center; padding: 18px 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo-text { font-weight: 900; color: #0A1426; font-size: 2.2rem; letter-spacing: -1.5px; text-decoration: none;}
-        .logo-text span { color: var(--accent-cyan); }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.8rem;
+            color: #0A1628; text-decoration: none; letter-spacing: -1px;
+        }
+        .logo-text span { color: #3B82F6; }
         .nav-links { display: flex; list-style: none; gap: 30px; }
-        .nav-links a { text-decoration: none; color: #333; font-weight: 700; font-size: 0.9rem; transition: color 0.3s;}
-        .nav-links a:hover { color: var(--accent-cyan); }
-        .nav-icons { display: flex; align-items: center; gap: 25px; }
+        .nav-links a {
+            text-decoration: none; color: #374151; font-weight: 600; font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+        .nav-icons { display: flex; align-items: center; gap: 20px; font-size: 1.1rem; color: #374151; }
+        .nav-icons i { cursor: pointer; transition: color 0.2s; }
+        .nav-icons i:hover { color: var(--primary-blue); }
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(10, 18, 36, 0.85), rgba(10, 18, 36, 0.95)), url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1500&q=80') center/cover;
-            color: var(--text-light);
-            text-align: center;
-            padding: 100px 20px;
-            border-bottom: 2px solid var(--accent-cyan);
+            background: linear-gradient(180deg, rgba(7, 13, 24, 0.75) 0%, rgba(10, 22, 40, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: var(--text-light); text-align: center; padding: 90px 20px 80px;
         }
-        .hero-badge {
-            background: var(--accent-orange);
-            color: #FFF;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 900;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+        .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; color: #60A5FA; text-transform: uppercase; margin-bottom: 10px; }
+        .hero-logo-large {
+            font-family: 'Montserrat', sans-serif; font-size: 5.5rem; font-weight: 900;
+            line-height: 1; margin-bottom: 15px; letter-spacing: -3px; color: #FFF;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-        .hero-title { font-size: 5rem; font-weight: 900; margin: 0; line-height: 1; letter-spacing: -2px;}
-        .hero h2 { font-size: 2.2rem; font-weight: 700; margin: 20px 0; color: var(--accent-cyan);}
-        .hero p { font-size: 1.2rem; margin-bottom: 40px; color: var(--text-gray); }
-        .hero-buttons { display: flex; justify-content: center; gap: 20px; }
+        .hero-logo-large span { color: #3B82F6; }
+        .hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .hero p { font-size: 1.15rem; color: #D1D5DB; margin-bottom: 40px; font-weight: 400; }
         
-        .btn { padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; cursor: pointer; border: none;}
-        .btn-primary { background-color: var(--accent-cyan); color: #0A1426; }
-        .btn-primary:hover { background-color: #FFF; }
-        .btn-whatsapp { background-color: var(--accent-green); color: #FFF; }
-        .btn-whatsapp:hover { opacity: 0.9; }
-        .btn-card { width: 100%; justify-content: center; background-color: #0A1426; color: #FFF; margin-top: 15px;}
-        .btn-card:hover { background-color: var(--accent-green); color: #FFF; }
-
-        /* --- Promo Bar --- */
-        .promo-bar {
-            background-color: var(--primary-blue);
-            padding: 25px 60px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color-dark);
-            text-align: center;
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn {
+            padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600;
+            font-size: 0.95rem; display: inline-flex; align-items: center; gap: 10px;
+            transition: all 0.2s; cursor: pointer; border: 2px solid transparent;
         }
-        .promo-item { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; font-weight: 800;}
-        .promo-item i { color: var(--accent-cyan); font-size: 1.8rem; }
+        .btn-blue { background-color: var(--primary-blue); color: #FFF; }
+        .btn-blue:hover { background-color: var(--primary-blue-hover); }
+        .btn-dark-outline { background-color: rgba(0,0,0,0.4); color: #FFF; border-color: #4B5563; }
+        .btn-dark-outline:hover { border-color: #FFF; background-color: rgba(255,255,255,0.1); }
+        .btn-white { background-color: #FFF; color: #111827; }
+        .btn-white:hover { background-color: #F3F4F6; }
+        .btn-white i { color: var(--accent-green); font-size: 1.2rem; }
 
-        /* --- Shared Section Styling --- */
-        .section-padding { padding: 80px 60px; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px;}
-        .section-header p { font-size: 1.1rem; }
-
-        /* --- Products Section (Light) --- */
-        .products-section { background-color: var(--bg-light); color: #333; }
-        .products-section .section-header h2 { color: #0A1426; }
-        .products-section .section-header p { color: #666; }
-
-        /* Filter Tabs */
-        .filter-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
-        .filter-btn {
-            padding: 12px 25px; border: 2px solid #0A1426; background: transparent; color: #0A1426;
-            font-weight: 800; border-radius: 30px; cursor: pointer; transition: all 0.3s; font-size: 0.9rem;
+        /* --- Trust Badges Bar --- */
+        .trust-bar {
+            background-color: var(--bg-blue-bar); padding: 30px 50px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark);
         }
-        .filter-btn.active, .filter-btn:hover { background: #0A1426; color: #FFF; }
+        .trust-item { display: flex; align-items: center; gap: 15px; color: #FFF; }
+        .trust-icon {
+            width: 45px; height: 45px; border-radius: 10px; background: rgba(59, 130, 246, 0.15);
+            display: flex; align-items: center; justify-content: center; color: #3B82F6; font-size: 1.3rem; flex-shrink: 0;
+        }
+        .trust-text h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+        .trust-text p { font-size: 0.75rem; color: #9CA3AF; }
 
-        /* Product Grid & Cards */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
+        /* --- Sideways Product Carousel Section --- */
+        .carousel-section { padding: 70px 50px; max-width: 1500px; margin: 0 auto; }
+        .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .section-header-row h2 { font-size: 1.8rem; font-weight: 800; color: #111827; }
+        .view-all-btn {
+            padding: 10px 20px; border: 1px solid #D1D5DB; border-radius: 8px;
+            text-decoration: none; color: var(--primary-blue); font-weight: 600;
+            font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.2s; background: #FFF;
+        }
+        .view-all-btn:hover { border-color: var(--primary-blue); background: #EFF6FF; }
+
+        /* Carousel Wrapper with Arrows */
+        .carousel-container { position: relative; display: flex; align-items: center; }
+        .arrow-btn {
+            width: 45px; height: 45px; border-radius: 50%; background: #FFF;
+            border: 1px solid var(--border-light); box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            color: #374151; cursor: pointer; position: absolute; z-index: 10; transition: all 0.2s;
+        }
+        .arrow-btn:hover { background: var(--primary-blue); color: #FFF; border-color: var(--primary-blue); }
+        .arrow-left { left: -20px; }
+        .arrow-right { right: -20px; }
+
+        .product-track {
+            display: flex; gap: 25px; overflow-x: auto; scroll-behavior: smooth;
+            padding: 15px 5px 25px; scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+        .product-track::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+
+        /* Clean White Product Card */
         .product-card {
-            background: #FFF; border: 1px solid var(--border-color-light); border-radius: 12px;
-            padding: 25px; text-align: center; transition: all 0.3s ease; position: relative;
+            background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 16px;
+            padding: 24px; min-width: 260px; max-width: 260px; flex-shrink: 0;
             display: flex; flex-direction: column; justify-content: space-between;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
         
-        .product-image-container {
-            width: 100%; height: 220px; display: flex; align-items: center; justify-content: center;
-            margin: 15px 0; overflow: hidden; border-radius: 8px;
+        .product-image-box {
+            width: 100%; height: 200px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; padding: 10px; background: #FFF;
         }
-        .product-image-container img {
-            max-height: 100%; max-width: 100%; object-fit: contain; transition: transform 0.4s ease;
+        .product-image-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
+
+        .product-info h3 { font-size: 1.1rem; font-weight: 700; color: #111827; margin-bottom: 4px; }
+        .product-info .specs { font-size: 0.8rem; color: #6B7280; margin-bottom: 15px; }
+        .product-info .price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 15px; }
+
+        .card-badge {
+            background-color: #0A1628; color: #FFF; padding: 8px 16px; border-radius: 6px;
+            font-size: 0.75rem; font-weight: 600; text-align: center; text-decoration: none;
+            display: block; transition: background 0.2s;
         }
-        .product-card:hover .product-image-container img { transform: scale(1.08); }
+        .card-badge:hover { background-color: var(--primary-blue); }
+        .card-badge.open-box { background-color: #1E293B; }
 
-        .badge { position: absolute; top: 15px; left: 15px; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; color: #FFF; text-transform: uppercase; z-index: 2;}
-        .badge.brand-new { background-color: #0A1426; }
-        .badge.esim { background-color: #1E6091; }
-        .badge.open-box { background-color: var(--accent-orange); }
-
-        .product-card h3 { font-size: 1.25rem; margin-bottom: 5px; color: #0A1426;}
-        .product-card .specs { font-size: 0.85rem; color: #666; margin-bottom: 15px; font-weight: 600;}
-        .product-card .price { font-size: 1.6rem; font-weight: 900; color: #0A1426; }
-        .product-card .price span { color: #25D366; font-size: 0.95rem; display: block; font-weight: 700;}
-
-        /* --- Repairs Section (Dark Theme) --- */
-        .repairs-section {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
-            color: var(--text-light);
-            border-top: 2px solid var(--border-color-dark);
-            border-bottom: 2px solid var(--border-color-dark);
+        /* --- Expert Repairs Banner --- */
+        .repairs-banner {
+            background-color: var(--bg-navy); color: #FFF;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+            padding: 80px 50px; align-items: center; border-top: 1px solid var(--border-dark);
         }
-        .repairs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .repair-card {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color-dark);
-            border-radius: 12px; padding: 35px 25px; text-align: center; transition: all 0.3s ease;
-            backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: space-between;
+        .repairs-left { max-width: 500px; }
+        .repairs-left h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; }
+        .repairs-left p { color: #9CA3AF; font-size: 1.05rem; margin-bottom: 30px; }
+        
+        .repairs-grid-right { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .repair-item-row { display: flex; align-items: center; gap: 15px; }
+        .repair-icon-box {
+            width: 45px; height: 45px; border-radius: 10px; border: 1px solid #1E293B;
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            color: #60A5FA; background: rgba(255,255,255,0.03); flex-shrink: 0;
         }
-        .repair-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); background: rgba(255, 255, 255, 0.08); }
-        .repair-icon { font-size: 3rem; color: var(--accent-cyan); margin-bottom: 20px; }
-        .repair-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #FFF; }
-        .repair-card p { font-size: 0.95rem; color: var(--text-gray); margin-bottom: 25px; }
+        .repair-item-row span { font-size: 0.95rem; font-weight: 500; color: #E5E7EB; }
 
-        /* --- Accessories Section (Light Theme) --- */
-        .accessories-section { background-color: #FFFFFF; color: #333; }
-        .accessories-section .section-header h2 { color: #0A1426; }
-        .accessories-section .section-header p { color: #666; }
+        /* --- Social Proof & Payment Section --- */
+        .proof-section {
+            background: #FFF; padding: 50px; border-top: 1px solid var(--border-light);
+            display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; align-items: center;
+        }
+        .google-rating { text-align: center; border-right: 1px solid var(--border-light); padding-right: 20px; }
+        .google-rating .score { font-size: 2.8rem; font-weight: 800; color: #111827; line-height: 1; }
+        .google-rating .stars { color: #FBBF24; font-size: 1.2rem; margin: 8px 0; }
+        .google-rating p { font-size: 0.8rem; color: #6B7280; margin-bottom: 12px; }
+        .btn-reviews {
+            padding: 6px 16px; border: 1px solid var(--primary-blue); border-radius: 6px;
+            color: var(--primary-blue); font-size: 0.8rem; font-weight: 600; text-decoration: none; display: inline-block;
+        }
+
+        .trust-badges-center { display: flex; justify-content: space-around; text-align: center; }
+        .badge-col i { font-size: 2rem; color: #374151; margin-bottom: 10px; }
+        .badge-col h5 { font-size: 0.85rem; font-weight: 700; color: #111827; text-transform: uppercase; }
+
+        .payment-types { text-align: center; border-left: 1px solid var(--border-light); padding-left: 20px; }
+        .payment-types p { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 12px; text-transform: uppercase; }
+        .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 1.8rem; color: #111827; }
+        .pay-icons .fa-cc-mastercard { color: #EB001B; }
+        .pay-icons .fa-cc-visa { color: #1A1F71; }
 
         /* --- Footer --- */
         footer {
-            background-color: var(--primary-dark); color: #FFF;
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 60px;
-            border-top: 1px solid var(--border-color-dark); font-size: 0.9rem;
+            background-color: var(--bg-dark); color: #FFF;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+            padding: 60px 50px; border-top: 1px solid var(--border-dark); font-size: 0.85rem;
         }
-        .footer-col { display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
-        .footer-col strong { font-size: 1.1rem; font-weight: 800; color: #FFF;}
-        .footer-col p, .footer-col a { color: var(--text-gray); text-decoration: none; transition: color 0.3s; }
-        .footer-col a:hover { color: var(--accent-cyan); }
-        .footer-socials { display: flex; gap: 15px; }
-        .footer-socials i { font-size: 1.3rem; cursor: pointer; color: #FFF; transition: color 0.3s;}
-        .footer-socials i:hover { color: var(--accent-cyan); }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 700; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
+        .footer-col i { color: #3B82F6; margin-top: 4px; font-size: 1rem; }
+        .footer-social-icons { display: flex; gap: 15px; margin-top: 5px; }
+        .footer-social-icons a {
+            width: 36px; height: 36px; border-radius: 50%; background: #1E293B; color: #FFF;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s;
+        }
+        .footer-social-icons a:hover { background: #3B82F6; }
 
         /* Floating WhatsApp */
         .floating-whatsapp {
             position: fixed; bottom: 30px; right: 30px;
             background-color: var(--accent-green); color: #FFF;
-            width: 65px; height: 65px; border-radius: 50%;
+            width: 60px; height: 60px; border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            font-size: 2.5rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            text-decoration: none; z-index: 1100; transition: transform 0.3s;
+            font-size: 2.2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            text-decoration: none; z-index: 1100; transition: transform 0.2s;
         }
-        .floating-whatsapp:hover { transform: scale(1.1); }
+        .floating-whatsapp:hover { transform: scale(1.08); }
 
-        /* Responsive */
+        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .hero-title { font-size: 3.5rem; }
-            .promo-bar { flex-direction: column; gap: 20px; }
-            footer { grid-template-columns: 1fr 1fr; }
+            .repairs-banner, .proof-section, footer { grid-template-columns: 1fr 1fr; }
+            .google-rating, .payment-types { border: none; padding: 0; }
         }
-        @media (max-width: 600px) {
-            .navbar, .section-padding, footer { padding: 20px; }
-            .nav-links, .top-bar { display: none; }
-            .hero-buttons { flex-direction: column; }
-            footer { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .top-bar, .nav-links { display: none; }
+            .navbar, .carousel-section, .repairs-banner, .proof-section, footer { padding: 30px 20px; }
+            .hero-logo-large { font-size: 3.5rem; }
+            .repairs-banner, .proof-section, footer, .repairs-grid-right { grid-template-columns: 1fr; }
+            .arrow-left { left: 0; }
+            .arrow-right { right: 0; }
         }
     </style>
 </head>
@@ -243,9 +268,9 @@
     <!-- Top Info Bar -->
     <div class="top-bar">
         <div class="top-info">
-            <span><i class="fa-solid fa-location-dot"></i> #59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
             <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
-            <span><i class="fa-regular fa-clock"></i> 90-Day Warranty on All Devices</span>
+            <span><i class="fa-regular fa-clock"></i> Mon - Fri 9AM - 5PM • Sat 8AM - 5PM • Sun 8AM - 3PM</span>
         </div>
         <div class="top-socials">
             <i class="fa-brands fa-instagram"></i>
@@ -254,302 +279,289 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Main Navbar -->
     <nav class="navbar">
-        <div class="logo">
-            <a href="#" class="logo-text">URBAN<span>CONNECT</span>TT</a>
-        </div>
+        <a href="#" class="logo-text">URBAN<span>CONNECT</span>TT</a>
         <ul class="nav-links">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#inventory">SUMMER SALE</a></li>
+            <li><a href="#" class="active">HOME</a></li>
+            <li><a href="#phones">SHOP PHONES <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></a></li>
             <li><a href="#repairs">REPAIRS</a></li>
             <li><a href="#accessories">ACCESSORIES</a></li>
+            <li><a href="#about">ABOUT US</a></li>
             <li><a href="#contact">CONTACT US</a></li>
         </ul>
         <div class="nav-icons">
-            <a href="https://wa.me/18683308360" target="_blank" style="color: #25D366; font-size: 1.5rem;"><i class="fa-brands fa-whatsapp"></i></a>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-user"></i>
+            <a href="https://wa.me/18683308360" target="_blank" style="color: #111827;"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <span class="hero-badge"><i class="fa-solid fa-fire"></i> Summer of Savings is Here!</span>
-        <h1 class="hero-title">TOP TECH. UNBEATABLE PRICES.</h1>
-        <h2>UPGRADE YOUR iPHONE WITHOUT BREAKING THE BANK</h2>
-        <p>All devices include a 90-Day Warranty, Charging Cable & are Fully Tested!</p>
+        <div class="hero-welcome">WELCOME TO</div>
+        <div class="hero-logo-large">URBAN<br><span>CONNECT</span>TT</div>
+        <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
+        <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
         <div class="hero-buttons">
-            <a href="#inventory" class="btn btn-primary"><i class="fa-solid fa-mobile-screen"></i> VIEW PRICE LIST</a>
-            <a href="https://wa.me/18683308360" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> CALL / WHATSAPP US</a>
+            <a href="#phones" class="btn btn-blue"><i class="fa-solid fa-mobile-screen"></i> SHOP PHONES</a>
+            <a href="#repairs" class="btn btn-dark-outline"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR</a>
+            <a href="https://wa.me/18683308360" target="_blank" class="btn btn-white"><i class="fa-brands fa-whatsapp"></i> WHATSAPP US</a>
         </div>
     </section>
 
-    <!-- Promo Highlights -->
-    <div class="promo-bar">
-        <div class="promo-item"><i class="fa-solid fa-shield-halved"></i> 90 DAYS WARRANTY INCLUDED</div>
-        <div class="promo-item"><i class="fa-solid fa-plug"></i> FREE CHARGING CABLE</div>
-        <div class="promo-item"><i class="fa-solid fa-check-double"></i> 100% FULLY FUNCTIONAL</div>
+    <!-- 5-Column Trust Badges Bar -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-shield-check"></i></div>
+            <div class="trust-text">
+                <h4>90-DAY WARRANTY</h4>
+                <p>Shop with confidence</p>
+            </div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-box-open"></i></div>
+            <div class="trust-text">
+                <h4>OPEN BOX & BRAND NEW</h4>
+                <p>Quality you can trust</p>
+            </div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="trust-text">
+                <h4>NATIONWIDE DELIVERY</h4>
+                <p>Fast & reliable</p>
+            </div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-tags"></i></div>
+            <div class="trust-text">
+                <h4>LOWEST PRICES</h4>
+                <p>We beat the competition</p>
+            </div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
+            <div class="trust-text">
+                <h4>EXPERT SUPPORT</h4>
+                <p>We're here to help</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Interactive Price List Section -->
-    <section class="products-section section-padding" id="inventory">
-        <div class="section-header">
-            <h2>SUMMER OF SAVINGS INVENTORY</h2>
-            <p>Select a category below to filter our available stock in Tunapuna.</p>
+    <!-- Sideways Product Carousel Section -->
+    <section class="carousel-section" id="phones">
+        <div class="section-header-row">
+            <h2>SHOP OUR LATEST PHONES</h2>
+            <a href="#contact" class="view-all-btn">VIEW ALL PHONES <i class="fa-solid fa-chevron-right"></i></a>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="filter-tabs">
-            <button class="filter-btn active" onclick="filterSelection('all')">VIEW ALL DEALS</button>
-            <button class="filter-btn" onclick="filterSelection('brand-new')">🔥 BRAND NEW</button>
-            <button class="filter-btn" onclick="filterSelection('esim')">⚡ eSIM SPECIALS</button>
-            <button class="filter-btn" onclick="filterSelection('open-box')">📦 OPEN BOX DEALS</button>
+        <div class="carousel-container">
+            <!-- Left Arrow -->
+            <button class="arrow-btn arrow-left" onclick="slideCarousel(-300)"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <!-- Product Track -->
+            <div class="product-track" id="productTrack">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg" alt="iPhone 15 Pro Max">
+                        </div>
+                        <div class="product-info">
+                            <h3>iPhone 15 Pro Max</h3>
+                            <p class="specs">256GB • Natural Titanium</p>
+                            <div class="price">TT$6,999</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20Brand%20New%20iPhone%2015%20Pro%20Max%20for%20TT$6,999" target="_blank" class="card-badge">Brand New</a>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg" alt="iPhone 14 Pro">
+                        </div>
+                        <div class="product-info">
+                            <h3>iPhone 14 Pro</h3>
+                            <p class="specs">128GB • Deep Purple</p>
+                            <div class="price">TT$4,299</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20Open%20Box%20iPhone%2014%20Pro%20for%20TT$4,299" target="_blank" class="card-badge open-box">Open Box</a>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg" alt="iPhone 13">
+                        </div>
+                        <div class="product-info">
+                            <h3>iPhone 13</h3>
+                            <p class="specs">128GB • Midnight</p>
+                            <div class="price">TT$2,999</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20for%20TT$2,999" target="_blank" class="card-badge open-box">Open Box</a>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg" alt="iPhone 12">
+                        </div>
+                        <div class="product-info">
+                            <h3>iPhone 12</h3>
+                            <p class="specs">128GB • Blue</p>
+                            <div class="price">TT$2,199</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20Open%20Box%20iPhone%2012%20for%20TT$2,199" target="_blank" class="card-badge open-box">Open Box</a>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg" alt="iPhone 15">
+                        </div>
+                        <div class="product-info">
+                            <h3>iPhone 15</h3>
+                            <p class="specs">128GB • Pink</p>
+                            <div class="price">TT$3,299</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20Brand%20New%20iPhone%2015%20for%20TT$3,299" target="_blank" class="card-badge">Brand New</a>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg" alt="iPhone 16 Pro Max">
+                        </div>
+                        <div class="product-info">
+                            <h3>iPhone 16 Pro Max</h3>
+                            <p class="specs">256GB • Desert Titanium</p>
+                            <div class="price">TT$8,499</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20Brand%20New%20iPhone%2016%20Pro%20Max%20for%20TT$8,499" target="_blank" class="card-badge">Brand New</a>
+                </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button class="arrow-btn arrow-right" onclick="slideCarousel(300)"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
+    </section>
 
-        <!-- Product Grid -->
-        <div class="product-grid">
-            <!-- Brand New -->
-            <div class="product-card filter-item brand-new">
-                <span class="badge brand-new">Brand New</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Titanium">
-                </div>
-                <h3>iPhone 17 Pro</h3>
-                <p class="specs">256GB • Fully Functional • Warranty</p>
-                <div class="price">TT $9,599 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Brand%20New%20iPhone%2017%20Pro%20256GB%20for%20TT%20$9,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+    <!-- Expert Repairs Done Right Section -->
+    <section class="repairs-banner" id="repairs">
+        <div class="repairs-left">
+            <h2>EXPERT REPAIRS<br>DONE RIGHT</h2>
+            <p>From screen replacements to water damage, we've got you covered with professional diagnostics and premium parts.</p>
+            <a href="https://wa.me/18683308360?text=I%20would%20like%20to%20book%20a%20repair%20for%20my%20device." target="_blank" class="btn btn-blue" style="padding: 12px 24px; font-size: 0.85rem;"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR NOW <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i></a>
+        </div>
+        <div class="repairs-grid-right">
+            <div class="repair-item-row">
+                <div class="repair-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <span>Screen Replacement</span>
             </div>
-
-            <div class="product-card filter-item brand-new">
-                <span class="badge brand-new">Brand New</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max Titanium">
-                </div>
-                <h3>iPhone 17 Pro Max</h3>
-                <p class="specs">256GB • Fully Functional • Warranty</p>
-                <div class="price">TT $10,499 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Brand%20New%20iPhone%2017%20Pro%20Max%20256GB%20for%20TT%20$10,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            <div class="repair-item-row">
+                <div class="repair-icon-box"><i class="fa-solid fa-droplet"></i></div>
+                <span>Water Damage</span>
             </div>
-
-            <!-- eSIM Deals -->
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro Max">
-                </div>
-                <h3>iPhone 16 Pro Max</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $6,399 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20Pro%20Max%20256GB%20for%20TT%20$6,399." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            <div class="repair-item-row">
+                <div class="repair-icon-box"><i class="fa-solid fa-battery-full"></i></div>
+                <span>Battery Replacement</span>
             </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro">
-                </div>
-                <h3>iPhone 16 Pro</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $5,699 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20Pro%20256GB%20for%20TT%20$5,699." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            <div class="repair-item-row">
+                <div class="repair-icon-box"><i class="fa-solid fa-camera"></i></div>
+                <span>Camera Repair</span>
             </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 15">
-                </div>
-                <h3>iPhone 15</h3>
-                <p class="specs">128GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $3,299 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2015%20128GB%20for%20TT%20$3,299." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            <div class="repair-item-row">
+                <div class="repair-icon-box"><i class="fa-solid fa-plug"></i></div>
+                <span>Charging Port Repair</span>
             </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 14">
-                </div>
-                <h3>iPhone 14</h3>
-                <p class="specs">128GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $2,499 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20128GB%20for%20TT%20$2,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <!-- Open Box -->
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro Max">
-                </div>
-                <h3>iPhone 13 Pro Max</h3>
-                <p class="specs">256GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $3,599 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20Pro%20Max%20256GB%20for%20TT%20$3,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 13">
-                </div>
-                <h3>iPhone 13</h3>
-                <p class="specs">128GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $2,199 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20128GB%20for%20TT%20$2,199." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12">
-                </div>
-                <h3>iPhone 12</h3>
-                <p class="specs">64GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $1,499 <span>Best Budget Deal</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2012%2064GB%20for%20TT%20$1,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            <div class="repair-item-row">
+                <div class="repair-icon-box"><i class="fa-solid fa-ellipsis"></i></div>
+                <span>& More Services</span>
             </div>
         </div>
     </section>
 
-    <!-- ================= REPAIRS SECTION ================= -->
-    <section class="repairs-section section-padding" id="repairs">
-        <div class="section-header">
-            <h2>EXPERT DEVICE REPAIRS</h2>
-            <p>Fast, reliable tech support in Tunapuna using premium replacement parts.</p>
+    <!-- Social Proof & Payment Section -->
+    <div class="proof-section" id="about">
+        <div class="google-rating">
+            <div style="font-size: 0.75rem; font-weight: 700; color: #374151; text-transform: uppercase;">GOOGLE RATING</div>
+            <div class="score">4.9</div>
+            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p>Based on 200+ reviews</p>
+            <a href="#" class="btn-reviews">SEE REVIEWS</a>
         </div>
-        <div class="repairs-grid">
-            <div class="repair-card">
-                <div class="repair-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <h3>Screen Replacements</h3>
-                <p>Cracked glass or bleeding display? We restore OLED and LCD iPhone screens with precision.</p>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20would%20like%20a%20quote%20to%20replace%20my%20phone%20screen." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
-            </div>
-            <div class="repair-card">
-                <div class="repair-icon"><i class="fa-solid fa-battery-full"></i></div>
-                <h3>Battery Replacement</h3>
-                <p>Degraded battery health draining fast? Upgrade to a fresh, high-capacity battery today.</p>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20need%20a%20new%20battery%20for%20my%20iPhone." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
-            </div>
-            <div class="repair-card">
-                <div class="repair-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                <h3>Back Glass Restoration</h3>
-                <p>Shattered back glass replaced seamlessly so your phone feels and looks brand new again.</p>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20need%20a%20quote%20for%20back%20glass%20repair." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
-            </div>
-            <div class="repair-card">
-                <div class="repair-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
-                <h3>Charging & Diagnostics</h3>
-                <p>Phone not charging or powering on? Let our technicians run a comprehensive diagnostic test.</p>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20My%20phone%20is%20having%20charging/power%20issues." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- ================= ACCESSORIES SECTION ================= -->
-    <section class="accessories-section section-padding" id="accessories">
-        <div class="section-header">
-            <h2>ESSENTIAL ACCESSORIES</h2>
-            <p>Protect and power your new device with our top-rated add-ons.</p>
-        </div>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=500&q=80" alt="20W Fast Charger">
-                </div>
-                <h3>20W USB-C Fast Charger</h3>
-                <p class="specs">Rapid Charging Block • Surge Protected</p>
-                <div class="price">TT $150 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20the%2020W%20USB-C%20Fast%20Charger%20for%20TT%20$150." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+        <div class="trust-badges-center">
+            <div class="badge-col">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h5>QUALITY PRODUCTS</h5>
             </div>
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=500&q=80" alt="MagSafe Clear Case">
-                </div>
-                <h3>MagSafe Clear Case</h3>
-                <p class="specs">Drop Protection • Anti-Yellowing</p>
-                <div class="price">TT $120 <span>Available for All Models</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20a%20MagSafe%20Clear%20Case." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            <div class="badge-col">
+                <i class="fa-solid fa-circle-check"></i>
+                <h5>TRUSTED BY THOUSANDS</h5>
             </div>
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=500&q=80" alt="Privacy Screen Protector">
-                </div>
-                <h3>Privacy Tempered Glass</h3>
-                <p class="specs">9H Hardness • Anti-Spy Tint • Scratch Proof</p>
-                <div class="price">TT $100 <span>Free Installation in Store</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20Privacy%20Tempered%20Glass." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&w=500&q=80" alt="Wireless Earbuds">
-                </div>
-                <h3>Pro Wireless Earbuds</h3>
-                <p class="specs">Noise Cancelling • Deep Bass • Bluetooth 5.3</p>
-                <div class="price">TT $350 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20the%20Pro%20Wireless%20Earbuds." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            <div class="badge-col">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <h5>100% SATISFACTION<br>GUARANTEED</h5>
             </div>
         </div>
-    </section>
 
-    <!-- Footer / Contact Section -->
+        <div class="payment-types">
+            <p>WE ACCEPT</p>
+            <div class="pay-icons">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-apple-pay" style="font-size: 2.2rem;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer id="contact">
         <div class="footer-col">
-            <h2 class="logo-text" style="color: #FFF; font-size: 1.8rem;">URBAN<span style="color: var(--accent-cyan);">CONNECT</span></h2>
-            <p>Trinidad & Tobago's premier destination for top tech at unbeatable prices. Visit us in Tunapuna today!</p>
-            <div class="footer-socials">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-tiktok"></i>
+            <h4>ADDRESS</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span>59 Eastern Main Road,<br>Tunapuna</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>PHONE</h4>
+            <p><i class="fa-solid fa-phone"></i> <span>(868) 330-8360</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>HOURS</h4>
+            <p><i class="fa-regular fa-clock"></i> <span>Mon - Fri 9AM - 5PM<br>Sat 8AM - 5PM<br>Sun 8AM - 3PM</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>FOLLOW US</h4>
+            <div class="footer-social-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
             </div>
-        </div>
-        <div class="footer-col">
-            <strong>OUR CATEGORIES</strong>
-            <a href="#inventory" onclick="filterSelection('brand-new')">Brand New iPhones</a>
-            <a href="#inventory" onclick="filterSelection('esim')">eSIM Only Deals</a>
-            <a href="#inventory" onclick="filterSelection('open-box')">Open Box Specials</a>
-            <a href="#accessories">Charging Accessories</a>
-        </div>
-        <div class="footer-col">
-            <strong>CUSTOMER CARE</strong>
-            <a href="https://wa.me/18683308360">Contact Support</a>
-            <a href="#repairs">Book a Repair</a>
-            <a href="#">90-Day Warranty Terms</a>
-            <a href="#">Nationwide Delivery</a>
-        </div>
-        <div class="footer-col">
-            <strong>VISIT TUNAPUNA STORE</strong>
-            <p><i class="fa-solid fa-location-dot"></i> #59 Eastern Main Road, Tunapuna</p>
-            <p><i class="fa-solid fa-phone"></i> (868) 330-8360</p>
-            <p><i class="fa-brands fa-whatsapp"></i> (868) 330-8360</p>
         </div>
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20have%20a%20question%20about%20your%20products%20and%20services." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20have%20a%20question." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- Simple JavaScript for Tab Filtering -->
+    <!-- Simple JS for Sideways Carousel Sliding -->
     <script>
-        function filterSelection(category) {
-            var items = document.getElementsByClassName("filter-item");
-            var btns = document.getElementsByClassName("filter-btn");
-            
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("active");
-                if(event.currentTarget == btns[i]) {
-                    btns[i].classList.add("active");
-                }
-            }
-
-            for (var i = 0; i < items.length; i++) {
-                items[i].style.display = "none";
-                if (category == "all") {
-                    items[i].style.display = "flex";
-                } else if (items[i].classList.contains(category)) {
-                    items[i].style.display = "flex";
-                }
-            }
+        function slideCarousel(offset) {
+            const track = document.getElementById('productTrack');
+            track.scrollBy({ left: offset, behavior: 'smooth' });
         }
     </script>
 </body>
