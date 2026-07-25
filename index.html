@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Connect TT | Summer of Savings</title>
+    <title>Urban Connect TT | Top Tech & Repairs</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Montserrat -->
@@ -33,6 +33,10 @@
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: -0.2px;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -71,12 +75,11 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo-text { font-weight: 900; color: #0A1426; font-size: 2.2rem; letter-spacing: -1.5px;}
+        .logo-text { font-weight: 900; color: #0A1426; font-size: 2.2rem; letter-spacing: -1.5px; text-decoration: none;}
         .logo-text span { color: var(--accent-cyan); }
         .nav-links { display: flex; list-style: none; gap: 30px; }
         .nav-links a { text-decoration: none; color: #333; font-weight: 700; font-size: 0.9rem; transition: color 0.3s;}
-        .nav-links a.active { color: var(--accent-cyan); position: relative; }
-        .nav-links a.active:after { content:''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent-cyan); }
+        .nav-links a:hover { color: var(--accent-cyan); }
         .nav-icons { display: flex; align-items: center; gap: 25px; }
 
         /* --- Hero Section --- */
@@ -125,11 +128,16 @@
         .promo-item { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; font-weight: 800;}
         .promo-item i { color: var(--accent-cyan); font-size: 1.8rem; }
 
-        /* --- Products Section & Filtering --- */
-        .products-section { padding: 80px 60px; background-color: var(--bg-light); color: #333; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: 2.5rem; color: #0A1426; margin-bottom: 10px;}
-        .section-header p { color: #666; font-size: 1.1rem; }
+        /* --- Shared Section Styling --- */
+        .section-padding { padding: 80px 60px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px;}
+        .section-header p { font-size: 1.1rem; }
+
+        /* --- Products Section (Light) --- */
+        .products-section { background-color: var(--bg-light); color: #333; }
+        .products-section .section-header h2 { color: #0A1426; }
+        .products-section .section-header p { color: #666; }
 
         /* Filter Tabs */
         .filter-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
@@ -139,7 +147,7 @@
         }
         .filter-btn.active, .filter-btn:hover { background: #0A1426; color: #FFF; }
 
-        /* Product Grid & Card Styling */
+        /* Product Grid & Cards */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
         .product-card {
             background: #FFF; border: 1px solid var(--border-color-light); border-radius: 12px;
@@ -149,18 +157,14 @@
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
         
-        /* Product Images with Hover Zoom */
         .product-image-container {
             width: 100%; height: 220px; display: flex; align-items: center; justify-content: center;
             margin: 15px 0; overflow: hidden; border-radius: 8px;
         }
         .product-image-container img {
-            max-height: 100%; max-width: 100%; object-fit: contain;
-            transition: transform 0.4s ease;
+            max-height: 100%; max-width: 100%; object-fit: contain; transition: transform 0.4s ease;
         }
-        .product-card:hover .product-image-container img {
-            transform: scale(1.08);
-        }
+        .product-card:hover .product-image-container img { transform: scale(1.08); }
 
         .badge { position: absolute; top: 15px; left: 15px; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; color: #FFF; text-transform: uppercase; z-index: 2;}
         .badge.brand-new { background-color: #0A1426; }
@@ -171,6 +175,29 @@
         .product-card .specs { font-size: 0.85rem; color: #666; margin-bottom: 15px; font-weight: 600;}
         .product-card .price { font-size: 1.6rem; font-weight: 900; color: #0A1426; }
         .product-card .price span { color: #25D366; font-size: 0.95rem; display: block; font-weight: 700;}
+
+        /* --- Repairs Section (Dark Theme) --- */
+        .repairs-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: var(--text-light);
+            border-top: 2px solid var(--border-color-dark);
+            border-bottom: 2px solid var(--border-color-dark);
+        }
+        .repairs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .repair-card {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color-dark);
+            border-radius: 12px; padding: 35px 25px; text-align: center; transition: all 0.3s ease;
+            backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .repair-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); background: rgba(255, 255, 255, 0.08); }
+        .repair-icon { font-size: 3rem; color: var(--accent-cyan); margin-bottom: 20px; }
+        .repair-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #FFF; }
+        .repair-card p { font-size: 0.95rem; color: var(--text-gray); margin-bottom: 25px; }
+
+        /* --- Accessories Section (Light Theme) --- */
+        .accessories-section { background-color: #FFFFFF; color: #333; }
+        .accessories-section .section-header h2 { color: #0A1426; }
+        .accessories-section .section-header p { color: #666; }
 
         /* --- Footer --- */
         footer {
@@ -204,7 +231,7 @@
             footer { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
-            .navbar, .products-section, footer { padding: 20px; }
+            .navbar, .section-padding, footer { padding: 20px; }
             .nav-links, .top-bar { display: none; }
             .hero-buttons { flex-direction: column; }
             footer { grid-template-columns: 1fr; }
@@ -230,14 +257,14 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">
-            <h1 class="logo-text">URBAN<span>CONNECT</span>TT</h1>
+            <a href="#" class="logo-text">URBAN<span>CONNECT</span>TT</a>
         </div>
         <ul class="nav-links">
-            <li><a href="#" class="active">HOME</a></li>
+            <li><a href="#">HOME</a></li>
             <li><a href="#inventory">SUMMER SALE</a></li>
-            <li><a href="#">REPAIRS</a></li>
-            <li><a href="#">ACCESSORIES</a></li>
-            <li><a href="#">CONTACT US</a></li>
+            <li><a href="#repairs">REPAIRS</a></li>
+            <li><a href="#accessories">ACCESSORIES</a></li>
+            <li><a href="#contact">CONTACT US</a></li>
         </ul>
         <div class="nav-icons">
             <a href="https://wa.me/18683308360" target="_blank" style="color: #25D366; font-size: 1.5rem;"><i class="fa-brands fa-whatsapp"></i></a>
@@ -264,7 +291,7 @@
     </div>
 
     <!-- Interactive Price List Section -->
-    <section class="products-section" id="inventory">
+    <section class="products-section section-padding" id="inventory">
         <div class="section-header">
             <h2>SUMMER OF SAVINGS INVENTORY</h2>
             <p>Select a category below to filter our available stock in Tunapuna.</p>
@@ -280,8 +307,7 @@
 
         <!-- Product Grid -->
         <div class="product-grid">
-
-            <!-- ================= BRAND NEW ================= -->
+            <!-- Brand New -->
             <div class="product-card filter-item brand-new">
                 <span class="badge brand-new">Brand New</span>
                 <div class="product-image-container">
@@ -296,17 +322,6 @@
             <div class="product-card filter-item brand-new">
                 <span class="badge brand-new">Brand New</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Titanium">
-                </div>
-                <h3>iPhone 17 Pro</h3>
-                <p class="specs">512GB • Fully Functional • Warranty</p>
-                <div class="price">TT $10,599 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Brand%20New%20iPhone%2017%20Pro%20512GB%20for%20TT%20$10,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item brand-new">
-                <span class="badge brand-new">Brand New</span>
-                <div class="product-image-container">
                     <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max Titanium">
                 </div>
                 <h3>iPhone 17 Pro Max</h3>
@@ -315,40 +330,7 @@
                 <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Brand%20New%20iPhone%2017%20Pro%20Max%20256GB%20for%20TT%20$10,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
             </div>
 
-            <div class="product-card filter-item brand-new">
-                <span class="badge brand-new">Brand New</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max Titanium">
-                </div>
-                <h3>iPhone 17 Pro Max</h3>
-                <p class="specs">512GB • Fully Functional • Warranty</p>
-                <div class="price">TT $11,999 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Brand%20New%20iPhone%2017%20Pro%20Max%20512GB%20for%20TT%20$11,999." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item brand-new">
-                <span class="badge brand-new">Brand New</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max 1TB">
-                </div>
-                <h3>iPhone 17 Pro Max</h3>
-                <p class="specs">1TB Ultimate Storage • Warranty</p>
-                <div class="price">TT $13,399 <span>Limited Stock Available</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Brand%20New%20iPhone%2017%20Pro%20Max%201TB%20for%20TT%20$13,399." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <!-- ================= ESIM MODELS ================= -->
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro Max">
-                </div>
-                <h3>iPhone 16 Pro Max</h3>
-                <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $6,999 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20Pro%20Max%20512GB%20for%20TT%20$6,999." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
+            <!-- eSIM Deals -->
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
                 <div class="product-image-container">
@@ -366,119 +348,9 @@
                     <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro">
                 </div>
                 <h3>iPhone 16 Pro</h3>
-                <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $5,999 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20Pro%20512GB%20for%20TT%20$5,999." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Pro">
-                </div>
-                <h3>iPhone 16 Pro</h3>
                 <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
                 <div class="price">TT $5,699 <span>In Stock • Tunapuna</span></div>
                 <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20Pro%20256GB%20for%20TT%20$5,699." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 16 Plus">
-                </div>
-                <h3>iPhone 16 Plus</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,999 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20Plus%20256GB%20for%20TT%20$4,999." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 16">
-                </div>
-                <h3>iPhone 16</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,799 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20256GB%20for%20TT%20$4,799." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 16">
-                </div>
-                <h3>iPhone 16</h3>
-                <p class="specs">128GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,499 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2016%20128GB%20for%20TT%20$4,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro Max">
-                </div>
-                <h3>iPhone 15 Pro Max</h3>
-                <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $5,199 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2015%20Pro%20Max%20512GB%20for%20TT%20$5,199." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro Max">
-                </div>
-                <h3>iPhone 15 Pro Max</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,899 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2015%20Pro%20Max%20256GB%20for%20TT%20$4,899." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro">
-                </div>
-                <h3>iPhone 15 Pro</h3>
-                <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,599 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2015%20Pro%20512GB%20for%20TT%20$4,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Pro">
-                </div>
-                <h3>iPhone 15 Pro</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,399 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2015%20Pro%20256GB%20for%20TT%20$4,399." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 15 Plus">
-                </div>
-                <h3>iPhone 15 Plus</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $3,799 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2015%20Plus%20256GB%20for%20TT%20$3,799." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 15">
-                </div>
-                <h3>iPhone 15</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $3,599 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2015%20256GB%20for%20TT%20$3,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
             </div>
 
             <div class="product-card filter-item esim">
@@ -495,72 +367,6 @@
             <div class="product-card filter-item esim">
                 <span class="badge esim">eSIM Deal</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro Max">
-                </div>
-                <h3>iPhone 14 Pro Max</h3>
-                <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,499 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20Pro%20Max%20512GB%20for%20TT%20$4,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro Max">
-                </div>
-                <h3>iPhone 14 Pro Max</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $4,199 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20Pro%20Max%20256GB%20for%20TT%20$4,199." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro">
-                </div>
-                <h3>iPhone 14 Pro</h3>
-                <p class="specs">512GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $3,799 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20Pro%20512GB%20for%20TT%20$3,799." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Pro">
-                </div>
-                <h3>iPhone 14 Pro</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $3,599 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20Pro%20256GB%20for%20TT%20$3,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 14 Plus">
-                </div>
-                <h3>iPhone 14 Plus</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $2,799 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20Plus%20256GB%20for%20TT%20$2,799." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 14">
-                </div>
-                <h3>iPhone 14</h3>
-                <p class="specs">256GB • eSIM Only • 90-Day Warranty</p>
-                <div class="price">TT $2,699 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20256GB%20for%20TT%20$2,699." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item esim">
-                <span class="badge esim">eSIM Deal</span>
-                <div class="product-image-container">
                     <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 14">
                 </div>
                 <h3>iPhone 14</h3>
@@ -569,40 +375,7 @@
                 <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20eSIM%20iPhone%2014%20128GB%20for%20TT%20$2,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
             </div>
 
-            <!-- ================= OPEN BOX MODELS ================= -->
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=500&q=80" alt="iPhone 17">
-                </div>
-                <h3>iPhone 17</h3>
-                <p class="specs">256GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $5,999 <span>Summer Special</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2017%20256GB%20for%20TT%20$5,999." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro Max">
-                </div>
-                <h3>iPhone 13 Pro Max</h3>
-                <p class="specs">1TB • Huge Storage • Warranty</p>
-                <div class="price">TT $3,899 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20Pro%20Max%201TB%20for%20TT%20$3,899." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro Max">
-                </div>
-                <h3>iPhone 13 Pro Max</h3>
-                <p class="specs">512GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $3,750 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20Pro%20Max%20512GB%20for%20TT%20$3,750." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
+            <!-- Open Box -->
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
                 <div class="product-image-container">
@@ -612,28 +385,6 @@
                 <p class="specs">256GB • Excellent Condition • Warranty</p>
                 <div class="price">TT $3,599 <span>In Stock • Tunapuna</span></div>
                 <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20Pro%20Max%20256GB%20for%20TT%20$3,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Pro">
-                </div>
-                <h3>iPhone 13 Pro</h3>
-                <p class="specs">256GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $2,999 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20Pro%20256GB%20for%20TT%20$2,999." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 13">
-                </div>
-                <h3>iPhone 13</h3>
-                <p class="specs">256GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $2,399 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20256GB%20for%20TT%20$2,399." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
             </div>
 
             <div class="product-card filter-item open-box">
@@ -650,50 +401,6 @@
             <div class="product-card filter-item open-box">
                 <span class="badge open-box">Open Box</span>
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=500&q=80" alt="iPhone 13 Mini">
-                </div>
-                <h3>iPhone 13 Mini</h3>
-                <p class="specs">Compact & Powerful • Warranty</p>
-                <div class="price">TT $1,899 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2013%20Mini%20for%20TT%20$1,899." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12 Pro Max">
-                </div>
-                <h3>iPhone 12 Pro Max</h3>
-                <p class="specs">256GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $2,599 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2012%20Pro%20Max%20256GB%20for%20TT%20$2,599." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12 Pro">
-                </div>
-                <h3>iPhone 12 Pro</h3>
-                <p class="specs">256GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $2,299 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2012%20Pro%20256GB%20for%20TT%20$2,299." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12">
-                </div>
-                <h3>iPhone 12</h3>
-                <p class="specs">128GB • Excellent Condition • Warranty</p>
-                <div class="price">TT $1,799 <span>In Stock • Tunapuna</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2012%20128GB%20for%20TT%20$1,799." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
                     <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=500&q=80" alt="iPhone 12">
                 </div>
                 <h3>iPhone 12</h3>
@@ -701,23 +408,91 @@
                 <div class="price">TT $1,499 <span>Best Budget Deal</span></div>
                 <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2012%2064GB%20for%20TT%20$1,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
             </div>
-
-            <div class="product-card filter-item open-box">
-                <span class="badge open-box">Open Box</span>
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=500&q=80" alt="iPhone 12 Mini">
-                </div>
-                <h3>iPhone 12 Mini</h3>
-                <p class="specs">128GB • Compact & Powerful • Warranty</p>
-                <div class="price">TT $1,499 <span>Best Budget Deal</span></div>
-                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'm%20interested%20in%20the%20Open%20Box%20iPhone%2012%20Mini%20128GB%20for%20TT%20$1,499." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
-            </div>
-
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- ================= REPAIRS SECTION ================= -->
+    <section class="repairs-section section-padding" id="repairs">
+        <div class="section-header">
+            <h2>EXPERT DEVICE REPAIRS</h2>
+            <p>Fast, reliable tech support in Tunapuna using premium replacement parts.</p>
+        </div>
+        <div class="repairs-grid">
+            <div class="repair-card">
+                <div class="repair-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>Screen Replacements</h3>
+                <p>Cracked glass or bleeding display? We restore OLED and LCD iPhone screens with precision.</p>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20would%20like%20a%20quote%20to%20replace%20my%20phone%20screen." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
+            </div>
+            <div class="repair-card">
+                <div class="repair-icon"><i class="fa-solid fa-battery-full"></i></div>
+                <h3>Battery Replacement</h3>
+                <p>Degraded battery health draining fast? Upgrade to a fresh, high-capacity battery today.</p>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20need%20a%20new%20battery%20for%20my%20iPhone." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
+            </div>
+            <div class="repair-card">
+                <div class="repair-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3>Back Glass Restoration</h3>
+                <p>Shattered back glass replaced seamlessly so your phone feels and looks brand new again.</p>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20need%20a%20quote%20for%20back%20glass%20repair." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
+            </div>
+            <div class="repair-card">
+                <div class="repair-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+                <h3>Charging & Diagnostics</h3>
+                <p>Phone not charging or powering on? Let our technicians run a comprehensive diagnostic test.</p>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20My%20phone%20is%20having%20charging/power%20issues." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> GET QUOTE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ACCESSORIES SECTION ================= -->
+    <section class="accessories-section section-padding" id="accessories">
+        <div class="section-header">
+            <h2>ESSENTIAL ACCESSORIES</h2>
+            <p>Protect and power your new device with our top-rated add-ons.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=500&q=80" alt="20W Fast Charger">
+                </div>
+                <h3>20W USB-C Fast Charger</h3>
+                <p class="specs">Rapid Charging Block • Surge Protected</p>
+                <div class="price">TT $150 <span>In Stock • Tunapuna</span></div>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20the%2020W%20USB-C%20Fast%20Charger%20for%20TT%20$150." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=500&q=80" alt="MagSafe Clear Case">
+                </div>
+                <h3>MagSafe Clear Case</h3>
+                <p class="specs">Drop Protection • Anti-Yellowing</p>
+                <div class="price">TT $120 <span>Available for All Models</span></div>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20a%20MagSafe%20Clear%20Case." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=500&q=80" alt="Privacy Screen Protector">
+                </div>
+                <h3>Privacy Tempered Glass</h3>
+                <p class="specs">9H Hardness • Anti-Spy Tint • Scratch Proof</p>
+                <div class="price">TT $100 <span>Free Installation in Store</span></div>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20Privacy%20Tempered%20Glass." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&w=500&q=80" alt="Wireless Earbuds">
+                </div>
+                <h3>Pro Wireless Earbuds</h3>
+                <p class="specs">Noise Cancelling • Deep Bass • Bluetooth 5.3</p>
+                <div class="price">TT $350 <span>In Stock • Tunapuna</span></div>
+                <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I'd%20like%20to%20order%20the%20Pro%20Wireless%20Earbuds." target="_blank" class="btn btn-card"><i class="fa-brands fa-whatsapp"></i> ORDER NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact">
         <div class="footer-col">
             <h2 class="logo-text" style="color: #FFF; font-size: 1.8rem;">URBAN<span style="color: var(--accent-cyan);">CONNECT</span></h2>
             <p>Trinidad & Tobago's premier destination for top tech at unbeatable prices. Visit us in Tunapuna today!</p>
@@ -732,14 +507,14 @@
             <a href="#inventory" onclick="filterSelection('brand-new')">Brand New iPhones</a>
             <a href="#inventory" onclick="filterSelection('esim')">eSIM Only Deals</a>
             <a href="#inventory" onclick="filterSelection('open-box')">Open Box Specials</a>
-            <a href="#">Charging Accessories</a>
+            <a href="#accessories">Charging Accessories</a>
         </div>
         <div class="footer-col">
             <strong>CUSTOMER CARE</strong>
             <a href="https://wa.me/18683308360">Contact Support</a>
+            <a href="#repairs">Book a Repair</a>
             <a href="#">90-Day Warranty Terms</a>
             <a href="#">Nationwide Delivery</a>
-            <a href="#">Frequently Asked Questions</a>
         </div>
         <div class="footer-col">
             <strong>VISIT TUNAPUNA STORE</strong>
@@ -750,7 +525,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20have%20a%20question%20about%20your%20Summer%20of%20Savings%20inventory." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/18683308360?text=Hi%20Urban%20Connect%20TT!%20I%20have%20a%20question%20about%20your%20products%20and%20services." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -760,7 +535,6 @@
             var items = document.getElementsByClassName("filter-item");
             var btns = document.getElementsByClassName("filter-btn");
             
-            // Update Active Button styling
             for (var i = 0; i < btns.length; i++) {
                 btns[i].classList.remove("active");
                 if(event.currentTarget == btns[i]) {
@@ -768,7 +542,6 @@
                 }
             }
 
-            // Show/Hide products
             for (var i = 0; i < items.length; i++) {
                 items[i].style.display = "none";
                 if (category == "all") {
