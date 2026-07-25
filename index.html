@@ -50,7 +50,7 @@
             position: sticky; top: 0; z-index: 1000;
         }
         .logo-box img { 
-            height: 45px; /* Adjust this to fit your uploaded logo */
+            height: 45px; 
             object-fit: contain;
         }
         
@@ -64,7 +64,6 @@
 
         /* --- Hero Section --- */
         .hero {
-            /* Replace the URL below with your actual composite store image */
             background: linear-gradient(to right, rgba(7, 13, 24, 0.85) 0%, rgba(10, 22, 40, 0.75) 100%),
                         url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             color: var(--text-light); text-align: center; padding: 120px 20px;
@@ -72,7 +71,6 @@
         }
         .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; color: #60A5FA; text-transform: uppercase; margin-bottom: 15px; }
         
-        /* Central Logo Image */
         .hero-logo-img { max-width: 500px; width: 100%; margin-bottom: 20px; }
 
         .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
@@ -141,13 +139,10 @@
         .badge-open-box { background-color: #4B5563; }
         .badge-esim { background-color: #0369A1; }
 
-        /* --- Accessories Section (NEW) --- */
+        /* --- Accessories Section --- */
         .accessories-section { padding: 70px 50px; background: var(--bg-offwhite); }
         .accessories-header { font-size: 1.8rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 40px; }
-        
-        .accessories-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
-        }
+        .accessories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         
         .accessory-card {
             background: #FFF; border-radius: 12px; border: 1px solid var(--border-light);
@@ -156,10 +151,7 @@
         }
         .accessory-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         
-        .acc-icon {
-            font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .acc-icon { font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px; display: flex; align-items: center; justify-content: center; }
         .acc-title { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
         .acc-sub { font-size: 0.8rem; color: #6B7280; margin-bottom: 20px; }
         .acc-price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
@@ -171,14 +163,13 @@
         }
         .acc-btn:hover { background: #1E293B; }
 
-        /* --- Expert Repairs Banner (UPDATED to match photo) --- */
+        /* --- Expert Repairs Banner --- */
         .repairs-banner {
             background-color: var(--bg-navy);
             color: #FFF; display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 40px;
             padding: 0 50px 0 0; align-items: center; border-top: 1px solid rgba(255,255,255,0.05);
             overflow: hidden;
         }
-        
         .repairs-img-container {
             height: 100%; min-height: 350px;
             background: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=800&q=80') center left/cover no-repeat;
@@ -198,9 +189,7 @@
             display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;
         }
         .repair-item-row { display: flex; align-items: center; gap: 15px; }
-        .repair-icon-box {
-            font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9;
-        }
+        .repair-icon-box { font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9; }
         .repair-item-row span { font-size: 0.95rem; font-weight: 400; color: #E5E7EB; }
 
         /* --- Social Proof & Payment Section --- */
@@ -250,7 +239,7 @@
         }
         .floating-whatsapp:hover { transform: scale(1.08); }
 
-        /* --- Product Modal with Color Changing Logic --- */
+        /* --- Product Modal with Color & Storage Scaling Logic --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center;
@@ -348,7 +337,6 @@
     <!-- Main Navbar -->
     <nav class="navbar">
         <a href="#" class="logo-box">
-            <!-- Upload your actual logo image and replace this src -->
             <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT Logo">
         </a>
         <ul class="nav-links">
@@ -372,7 +360,6 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-welcome">WELCOME TO</div>
-        <!-- Upload your actual logo image and replace this src -->
         <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT" class="hero-logo-img">
         
         <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
@@ -417,18 +404,17 @@
         <div class="carousel-container">
             <button class="arrow-btn arrow-left" onclick="slideCarousel(-350)"><i class="fa-solid fa-chevron-left"></i></button>
             <div class="product-track" id="productTrack">
-                <!-- Javascript will inject all phones here -->
+                <!-- Javascript injects phones here -->
             </div>
             <button class="arrow-btn arrow-right" onclick="slideCarousel(350)"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </section>
 
-    <!-- Accessories Section (NEW based on your screenshot) -->
+    <!-- Accessories Section -->
     <section class="accessories-section" id="accessories">
         <h2 class="accessories-header">ACCESSORIES</h2>
         
         <div class="accessories-grid">
-            <!-- Card 1 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-solid fa-mobile-screen"></i></div>
                 <h3 class="acc-title">Premium Phone Cases</h3>
@@ -437,7 +423,6 @@
                 <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20Premium%20Phone%20Cases." class="acc-btn">Order via WhatsApp</a>
             </div>
 
-            <!-- Card 2 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-regular fa-square"></i></div>
                 <h3 class="acc-title">Clear Hydrogel Screen Protector</h3>
@@ -446,7 +431,6 @@
                 <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Clear%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
             </div>
 
-            <!-- Card 3 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-solid fa-eye-slash"></i></div>
                 <h3 class="acc-title">Privacy Hydrogel Screen Protector</h3>
@@ -455,7 +439,6 @@
                 <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Privacy%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
             </div>
 
-            <!-- Card 4 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-solid fa-headphones"></i></div>
                 <h3 class="acc-title">AirPods 4th Gen</h3>
@@ -466,9 +449,8 @@
         </div>
     </section>
 
-    <!-- Expert Repairs Banner (UPDATED layout) -->
+    <!-- Expert Repairs Banner -->
     <section class="repairs-banner" id="repairs">
-        <!-- Replace URL with your specific broken phone picture if desired -->
         <div class="repairs-img-container"></div>
         
         <div class="repairs-center">
@@ -517,7 +499,7 @@
                 <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
                 <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
                 <i class="fa-brands fa-apple-pay" style="color: #000;"></i>
-                <i class="fa-solid fa-credit-card" style="color: #6B7280;"></i> <!-- Representing Linx/Debit -->
+                <i class="fa-solid fa-credit-card" style="color: #6B7280;"></i>
             </div>
         </div>
     </section>
@@ -551,443 +533,230 @@
     <!-- Dynamic Product Modal -->
     <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="document.getElementById('productModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
-            
+            <button class="modal-close" onclick="closeModal(event)"><i class="fa-solid fa-xmark"></i></button>
             <div class="modal-left">
                 <img id="modalImg" src="" alt="Phone Image">
             </div>
             <div class="modal-right">
-                <div class="modal-condition" id="modalCondition">Brand New</div>
-                <h2 class="modal-title" id="modalTitle">iPhone</h2>
-                <div class="modal-price" id="modalPrice">TT$0</div>
+                <span id="modalCondition" class="modal-condition">Open Box</span>
+                <h3 id="modalTitle" class="modal-title">iPhone Title</h3>
+                <div id="modalPrice" class="modal-price">TT$0</div>
 
+                <!-- Storage Options -->
                 <div class="variant-group">
-                    <h4>Storage Capacity</h4>
-                    <div class="variant-options" id="storageOptions">
-                        <!-- Storage buttons injected here -->
-                    </div>
+                    <h4>Select Capacity:</h4>
+                    <div id="modalStorage" class="variant-options"></div>
                 </div>
 
+                <!-- Color Options -->
                 <div class="variant-group">
-                    <h4>Color</h4>
-                    <div class="variant-options" id="colorOptions">
-                        <!-- Color swatches injected here -->
-                    </div>
+                    <h4>Select Color: <span id="selectedColorName" style="font-weight: 500; color: #6B7280;"></span></h4>
+                    <div id="modalColors" class="variant-options"></div>
                 </div>
 
-                <a href="#" id="modalBuyBtn" target="_blank" class="modal-buy-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                <!-- Buy Action Button -->
+                <a id="modalBuyBtn" href="#" target="_blank" class="modal-buy-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Order This Phone via WhatsApp
                 </a>
-                
-                <!-- Payment callout inside the modal -->
                 <div class="payment-info-modal">
-                    Secure payment available in-store via 
-                    <i class="fa-brands fa-cc-visa"></i> 
-                    <i class="fa-brands fa-cc-mastercard"></i> 
-                    Linx / Credit Card
+                    <i class="fa-solid fa-lock"></i> Card Payments, Cash & Linx accepted in store
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript logic -->
     <script>
-        // Sideways scrolling
-        function slideCarousel(offset) {
-            const track = document.getElementById('productTrack');
-            track.scrollBy({ left: offset, behavior: 'smooth' });
-        }
+        // Color mapping for swatches
+        const colorHexMap = {
+            "Black": "#1C1C1E", "White": "#F2F2F4", "Red": "#E02020", "Blue": "#20509E", "Green": "#AEE1CD", "Purple": "#D1CDDA",
+            "Graphite": "#4C4A48", "Silver": "#E2E4E1", "Gold": "#FAE7CF", "Pacific Blue": "#2C4D56",
+            "Starlight": "#FAF6F2", "Midnight": "#2B2F38", "Pink": "#FAD7BD", "Sierra Blue": "#9BB5CE", "Alpine Green": "#505E4D",
+            "Yellow": "#FDE68A", "Deep Purple": "#594F63", "Space Black": "#2C2C2E",
+            "Black Titanium": "#3B3836", "White Titanium": "#F2F1ED", "Blue Titanium": "#2F3843", "Natural Titanium": "#9F9A90",
+            "Ultramarine": "#4358D4", "Teal": "#68A59E", "Desert Titanium": "#C5AD95",
+            "Lavender": "#E0D5E9", "Mist Blue": "#A2C3DA", "Sage Green": "#8BA888", "Cosmic Orange": "#E55B13"
+        };
 
-        // ==========================================
-        // PHONE DATA ENGINE (Expanded Color Palette)
-        // ==========================================
-        const allPhonesData = [
-            // --- iPhone 17 Series ---
+        // Your full iPhone Inventory (TTD base prices + capacity scaling)
+        const products = [
             {
-                id: '17promax', name: 'iPhone 17 Pro Max', condition: 'Brand New', badgeClass: 'badge-brand-new',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
-                storage: [ {gb:'256GB', price:10499}, {gb:'512GB', price:11999}, {gb:'1TB', price:13399} ],
-                colors: [
-                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
-                ]
+                id: "ip12", name: "iPhone 12", basePrice: 3200, condition: "Open Box",
+                img: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "64GB", add: 0 }, { gb: "128GB", add: 300 }, { gb: "256GB", add: 600 }],
+                colors: ["Black", "White", "Red", "Green", "Blue", "Purple"]
             },
             {
-                id: '17pro', name: 'iPhone 17 Pro', condition: 'Brand New', badgeClass: 'badge-brand-new',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
-                storage: [ {gb:'256GB', price:9599}, {gb:'512GB', price:10599} ],
-                colors: [
-                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
-                ]
+                id: "ip12p", name: "iPhone 12 Pro", basePrice: 4200, condition: "Open Box",
+                img: "https://images.unsplash.com/photo-1603313011101-320f26a4f6f6?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 400 }, { gb: "512GB", add: 800 }],
+                colors: ["Graphite", "Silver", "Gold", "Pacific Blue"]
             },
             {
-                id: '17', name: 'iPhone 17', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
-                storage: [ {gb:'256GB', price:5999} ],
-                colors: [ 
-                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
-                ]
-            },
-
-            // --- iPhone 16 Series ---
-            {
-                id: '16promax', name: 'iPhone 16 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
-                storage: [ {gb:'256GB', price:6399}, {gb:'512GB', price:6999} ],
-                colors: [
-                    { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
-                ]
+                id: "ip13", name: "iPhone 13", basePrice: 4000, condition: "Open Box",
+                img: "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 400 }, { gb: "512GB", add: 800 }],
+                colors: ["Starlight", "Midnight", "Blue", "Pink", "Green", "Red"]
             },
             {
-                id: '16pro', name: 'iPhone 16 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
-                storage: [ {gb:'256GB', price:5699}, {gb:'512GB', price:5999} ],
-                colors: [ 
-                    { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
-                ]
+                id: "ip13pm", name: "iPhone 13 Pro Max", basePrice: 5800, condition: "Open Box",
+                img: "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 500 }, { gb: "512GB", add: 1000 }, { gb: "1TB", add: 1500 }],
+                colors: ["Graphite", "Gold", "Silver", "Sierra Blue", "Alpine Green"]
             },
             {
-                id: '16plus', name: 'iPhone 16+', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
-                storage: [ {gb:'256GB', price:4999} ],
-                colors: [ 
-                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
-                ]
+                id: "ip14", name: "iPhone 14 Plus", basePrice: 4800, condition: "Open Box",
+                img: "https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 500 }, { gb: "512GB", add: 1000 }],
+                colors: ["Midnight", "Starlight", "Blue", "Purple", "Yellow"]
             },
             {
-                id: '16', name: 'iPhone 16', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
-                storage: [ {gb:'128GB', price:4499}, {gb:'256GB', price:4799} ],
-                colors: [ 
-                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
-                ]
-            },
-
-            // --- iPhone 15 Series ---
-            {
-                id: '15promax', name: 'iPhone 15 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
-                storage: [ {gb:'256GB', price:4899}, {gb:'512GB', price:5199} ],
-                colors: [
-                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' }
-                ]
+                id: "ip14pm", name: "iPhone 14 Pro Max", basePrice: 6800, condition: "Brand New",
+                img: "https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 500 }, { gb: "512GB", add: 1000 }, { gb: "1TB", add: 1600 }],
+                colors: ["Space Black", "Silver", "Gold", "Deep Purple"]
             },
             {
-                id: '15pro', name: 'iPhone 15 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
-                storage: [ {gb:'256GB', price:4399}, {gb:'512GB', price:4599} ],
-                colors: [ 
-                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
-                    { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' } 
-                ]
+                id: "ip15", name: "iPhone 15", basePrice: 5500, condition: "Brand New",
+                img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 500 }, { gb: "512GB", add: 1000 }],
+                colors: ["Black", "Blue", "Green", "Yellow", "Pink"]
             },
             {
-                id: '15plus', name: 'iPhone 15+', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
-                storage: [ {gb:'256GB', price:3799} ],
-                colors: [ 
-                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
-                ]
+                id: "ip15pm", name: "iPhone 15 Pro Max", basePrice: 8200, condition: "Brand New",
+                img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "256GB", add: 0 }, { gb: "512GB", add: 800 }, { gb: "1TB", add: 1600 }],
+                colors: ["Black Titanium", "White Titanium", "Blue Titanium", "Natural Titanium"]
             },
             {
-                id: '15', name: 'iPhone 15', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
-                storage: [ {gb:'128GB', price:3299}, {gb:'256GB', price:3599} ],
-                colors: [
-                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
-                ]
-            },
-
-            // --- iPhone 14 Series ---
-            {
-                id: '14promax', name: 'iPhone 14 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg',
-                storage: [ {gb:'256GB', price:4199}, {gb:'512GB', price:4499} ],
-                colors: [
-                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
-                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
-                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
-                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
-                ]
+                id: "ip16", name: "iPhone 16", basePrice: 6200, condition: "Brand New",
+                img: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 500 }, { gb: "512GB", add: 1000 }],
+                colors: ["Ultramarine", "Teal", "Pink", "White", "Black"]
             },
             {
-                id: '14pro', name: 'iPhone 14 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg',
-                storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3799} ],
-                colors: [ 
-                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
-                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
-                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
-                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
-                ]
+                id: "ip16pm", name: "iPhone 16 Pro Max", basePrice: 9200, condition: "Brand New",
+                img: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "256GB", add: 0 }, { gb: "512GB", add: 800 }, { gb: "1TB", add: 1600 }],
+                colors: ["Black Titanium", "White Titanium", "Natural Titanium", "Desert Titanium"]
             },
             {
-                id: '14plus', name: 'iPhone 14+', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
-                storage: [ {gb:'256GB', price:2799} ],
-                colors: [ 
-                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
-                ]
+                id: "ip17", name: "iPhone 17", basePrice: 6800, condition: "Brand New",
+                img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "128GB", add: 0 }, { gb: "256GB", add: 500 }, { gb: "512GB", add: 1000 }],
+                colors: ["Lavender", "Mist Blue", "Black", "White", "Sage Green"]
             },
             {
-                id: '14', name: 'iPhone 14', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
-                storage: [ {gb:'128GB', price:2499}, {gb:'256GB', price:2699} ],
-                colors: [ 
-                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
-                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
-                ]
-            },
-
-            // --- iPhone 13 Series ---
-            {
-                id: '13promax', name: 'iPhone 13 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg',
-                storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3750}, {gb:'1TB', price:3899} ],
-                colors: [
-                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
-                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
-                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
-                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
-                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
-                ]
-            },
-            {
-                id: '13pro', name: 'iPhone 13 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg',
-                storage: [ {gb:'256GB', price:2999} ],
-                colors: [ 
-                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
-                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
-                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
-                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
-                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
-                ]
-            },
-            {
-                id: '13', name: 'iPhone 13', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg',
-                storage: [ {gb:'128GB', price:2199}, {gb:'256GB', price:2399} ],
-                colors: [ 
-                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
-                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
-                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
-                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
-                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
-                    { name: 'Green', hex: '#3E5846', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
-                ]
-            },
-            {
-                id: '13mini', name: 'iPhone 13 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg',
-                storage: [ {gb:'128GB', price:1899} ],
-                colors: [ 
-                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
-                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
-                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
-                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
-                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
-                ]
-            },
-
-            // --- iPhone 12 Series ---
-            {
-                id: '12promax', name: 'iPhone 12 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg',
-                storage: [ {gb:'256GB', price:2599} ],
-                colors: [ 
-                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
-                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
-                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
-                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
-                ]
-            },
-            {
-                id: '12pro', name: 'iPhone 12 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg',
-                storage: [ {gb:'256GB', price:2299} ],
-                colors: [ 
-                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
-                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
-                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
-                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
-                ]
-            },
-            {
-                id: '12', name: 'iPhone 12', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg',
-                storage: [ {gb:'64GB', price:1499}, {gb:'128GB', price:1799} ],
-                colors: [
-                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
-                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
-                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
-                    { name: 'Green', hex: '#E1F8E9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
-                    { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
-                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' }
-                ]
-            },
-            {
-                id: '12mini', name: 'iPhone 12 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg',
-                storage: [ {gb:'128GB', price:1499} ],
-                colors: [ 
-                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
-                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
-                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
-                    { name: 'Green', hex: '#B2E2C8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
-                    { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
-                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' }
-                ]
+                id: "ip17pm", name: "iPhone 17 Pro Max", basePrice: 10500, condition: "Brand New",
+                img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80",
+                storage: [{ gb: "256GB", add: 0 }, { gb: "512GB", add: 800 }, { gb: "1TB", add: 1600 }, { gb: "2TB", add: 2500 }],
+                colors: ["Cosmic Orange", "Silver", "Blue"]
             }
         ];
 
-        let currentSelection = { phoneObj: null, gb: null, price: null, colorObj: null };
+        let activeProduct = null;
+        let selectedStorageIdx = 0;
+        let selectedColor = "";
 
-        // Generate the Carousel HTML dynamically based on the JS object
-        function populateCarousel() {
-            const track = document.getElementById('productTrack');
-            allPhonesData.forEach(phone => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.onclick = () => openPhoneModal(phone.id);
+        // Render phones into the track
+        function renderPhones() {
+            const track = document.getElementById("productTrack");
+            track.innerHTML = products.map((prod, idx) => {
+                const badgeClass = prod.condition === "Brand New" ? "badge-brand-new" : "badge-open-box";
+                const basePriceFormatted = `TT$${prod.basePrice.toLocaleString()}`;
                 
-                card.innerHTML = `
-                    <div class="product-image-box">
-                        <img src="${phone.defaultImg}" alt="${phone.name}">
+                return `
+                    <div class="product-card" onclick="openModal(${idx})">
+                        <div class="product-image-box">
+                            <img src="${prod.img}" alt="${prod.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${prod.name}</h3>
+                            <div class="specs">${prod.storage.map(s => s.gb).join(" • ")}</div>
+                            <div class="price">From ${basePriceFormatted}</div>
+                            <span class="badge-tag ${badgeClass}">${prod.condition}</span>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3>${phone.name}</h3>
-                        <p class="specs">${phone.storage[0].gb} • ${phone.colors.length} Color(s)</p>
-                        <div class="price">TT$${phone.storage[0].price.toLocaleString()}</div>
-                    </div>
-                    <div class="badge-tag ${phone.badgeClass}">${phone.condition}</div>
                 `;
-                track.appendChild(card);
-            });
+            }).join("");
         }
 
-        // Initialize Carousel
-        populateCarousel();
-
-        function openPhoneModal(id) {
-            const data = allPhonesData.find(p => p.id === id);
-            if(!data) return;
-
-            currentSelection.phoneObj = data;
-            currentSelection.gb = data.storage[0].gb;
-            currentSelection.price = data.storage[0].price;
-            currentSelection.colorObj = data.colors[0]; // Set default color
-
-            // Populate Modal Text
-            document.getElementById('modalTitle').innerText = data.name;
-            document.getElementById('modalCondition').innerText = data.condition;
-            
-            // Set Badge Styling inside Modal
-            const condBadge = document.getElementById('modalCondition');
-            condBadge.className = `modal-condition ${data.badgeClass}`;
-            
-            renderStorageOptions(data.storage);
-            renderColorOptions(data.colors);
-            updateModalDisplay(); // Also updates image
-
-            document.getElementById('productModal').style.display = 'flex';
+        function slideCarousel(offset) {
+            document.getElementById("productTrack").scrollBy({ left: offset, behavior: 'smooth' });
         }
 
-        function renderStorageOptions(storageArray) {
-            const container = document.getElementById('storageOptions');
-            container.innerHTML = '';
-            storageArray.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = `var-btn ${opt.gb === currentSelection.gb ? 'active' : ''}`;
-                btn.innerText = opt.gb;
-                btn.onclick = () => {
-                    currentSelection.gb = opt.gb;
-                    currentSelection.price = opt.price;
-                    renderStorageOptions(storageArray);
-                    updateModalDisplay();
-                };
-                container.appendChild(btn);
-            });
+        // Open Modal and inject interactive storage & colors
+        function openModal(prodIdx) {
+            activeProduct = products[prodIdx];
+            selectedStorageIdx = 0;
+            selectedColor = activeProduct.colors[0];
+
+            document.getElementById("modalImg").src = activeProduct.img;
+            document.getElementById("modalTitle").innerText = activeProduct.name;
+            document.getElementById("modalCondition").innerText = activeProduct.condition;
+            document.getElementById("selectedColorName").innerText = selectedColor;
+
+            // Render storage buttons
+            const storageContainer = document.getElementById("modalStorage");
+            storageContainer.innerHTML = activeProduct.storage.map((st, idx) => `
+                <button class="var-btn ${idx === 0 ? 'active' : ''}" onclick="selectStorage(${idx}, this)">
+                    ${st.gb}
+                </button>
+            `).join("");
+
+            // Render color swatches
+            const colorContainer = document.getElementById("modalColors");
+            colorContainer.innerHTML = activeProduct.colors.map((color, idx) => {
+                const hex = colorHexMap[color] || "#CCCCCC";
+                return `
+                    <button class="color-btn ${idx === 0 ? 'active' : ''}" 
+                            style="background-color: ${hex};" 
+                            title="${color}" 
+                            onclick="selectColor('${color}', this)">
+                    </button>
+                `;
+            }).join("");
+
+            updateModalPriceAndLink();
+            document.getElementById("productModal").style.display = "flex";
         }
 
-        function renderColorOptions(colorsArray) {
-            const container = document.getElementById('colorOptions');
-            container.innerHTML = '';
-            colorsArray.forEach(color => {
-                const btn = document.createElement('button');
-                btn.className = `color-btn ${color.name === currentSelection.colorObj.name ? 'active' : ''}`;
-                btn.style.backgroundColor = color.hex;
-                btn.title = color.name; // Tooltip on hover
-                
-                btn.onclick = () => {
-                    currentSelection.colorObj = color;
-                    renderColorOptions(colorsArray); // Re-render to update active border
-                    updateModalDisplay(); // Updates the picture!
-                };
-                container.appendChild(btn);
-            });
+        function selectStorage(idx, btnEl) {
+            selectedStorageIdx = idx;
+            const buttons = document.getElementById("modalStorage").getElementsByClassName("var-btn");
+            for (let b of buttons) b.classList.remove("active");
+            btnEl.classList.add("active");
+            updateModalPriceAndLink();
         }
 
-        function updateModalDisplay() {
-            // Update the Image based on selected color object
-            const imgElement = document.getElementById('modalImg');
-            imgElement.style.opacity = 0; // Fade out effect
-            setTimeout(() => {
-                imgElement.src = currentSelection.colorObj.img;
-                imgElement.style.opacity = 1; // Fade in effect
-            }, 150);
+        function selectColor(colorName, btnEl) {
+            selectedColor = colorName;
+            document.getElementById("selectedColorName").innerText = colorName;
+            const swatches = document.getElementById("modalColors").getElementsByClassName("color-btn");
+            for (let s of swatches) s.classList.remove("active");
+            btnEl.classList.add("active");
+            updateModalPriceAndLink();
+        }
+
+        function updateModalPriceAndLink() {
+            const currentStorage = activeProduct.storage[selectedStorageIdx];
+            const finalPrice = activeProduct.basePrice + currentStorage.add;
             
-            // Update Price
-            document.getElementById('modalPrice').innerText = `TT$${currentSelection.price.toLocaleString()}`;
+            document.getElementById("modalPrice").innerText = `TT$${finalPrice.toLocaleString()}`;
             
-            // Update WhatsApp Link
-            const waNumber = '18683308360';
-            const msg = `Hi Urban Connect TT! I'm interested in the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price}. I'd like to pay via Card/Cash. Is this available?`;
-            const encodedMsg = encodeURIComponent(msg);
-            document.getElementById('modalBuyBtn').href = `https://wa.me/${waNumber}?text=${encodedMsg}`;
+            const message = `Hi Urban Connect TT, I want to order the ${activeProduct.name} (${currentStorage.gb}, ${selectedColor}) listed at TT$${finalPrice.toLocaleString()}.`;
+            const encodedMsg = encodeURIComponent(message);
+            document.getElementById("modalBuyBtn").href = `https://wa.me/18683308360?text=${encodedMsg}`;
         }
 
         function closeModal(e) {
-            if (e.target.id === 'productModal') {
-                document.getElementById('productModal').style.display = 'none';
+            if (e.target.id === "productModal" || e.target.closest(".modal-close")) {
+                document.getElementById("productModal").style.display = "none";
             }
         }
+
+        // Initialize page
+        renderPhones();
     </script>
 </body>
 </html>
