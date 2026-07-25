@@ -3,557 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Montserrat & Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
-    
+    <title>Urban Connect TT</title>
     <style>
-        :root {
-            --bg-dark: #000000;
-            --bg-navy: #0A1628;
-            --primary-blue: #0A58CA;
-            --primary-blue-hover: #084298;
-            --accent-green: #25D366;
-            --text-main: #111827;
-            --text-light: #FFFFFF;
-            --text-gray: #6B7280;
-            --bg-light: #FFFFFF;
-            --bg-offwhite: #F8FAFC;
-            --border-light: #E5E7EB;
-            --border-dark: #1E293B;
-            --card-btn-dark: #0F172A;
-            --checkout-btn: #111827;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; }
-
-        /* --- Top Bar --- */
-        .top-bar {
-            background-color: #111; color: var(--text-light);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 50px; font-size: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .top-info { display: flex; gap: 25px; flex-wrap: wrap; }
-        .top-info span { display: inline-flex; align-items: center; gap: 8px; color: #D1D5DB; }
-        .top-info i { color: #60A5FA; }
-        .top-socials { display: flex; gap: 15px; }
-        .top-socials i { cursor: pointer; color: #FFF; font-size: 0.95rem; transition: color 0.2s; }
-        .top-socials i:hover { color: #60A5FA; }
-
-        /* --- Main Navigation (Dark Theme for Logo) --- */
-        .navbar {
-            background-color: var(--bg-dark); display: flex; justify-content: space-between;
-            align-items: center; padding: 15px 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .logo-box img { 
-            height: 60px;
-            object-fit: contain;
-        }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; }
+        header { background-color: #fff; padding: 20px; text-align: center; border-bottom: 1px solid #ddd; }
+        header img { max-height: 80px; }
         
-        .nav-links { display: flex; list-style: none; gap: 30px; }
-        .nav-links a { text-decoration: none; color: #D1D5DB; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
-        .nav-links a:hover, .nav-links a.active { color: #FFF; }
+        .info-bar { background-color: #007bff; color: white; text-align: center; padding: 10px; font-weight: bold; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         
-        .nav-icons { display: flex; align-items: center; gap: 20px; font-size: 1.1rem; color: #FFF; }
-        .nav-icons i { cursor: pointer; transition: color 0.2s; }
-        .nav-icons i:hover { color: #60A5FA; }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(10, 22, 40, 0.8) 100%),
-                        url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            color: var(--text-light); text-align: center; padding: 100px 20px;
-            display: flex; flex-direction: column; align-items: center;
-        }
-        .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; color: #60A5FA; text-transform: uppercase; margin-bottom: 15px; }
-        .hero-logo-img { max-width: 400px; width: 100%; margin-bottom: 20px; }
-        .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
-        .hero p { font-size: 1.1rem; color: #D1D5DB; margin-bottom: 40px; }
+        .product-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .product-card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 8px; width: 300px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .product-card img { max-width: 100%; height: 250px; object-fit: contain; margin-bottom: 15px; }
         
-        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .btn { padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; border: 2px solid transparent; text-transform: uppercase; }
-        .btn-blue { background-color: var(--primary-blue); color: #FFF; }
-        .btn-blue:hover { background-color: var(--primary-blue-hover); }
-        .btn-dark { background-color: transparent; color: #FFF; border-color: rgba(255,255,255,0.3); }
-        .btn-dark:hover { background-color: rgba(255,255,255,0.1); border-color: #FFF; }
-
-        /* --- Trust Badges Bar --- */
-        .trust-bar {
-            background-color: var(--bg-navy); padding: 25px 50px;
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .trust-item { display: flex; align-items: center; gap: 15px; color: #FFF; }
-        .trust-icon {
-            width: 45px; height: 45px; border-radius: 12px; background: rgba(255,255,255,0.05);
-            display: flex; align-items: center; justify-content: center; color: #60A5FA; font-size: 1.4rem; border: 1px solid rgba(255,255,255,0.1);
-        }
-        .trust-text h4 { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; }
-        .trust-text p { font-size: 0.75rem; color: #9CA3AF; }
-
-        /* --- Dynamic Product Section --- */
-        .carousel-section { padding: 70px 50px; max-width: 1600px; margin: 0 auto; background: #FFF; }
-        .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 2px solid #F3F4F6; padding-bottom: 15px;}
-        .section-header-row h2 { font-size: 1.8rem; font-weight: 800; color: #111827; text-transform: uppercase; }
-        .view-all-btn { color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.9rem; border: 1px solid var(--primary-blue); padding: 8px 16px; border-radius: 6px; }
-        .view-all-btn:hover { background: var(--primary-blue); color: #FFF; }
+        /* Modal Styles */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 1000; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 800px; max-width: 90%; display: flex; gap: 30px; position: relative; }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #666; }
+        .close:hover { color: #000; }
         
-        .carousel-container { position: relative; display: flex; align-items: center; }
-        .arrow-btn {
-            width: 50px; height: 50px; border-radius: 50%; background: #FFF; border: 1px solid var(--border-light);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; color: #111827; cursor: pointer; position: absolute; z-index: 10; transition: all 0.2s;
-        }
-        .arrow-btn:hover { background: var(--primary-blue); color: #FFF; border-color: var(--primary-blue); }
-        .arrow-left { left: -25px; }
-        .arrow-right { right: -25px; }
-
-        .product-track { display: flex; gap: 30px; overflow-x: auto; scroll-behavior: smooth; padding: 15px 10px 40px; scrollbar-width: none; }
-        .product-track::-webkit-scrollbar { display: none; }
-
-        .product-card {
-            background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 12px;
-            padding: 25px; min-width: 280px; max-width: 280px; flex-shrink: 0;
-            display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
-        }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: transparent; }
+        .modal-left { flex: 1; text-align: center; background: #f8f9fa; padding: 20px; border-radius: 8px; }
+        .modal-left img { max-width: 100%; height: 350px; object-fit: contain; }
         
-        .product-image-box { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .product-image-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
-
-        .product-info h3 { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
-        .product-info .specs { font-size: 0.85rem; color: #6B7280; margin-bottom: 15px; font-weight: 500;}
-        .product-info .price { font-size: 1.6rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 15px; }
+        .modal-right { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .modal-right h2 { margin-top: 0; font-size: 24px; }
+        .modal-right h3 { color: #007bff; font-size: 28px; margin: 10px 0 20px 0; }
         
-        .badge-tag { display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #FFF; margin-top: auto; align-self: flex-start; }
-        .badge-brand-new { background-color: #111827; }
-        .badge-open-box { background-color: #4B5563; }
-        .badge-esim { background-color: #0369A1; }
-
-        /* --- Social Proof & Payment Section --- */
-        .proof-section {
-            background: #FFF; padding: 50px; border-bottom: 1px solid var(--border-light);
-            display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; align-items: center;
-        }
-        .google-rating { text-align: center; border-right: 1px solid var(--border-light); padding-right: 20px; }
-        .google-rating h4 { font-size: 0.8rem; font-weight: 700; color: #6B7280; text-transform: uppercase; margin-bottom: 5px; }
-        .google-rating .score { font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; }
-        .google-rating .stars { color: #FBBF24; font-size: 1.3rem; margin: 8px 0; }
-        .google-rating p { font-size: 0.8rem; color: #6B7280; margin-bottom: 12px; }
-        .btn-outline { display: inline-block; padding: 8px 20px; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; transition: 0.2s;}
-        .btn-outline:hover { background: var(--primary-blue); color: #FFF; }
-
-        .trust-badges-center { display: flex; justify-content: space-around; text-align: center; }
-        .badge-col i { font-size: 2.5rem; color: #374151; margin-bottom: 15px; }
-        .badge-col h5 { font-size: 0.9rem; font-weight: 800; color: #111827; text-transform: uppercase; }
-
-        .payment-types { text-align: center; border-left: 1px solid var(--border-light); padding-left: 20px; }
-        .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 10px; text-transform: uppercase; }
-        .payment-types .sub-text { font-size: 0.75rem; color: #6B7280; margin-bottom: 15px; font-weight: 400; text-transform: none; }
-        .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 2.2rem; color: #111827; }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--bg-dark); color: #FFF;
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
-            padding: 60px 50px; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .footer-col { display: flex; flex-direction: column; gap: 12px; }
-        .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 15px; line-height: 1.6; font-size: 0.9rem;}
-        .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; }
-        .footer-social-icons { display: flex; gap: 15px; margin-top: 10px; }
-        .footer-social-icons a {
-            width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF;
-            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem;
-        }
-        .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
-
-        /* --- Product Modal (Online Checkout Layout) --- */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center;
-            padding: 20px; backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background: #FFF; border-radius: 16px; width: 100%; max-width: 950px;
-            display: flex; overflow: hidden; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-            animation: modalFadeIn 0.3s ease;
-        }
-        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .color-options { display: flex; gap: 15px; margin-top: 10px; margin-bottom: 30px; }
+        .color-btn { width: 35px; height: 35px; border-radius: 50%; border: 3px solid transparent; cursor: pointer; box-shadow: 0 0 0 1px #ccc; }
+        .color-btn.active { box-shadow: 0 0 0 2px #007bff; }
         
-        .modal-close {
-            position: absolute; top: 20px; right: 20px; background: #F3F4F6; border: none;
-            width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; color: #111827; transition: 0.2s; z-index: 10;
-        }
-        .modal-close:hover { background: #E5E7EB; }
-
-        .modal-left { width: 50%; background: #F8FAFC; padding: 40px; display: flex; align-items: center; justify-content: center; position: relative; border-right: 1px solid var(--border-light);}
-        .modal-left img { max-width: 100%; max-height: 400px; object-fit: contain; transition: opacity 0.2s ease-in-out; border-radius: 12px; }
+        .btn { display: inline-block; padding: 15px 20px; background: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; cursor: pointer; border: none; font-size: 16px; font-weight: bold; width: 100%; }
+        .btn:hover { background: #0056b3; }
         
-        .modal-right { width: 50%; padding: 40px; display: flex; flex-direction: column; }
-        .modal-title { font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #111827; line-height: 1.1;}
-        .modal-condition { display: inline-block; padding: 4px 10px; background: #111827; color: #FFF; font-size: 0.75rem; font-weight: 700; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; align-self: flex-start; }
-        .modal-price { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
-
-        .variant-group { margin-bottom: 25px; }
-        .variant-group h4 { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 12px; text-transform: uppercase; display: flex; justify-content: space-between;}
-        .variant-options { display: flex; gap: 10px; flex-wrap: wrap; }
-        
-        .var-btn {
-            padding: 12px 18px; border: 2px solid #E5E7EB; border-radius: 8px; background: #FFF;
-            font-size: 0.95rem; font-weight: 700; color: #374151; cursor: pointer; transition: all 0.2s;
-        }
-        .var-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-        .var-btn.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #FFF; }
-
-        .color-btn {
-            width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 0 0 1px #D1D5DB;
-            cursor: pointer; transition: all 0.2s; position: relative;
-        }
-        .color-btn:hover { transform: scale(1.1); }
-        .color-btn.active { box-shadow: 0 0 0 2px var(--primary-blue); }
-
-        /* Online Checkout Buttons */
-        .checkout-actions { display: flex; flex-direction: column; gap: 12px; margin-top: auto; }
-        
-        .btn-add-cart {
-            width: 100%; padding: 16px; border-radius: 8px; background: #FFF; color: #111827;
-            text-align: center; font-size: 1rem; font-weight: 800; border: 2px solid #111827;
-            cursor: pointer; transition: 0.2s; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-        .btn-add-cart:hover { background: #F3F4F6; }
-
-        .btn-buy-now {
-            width: 100%; padding: 16px; border-radius: 8px; background: var(--checkout-btn); color: #FFF;
-            text-align: center; font-size: 1rem; font-weight: 800; border: none;
-            cursor: pointer; transition: 0.2s; text-transform: uppercase;
-        }
-        .btn-buy-now:hover { background: #000; }
-
-        .secure-checkout {
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            margin-top: 15px; font-size: 0.75rem; color: #6B7280; font-weight: 600; text-transform: uppercase;
-        }
-        .secure-icons { display: flex; gap: 10px; font-size: 1.5rem; color: #9CA3AF; }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .proof-section, footer { grid-template-columns: 1fr 1fr; }
-            .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
-            .modal-left, .modal-right { width: 100%; border-right: none; }
-            .modal-left { border-bottom: 1px solid var(--border-light); padding: 20px; }
-        }
-        @media (max-width: 768px) {
-            .top-bar, .nav-links { display: none; }
-            .navbar, .carousel-section, .proof-section, footer { padding: 30px 20px; }
-            .proof-section, footer { grid-template-columns: 1fr; }
-        }
+        .payment-info { margin-top: 50px; text-align: center; padding: 30px; background: white; border-radius: 8px; border: 1px solid #ddd; }
+        .payment-info h3 { margin-top: 0; }
     </style>
 </head>
 <body>
 
-    <!-- Top Info Bar -->
-    <div class="top-bar">
-        <div class="top-info">
-            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
-            <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
+    <header>
+        <img src="WhatsApp Image 2026-07-25 at 6.41.24 PM.jpeg" alt="Urban Connect TT Logo">
+    </header>
+
+    <div class="info-bar">
+        Shop our latest inventory online
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 30px;">Available Phones</h2>
+        
+        <div class="product-grid" id="productGrid">
+            <!-- Products injected by JavaScript -->
         </div>
-        <div class="top-socials">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-tiktok"></i>
+
+        <div class="payment-info">
+            <h3>Secure Checkout</h3>
+            <p>We are fully integrated for <strong>Online Payments</strong>. Check out securely right here on the website.</p>
         </div>
     </div>
 
-    <!-- Main Navbar -->
-    <nav class="navbar">
-        <a href="#" class="logo-box">
-            <img src="WhatsApp Image 2026-07-25 at 6.41.24 PM.jpeg" alt="Urban Connect TT Logo">
-        </a>
-        <ul class="nav-links">
-            <li><a href="#" class="active">HOME</a></li>
-            <li><a href="#phones">SHOP PHONES</a></li>
-            <li><a href="#accessories">ACCESSORIES</a></li>
-            <li><a href="#contact">CONTACT US</a></li>
-        </ul>
-        <div class="nav-icons">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <i class="fa-regular fa-user"></i>
-            <a href="#" style="color: #FFF; position: relative;">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span style="position: absolute; top:-8px; right:-10px; background:var(--primary-blue); color:#FFF; font-size:0.6rem; font-weight:bold; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center;">0</span>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <img src="WhatsApp Image 2026-07-25 at 6.41.24 PM.jpeg" alt="Urban Connect TT" class="hero-logo-img">
-        <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
-        <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
-        <div class="hero-buttons">
-            <a href="#phones" class="btn btn-blue">SHOP ONLINE</a>
-        </div>
-    </section>
-
-    <!-- Trust Bar -->
-    <div class="trust-bar">
-        <div class="trust-item">
-            <div class="trust-icon"><i class="fa-regular fa-square-check"></i></div>
-            <div class="trust-text"><h4>90-Day Warranty</h4><p>Shop with confidence</p></div>
-        </div>
-        <div class="trust-item">
-            <div class="trust-icon"><i class="fa-solid fa-box-open"></i></div>
-            <div class="trust-text"><h4>Open Box & Brand New</h4><p>Quality you can trust</p></div>
-        </div>
-        <div class="trust-item">
-            <div class="trust-icon"><i class="fa-solid fa-lock"></i></div>
-            <div class="trust-text"><h4>Secure Online Checkout</h4><p>Safe & Encrypted</p></div>
-        </div>
-    </div>
-
-    <!-- Product Carousel Section -->
-    <section class="carousel-section" id="phones">
-        <div class="section-header-row">
-            <h2>SHOP OUR LATEST PHONES</h2>
-            <a href="#phones" class="view-all-btn">VIEW ALL PHONES ></a>
-        </div>
-        <div class="carousel-container">
-            <button class="arrow-btn arrow-left" onclick="slideCarousel(-350)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="product-track" id="productTrack">
-                <!-- Javascript will inject all phones here -->
-            </div>
-            <button class="arrow-btn arrow-right" onclick="slideCarousel(350)"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-    <!-- Social Proof & Payment Section -->
-    <section class="proof-section">
-        <div class="google-rating">
-            <h4>Google Rating</h4>
-            <div class="score">4.9</div>
-            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-            <p>Based on 200+ reviews</p>
-        </div>
-        <div class="trust-badges-center">
-            <div class="badge-col">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h5>Quality<br>Products</h5>
-            </div>
-            <div class="badge-col">
-                <i class="fa-regular fa-circle-check"></i>
-                <h5>Trusted by<br>Thousands</h5>
-            </div>
-        </div>
-        <div class="payment-types">
-            <p>Secure Online Checkout</p>
-            <div class="sub-text">We process payments securely online.</div>
-            <div class="pay-icons">
-                <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
-                <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
-                <i class="fa-brands fa-apple-pay" style="color: #000;"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dynamic Product Modal (Online Checkout) -->
-    <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="document.getElementById('productModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
-            
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
             <div class="modal-left">
-                <img id="modalImg" src="" alt="Phone Image">
+                <img id="modalImage" src="" alt="Phone">
             </div>
             <div class="modal-right">
-                <div class="modal-condition" id="modalCondition">Brand New</div>
-                <h2 class="modal-title" id="modalTitle">iPhone</h2>
-                <div class="modal-price" id="modalPrice">TT$0</div>
-
-                <div class="variant-group">
-                    <h4>Storage Capacity</h4>
-                    <div class="variant-options" id="storageOptions">
-                        <!-- Storage buttons injected here -->
+                <h2 id="modalTitle">Phone Title</h2>
+                <h3 id="modalPrice">$0</h3>
+                
+                <div>
+                    <strong style="display: block; margin-bottom: 10px;">Color: <span id="colorName" style="font-weight: normal;"></span></strong>
+                    <div class="color-options" id="colorContainer">
+                        <!-- Colors injected by JavaScript -->
                     </div>
                 </div>
 
-                <div class="variant-group">
-                    <h4><span id="selectedColorName">Color</span></h4>
-                    <div class="variant-options" id="colorOptions">
-                        <!-- Color swatches injected here -->
-                    </div>
-                </div>
-
-                <div class="checkout-actions">
-                    <button class="btn-add-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                    <button class="btn-buy-now">Buy it Now</button>
-                </div>
-
-                <div class="secure-checkout">
-                    <span>Guaranteed Safe & Secure Checkout</span>
-                    <div class="secure-icons">
-                        <i class="fa-brands fa-cc-visa"></i>
-                        <i class="fa-brands fa-cc-mastercard"></i>
-                        <i class="fa-brands fa-apple-pay"></i>
-                        <i class="fa-brands fa-cc-amex"></i>
-                    </div>
-                </div>
+                <button class="btn">Add to Cart</button>
             </div>
         </div>
     </div>
 
     <script>
-        function slideCarousel(offset) {
-            const track = document.getElementById('productTrack');
-            track.scrollBy({ left: offset, behavior: 'smooth' });
-        }
-
-        // ==========================================
-        // PHONE DATA ENGINE (Fixed Unique URLs)
-        // Note: Replace the placehold.co links with your own Shopify Image CDN links!
-        // ==========================================
-        const allPhonesData = [
-            // --- iPhone 17 Series ---
+        // Data updated to correct models and unique placeholder URLs so the images actually change
+        const phones = [
             {
-                id: '17promax', name: 'iPhone 17 Pro Max', condition: 'Brand New', badgeClass: 'badge-brand-new',
-                defaultImg: 'https://placehold.co/400x500/1C1C1E/FFFFFF?text=iPhone+17+Pro+Max%0ABlack+Titanium',
-                storage: [ {gb:'256GB', price:10499}, {gb:'512GB', price:11999} ],
+                id: '17promax', 
+                name: 'iPhone 17 Pro Max', 
+                price: 'TT$10,499',
                 colors: [
-                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://placehold.co/400x500/1C1C1E/FFFFFF?text=iPhone+17+Pro+Max%0ABlack+Titanium' },
-                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://placehold.co/400x500/F2F1ED/000000?text=iPhone+17+Pro+Max%0AWhite+Titanium' },
-                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://placehold.co/400x500/A8A6A1/FFFFFF?text=iPhone+17+Pro+Max%0ANatural+Titanium' },
-                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://placehold.co/400x500/484F5A/FFFFFF?text=iPhone+17+Pro+Max%0ABlue+Titanium' }
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://placehold.co/400x500/1C1C1E/FFFFFF?text=17+Pro+Max%0ABlack+Titanium' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://placehold.co/400x500/F2F1ED/000000?text=17+Pro+Max%0AWhite+Titanium' },
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://placehold.co/400x500/A8A6A1/FFFFFF?text=17+Pro+Max%0ANatural+Titanium' }
                 ]
             },
             {
-                id: '17pro', name: 'iPhone 17 Pro', condition: 'Brand New', badgeClass: 'badge-brand-new',
-                defaultImg: 'https://placehold.co/400x500/A8A6A1/FFFFFF?text=iPhone+17+Pro%0ANatural+Titanium',
-                storage: [ {gb:'256GB', price:9599}, {gb:'512GB', price:10599} ],
+                id: '17pro', 
+                name: 'iPhone 17 Pro', 
+                price: 'TT$9,599',
                 colors: [
-                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://placehold.co/400x500/A8A6A1/FFFFFF?text=iPhone+17+Pro%0ANatural+Titanium' },
-                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://placehold.co/400x500/1C1C1E/FFFFFF?text=iPhone+17+Pro%0ABlack+Titanium' },
-                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://placehold.co/400x500/F2F1ED/000000?text=iPhone+17+Pro%0AWhite+Titanium' }
-                ]
-            },
-            {
-                id: '16promax', name: 'iPhone 16 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
-                defaultImg: 'https://placehold.co/400x500/1C1C1E/FFFFFF?text=iPhone+16+Pro+Max%0ABlack',
-                storage: [ {gb:'256GB', price:6399} ],
-                colors: [
-                    { name: 'Black', hex: '#1c1c1c', img: 'https://placehold.co/400x500/1C1C1E/FFFFFF?text=iPhone+16+Pro+Max%0ABlack' },
-                    { name: 'White', hex: '#EBEBEB', img: 'https://placehold.co/400x500/EBEBEB/000000?text=iPhone+16+Pro+Max%0AWhite' }
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://placehold.co/400x500/A8A6A1/FFFFFF?text=17+Pro%0ANatural+Titanium' },
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://placehold.co/400x500/1C1C1E/FFFFFF?text=17+Pro%0ABlack+Titanium' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://placehold.co/400x500/F2F1ED/000000?text=17+Pro%0AWhite+Titanium' }
                 ]
             }
         ];
 
-        let currentSelection = { phoneObj: null, gb: null, price: null, colorObj: null };
-
-        function populateCarousel() {
-            const track = document.getElementById('productTrack');
-            allPhonesData.forEach(phone => {
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            phones.forEach(phone => {
+                const defaultColor = phone.colors[0];
                 const card = document.createElement('div');
                 card.className = 'product-card';
-                card.onclick = () => openPhoneModal(phone.id);
-                
+                card.onclick = () => openModal(phone);
                 card.innerHTML = `
-                    <div class="product-image-box">
-                        <img src="${phone.defaultImg}" alt="${phone.name}">
-                    </div>
-                    <div class="product-info">
-                        <h3>${phone.name}</h3>
-                        <p class="specs">${phone.storage[0].gb} • ${phone.colors.length} Color(s)</p>
-                        <div class="price">TT$${phone.storage[0].price.toLocaleString()}</div>
-                    </div>
-                    <div class="badge-tag ${phone.badgeClass}">${phone.condition}</div>
+                    <img src="${defaultColor.img}" alt="${phone.name}">
+                    <h3>${phone.name}</h3>
+                    <p style="color: #007bff; font-weight: bold; font-size: 18px; margin: 10px 0;">${phone.price}</p>
                 `;
-                track.appendChild(card);
+                grid.appendChild(card);
             });
         }
 
-        populateCarousel();
-
-        function openPhoneModal(id) {
-            const data = allPhonesData.find(p => p.id === id);
-            if(!data) return;
-
-            currentSelection.phoneObj = data;
-            currentSelection.gb = data.storage[0].gb;
-            currentSelection.price = data.storage[0].price;
-            currentSelection.colorObj = data.colors[0]; // Set default color
-
-            document.getElementById('modalTitle').innerText = data.name;
-            document.getElementById('modalCondition').innerText = data.condition;
-            
-            const condBadge = document.getElementById('modalCondition');
-            condBadge.className = `modal-condition ${data.badgeClass}`;
-            
-            renderStorageOptions(data.storage);
-            renderColorOptions(data.colors);
-            updateModalDisplay(); 
-
+        function openModal(phone) {
             document.getElementById('productModal').style.display = 'flex';
-        }
-
-        function renderStorageOptions(storageArray) {
-            const container = document.getElementById('storageOptions');
-            container.innerHTML = '';
-            storageArray.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = `var-btn ${opt.gb === currentSelection.gb ? 'active' : ''}`;
-                btn.innerText = opt.gb;
-                btn.onclick = () => {
-                    currentSelection.gb = opt.gb;
-                    currentSelection.price = opt.price;
-                    renderStorageOptions(storageArray);
-                    updateModalDisplay();
-                };
-                container.appendChild(btn);
-            });
-        }
-
-        function renderColorOptions(colorsArray) {
-            const container = document.getElementById('colorOptions');
-            container.innerHTML = '';
-            colorsArray.forEach(color => {
-                const btn = document.createElement('button');
-                btn.className = `color-btn ${color.name === currentSelection.colorObj.name ? 'active' : ''}`;
+            document.getElementById('modalTitle').innerText = phone.name;
+            document.getElementById('modalPrice').innerText = phone.price;
+            
+            // Render the color buttons
+            const colorContainer = document.getElementById('colorContainer');
+            colorContainer.innerHTML = '';
+            
+            phone.colors.forEach((color, index) => {
+                const btn = document.createElement('div');
+                // Set the first color as active by default
+                btn.className = index === 0 ? 'color-btn active' : 'color-btn';
                 btn.style.backgroundColor = color.hex;
-                btn.title = color.name;
                 
                 btn.onclick = () => {
-                    currentSelection.colorObj = color;
-                    renderColorOptions(colorsArray); 
-                    updateModalDisplay(); 
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    // Update the image
+                    updateModalImage(color);
                 };
-                container.appendChild(btn);
+                colorContainer.appendChild(btn);
             });
+
+            // Set the modal to show the first color by default
+            updateModalImage(phone.colors[0]);
         }
 
-        function updateModalDisplay() {
-            const imgElement = document.getElementById('modalImg');
-            
-            imgElement.style.opacity = 0; 
-            
-            setTimeout(() => {
-                imgElement.src = currentSelection.colorObj.img;
-                imgElement.style.opacity = 1; 
-            }, 200);
-            
-            document.getElementById('modalPrice').innerText = `TT$${currentSelection.price.toLocaleString()}`;
-            document.getElementById('selectedColorName').innerText = `Color: ${currentSelection.colorObj.name}`;
+        function updateModalImage(colorObj) {
+            document.getElementById('modalImage').src = colorObj.img;
+            document.getElementById('colorName').innerText = colorObj.name;
         }
 
-        function closeModal(e) {
-            if (e.target.id === 'productModal') {
-                document.getElementById('productModal').style.display = 'none';
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
         }
+
+        // Load the products when the page loads
+        renderProducts();
     </script>
 </body>
 </html>
