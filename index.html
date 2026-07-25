@@ -10,10 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* =========================================================
-           Visual Overhaul: Matching the Specific Mockup exactly
-           ========================================================= */
-
         :root {
             --bg-dark: #070D18;
             --bg-navy: #0A1628;
@@ -27,6 +23,7 @@
             --bg-offwhite: #F8FAFC;
             --border-light: #E5E7EB;
             --border-dark: #1E293B;
+            --card-btn-dark: #0F172A;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -52,10 +49,10 @@
             align-items: center; padding: 15px 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.8rem; color: #0A1628; letter-spacing: -1px; line-height: 1;}
-        .logo-text span { color: var(--primary-blue); }
-        .logo-sub { font-size: 0.55rem; color: #6B7280; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-top: 2px; }
+        .logo-box img { 
+            height: 45px; /* Adjust this to fit your uploaded logo */
+            object-fit: contain;
+        }
         
         .nav-links { display: flex; list-style: none; gap: 30px; }
         .nav-links a { text-decoration: none; color: #111827; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
@@ -67,13 +64,17 @@
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(to right, rgba(7, 13, 24, 0.9) 0%, rgba(10, 22, 40, 0.7) 100%),
+            /* Replace the URL below with your actual composite store image */
+            background: linear-gradient(to right, rgba(7, 13, 24, 0.85) 0%, rgba(10, 22, 40, 0.75) 100%),
                         url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            color: var(--text-light); text-align: center; padding: 100px 20px;
+            color: var(--text-light); text-align: center; padding: 120px 20px;
+            display: flex; flex-direction: column; align-items: center;
         }
         .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; color: #60A5FA; text-transform: uppercase; margin-bottom: 15px; }
-        .hero-logo-large { font-family: 'Montserrat', sans-serif; font-size: 5rem; font-weight: 900; line-height: 0.9; margin-bottom: 20px; letter-spacing: -2px; }
-        .hero-logo-large span { color: var(--primary-blue); }
+        
+        /* Central Logo Image */
+        .hero-logo-img { max-width: 500px; width: 100%; margin-bottom: 20px; }
+
         .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
         .hero p { font-size: 1.1rem; color: #D1D5DB; margin-bottom: 40px; }
         
@@ -87,7 +88,7 @@
         .btn-white:hover { background-color: #F3F4F6; }
         .btn-white i { color: var(--accent-green); font-size: 1.2rem; }
 
-        /* --- Trust Badges Bar (Directly below hero) --- */
+        /* --- Trust Badges Bar --- */
         .trust-bar {
             background-color: var(--bg-navy); padding: 25px 50px;
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
@@ -121,7 +122,6 @@
         .product-track { display: flex; gap: 30px; overflow-x: auto; scroll-behavior: smooth; padding: 15px 10px 40px; scrollbar-width: none; }
         .product-track::-webkit-scrollbar { display: none; }
 
-        /* Phone Cards */
         .product-card {
             background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 12px;
             padding: 25px; min-width: 280px; max-width: 280px; flex-shrink: 0;
@@ -141,25 +141,67 @@
         .badge-open-box { background-color: #4B5563; }
         .badge-esim { background-color: #0369A1; }
 
-        /* --- Expert Repairs Banner --- */
-        .repairs-banner {
-            background: var(--bg-navy) url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=1920&q=80') center/cover;
-            background-blend-mode: overlay;
-            color: #FFF; display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
-            padding: 80px 50px; align-items: center; border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .repairs-left { max-width: 500px; }
-        .repairs-left h2 { font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase;}
-        .repairs-left p { color: #D1D5DB; font-size: 1.1rem; margin-bottom: 30px; }
+        /* --- Accessories Section (NEW) --- */
+        .accessories-section { padding: 70px 50px; background: var(--bg-offwhite); }
+        .accessories-header { font-size: 1.8rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 40px; }
         
-        .repairs-grid-right { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .accessories-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
+        }
+        
+        .accessory-card {
+            background: #FFF; border-radius: 12px; border: 1px solid var(--border-light);
+            padding: 30px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .accessory-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        
+        .acc-icon {
+            font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .acc-title { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
+        .acc-sub { font-size: 0.8rem; color: #6B7280; margin-bottom: 20px; }
+        .acc-price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
+        
+        .acc-btn {
+            background: var(--card-btn-dark); color: #FFF; width: 100%; padding: 12px;
+            border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+            transition: background 0.2s; margin-top: auto;
+        }
+        .acc-btn:hover { background: #1E293B; }
+
+        /* --- Expert Repairs Banner (UPDATED to match photo) --- */
+        .repairs-banner {
+            background-color: var(--bg-navy);
+            color: #FFF; display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 40px;
+            padding: 0 50px 0 0; align-items: center; border-top: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+        
+        .repairs-img-container {
+            height: 100%; min-height: 350px;
+            background: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=800&q=80') center left/cover no-repeat;
+        }
+
+        .repairs-center { padding: 50px 0; }
+        .repairs-center h2 { font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase;}
+        .repairs-center p { color: #D1D5DB; font-size: 1rem; margin-bottom: 25px; max-width: 300px; }
+        .repairs-center .btn-outline-light { 
+            display: inline-block; padding: 12px 24px; border: 2px solid rgba(255,255,255,0.3); 
+            color: #FFF; text-decoration: none; font-weight: 700; border-radius: 6px; font-size: 0.85rem; 
+            transition: 0.2s; text-transform: uppercase;
+        }
+        .repairs-center .btn-outline-light:hover { background: #FFF; color: var(--bg-navy); }
+        
+        .repairs-grid-right { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;
+        }
         .repair-item-row { display: flex; align-items: center; gap: 15px; }
         .repair-icon-box {
-            width: 50px; height: 50px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);
-            display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
-            color: #FFF; background: transparent; flex-shrink: 0;
+            font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9;
         }
-        .repair-item-row span { font-size: 1rem; font-weight: 600; color: #FFF; }
+        .repair-item-row span { font-size: 0.95rem; font-weight: 400; color: #E5E7EB; }
 
         /* --- Social Proof & Payment Section --- */
         .proof-section {
@@ -179,7 +221,8 @@
         .badge-col h5 { font-size: 0.9rem; font-weight: 800; color: #111827; text-transform: uppercase; }
 
         .payment-types { text-align: center; border-left: 1px solid var(--border-light); padding-left: 20px; }
-        .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 15px; text-transform: uppercase; }
+        .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 10px; text-transform: uppercase; }
+        .payment-types .sub-text { font-size: 0.75rem; color: #6B7280; margin-bottom: 15px; font-weight: 400; text-transform: none; }
         .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 2.2rem; color: #111827; }
         
         /* --- Footer --- */
@@ -260,10 +303,18 @@
             display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; border: none; cursor: pointer; text-transform: uppercase;
         }
         .modal-buy-btn:hover { background: #20BA56; }
+        
+        .payment-info-modal { text-align: center; font-size: 0.75rem; color: #6B7280; margin-top: 15px; }
+        .payment-info-modal i { color: #111827; font-size: 1rem; margin: 0 3px; vertical-align: middle;}
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .repairs-banner, .proof-section, footer { grid-template-columns: 1fr 1fr; }
+            .repairs-banner { grid-template-columns: 1fr; padding: 0; }
+            .repairs-img-container { min-height: 250px; }
+            .repairs-center, .repairs-grid-right { padding: 30px; }
+            .repairs-grid-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+            
+            .proof-section, footer { grid-template-columns: 1fr 1fr; }
             .trust-bar { justify-content: center; }
             .google-rating, .payment-types { border: none; padding: 0; }
             .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
@@ -271,9 +322,8 @@
         }
         @media (max-width: 768px) {
             .top-bar, .nav-links { display: none; }
-            .navbar, .carousel-section, .repairs-banner, .proof-section, footer { padding: 30px 20px; }
-            .hero-logo-large { font-size: 3rem; }
-            .repairs-banner, .proof-section, footer, .repairs-grid-right { grid-template-columns: 1fr; }
+            .navbar, .carousel-section, .proof-section, footer, .accessories-section { padding: 30px 20px; }
+            .proof-section, footer, .repairs-grid-right { grid-template-columns: 1fr; }
             .arrow-left { left: 0; }
             .arrow-right { right: 0; }
         }
@@ -298,10 +348,8 @@
     <!-- Main Navbar -->
     <nav class="navbar">
         <a href="#" class="logo-box">
-            <div>
-                <div class="logo-text">URBAN<span>CONNECT</span>TT</div>
-                <div class="logo-sub">Phones • Consoles • Accessories • Repairs</div>
-            </div>
+            <!-- Upload your actual logo image and replace this src -->
+            <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT Logo">
         </a>
         <ul class="nav-links">
             <li><a href="#" class="active">HOME</a></li>
@@ -324,7 +372,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-welcome">WELCOME TO</div>
-        <div class="hero-logo-large">URBAN<br><span>CONNECT</span>TT</div>
+        <!-- Upload your actual logo image and replace this src -->
+        <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT" class="hero-logo-img">
+        
         <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
         <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
         <div class="hero-buttons">
@@ -353,8 +403,8 @@
             <div class="trust-text"><h4>Lowest Prices</h4><p>We beat the competition</p></div>
         </div>
         <div class="trust-item">
-            <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
-            <div class="trust-text"><h4>Expert Support</h4><p>We're here to help</p></div>
+            <div class="trust-icon"><i class="fa-solid fa-credit-card"></i></div>
+            <div class="trust-text"><h4>Card Payments Accepted</h4><p>Safe & secure checkout</p></div>
         </div>
     </div>
 
@@ -373,17 +423,64 @@
         </div>
     </section>
 
-    <!-- Expert Repairs Banner -->
-    <section class="repairs-banner" id="repairs">
-        <div class="repairs-left">
-            <h2>EXPERT REPAIRS<br>DONE RIGHT</h2>
-            <p>From screen replacements to water damage, we've got you covered with professional diagnostics and premium parts.</p>
-            <a href="https://wa.me/18683308360?text=I%20would%20like%20to%20book%20a%20repair%20for%20my%20device." target="_blank" class="btn btn-blue"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR NOW →</a>
+    <!-- Accessories Section (NEW based on your screenshot) -->
+    <section class="accessories-section" id="accessories">
+        <h2 class="accessories-header">ACCESSORIES</h2>
+        
+        <div class="accessories-grid">
+            <!-- Card 1 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3 class="acc-title">Premium Phone Cases</h3>
+                <p class="acc-sub">Various Styles & Colors</p>
+                <div class="acc-price">TT$80 - $150</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20Premium%20Phone%20Cases." class="acc-btn">Order via WhatsApp</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-regular fa-square"></i></div>
+                <h3 class="acc-title">Clear Hydrogel Screen Protector</h3>
+                <p class="acc-sub">Crystal Clear Protection</p>
+                <div class="acc-price">TT$100</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Clear%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-eye-slash"></i></div>
+                <h3 class="acc-title">Privacy Hydrogel Screen Protector</h3>
+                <p class="acc-sub">Anti-Spy Protection</p>
+                <div class="acc-price">TT$150</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Privacy%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-headphones"></i></div>
+                <h3 class="acc-title">AirPods 4th Gen</h3>
+                <p class="acc-sub">Brand New in Box</p>
+                <div class="acc-price">TT$1,300</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20AirPods%204th%20Gen." class="acc-btn">Order via WhatsApp</a>
+            </div>
         </div>
+    </section>
+
+    <!-- Expert Repairs Banner (UPDATED layout) -->
+    <section class="repairs-banner" id="repairs">
+        <!-- Replace URL with your specific broken phone picture if desired -->
+        <div class="repairs-img-container"></div>
+        
+        <div class="repairs-center">
+            <h2>EXPERT REPAIRS<br>DONE RIGHT</h2>
+            <p>From screen replacements to water damage, we've got you covered.</p>
+            <a href="https://wa.me/18683308360?text=I%20would%20like%20to%20book%20a%20repair%20for%20my%20device." target="_blank" class="btn-outline-light">BOOK A REPAIR NOW →</a>
+        </div>
+        
         <div class="repairs-grid-right">
-            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div><span>Screen Replacement</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-mobile-button"></i></div><span>Screen Replacement</span></div>
             <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-droplet"></i></div><span>Water Damage</span></div>
-            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-battery-full"></i></div><span>Battery Replacement</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-car-battery"></i></div><span>Battery Replacement</span></div>
             <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-camera"></i></div><span>Camera Repair</span></div>
             <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-plug"></i></div><span>Charging Port Repair</span></div>
             <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-ellipsis"></i></div><span>& More Services</span></div>
@@ -414,11 +511,13 @@
             </div>
         </div>
         <div class="payment-types">
-            <p>We Accept</p>
+            <p>Card Payments Accepted</p>
+            <div class="sub-text">Pay easily for devices and repairs via Linx, Visa, or Mastercard.</div>
             <div class="pay-icons">
-                <i class="fa-brands fa-cc-visa"></i>
-                <i class="fa-brands fa-cc-mastercard"></i>
-                <i class="fa-brands fa-apple-pay"></i>
+                <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
+                <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
+                <i class="fa-brands fa-apple-pay" style="color: #000;"></i>
+                <i class="fa-solid fa-credit-card" style="color: #6B7280;"></i> <!-- Representing Linx/Debit -->
             </div>
         </div>
     </section>
@@ -479,6 +578,14 @@
                 <a href="#" id="modalBuyBtn" target="_blank" class="modal-buy-btn">
                     <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
                 </a>
+                
+                <!-- Payment callout inside the modal -->
+                <div class="payment-info-modal">
+                    Secure payment available in-store via 
+                    <i class="fa-brands fa-cc-visa"></i> 
+                    <i class="fa-brands fa-cc-mastercard"></i> 
+                    Linx / Credit Card
+                </div>
             </div>
         </div>
     </div>
@@ -491,18 +598,19 @@
         }
 
         // ==========================================
-        // PHONE DATA ENGINE (Parsed from your Flyer)
-        // Includes Dynamic Image Mapping for Colors
+        // PHONE DATA ENGINE (Expanded Color Palette)
         // ==========================================
         const allPhonesData = [
-            // --- iPhone 17 Series (Brand New / Open Box) ---
+            // --- iPhone 17 Series ---
             {
                 id: '17promax', name: 'iPhone 17 Pro Max', condition: 'Brand New', badgeClass: 'badge-brand-new',
-                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg', // Placeholder until 17 official art is common
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
                 storage: [ {gb:'256GB', price:10499}, {gb:'512GB', price:11999}, {gb:'1TB', price:13399} ],
                 colors: [
                     { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' }
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
                 ]
             },
             {
@@ -510,7 +618,9 @@
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
                 storage: [ {gb:'256GB', price:9599}, {gb:'512GB', price:10599} ],
                 colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
                     { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
                     { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
                 ]
             },
@@ -518,44 +628,65 @@
                 id: '17', name: 'iPhone 17', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
                 storage: [ {gb:'256GB', price:5999} ],
-                colors: [ { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' } ]
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
             },
 
-            // --- iPhone 16 Series (ESIM) ---
+            // --- iPhone 16 Series ---
             {
                 id: '16promax', name: 'iPhone 16 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
                 storage: [ {gb:'256GB', price:6399}, {gb:'512GB', price:6999} ],
                 colors: [
                     { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
-                    { name: 'Silver', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' }
+                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
                 ]
             },
             {
                 id: '16pro', name: 'iPhone 16 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
                 storage: [ {gb:'256GB', price:5699}, {gb:'512GB', price:5999} ],
-                colors: [ { name: 'Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' } ]
+                colors: [ 
+                    { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
             },
             {
                 id: '16plus', name: 'iPhone 16+', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
                 storage: [ {gb:'256GB', price:4999} ],
-                colors: [ { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' } ]
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
             },
             {
                 id: '16', name: 'iPhone 16', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
                 storage: [ {gb:'128GB', price:4499}, {gb:'256GB', price:4799} ],
-                colors: [ { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' } ]
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
             },
 
-            // --- iPhone 15 Series (ESIM) ---
+            // --- iPhone 15 Series ---
             {
                 id: '15promax', name: 'iPhone 15 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
                 storage: [ {gb:'256GB', price:4899}, {gb:'512GB', price:5199} ],
                 colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
                     { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
                     { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' }
                 ]
@@ -564,13 +695,24 @@
                 id: '15pro', name: 'iPhone 15 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
                 storage: [ {gb:'256GB', price:4399}, {gb:'512GB', price:4599} ],
-                colors: [ { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' } ]
+                colors: [ 
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' } 
+                ]
             },
             {
                 id: '15plus', name: 'iPhone 15+', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
                 storage: [ {gb:'256GB', price:3799} ],
-                colors: [ { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' } ]
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
             },
             {
                 id: '15', name: 'iPhone 15', condition: 'ESIM', badgeClass: 'badge-esim',
@@ -578,95 +720,160 @@
                 storage: [ {gb:'128GB', price:3299}, {gb:'256GB', price:3599} ],
                 colors: [
                     { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
-                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
                 ]
             },
 
-            // --- iPhone 14 Series (ESIM) ---
+            // --- iPhone 14 Series ---
             {
                 id: '14promax', name: 'iPhone 14 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg',
                 storage: [ {gb:'256GB', price:4199}, {gb:'512GB', price:4499} ],
                 colors: [
-                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
-                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' }
+                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
                 ]
             },
             {
                 id: '14pro', name: 'iPhone 14 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg',
                 storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3799} ],
-                colors: [ { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' } ]
+                colors: [ 
+                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
+                ]
             },
             {
                 id: '14plus', name: 'iPhone 14+', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
                 storage: [ {gb:'256GB', price:2799} ],
-                colors: [ { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' } ]
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
+                ]
             },
             {
                 id: '14', name: 'iPhone 14', condition: 'ESIM', badgeClass: 'badge-esim',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
                 storage: [ {gb:'128GB', price:2499}, {gb:'256GB', price:2699} ],
-                colors: [ { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' } ]
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
+                ]
             },
 
-            // --- iPhone 13 Series (Open Box) ---
+            // --- iPhone 13 Series ---
             {
                 id: '13promax', name: 'iPhone 13 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg',
                 storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3750}, {gb:'1TB', price:3899} ],
                 colors: [
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
                     { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
-                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
+                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
                 ]
             },
             {
                 id: '13pro', name: 'iPhone 13 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg',
                 storage: [ {gb:'256GB', price:2999} ],
-                colors: [ { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' } ]
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
+                ]
             },
             {
                 id: '13', name: 'iPhone 13', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg',
                 storage: [ {gb:'128GB', price:2199}, {gb:'256GB', price:2399} ],
-                colors: [ { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' } ]
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Green', hex: '#3E5846', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
+                ]
             },
             {
                 id: '13mini', name: 'iPhone 13 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg',
                 storage: [ {gb:'128GB', price:1899} ],
-                colors: [ { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' } ]
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
+                ]
             },
 
-            // --- iPhone 12 Series (Open Box) ---
+            // --- iPhone 12 Series ---
             {
                 id: '12promax', name: 'iPhone 12 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg',
                 storage: [ {gb:'256GB', price:2599} ],
-                colors: [ { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' } ]
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
+                ]
             },
             {
                 id: '12pro', name: 'iPhone 12 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg',
                 storage: [ {gb:'256GB', price:2299} ],
-                colors: [ { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' } ]
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
+                ]
             },
             {
                 id: '12', name: 'iPhone 12', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg',
                 storage: [ {gb:'64GB', price:1499}, {gb:'128GB', price:1799} ],
                 colors: [
+                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Green', hex: '#E1F8E9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
                     { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
-                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' }
+                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' }
                 ]
             },
             {
                 id: '12mini', name: 'iPhone 12 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
                 defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg',
                 storage: [ {gb:'128GB', price:1499} ],
-                colors: [ { name: 'Green', hex: '#B2E2C8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' } ]
+                colors: [ 
+                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Green', hex: '#B2E2C8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' }
+                ]
             }
         ];
 
@@ -771,7 +978,7 @@
             
             // Update WhatsApp Link
             const waNumber = '18683308360';
-            const msg = `Hi Urban Connect TT! I'm interested in the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price}. Is this available?`;
+            const msg = `Hi Urban Connect TT! I'm interested in the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price}. I'd like to pay via Card/Cash. Is this available?`;
             const encodedMsg = encodeURIComponent(msg);
             document.getElementById('modalBuyBtn').href = `https://wa.me/${waNumber}?text=${encodedMsg}`;
         }
