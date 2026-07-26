@@ -1,1473 +1,993 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
-  <meta name="description" content="Urban Connect TT - premium phones, expert repairs, accessories, and nationwide delivery in Trinidad & Tobago." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #070D18;
+            --bg-navy: #0A1628;
+            --primary-blue: #0A58CA;
+            --primary-blue-hover: #084298;
+            --accent-green: #25D366;
+            --text-main: #111827;
+            --text-light: #FFFFFF;
+            --text-gray: #6B7280;
+            --bg-light: #FFFFFF;
+            --bg-offwhite: #F8FAFC;
+            --border-light: #E5E7EB;
+            --border-dark: #1E293B;
+            --card-btn-dark: #0F172A;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; }
 
-  <style>
-    :root {
-      --bg-dark: #070b16;
-      --bg-darker: #04070f;
-      --bg-navy: #091427;
-      --bg-light: #ffffff;
-      --bg-offwhite: #f7f9fc;
-      --border: #e7ebf2;
-      --text: #101828;
-      --muted: #667085;
-      --blue: #2f6bff;
-      --blue-dark: #1d4ed8;
-      --green: #25d366;
-      --shadow: 0 20px 60px rgba(16, 24, 40, 0.12);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --container: 1500px;
-    }
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: var(--bg-dark); color: var(--text-light);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 50px; font-size: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .top-info { display: flex; gap: 25px; flex-wrap: wrap; }
+        .top-info span { display: inline-flex; align-items: center; gap: 8px; color: #D1D5DB; }
+        .top-info i { color: #60A5FA; }
+        .top-socials { display: flex; gap: 15px; }
+        .top-socials i { cursor: pointer; color: #FFF; font-size: 0.95rem; transition: color 0.2s; }
+        .top-socials i:hover { color: #60A5FA; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background: var(--bg-light);
-      line-height: 1.5;
-    }
+        /* --- Main Navigation --- */
+        .navbar {
+            background-color: #FFFFFF; display: flex; justify-content: space-between;
+            align-items: center; padding: 15px 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-box img { 
+            height: 45px; /* Adjust this to fit your uploaded logo */
+            object-fit: contain;
+        }
+        
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #111827; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+        
+        .nav-icons { display: flex; align-items: center; gap: 20px; font-size: 1.1rem; color: #111827; }
+        .nav-icons i { cursor: pointer; transition: color 0.2s; }
+        .nav-icons i:hover { color: var(--primary-blue); }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
+        /* --- Hero Section --- */
+        .hero {
+            /* Replace the URL below with your actual composite store image */
+            background: linear-gradient(to right, rgba(7, 13, 24, 0.85) 0%, rgba(10, 22, 40, 0.75) 100%),
+                        url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--text-light); text-align: center; padding: 120px 20px;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; color: #60A5FA; text-transform: uppercase; margin-bottom: 15px; }
+        
+        /* Central Logo Image */
+        .hero-logo-img { max-width: 500px; width: 100%; margin-bottom: 20px; }
 
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
-    }
+        .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; color: #D1D5DB; margin-bottom: 40px; }
+        
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; border: 2px solid transparent; text-transform: uppercase; }
+        .btn-blue { background-color: var(--primary-blue); color: #FFF; }
+        .btn-blue:hover { background-color: var(--primary-blue-hover); }
+        .btn-dark { background-color: transparent; color: #FFF; border-color: rgba(255,255,255,0.3); }
+        .btn-dark:hover { background-color: rgba(255,255,255,0.1); border-color: #FFF; }
+        .btn-white { background-color: #FFF; color: #111827; }
+        .btn-white:hover { background-color: #F3F4F6; }
+        .btn-white i { color: var(--accent-green); font-size: 1.2rem; }
 
-    /* Top bar */
-    .topbar {
-      background: linear-gradient(90deg, #071024, #0b1733);
-      color: #d7def1;
-      font-size: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .topbar-inner {
-      min-height: 42px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
-    }
-    .topbar-info, .topbar-socials {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .topbar-info span, .topbar-socials a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .topbar-info i, .topbar-socials i { color: #7fb0ff; }
+        /* --- Trust Badges Bar --- */
+        .trust-bar {
+            background-color: var(--bg-navy); padding: 25px 50px;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .trust-item { display: flex; align-items: center; gap: 15px; color: #FFF; }
+        .trust-icon {
+            width: 45px; height: 45px; border-radius: 12px; background: rgba(255,255,255,0.05);
+            display: flex; align-items: center; justify-content: center; color: #60A5FA; font-size: 1.4rem; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .trust-text h4 { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; }
+        .trust-text p { font-size: 0.75rem; color: #9CA3AF; }
 
-    /* Navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(16,24,40,0.06);
-      box-shadow: 0 8px 30px rgba(16,24,40,0.04);
-    }
-    .nav-inner {
-      height: 84px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-    }
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .logo img {
-      height: 50px;
-      width: auto;
-      object-fit: contain;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #101828;
-      position: relative;
-      padding: 6px 0;
-    }
-    .nav-links a.active,
-    .nav-links a:hover { color: var(--blue-dark); }
-    .nav-links a.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -6px;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--blue);
-    }
-    .nav-icons {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 18px;
-    }
-    .nav-icons a {
-      position: relative;
-      text-decoration: none;
-    }
-    .badge {
-      position: absolute;
-      top: -10px;
-      right: -11px;
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      font-size: 11px;
-      font-weight: 800;
-      background: var(--blue);
-      color: #fff;
-    }
-    .menu-btn {
-      display: none;
-      border: 1px solid var(--border);
-      background: #fff;
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      cursor: pointer;
-    }
+        /* --- Dynamic Product Section --- */
+        .carousel-section { padding: 70px 50px; max-width: 1600px; margin: 0 auto; background: #FFF; }
+        .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 2px solid #F3F4F6; padding-bottom: 15px;}
+        .section-header-row h2 { font-size: 1.8rem; font-weight: 800; color: #111827; text-transform: uppercase; }
+        .view-all-btn { color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.9rem; border: 1px solid var(--primary-blue); padding: 8px 16px; border-radius: 6px; }
+        .view-all-btn:hover { background: var(--primary-blue); color: #FFF; }
+        
+        .carousel-container { position: relative; display: flex; align-items: center; }
+        .arrow-btn {
+            width: 50px; height: 50px; border-radius: 50%; background: #FFF; border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: #111827; cursor: pointer; position: absolute; z-index: 10; transition: all 0.2s;
+        }
+        .arrow-btn:hover { background: var(--primary-blue); color: #FFF; border-color: var(--primary-blue); }
+        .arrow-left { left: -25px; }
+        .arrow-right { right: -25px; }
 
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 720px;
-      display: grid;
-      align-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(3,6,15,0.88) 0%, rgba(3,6,15,0.72) 45%, rgba(3,6,15,0.88) 100%),
-        url('assets/hero-store.jpg') center/cover no-repeat;
-      color: #fff;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      padding: 90px 0;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
-      align-items: center;
-    }
-    .hero-copy {
-      max-width: 760px;
-    }
-    .welcome {
-      color: #7fb0ff;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-    .hero-logo {
-      width: min(560px, 100%);
-      margin-bottom: 20px;
-      filter: drop-shadow(0 16px 40px rgba(0,0,0,0.3));
-    }
-    .hero h1 {
-      margin: 0 0 14px;
-      font-size: clamp(30px, 4.2vw, 58px);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-    .hero p {
-      margin: 0 0 28px;
-      color: #d5dceb;
-      font-size: 18px;
-      max-width: 580px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 14px;
-      font-weight: 800;
-      text-decoration: none;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-primary { background: var(--blue); color: #fff; }
-    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
-    .btn-outline {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.18);
-      color: #fff;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.12); transform: translateY(-1px); }
-    .btn-white { background: #fff; color: #0f172a; }
-    .btn-white:hover { background: #f3f6fb; transform: translateY(-1px); }
-    .btn-white i { color: var(--green); }
+        .product-track { display: flex; gap: 30px; overflow-x: auto; scroll-behavior: smooth; padding: 15px 10px 40px; scrollbar-width: none; }
+        .product-track::-webkit-scrollbar { display: none; }
 
-    .hero-right {
-      justify-self: end;
-      width: 100%;
-      max-width: 520px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 28px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-    .hero-right-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .hero-card {
-      border-radius: 22px;
-      overflow: hidden;
-      background: #0d1526;
-      min-height: 210px;
-      border: 1px solid rgba(255,255,255,0.08);
-      position: relative;
-    }
-    .hero-card.large {
-      grid-column: 1 / -1;
-      min-height: 260px;
-      background: linear-gradient(180deg, #10192e, #070b16);
-      display: grid;
-      align-items: end;
-      padding: 22px;
-    }
-    .hero-card.large .small-label {
-      color: #7fb0ff;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .hero-card.large h3 {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-    .hero-card.large p {
-      margin: 10px 0 0;
-      color: #b7c1d8;
-      font-size: 14px;
-    }
-    .hero-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.95;
-    }
-    .hero-card .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.68));
-    }
+        .product-card {
+            background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 12px;
+            padding: 25px; min-width: 280px; max-width: 280px; flex-shrink: 0;
+            display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: transparent; }
+        
+        .product-image-box { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .product-image-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-    /* Trust bar */
-    .trustbar {
-      background: linear-gradient(180deg, #0b1730, #081120);
-      color: #fff;
-      padding: 24px 0;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .trustgrid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 18px;
-    }
-    .trustitem {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-    .trusticon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.06);
-      color: #7fb0ff;
-      border: 1px solid rgba(255,255,255,0.08);
-      flex-shrink: 0;
-    }
-    .trusttext h4 {
-      margin: 0;
-      font-size: 13px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-    .trusttext p {
-      margin: 3px 0 0;
-      color: #a9b6d3;
-      font-size: 12px;
-    }
+        .product-info h3 { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
+        .product-info .specs { font-size: 0.85rem; color: #6B7280; margin-bottom: 15px; font-weight: 500;}
+        .product-info .price { font-size: 1.6rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 15px; }
+        
+        .badge-tag { display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #FFF; margin-top: auto; align-self: flex-start; }
+        .badge-brand-new { background-color: #111827; }
+        .badge-open-box { background-color: #4B5563; }
+        .badge-esim { background-color: #0369A1; }
 
-    /* Sections */
-    .section {
-      padding: 78px 0;
-    }
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
-      margin-bottom: 28px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
-    }
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(26px, 2.4vw, 40px);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-    }
-    .section-head p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      max-width: 680px;
-    }
-    .section-head .view-all {
-      flex-shrink: 0;
-      padding: 10px 16px;
-      border-radius: 12px;
-      border: 1px solid #b9c7f2;
-      text-decoration: none;
-      color: var(--blue-dark);
-      font-size: 13px;
-      font-weight: 800;
-      background: #fff;
-    }
+        /* --- Accessories Section (NEW) --- */
+        .accessories-section { padding: 70px 50px; background: var(--bg-offwhite); }
+        .accessories-header { font-size: 1.8rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 40px; }
+        
+        .accessories-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
+        }
+        
+        .accessory-card {
+            background: #FFF; border-radius: 12px; border: 1px solid var(--border-light);
+            padding: 30px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .accessory-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        
+        .acc-icon {
+            font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .acc-title { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
+        .acc-sub { font-size: 0.8rem; color: #6B7280; margin-bottom: 20px; }
+        .acc-price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
+        
+        .acc-btn {
+            background: var(--card-btn-dark); color: #FFF; width: 100%; padding: 12px;
+            border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+            transition: background 0.2s; margin-top: auto;
+        }
+        .acc-btn:hover { background: #1E293B; }
 
-    /* Products */
-    .products-wrap { position: relative; }
-    .carousel-nav {
-      position: absolute;
-      top: 44%;
-      transform: translateY(-50%);
-      z-index: 5;
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: #fff;
-      box-shadow: 0 12px 30px rgba(16,24,40,0.10);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
-    .carousel-nav:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
-    .carousel-nav.left { left: -10px; }
-    .carousel-nav.right { right: -10px; }
-    .product-track {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(250px, 1fr);
-      gap: 18px;
-      overflow-x: auto;
-      scroll-snap-type: x proximity;
-      padding: 8px 10px 18px;
-      scrollbar-width: none;
-    }
-    .product-track::-webkit-scrollbar { display: none; }
-    .product-card {
-      scroll-snap-align: start;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: 0 14px 38px rgba(16,24,40,0.06);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 52px rgba(16,24,40,0.12);
-      border-color: rgba(47,107,255,0.28);
-    }
-    .product-media {
-      background: linear-gradient(180deg, #f8fbff, #eef3fb);
-      height: 250px;
-      padding: 20px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-    .product-media img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 16px 24px rgba(0,0,0,0.14));
-    }
-    .product-badge {
-      position: absolute;
-      left: 14px;
-      top: 14px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 900;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      background: #0f172a;
-    }
-    .product-body {
-      padding: 16px 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-    .product-title {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.1;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-    }
-    .product-sub {
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .price {
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--blue-dark);
-      letter-spacing: -0.02em;
-      margin-top: 2px;
-    }
-    .chip-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 999px;
-      padding: 7px 10px;
-      font-size: 11px;
-      font-weight: 800;
-      background: #f2f5fb;
-      color: #344054;
-    }
+        /* --- Expert Repairs Banner (UPDATED to match photo) --- */
+        .repairs-banner {
+            background-color: var(--bg-navy);
+            color: #FFF; display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 40px;
+            padding: 0 50px 0 0; align-items: center; border-top: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+        
+        .repairs-img-container {
+            height: 100%; min-height: 350px;
+            background: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=800&q=80') center left/cover no-repeat;
+        }
 
-    /* Repairs banner */
-    .repairs {
-      background: linear-gradient(180deg, #091427, #070b16);
-      color: #fff;
-      overflow: hidden;
-    }
-    .repairs-inner {
-      display: grid;
-      grid-template-columns: 0.9fr 1fr 1fr;
-      gap: 0;
-      align-items: stretch;
-    }
-    .repairs-image {
-      min-height: 360px;
-      background: url('assets/repair-phone.jpg') center/cover no-repeat;
-    }
-    .repairs-copy {
-      padding: 54px 36px;
-      display: grid;
-      align-content: center;
-      border-left: 1px solid rgba(255,255,255,0.08);
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
-    .repairs-copy h2 {
-      margin: 0 0 12px;
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-    }
-    .repairs-copy p {
-      margin: 0 0 24px;
-      max-width: 330px;
-      color: #c9d5ef;
-      font-size: 16px;
-    }
-    .repairs-list {
-      padding: 54px 36px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px 18px;
-      align-content: center;
-    }
-    .repair-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .repair-item i {
-      width: 34px;
-      text-align: center;
-      font-size: 20px;
-      color: #7fb0ff;
-      flex-shrink: 0;
-    }
-    .repair-item span {
-      font-size: 14px;
-      color: #e4eaf7;
-    }
+        .repairs-center { padding: 50px 0; }
+        .repairs-center h2 { font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase;}
+        .repairs-center p { color: #D1D5DB; font-size: 1rem; margin-bottom: 25px; max-width: 300px; }
+        .repairs-center .btn-outline-light { 
+            display: inline-block; padding: 12px 24px; border: 2px solid rgba(255,255,255,0.3); 
+            color: #FFF; text-decoration: none; font-weight: 700; border-radius: 6px; font-size: 0.85rem; 
+            transition: 0.2s; text-transform: uppercase;
+        }
+        .repairs-center .btn-outline-light:hover { background: #FFF; color: var(--bg-navy); }
+        
+        .repairs-grid-right { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;
+        }
+        .repair-item-row { display: flex; align-items: center; gap: 15px; }
+        .repair-icon-box {
+            font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9;
+        }
+        .repair-item-row span { font-size: 0.95rem; font-weight: 400; color: #E5E7EB; }
 
-    /* Accessories */
-    .section-alt { background: var(--bg-offwhite); }
-    .accessory-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .accessory-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: 0 14px 38px rgba(16,24,40,0.05);
-      padding: 24px;
-      text-align: center;
-      display: grid;
-      gap: 10px;
-    }
-    .acc-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
-      margin: 0 auto 6px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(180deg, #eff4ff, #e7efff);
-      color: var(--blue-dark);
-      font-size: 26px;
-    }
-    .accessory-card h3 { margin: 0; font-size: 18px; }
-    .accessory-card p { margin: 0; color: var(--muted); font-size: 13px; }
-    .accessory-card .acc-price { font-size: 18px; font-weight: 900; color: var(--blue-dark); }
-    .acc-btn {
-      margin-top: 8px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      border-radius: 12px;
-      background: #0f172a;
-      color: #fff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-    }
-    .acc-btn:hover { background: #1f2937; }
+        /* --- Social Proof & Payment Section --- */
+        .proof-section {
+            background: #FFF; padding: 50px; border-bottom: 1px solid var(--border-light);
+            display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; align-items: center;
+        }
+        .google-rating { text-align: center; border-right: 1px solid var(--border-light); padding-right: 20px; }
+        .google-rating h4 { font-size: 0.8rem; font-weight: 700; color: #6B7280; text-transform: uppercase; margin-bottom: 5px; }
+        .google-rating .score { font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; }
+        .google-rating .stars { color: #FBBF24; font-size: 1.3rem; margin: 8px 0; }
+        .google-rating p { font-size: 0.8rem; color: #6B7280; margin-bottom: 12px; }
+        .btn-outline { display: inline-block; padding: 8px 20px; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; transition: 0.2s;}
+        .btn-outline:hover { background: var(--primary-blue); color: #FFF; }
 
-    /* Proof */
-    .proof {
-      display: grid;
-      grid-template-columns: 1.2fr 1.2fr 0.9fr;
-      gap: 20px;
-      align-items: stretch;
-    }
-    .proof-box {
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: #fff;
-      padding: 26px;
-      box-shadow: 0 14px 38px rgba(16,24,40,0.05);
-      min-height: 190px;
-    }
-    .rating {
-      display: grid;
-      justify-items: center;
-      align-content: center;
-      text-align: center;
-      gap: 8px;
-    }
-    .rating .score {
-      font-size: 56px;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -0.05em;
-    }
-    .stars { color: #f4b400; font-size: 18px; }
-    .muted { color: var(--muted); }
-    .center-badges {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      align-items: center;
-      text-align: center;
-    }
-    .center-badges .badge-col i {
-      font-size: 34px;
-      color: #344054;
-      margin-bottom: 10px;
-    }
-    .center-badges .badge-col h4 {
-      margin: 0;
-      font-size: 13px;
-      text-transform: uppercase;
-      font-weight: 900;
-    }
-    .payments {
-      display: grid;
-      align-content: center;
-      justify-items: center;
-      text-align: center;
-      gap: 12px;
-    }
-    .pay-icons {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      font-size: 36px;
-    }
-    .pay-icons .visa { color: #1434cb; }
-    .pay-icons .mastercard { color: #eb001b; }
-    .pay-icons .apple { color: #111; }
+        .trust-badges-center { display: flex; justify-content: space-around; text-align: center; }
+        .badge-col i { font-size: 2.5rem; color: #374151; margin-bottom: 15px; }
+        .badge-col h5 { font-size: 0.9rem; font-weight: 800; color: #111827; text-transform: uppercase; }
 
-    /* Footer */
-    footer {
-      background: #071024;
-      color: #fff;
-      padding: 54px 0;
-      margin-top: 0;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr 1fr;
-      gap: 26px;
-    }
-    .footer-col h4 {
-      margin: 0 0 12px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .footer-col p {
-      margin: 0;
-      color: #aab6cf;
-      line-height: 1.75;
-    }
-    .socials {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .socials a {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      display: grid;
-      place-items: center;
-      text-decoration: none;
-      color: #fff;
-    }
-    .socials a:hover { background: rgba(255,255,255,0.08); }
+        .payment-types { text-align: center; border-left: 1px solid var(--border-light); padding-left: 20px; }
+        .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 10px; text-transform: uppercase; }
+        .payment-types .sub-text { font-size: 0.75rem; color: #6B7280; margin-bottom: 15px; font-weight: 400; text-transform: none; }
+        .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 2.2rem; color: #111827; }
+        
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-dark); color: #FFF;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+            padding: 60px 50px; font-size: 0.85rem;
+        }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 15px; line-height: 1.6; font-size: 0.9rem;}
+        .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; }
+        .footer-social-icons { display: flex; gap: 15px; margin-top: 10px; }
+        .footer-social-icons a {
+            width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem;
+        }
+        .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
 
-    .floating-wa {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: 66px;
-      height: 66px;
-      border-radius: 999px;
-      background: var(--green);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-size: 32px;
-      box-shadow: 0 18px 30px rgba(37,211,102,0.32);
-      z-index: 1200;
-      text-decoration: none;
-    }
-    .floating-wa:hover { transform: translateY(-2px); }
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--accent-green); color: #FFF;
+            width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 2.2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); text-decoration: none; z-index: 1100; transition: transform 0.2s;
+        }
+        .floating-whatsapp:hover { transform: scale(1.08); }
 
-    /* Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 6, 15, 0.76);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: none;
-      padding: 22px;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal {
-      width: min(980px, 100%);
-      background: #fff;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 34px 90px rgba(0,0,0,0.34);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 640px;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      right: 16px;
-      top: 16px;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 0;
-      background: #f2f4f8;
-      cursor: pointer;
-      font-size: 18px;
-      z-index: 3;
-    }
-    .modal-media {
-      background: linear-gradient(180deg, #f7faff, #edf2fb);
-      padding: 30px;
-      display: grid;
-      place-items: center;
-    }
-    .modal-media img {
-      width: 100%;
-      max-height: 520px;
-      object-fit: contain;
-      filter: drop-shadow(0 20px 28px rgba(0,0,0,0.14));
-      transition: opacity 0.18s ease;
-    }
-    .modal-body {
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .modal-badge {
-      align-self: flex-start;
-      display: inline-flex;
-      border-radius: 999px;
-      padding: 7px 10px;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      background: #0f172a;
-      letter-spacing: 0.05em;
-    }
-    .modal-title {
-      margin: 0;
-      font-size: clamp(28px, 2.5vw, 40px);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-    .modal-price {
-      margin: 0;
-      font-size: 34px;
-      font-weight: 900;
-      color: var(--blue-dark);
-      letter-spacing: -0.03em;
-    }
-    .variant-group h4 {
-      margin: 0 0 10px;
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #475467;
-    }
-    .variant-options {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .variant-btn {
-      border: 1px solid #d6ddea;
-      background: #fff;
-      border-radius: 12px;
-      min-height: 44px;
-      padding: 0 14px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: 0.2s ease;
-      color: #344054;
-    }
-    .variant-btn:hover { border-color: var(--blue); color: var(--blue-dark); }
-    .variant-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
-    .color-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 3px solid #fff;
-      box-shadow: 0 0 0 1px #d7deea;
-      cursor: pointer;
-      padding: 0;
-    }
-    .color-btn.active { box-shadow: 0 0 0 2px var(--blue); }
-    .modal-note {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .modal-buy {
-      margin-top: auto;
-      text-decoration: none;
-      min-height: 54px;
-      border-radius: 14px;
-      background: var(--green);
-      color: #fff;
-      font-weight: 900;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 18px 28px rgba(37,211,102,0.22);
-    }
+        /* --- Product Modal with Color Changing Logic --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center;
+            padding: 20px; backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: #FFF; border-radius: 16px; width: 100%; max-width: 900px;
+            display: flex; overflow: hidden; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .modal-close {
+            position: absolute; top: 20px; right: 20px; background: #F3F4F6; border: none;
+            width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; color: #111827; transition: 0.2s; z-index: 10;
+        }
+        .modal-close:hover { background: #E5E7EB; }
 
-    /* Mobile */
-    @media (max-width: 1180px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-right { justify-self: start; max-width: 720px; }
-      .trustgrid { grid-template-columns: repeat(2, 1fr); }
-      .repairs-inner { grid-template-columns: 1fr; }
-      .repairs-copy, .repairs-list { padding: 34px 22px; }
-      .accessory-grid { grid-template-columns: repeat(2, 1fr); }
-      .proof { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
-      .modal { grid-template-columns: 1fr; min-height: auto; }
-      .modal-media img { max-height: 390px; }
-    }
-    @media (max-width: 860px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        left: 16px;
-        right: 16px;
-        top: 86px;
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 16px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-        box-shadow: var(--shadow);
-      }
-      .nav-links.open { display: flex; }
-      .menu-btn { display: inline-flex; }
-      .nav-inner { position: relative; }
-      .hero { min-height: 0; }
-      .hero-inner { padding: 58px 0; }
-      .hero-right-grid { grid-template-columns: 1fr; }
-      .hero-card.large { min-height: 220px; }
-      .carousel-nav { display: none; }
-      .accessory-grid { grid-template-columns: 1fr; }
-      .center-badges { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px) {
-      .topbar-inner { justify-content: center; }
-      .nav-icons { display: none; }
-      .hero-actions { flex-direction: column; }
-      .btn { width: 100%; }
-      .section { padding: 58px 0; }
-      .section-head { flex-direction: column; align-items: flex-start; }
-      .trustgrid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .product-track { grid-auto-columns: 86%; }
-      .modal-backdrop { padding: 10px; }
-      .modal-body { padding: 24px 18px; }
-    }
-  </style>
+        .modal-left { width: 50%; background: #F8FAFC; padding: 40px; display: flex; align-items: center; justify-content: center; position: relative;}
+        .modal-left img { max-width: 100%; max-height: 400px; object-fit: contain; transition: opacity 0.3s ease; }
+        
+        .modal-right { width: 50%; padding: 40px; display: flex; flex-direction: column; }
+        .modal-title { font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #111827; line-height: 1.1;}
+        .modal-condition { display: inline-block; padding: 4px 10px; background: #111827; color: #FFF; font-size: 0.75rem; font-weight: 700; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; align-self: flex-start; }
+        .modal-price { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
+
+        .variant-group { margin-bottom: 25px; }
+        .variant-group h4 { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 12px; text-transform: uppercase; }
+        .variant-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        
+        .var-btn {
+            padding: 12px 18px; border: 2px solid #E5E7EB; border-radius: 8px; background: #FFF;
+            font-size: 0.95rem; font-weight: 700; color: #374151; cursor: pointer; transition: all 0.2s;
+        }
+        .var-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .var-btn.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #FFF; }
+
+        /* Color Swatches */
+        .color-btn {
+            width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 0 0 1px #D1D5DB;
+            cursor: pointer; transition: all 0.2s; position: relative;
+        }
+        .color-btn:hover { transform: scale(1.1); }
+        .color-btn.active { box-shadow: 0 0 0 2px var(--primary-blue); }
+
+        .modal-buy-btn {
+            margin-top: auto; padding: 18px; border-radius: 8px; background: var(--accent-green); color: #FFF;
+            text-align: center; font-size: 1.1rem; font-weight: 800; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; border: none; cursor: pointer; text-transform: uppercase;
+        }
+        .modal-buy-btn:hover { background: #20BA56; }
+        
+        .payment-info-modal { text-align: center; font-size: 0.75rem; color: #6B7280; margin-top: 15px; }
+        .payment-info-modal i { color: #111827; font-size: 1rem; margin: 0 3px; vertical-align: middle;}
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .repairs-banner { grid-template-columns: 1fr; padding: 0; }
+            .repairs-img-container { min-height: 250px; }
+            .repairs-center, .repairs-grid-right { padding: 30px; }
+            .repairs-grid-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+            
+            .proof-section, footer { grid-template-columns: 1fr 1fr; }
+            .trust-bar { justify-content: center; }
+            .google-rating, .payment-types { border: none; padding: 0; }
+            .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
+            .modal-left, .modal-right { width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .top-bar, .nav-links { display: none; }
+            .navbar, .carousel-section, .proof-section, footer, .accessories-section { padding: 30px 20px; }
+            .proof-section, footer, .repairs-grid-right { grid-template-columns: 1fr; }
+            .arrow-left { left: 0; }
+            .arrow-right { right: 0; }
+        }
+    </style>
 </head>
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="topbar-info">
-        <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
-        <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
-        <span><i class="fa-regular fa-clock"></i> Mon - Fri 9AM - 5PM • Sat 8AM - 5PM • Sun 8AM - 3PM</span>
-      </div>
-      <div class="topbar-socials">
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-      </div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-info">
+            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
+            <span><i class="fa-regular fa-clock"></i> Mon - Fri 9AM - 5PM • Sat 8AM - 5PM • Sun 8AM - 3PM</span>
+        </div>
+        <div class="top-socials">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
     </div>
-  </div>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a class="logo" href="#home">
-        <!-- Use your light/white-background version here -->
-        <img src="assets/logo-light.png" alt="Urban Connect TT Logo">
-      </a>
-
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#phones">Shop Phones</a></li>
-        <li><a href="#repairs">Repairs</a></li>
-        <li><a href="#accessories">Accessories</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-
-      <div class="nav-icons">
-        <a href="#phones" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href="#" aria-label="Account"><i class="fa-regular fa-user"></i></a>
-        <a href="https://wa.me/18683308360" target="_blank" rel="noreferrer" aria-label="Cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span class="badge">2</span>
+    <!-- Main Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo-box">
+            <!-- Upload your actual logo image and replace this src -->
+            <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT Logo">
         </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <main id="home" class="hero">
-    <div class="container hero-inner">
-      <section class="hero-copy">
-        <div class="welcome">WELCOME TO</div>
-        <!-- Use your dark-background version here -->
-        <img class="hero-logo" src="assets/logo-dark.png" alt="Urban Connect TT">
-        <h1>Trinidad &amp; Tobago's Trusted Phone Store</h1>
-        <p>Premium phones, expert repairs, genuine accessories, and fast service that looks clean, modern, and professional.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#phones"><i class="fa-solid fa-mobile-screen"></i> Shop Phones</a>
-          <a class="btn btn-outline" href="#repairs"><i class="fa-solid fa-screwdriver-wrench"></i> Book a Repair</a>
-          <a class="btn btn-white" href="https://wa.me/18683308360" target="_blank" rel="noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+        <ul class="nav-links">
+            <li><a href="#" class="active">HOME</a></li>
+            <li><a href="#phones">SHOP PHONES</a></li>
+            <li><a href="#repairs">REPAIRS</a></li>
+            <li><a href="#accessories">ACCESSORIES</a></li>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="#contact">CONTACT US</a></li>
+        </ul>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-user"></i>
+            <a href="https://wa.me/18683308360" target="_blank" style="color: #111827; position: relative;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span style="position: absolute; top:-8px; right:-10px; background:var(--primary-blue); color:#FFF; font-size:0.6rem; font-weight:bold; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center;">2</span>
+            </a>
         </div>
-      </section>
+    </nav>
 
-      <aside class="hero-right" aria-label="Featured visuals">
-        <div class="hero-right-grid">
-          <div class="hero-card large">
-            <div>
-              <div class="small-label">Premium Selection</div>
-              <h3>iPhones, repairs, accessories, and delivery all in one place.</h3>
-              <p>Designed to feel like a real storefront, not a generic template.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-welcome">WELCOME TO</div>
+        <!-- Upload your actual logo image and replace this src -->
+        <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT" class="hero-logo-img">
+        
+        <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
+        <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
+        <div class="hero-buttons">
+            <a href="#phones" class="btn btn-blue"><i class="fa-solid fa-mobile-screen"></i> SHOP PHONES</a>
+            <a href="#repairs" class="btn btn-dark"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR</a>
+            <a href="https://wa.me/18683308360" target="_blank" class="btn btn-white"><i class="fa-brands fa-whatsapp"></i> WHATSAPP US</a>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-regular fa-square-check"></i></div>
+            <div class="trust-text"><h4>90-Day Warranty</h4><p>Shop with confidence</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-box-open"></i></div>
+            <div class="trust-text"><h4>Open Box & Brand New</h4><p>Quality you can trust</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="trust-text"><h4>Nationwide Delivery</h4><p>Fast & reliable</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-tags"></i></div>
+            <div class="trust-text"><h4>Lowest Prices</h4><p>We beat the competition</p></div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon"><i class="fa-solid fa-credit-card"></i></div>
+            <div class="trust-text"><h4>Card Payments Accepted</h4><p>Safe & secure checkout</p></div>
+        </div>
+    </div>
+
+    <!-- Product Carousel Section -->
+    <section class="carousel-section" id="phones">
+        <div class="section-header-row">
+            <h2>SHOP OUR LATEST PHONES</h2>
+            <a href="#phones" class="view-all-btn">VIEW ALL PHONES ></a>
+        </div>
+        <div class="carousel-container">
+            <button class="arrow-btn arrow-left" onclick="slideCarousel(-350)"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="product-track" id="productTrack">
+                <!-- Javascript will inject all phones here -->
             </div>
-          </div>
-          <div class="hero-card">
-            <img src="assets/hero-phone-1.jpg" alt="Featured phone">
-            <div class="overlay"></div>
-          </div>
-          <div class="hero-card">
-            <img src="assets/hero-phone-2.jpg" alt="Featured phone">
-            <div class="overlay"></div>
-          </div>
+            <button class="arrow-btn arrow-right" onclick="slideCarousel(350)"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
-      </aside>
-    </div>
-  </main>
+    </section>
 
-  <!-- Trust bar -->
-  <section class="trustbar">
-    <div class="container trustgrid">
-      <div class="trustitem">
-        <div class="trusticon"><i class="fa-regular fa-square-check"></i></div>
-        <div class="trusttext"><h4>90-Day Warranty</h4><p>Shop with confidence</p></div>
-      </div>
-      <div class="trustitem">
-        <div class="trusticon"><i class="fa-solid fa-box-open"></i></div>
-        <div class="trusttext"><h4>Open Box &amp; Brand New</h4><p>Quality you can trust</p></div>
-      </div>
-      <div class="trustitem">
-        <div class="trusticon"><i class="fa-solid fa-truck-fast"></i></div>
-        <div class="trusttext"><h4>Nationwide Delivery</h4><p>Fast &amp; reliable</p></div>
-      </div>
-      <div class="trustitem">
-        <div class="trusticon"><i class="fa-solid fa-tags"></i></div>
-        <div class="trusttext"><h4>Lowest Prices</h4><p>We beat the competition</p></div>
-      </div>
-      <div class="trustitem">
-        <div class="trusticon"><i class="fa-solid fa-headset"></i></div>
-        <div class="trusttext"><h4>Expert Support</h4><p>We are here to help</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Phones -->
-  <section id="phones" class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Shop Our Latest Phones</h2>
-          <p>Each card and modal updates with the correct model, storage, color, and image. Swap the image file paths with your own product photos whenever you are ready.</p>
-        </div>
-        <a class="view-all" href="#phones">View All Phones</a>
-      </div>
-
-      <div class="products-wrap">
-        <button class="carousel-nav left" type="button" onclick="scrollPhones(-380)" aria-label="Scroll left">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <div class="product-track" id="productTrack"></div>
-        <button class="carousel-nav right" type="button" onclick="scrollPhones(380)" aria-label="Scroll right">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Repairs -->
-  <section id="repairs" class="repairs">
-    <div class="repairs-inner">
-      <div class="repairs-image"></div>
-      <div class="repairs-copy">
-        <h2>Expert Repairs<br/>Done Right</h2>
-        <p>From screen replacements to water damage, battery issues, and charging ports, we have you covered.</p>
-        <a class="btn btn-outline" href="https://wa.me/18683308360?text=I%20would%20like%20to%20book%20a%20repair%20for%20my%20device." target="_blank" rel="noreferrer">Book a Repair Now</a>
-      </div>
-      <div class="repairs-list">
-        <div class="repair-item"><i class="fa-solid fa-mobile-screen-button"></i><span>Screen Replacement</span></div>
-        <div class="repair-item"><i class="fa-solid fa-droplet"></i><span>Water Damage</span></div>
-        <div class="repair-item"><i class="fa-solid fa-car-battery"></i><span>Battery Replacement</span></div>
-        <div class="repair-item"><i class="fa-solid fa-camera"></i><span>Camera Repair</span></div>
-        <div class="repair-item"><i class="fa-solid fa-plug-circle-bolt"></i><span>Charging Port Repair</span></div>
-        <div class="repair-item"><i class="fa-solid fa-ellipsis"></i><span>And More</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Accessories -->
-  <section id="accessories" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Accessories</h2>
-          <p>A clean accessories section that matches the store style.</p>
-        </div>
-      </div>
-
-      <div class="accessory-grid">
-        <article class="accessory-card">
-          <div class="acc-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-          <h3>Premium Phone Cases</h3>
-          <p>Various styles and colors</p>
-          <div class="acc-price">TT$80 - TT$150</div>
-          <a class="acc-btn" href="https://wa.me/18683308360?text=I%27m%20interested%20in%20Premium%20Phone%20Cases." target="_blank" rel="noreferrer">Order via WhatsApp</a>
-        </article>
-
-        <article class="accessory-card">
-          <div class="acc-icon"><i class="fa-regular fa-square"></i></div>
-          <h3>Clear Screen Protector</h3>
-          <p>Crystal clear protection</p>
-          <div class="acc-price">TT$100</div>
-          <a class="acc-btn" href="https://wa.me/18683308360?text=I%27m%20interested%20in%20a%20Clear%20Screen%20Protector." target="_blank" rel="noreferrer">Order via WhatsApp</a>
-        </article>
-
-        <article class="accessory-card">
-          <div class="acc-icon"><i class="fa-solid fa-eye-slash"></i></div>
-          <h3>Privacy Screen Protector</h3>
-          <p>Anti-spy protection</p>
-          <div class="acc-price">TT$150</div>
-          <a class="acc-btn" href="https://wa.me/18683308360?text=I%27m%20interested%20in%20a%20Privacy%20Screen%20Protector." target="_blank" rel="noreferrer">Order via WhatsApp</a>
-        </article>
-
-        <article class="accessory-card">
-          <div class="acc-icon"><i class="fa-solid fa-headphones"></i></div>
-          <h3>AirPods 4th Gen</h3>
-          <p>Brand new in box</p>
-          <div class="acc-price">TT$1,300</div>
-          <a class="acc-btn" href="https://wa.me/18683308360?text=I%27m%20interested%20in%20AirPods%204th%20Gen." target="_blank" rel="noreferrer">Order via WhatsApp</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Proof -->
-  <section class="section">
-    <div class="container proof">
-      <div class="proof-box rating">
-        <div class="muted" style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">Google Rating</div>
-        <div class="score">4.9</div>
-        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <div class="muted">Based on 200+ reviews</div>
-        <a class="view-all" href="#">See Reviews</a>
-      </div>
-
-      <div class="proof-box center-badges">
-        <div class="badge-col"><i class="fa-solid fa-shield-halved"></i><h4>Quality Products</h4></div>
-        <div class="badge-col"><i class="fa-regular fa-circle-check"></i><h4>Trusted by Thousands</h4></div>
-        <div class="badge-col"><i class="fa-regular fa-thumbs-up"></i><h4>100% Satisfaction</h4></div>
-      </div>
-
-      <div class="proof-box payments">
-        <div style="font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">We Accept</div>
-        <div class="pay-icons">
-          <i class="fa-brands fa-cc-visa visa"></i>
-          <i class="fa-brands fa-cc-mastercard mastercard"></i>
-          <i class="fa-brands fa-apple-pay apple"></i>
-        </div>
-        <div class="muted">Secure checkout in store</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="container footer-grid">
-      <div class="footer-col">
-        <h4>Address</h4>
-        <p>59 Eastern Main Road,<br>Tunapuna, Trinidad &amp; Tobago</p>
-      </div>
-      <div class="footer-col">
-        <h4>Phone</h4>
-        <p>(868) 330-8360</p>
-      </div>
-      <div class="footer-col">
-        <h4>Hours</h4>
-        <p>Mon - Fri 9AM - 5PM<br>Sat 8AM - 5PM<br>Sun 8AM - 3PM</p>
-      </div>
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <a class="floating-wa" href="https://wa.me/18683308360" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- Modal -->
-  <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
-    <div class="modal" onclick="event.stopPropagation()">
-      <button class="modal-close" type="button" onclick="hideModal()" aria-label="Close modal">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <div class="modal-media">
-        <img id="modalImage" alt="Phone image" src="" />
-      </div>
-
-      <div class="modal-body">
-        <div id="modalBadge" class="modal-badge">Brand New</div>
-        <h3 id="modalTitle" class="modal-title">Phone</h3>
-        <p id="modalPrice" class="modal-price">TT$0</p>
-        <p id="modalDescription" class="modal-note">Select storage and color.</p>
-
-        <div class="variant-group">
-          <h4>Storage</h4>
-          <div class="variant-options" id="storageOptions"></div>
-        </div>
-
-        <div class="variant-group">
-          <h4>Color</h4>
-          <div class="variant-options" id="colorOptions"></div>
-        </div>
-
-        <a id="buyBtn" class="modal-buy" href="#" target="_blank" rel="noreferrer">
-          <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
-        </a>
-
-        <p class="modal-note">Secure payment available in store via Visa, Mastercard, and card payments.</p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const phones = [
-      {
-        id: '15promax',
-        name: 'iPhone 15 Pro Max',
-        badge: 'Brand New',
-        badgeClass: 'brand-new',
-        basePrice: 6999,
-        storage: [
-          { label: '256GB', price: 6999 },
-          { label: '512GB', price: 7999 },
-          { label: '1TB', price: 8999 }
-        ],
-        colors: [
-          { name: 'Natural Titanium', hex: '#9d9b94', img: 'assets/phones/iphone-15-pro-max-natural.jpg' },
-          { name: 'Black Titanium', hex: '#1f1f24', img: 'assets/phones/iphone-15-pro-max-black.jpg' },
-          { name: 'White Titanium', hex: '#e8e6df', img: 'assets/phones/iphone-15-pro-max-white.jpg' },
-          { name: 'Blue Titanium', hex: '#2a3f5e', img: 'assets/phones/iphone-15-pro-max-blue.jpg' }
-        ]
-      },
-      {
-        id: '14pro',
-        name: 'iPhone 14 Pro',
-        badge: 'Open Box',
-        badgeClass: 'open-box',
-        basePrice: 4299,
-        storage: [
-          { label: '128GB', price: 3999 },
-          { label: '256GB', price: 4299 },
-          { label: '512GB', price: 4599 }
-        ],
-        colors: [
-          { name: 'Deep Purple', hex: '#5c506d', img: 'assets/phones/iphone-14-pro-deep-purple.jpg' },
-          { name: 'Space Black', hex: '#3b3b3f', img: 'assets/phones/iphone-14-pro-space-black.jpg' },
-          { name: 'Gold', hex: '#d7b47a', img: 'assets/phones/iphone-14-pro-gold.jpg' },
-          { name: 'Silver', hex: '#edeff1', img: 'assets/phones/iphone-14-pro-silver.jpg' }
-        ]
-      },
-      {
-        id: '13',
-        name: 'iPhone 13',
-        badge: 'Open Box',
-        badgeClass: 'open-box',
-        basePrice: 2999,
-        storage: [
-          { label: '128GB', price: 2999 },
-          { label: '256GB', price: 3299 }
-        ],
-        colors: [
-          { name: 'Midnight', hex: '#2a2d33', img: 'assets/phones/iphone-13-midnight.jpg' },
-          { name: 'Starlight', hex: '#f3eee7', img: 'assets/phones/iphone-13-starlight.jpg' },
-          { name: 'Blue', hex: '#4c6f93', img: 'assets/phones/iphone-13-blue.jpg' },
-          { name: 'Pink', hex: '#e7c2ca', img: 'assets/phones/iphone-13-pink.jpg' },
-          { name: 'Green', hex: '#6f8d78', img: 'assets/phones/iphone-13-green.jpg' }
-        ]
-      },
-      {
-        id: '12',
-        name: 'iPhone 12',
-        badge: 'Open Box',
-        badgeClass: 'open-box',
-        basePrice: 2199,
-        storage: [
-          { label: '64GB', price: 2199 },
-          { label: '128GB', price: 2499 }
-        ],
-        colors: [
-          { name: 'Black', hex: '#22252b', img: 'assets/phones/iphone-12-black.jpg' },
-          { name: 'White', hex: '#f3f4f6', img: 'assets/phones/iphone-12-white.jpg' },
-          { name: 'Blue', hex: '#3a6ea5', img: 'assets/phones/iphone-12-blue.jpg' },
-          { name: 'Green', hex: '#acc9b7', img: 'assets/phones/iphone-12-green.jpg' },
-          { name: 'Product RED', hex: '#c91d2d', img: 'assets/phones/iphone-12-red.jpg' }
-        ]
-      },
-      {
-        id: '15',
-        name: 'iPhone 15',
-        badge: 'Brand New',
-        badgeClass: 'brand-new',
-        basePrice: 3299,
-        storage: [
-          { label: '128GB', price: 3299 },
-          { label: '256GB', price: 3599 }
-        ],
-        colors: [
-          { name: 'Black', hex: '#2a2d33', img: 'assets/phones/iphone-15-black.jpg' },
-          { name: 'Blue', hex: '#c2d7e4', img: 'assets/phones/iphone-15-blue.jpg' },
-          { name: 'Green', hex: '#cfe4d7', img: 'assets/phones/iphone-15-green.jpg' },
-          { name: 'Pink', hex: '#e8c5cf', img: 'assets/phones/iphone-15-pink.jpg' },
-          { name: 'Yellow', hex: '#f6e38b', img: 'assets/phones/iphone-15-yellow.jpg' }
-        ]
-      }
-    ];
-
-    const state = {
-      phone: null,
-      storageIndex: 0,
-      colorIndex: 0,
-    };
-
-    const track = document.getElementById('productTrack');
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalImage = document.getElementById('modalImage');
-    const modalBadge = document.getElementById('modalBadge');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalPrice = document.getElementById('modalPrice');
-    const storageOptions = document.getElementById('storageOptions');
-    const colorOptions = document.getElementById('colorOptions');
-    const buyBtn = document.getElementById('buyBtn');
-
-    function formatTT(value) {
-      return `TT$${Number(value).toLocaleString('en-US')}`;
-    }
-
-    function scrollPhones(offset) {
-      track.scrollBy({ left: offset, behavior: 'smooth' });
-    }
-
-    function renderProducts() {
-      track.innerHTML = phones.map((phone) => {
-        const firstStorage = phone.storage[0];
-        const firstColor = phone.colors[0];
-        return `
-          <article class="product-card" onclick="openModal('${phone.id}')">
-            <div class="product-media">
-              <span class="product-badge ${phone.badgeClass}">${phone.badge}</span>
-              <img src="${firstColor.img}" alt="${phone.name} ${firstColor.name}">
+    <!-- Accessories Section (NEW based on your screenshot) -->
+    <section class="accessories-section" id="accessories">
+        <h2 class="accessories-header">ACCESSORIES</h2>
+        
+        <div class="accessories-grid">
+            <!-- Card 1 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3 class="acc-title">Premium Phone Cases</h3>
+                <p class="acc-sub">Various Styles & Colors</p>
+                <div class="acc-price">TT$80 - $150</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20Premium%20Phone%20Cases." class="acc-btn">Order via WhatsApp</a>
             </div>
-            <div class="product-body">
-              <h3 class="product-title">${phone.name}</h3>
-              <p class="product-sub">${firstStorage.label} • ${phone.colors.length} color option${phone.colors.length > 1 ? 's' : ''}</p>
-              <div class="price">${formatTT(firstStorage.price)}</div>
-              <div class="chip-row">
-                <span class="chip"><i class="fa-solid fa-box"></i> ${phone.badge}</span>
-                <span class="chip"><i class="fa-solid fa-shield-halved"></i> Warranty</span>
-              </div>
+
+            <!-- Card 2 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-regular fa-square"></i></div>
+                <h3 class="acc-title">Clear Hydrogel Screen Protector</h3>
+                <p class="acc-sub">Crystal Clear Protection</p>
+                <div class="acc-price">TT$100</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Clear%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
             </div>
-          </article>
-        `;
-      }).join('');
-    }
 
-    function openModal(id) {
-      const phone = phones.find(p => p.id === id);
-      if (!phone) return;
+            <!-- Card 3 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-eye-slash"></i></div>
+                <h3 class="acc-title">Privacy Hydrogel Screen Protector</h3>
+                <p class="acc-sub">Anti-Spy Protection</p>
+                <div class="acc-price">TT$150</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Privacy%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
+            </div>
 
-      state.phone = phone;
-      state.storageIndex = 0;
-      state.colorIndex = 0;
+            <!-- Card 4 -->
+            <div class="accessory-card">
+                <div class="acc-icon"><i class="fa-solid fa-headphones"></i></div>
+                <h3 class="acc-title">AirPods 4th Gen</h3>
+                <p class="acc-sub">Brand New in Box</p>
+                <div class="acc-price">TT$1,300</div>
+                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20AirPods%204th%20Gen." class="acc-btn">Order via WhatsApp</a>
+            </div>
+        </div>
+    </section>
 
-      modalTitle.textContent = phone.name;
-      modalBadge.textContent = phone.badge;
-      modalBadge.style.background = phone.badgeClass === 'brand-new' ? '#0f172a' : '#475467';
+    <!-- Expert Repairs Banner (UPDATED layout) -->
+    <section class="repairs-banner" id="repairs">
+        <!-- Replace URL with your specific broken phone picture if desired -->
+        <div class="repairs-img-container"></div>
+        
+        <div class="repairs-center">
+            <h2>EXPERT REPAIRS<br>DONE RIGHT</h2>
+            <p>From screen replacements to water damage, we've got you covered.</p>
+            <a href="https://wa.me/18683308360?text=I%20would%20like%20to%20book%20a%20repair%20for%20my%20device." target="_blank" class="btn-outline-light">BOOK A REPAIR NOW →</a>
+        </div>
+        
+        <div class="repairs-grid-right">
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-mobile-button"></i></div><span>Screen Replacement</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-droplet"></i></div><span>Water Damage</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-car-battery"></i></div><span>Battery Replacement</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-camera"></i></div><span>Camera Repair</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-plug"></i></div><span>Charging Port Repair</span></div>
+            <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-ellipsis"></i></div><span>& More Services</span></div>
+        </div>
+    </section>
 
-      renderStorage();
-      renderColors();
-      updateModalImage();
-      updateModalPrice();
-      updateBuyLink();
+    <!-- Social Proof & Payment Section -->
+    <section class="proof-section">
+        <div class="google-rating">
+            <h4>Google Rating</h4>
+            <div class="score">4.9</div>
+            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p>Based on 200+ reviews</p>
+            <a href="#" class="btn-outline">SEE REVIEWS</a>
+        </div>
+        <div class="trust-badges-center">
+            <div class="badge-col">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h5>Quality<br>Products</h5>
+            </div>
+            <div class="badge-col">
+                <i class="fa-regular fa-circle-check"></i>
+                <h5>Trusted by<br>Thousands</h5>
+            </div>
+            <div class="badge-col">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <h5>100% Satisfaction<br>Guaranteed</h5>
+            </div>
+        </div>
+        <div class="payment-types">
+            <p>Card Payments Accepted</p>
+            <div class="sub-text">Pay easily for devices and repairs via Linx, Visa, or Mastercard.</div>
+            <div class="pay-icons">
+                <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
+                <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
+                <i class="fa-brands fa-apple-pay" style="color: #000;"></i>
+                <i class="fa-solid fa-credit-card" style="color: #6B7280;"></i> <!-- Representing Linx/Debit -->
+            </div>
+        </div>
+    </section>
 
-      modalBackdrop.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-col">
+            <h4>ADDRESS</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span>59 Eastern Main Road,<br>Tunapuna</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>PHONE</h4>
+            <p><i class="fa-solid fa-phone"></i> <span>(868) 330-8360</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>HOURS</h4>
+            <p><i class="fa-regular fa-clock"></i> <span>Mon - Fri 9AM - 5PM<br>Sat 8AM - 5PM<br>Sun 8AM - 3PM</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>FOLLOW US</h4>
+            <div class="footer-social-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
 
-    function hideModal() {
-      modalBackdrop.style.display = 'none';
-      document.body.style.overflow = '';
-    }
+    <a href="https://wa.me/18683308360" class="floating-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-    function closeModal(event) {
-      if (event.target === modalBackdrop) hideModal();
-    }
+    <!-- Dynamic Product Modal -->
+    <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="document.getElementById('productModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="modal-left">
+                <img id="modalImg" src="" alt="Phone Image">
+            </div>
+            <div class="modal-right">
+                <div class="modal-condition" id="modalCondition">Brand New</div>
+                <h2 class="modal-title" id="modalTitle">iPhone</h2>
+                <div class="modal-price" id="modalPrice">TT$0</div>
 
-    function renderStorage() {
-      storageOptions.innerHTML = state.phone.storage.map((item, index) => `
-        <button type="button" class="variant-btn ${index === state.storageIndex ? 'active' : ''}" onclick="setStorage(${index})">${item.label}</button>
-      `).join('');
-    }
+                <div class="variant-group">
+                    <h4>Storage Capacity</h4>
+                    <div class="variant-options" id="storageOptions">
+                        <!-- Storage buttons injected here -->
+                    </div>
+                </div>
 
-    function renderColors() {
-      colorOptions.innerHTML = state.phone.colors.map((item, index) => `
-        <button type="button" class="color-btn ${index === state.colorIndex ? 'active' : ''}" title="${item.name}" aria-label="${item.name}" style="background:${item.hex};" onclick="setColor(${index})"></button>
-      `).join('');
-    }
+                <div class="variant-group">
+                    <h4>Color</h4>
+                    <div class="variant-options" id="colorOptions">
+                        <!-- Color swatches injected here -->
+                    </div>
+                </div>
 
-    function updateModalImage() {
-      const currentColor = state.phone.colors[state.colorIndex];
-      modalImage.style.opacity = '0';
-      setTimeout(() => {
-        modalImage.src = currentColor.img;
-        modalImage.alt = `${state.phone.name} ${currentColor.name}`;
-        modalImage.style.opacity = '1';
-      }, 120);
-    }
+                <a href="#" id="modalBuyBtn" target="_blank" class="modal-buy-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                </a>
+                
+                <!-- Payment callout inside the modal -->
+                <div class="payment-info-modal">
+                    Secure payment available in-store via 
+                    <i class="fa-brands fa-cc-visa"></i> 
+                    <i class="fa-brands fa-cc-mastercard"></i> 
+                    Linx / Credit Card
+                </div>
+            </div>
+        </div>
+    </div>
 
-    function updateModalPrice() {
-      const storage = state.phone.storage[state.storageIndex];
-      modalPrice.textContent = formatTT(storage.price);
-    }
+    <script>
+        // Sideways scrolling
+        function slideCarousel(offset) {
+            const track = document.getElementById('productTrack');
+            track.scrollBy({ left: offset, behavior: 'smooth' });
+        }
 
-    function updateBuyLink() {
-      const storage = state.phone.storage[state.storageIndex];
-      const color = state.phone.colors[state.colorIndex];
-      buyBtn.href = `https://wa.me/18683308360?text=${encodeURIComponent(`Hi, I'm interested in the ${state.phone.name} (${storage.label}) in ${color.name}. Please send details.`)}`;
-    }
+        // ==========================================
+        // PHONE DATA ENGINE (Expanded Color Palette)
+        // ==========================================
+        const allPhonesData = [
+            // --- iPhone 17 Series ---
+            {
+                id: '17promax', name: 'iPhone 17 Pro Max', condition: 'Brand New', badgeClass: 'badge-brand-new',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
+                storage: [ {gb:'256GB', price:10499}, {gb:'512GB', price:11999}, {gb:'1TB', price:13399} ],
+                colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '17pro', name: 'iPhone 17 Pro', condition: 'Brand New', badgeClass: 'badge-brand-new',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
+                storage: [ {gb:'256GB', price:9599}, {gb:'512GB', price:10599} ],
+                colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#A8A6A1', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Blue Titanium', hex: '#484F5A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '17', name: 'iPhone 17', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'256GB', price:5999} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
 
-    function setStorage(index) {
-      state.storageIndex = index;
-      renderStorage();
-      updateModalPrice();
-      updateBuyLink();
-    }
+            // --- iPhone 16 Series ---
+            {
+                id: '16promax', name: 'iPhone 16 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
+                storage: [ {gb:'256GB', price:6399}, {gb:'512GB', price:6999} ],
+                colors: [
+                    { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '16pro', name: 'iPhone 16 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
+                storage: [ {gb:'256GB', price:5699}, {gb:'512GB', price:5999} ],
+                colors: [ 
+                    { name: 'Black', hex: '#1c1c1c', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White', hex: '#EBEBEB', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' }
+                ]
+            },
+            {
+                id: '16plus', name: 'iPhone 16+', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'256GB', price:4999} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
+            {
+                id: '16', name: 'iPhone 16', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'128GB', price:4499}, {gb:'256GB', price:4799} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
 
-    function setColor(index) {
-      state.colorIndex = index;
-      renderColors();
-      updateModalImage();
-      updateBuyLink();
-    }
+            // --- iPhone 15 Series ---
+            {
+                id: '15promax', name: 'iPhone 15 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
+                storage: [ {gb:'256GB', price:4899}, {gb:'512GB', price:5199} ],
+                colors: [
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' }
+                ]
+            },
+            {
+                id: '15pro', name: 'iPhone 15 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
+                storage: [ {gb:'256GB', price:4399}, {gb:'512GB', price:4599} ],
+                colors: [ 
+                    { name: 'Black Titanium', hex: '#1C1C1E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'White Titanium', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' },
+                    { name: 'Natural Titanium', hex: '#878681', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg' },
+                    { name: 'Blue Titanium', hex: '#2F3C4D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg' } 
+                ]
+            },
+            {
+                id: '15plus', name: 'iPhone 15+', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'256GB', price:3799} ],
+                colors: [ 
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
+            {
+                id: '15', name: 'iPhone 15', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+                storage: [ {gb:'128GB', price:3299}, {gb:'256GB', price:3599} ],
+                colors: [
+                    { name: 'Black', hex: '#313336', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Blue', hex: '#CEE2E8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Green', hex: '#CDE1D6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Yellow', hex: '#F9E596', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' },
+                    { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
+                ]
+            },
 
-    function onMenuToggle() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
+            // --- iPhone 14 Series ---
+            {
+                id: '14promax', name: 'iPhone 14 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg',
+                storage: [ {gb:'256GB', price:4199}, {gb:'512GB', price:4499} ],
+                colors: [
+                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '14pro', name: 'iPhone 14 Pro', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg',
+                storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3799} ],
+                colors: [ 
+                    { name: 'Space Black', hex: '#403E3D', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg' },
+                    { name: 'Deep Purple', hex: '#594F63', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '14plus', name: 'iPhone 14+', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
+                storage: [ {gb:'256GB', price:2799} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
+                ]
+            },
+            {
+                id: '14', name: 'iPhone 14', condition: 'ESIM', badgeClass: 'badge-esim',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg',
+                storage: [ {gb:'128GB', price:2499}, {gb:'256GB', price:2699} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Blue', hex: '#A0B4C7', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Purple', hex: '#E5DDEA', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
+                ]
+            },
 
-    document.getElementById('menuBtn').addEventListener('click', onMenuToggle);
+            // --- iPhone 13 Series ---
+            {
+                id: '13promax', name: 'iPhone 13 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg',
+                storage: [ {gb:'256GB', price:3599}, {gb:'512GB', price:3750}, {gb:'1TB', price:3899} ],
+                colors: [
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
+                ]
+            },
+            {
+                id: '13pro', name: 'iPhone 13 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg',
+                storage: [ {gb:'256GB', price:2999} ],
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' },
+                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' },
+                    { name: 'Alpine Green', hex: '#576856', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg' }
+                ]
+            },
+            {
+                id: '13', name: 'iPhone 13', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg',
+                storage: [ {gb:'128GB', price:2199}, {gb:'256GB', price:2399} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Green', hex: '#3E5846', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
+                ]
+            },
+            {
+                id: '13mini', name: 'iPhone 13 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg',
+                storage: [ {gb:'128GB', price:1899} ],
+                colors: [ 
+                    { name: 'Midnight', hex: '#43484E', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Starlight', hex: '#FAF6F2', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Blue', hex: '#215E7C', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' },
+                    { name: 'Pink', hex: '#FAE0D8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
+                ]
+            },
 
-    document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-      });
-    });
+            // --- iPhone 12 Series ---
+            {
+                id: '12promax', name: 'iPhone 12 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg',
+                storage: [ {gb:'256GB', price:2599} ],
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '12pro', name: 'iPhone 12 Pro', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg',
+                storage: [ {gb:'256GB', price:2299} ],
+                colors: [ 
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Silver', hex: '#F2F1ED', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' },
+                    { name: 'Gold', hex: '#FAD7BD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg' },
+                    { name: 'Pacific Blue', hex: '#2E4755', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg' }
+                ]
+            },
+            {
+                id: '12', name: 'iPhone 12', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg',
+                storage: [ {gb:'64GB', price:1499}, {gb:'128GB', price:1799} ],
+                colors: [
+                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Green', hex: '#E1F8E9', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' },
+                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg' }
+                ]
+            },
+            {
+                id: '12mini', name: 'iPhone 12 Mini', condition: 'Open Box', badgeClass: 'badge-open-box',
+                defaultImg: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg',
+                storage: [ {gb:'128GB', price:1499} ],
+                colors: [ 
+                    { name: 'Black', hex: '#1F2020', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'White', hex: '#FBF7F4', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Green', hex: '#B2E2C8', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Blue', hex: '#032C65', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' },
+                    { name: 'Purple', hex: '#B8AFE6', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg' }
+                ]
+            }
+        ];
 
-    renderProducts();
-  </script>
+        let currentSelection = { phoneObj: null, gb: null, price: null, colorObj: null };
+
+        // Generate the Carousel HTML dynamically based on the JS object
+        function populateCarousel() {
+            const track = document.getElementById('productTrack');
+            allPhonesData.forEach(phone => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.onclick = () => openPhoneModal(phone.id);
+                
+                card.innerHTML = `
+                    <div class="product-image-box">
+                        <img src="${phone.defaultImg}" alt="${phone.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${phone.name}</h3>
+                        <p class="specs">${phone.storage[0].gb} • ${phone.colors.length} Color(s)</p>
+                        <div class="price">TT$${phone.storage[0].price.toLocaleString()}</div>
+                    </div>
+                    <div class="badge-tag ${phone.badgeClass}">${phone.condition}</div>
+                `;
+                track.appendChild(card);
+            });
+        }
+
+        // Initialize Carousel
+        populateCarousel();
+
+        function openPhoneModal(id) {
+            const data = allPhonesData.find(p => p.id === id);
+            if(!data) return;
+
+            currentSelection.phoneObj = data;
+            currentSelection.gb = data.storage[0].gb;
+            currentSelection.price = data.storage[0].price;
+            currentSelection.colorObj = data.colors[0]; // Set default color
+
+            // Populate Modal Text
+            document.getElementById('modalTitle').innerText = data.name;
+            document.getElementById('modalCondition').innerText = data.condition;
+            
+            // Set Badge Styling inside Modal
+            const condBadge = document.getElementById('modalCondition');
+            condBadge.className = `modal-condition ${data.badgeClass}`;
+            
+            renderStorageOptions(data.storage);
+            renderColorOptions(data.colors);
+            updateModalDisplay(); // Also updates image
+
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function renderStorageOptions(storageArray) {
+            const container = document.getElementById('storageOptions');
+            container.innerHTML = '';
+            storageArray.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = `var-btn ${opt.gb === currentSelection.gb ? 'active' : ''}`;
+                btn.innerText = opt.gb;
+                btn.onclick = () => {
+                    currentSelection.gb = opt.gb;
+                    currentSelection.price = opt.price;
+                    renderStorageOptions(storageArray);
+                    updateModalDisplay();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderColorOptions(colorsArray) {
+            const container = document.getElementById('colorOptions');
+            container.innerHTML = '';
+            colorsArray.forEach(color => {
+                const btn = document.createElement('button');
+                btn.className = `color-btn ${color.name === currentSelection.colorObj.name ? 'active' : ''}`;
+                btn.style.backgroundColor = color.hex;
+                btn.title = color.name; // Tooltip on hover
+                
+                btn.onclick = () => {
+                    currentSelection.colorObj = color;
+                    renderColorOptions(colorsArray); // Re-render to update active border
+                    updateModalDisplay(); // Updates the picture!
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function updateModalDisplay() {
+            // Update the Image based on selected color object
+            const imgElement = document.getElementById('modalImg');
+            imgElement.style.opacity = 0; // Fade out effect
+            setTimeout(() => {
+                imgElement.src = currentSelection.colorObj.img;
+                imgElement.style.opacity = 1; // Fade in effect
+            }, 150);
+            
+            // Update Price
+            document.getElementById('modalPrice').innerText = `TT$${currentSelection.price.toLocaleString()}`;
+            
+            // Update WhatsApp Link
+            const waNumber = '18683308360';
+            const msg = `Hi Urban Connect TT! I'm interested in the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price}. I'd like to pay via Card/Cash. Is this available?`;
+            const encodedMsg = encodeURIComponent(msg);
+            document.getElementById('modalBuyBtn').href = `https://wa.me/${waNumber}?text=${encodedMsg}`;
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'productModal') {
+                document.getElementById('productModal').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
