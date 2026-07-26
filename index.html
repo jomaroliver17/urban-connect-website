@@ -28,7 +28,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
 
         /* --- Top Bar --- */
         .top-bar {
@@ -50,7 +50,7 @@
             position: sticky; top: 0; z-index: 1000;
         }
         .logo-box img { 
-            height: 45px; /* Adjust this to fit your uploaded logo */
+            height: 45px; 
             object-fit: contain;
         }
         
@@ -61,20 +61,25 @@
         .nav-icons { display: flex; align-items: center; gap: 20px; font-size: 1.1rem; color: #111827; }
         .nav-icons i { cursor: pointer; transition: color 0.2s; }
         .nav-icons i:hover { color: var(--primary-blue); }
+        
+        /* Cart Icon Styling */
+        .cart-icon-btn {
+            background: none; border: none; font-size: 1.2rem; color: #111827; cursor: pointer; position: relative; transition: color 0.2s;
+        }
+        .cart-icon-btn:hover { color: var(--primary-blue); }
+        .cart-badge {
+            position: absolute; top: -8px; right: -10px; background: var(--primary-blue); color: #FFF; font-size: 0.65rem; font-weight: bold; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+        }
 
         /* --- Hero Section --- */
         .hero {
-            /* Replace the URL below with your actual composite store image */
             background: linear-gradient(to right, rgba(7, 13, 24, 0.85) 0%, rgba(10, 22, 40, 0.75) 100%),
                         url('https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             color: var(--text-light); text-align: center; padding: 120px 20px;
             display: flex; flex-direction: column; align-items: center;
         }
         .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; color: #60A5FA; text-transform: uppercase; margin-bottom: 15px; }
-        
-        /* Central Logo Image */
         .hero-logo-img { max-width: 500px; width: 100%; margin-bottom: 20px; }
-
         .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
         .hero p { font-size: 1.1rem; color: #D1D5DB; margin-bottom: 40px; }
         
@@ -141,13 +146,10 @@
         .badge-open-box { background-color: #4B5563; }
         .badge-esim { background-color: #0369A1; }
 
-        /* --- Accessories Section (NEW) --- */
+        /* --- Accessories Section --- */
         .accessories-section { padding: 70px 50px; background: var(--bg-offwhite); }
         .accessories-header { font-size: 1.8rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 40px; }
-        
-        .accessories-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;
-        }
+        .accessories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         
         .accessory-card {
             background: #FFF; border-radius: 12px; border: 1px solid var(--border-light);
@@ -155,11 +157,7 @@
             transition: box-shadow 0.2s, transform 0.2s;
         }
         .accessory-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        
-        .acc-icon {
-            font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .acc-icon { font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px; display: flex; align-items: center; justify-content: center; }
         .acc-title { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
         .acc-sub { font-size: 0.8rem; color: #6B7280; margin-bottom: 20px; }
         .acc-price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
@@ -167,23 +165,18 @@
         .acc-btn {
             background: var(--card-btn-dark); color: #FFF; width: 100%; padding: 12px;
             border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
-            transition: background 0.2s; margin-top: auto;
+            transition: background 0.2s; margin-top: auto; border: none; cursor: pointer; text-transform: uppercase;
         }
         .acc-btn:hover { background: #1E293B; }
 
-        /* --- Expert Repairs Banner (UPDATED to match photo) --- */
+        /* --- Expert Repairs Banner --- */
         .repairs-banner {
             background-color: var(--bg-navy);
             color: #FFF; display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 40px;
             padding: 0 50px 0 0; align-items: center; border-top: 1px solid rgba(255,255,255,0.05);
             overflow: hidden;
         }
-        
-        .repairs-img-container {
-            height: 100%; min-height: 350px;
-            background: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=800&q=80') center left/cover no-repeat;
-        }
-
+        .repairs-img-container { height: 100%; min-height: 350px; background: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=800&q=80') center left/cover no-repeat; }
         .repairs-center { padding: 50px 0; }
         .repairs-center h2 { font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase;}
         .repairs-center p { color: #D1D5DB; font-size: 1rem; margin-bottom: 25px; max-width: 300px; }
@@ -193,21 +186,13 @@
             transition: 0.2s; text-transform: uppercase;
         }
         .repairs-center .btn-outline-light:hover { background: #FFF; color: var(--bg-navy); }
-        
-        .repairs-grid-right { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;
-        }
+        .repairs-grid-right { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px; }
         .repair-item-row { display: flex; align-items: center; gap: 15px; }
-        .repair-icon-box {
-            font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9;
-        }
+        .repair-icon-box { font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9; }
         .repair-item-row span { font-size: 0.95rem; font-weight: 400; color: #E5E7EB; }
 
         /* --- Social Proof & Payment Section --- */
-        .proof-section {
-            background: #FFF; padding: 50px; border-bottom: 1px solid var(--border-light);
-            display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; align-items: center;
-        }
+        .proof-section { background: #FFF; padding: 50px; border-bottom: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; align-items: center; }
         .google-rating { text-align: center; border-right: 1px solid var(--border-light); padding-right: 20px; }
         .google-rating h4 { font-size: 0.8rem; font-weight: 700; color: #6B7280; text-transform: uppercase; margin-bottom: 5px; }
         .google-rating .score { font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; }
@@ -215,31 +200,22 @@
         .google-rating p { font-size: 0.8rem; color: #6B7280; margin-bottom: 12px; }
         .btn-outline { display: inline-block; padding: 8px 20px; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; transition: 0.2s;}
         .btn-outline:hover { background: var(--primary-blue); color: #FFF; }
-
         .trust-badges-center { display: flex; justify-content: space-around; text-align: center; }
         .badge-col i { font-size: 2.5rem; color: #374151; margin-bottom: 15px; }
         .badge-col h5 { font-size: 0.9rem; font-weight: 800; color: #111827; text-transform: uppercase; }
-
         .payment-types { text-align: center; border-left: 1px solid var(--border-light); padding-left: 20px; }
         .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 10px; text-transform: uppercase; }
         .payment-types .sub-text { font-size: 0.75rem; color: #6B7280; margin-bottom: 15px; font-weight: 400; text-transform: none; }
         .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 2.2rem; color: #111827; }
         
         /* --- Footer --- */
-        footer {
-            background-color: var(--bg-dark); color: #FFF;
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
-            padding: 60px 50px; font-size: 0.85rem;
-        }
+        footer { background-color: var(--bg-dark); color: #FFF; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 60px 50px; font-size: 0.85rem; }
         .footer-col { display: flex; flex-direction: column; gap: 12px; }
         .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
         .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 15px; line-height: 1.6; font-size: 0.9rem;}
         .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; }
         .footer-social-icons { display: flex; gap: 15px; margin-top: 10px; }
-        .footer-social-icons a {
-            width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF;
-            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem;
-        }
+        .footer-social-icons a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem; }
         .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
 
         /* Floating WhatsApp */
@@ -250,7 +226,7 @@
         }
         .floating-whatsapp:hover { transform: scale(1.08); }
 
-        /* --- Product Modal with Color Changing Logic --- */
+        /* --- Product Modal --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center;
@@ -272,7 +248,6 @@
 
         .modal-left { width: 50%; background: #F8FAFC; padding: 40px; display: flex; align-items: center; justify-content: center; position: relative;}
         .modal-left img { max-width: 100%; max-height: 400px; object-fit: contain; transition: opacity 0.3s ease; }
-        
         .modal-right { width: 50%; padding: 40px; display: flex; flex-direction: column; }
         .modal-title { font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #111827; line-height: 1.1;}
         .modal-condition { display: inline-block; padding: 4px 10px; background: #111827; color: #FFF; font-size: 0.75rem; font-weight: 700; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; align-self: flex-start; }
@@ -297,15 +272,76 @@
         .color-btn:hover { transform: scale(1.1); }
         .color-btn.active { box-shadow: 0 0 0 2px var(--primary-blue); }
 
+        .modal-actions { display: flex; gap: 15px; margin-top: auto; }
+        .btn-add-cart {
+            flex: 1; padding: 16px; border-radius: 8px; background: var(--card-btn-dark); color: #FFF;
+            font-size: 0.95rem; font-weight: 800; border: none; cursor: pointer; transition: 0.2s; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-add-cart:hover { background: #1E293B; }
+        
         .modal-buy-btn {
-            margin-top: auto; padding: 18px; border-radius: 8px; background: var(--accent-green); color: #FFF;
-            text-align: center; font-size: 1.1rem; font-weight: 800; text-decoration: none;
-            display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; border: none; cursor: pointer; text-transform: uppercase;
+            flex: 1; padding: 16px; border-radius: 8px; background: var(--accent-green); color: #FFF;
+            text-align: center; font-size: 0.95rem; font-weight: 800; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; border: none; cursor: pointer; text-transform: uppercase;
         }
         .modal-buy-btn:hover { background: #20BA56; }
         
         .payment-info-modal { text-align: center; font-size: 0.75rem; color: #6B7280; margin-top: 15px; }
         .payment-info-modal i { color: #111827; font-size: 1rem; margin: 0 3px; vertical-align: middle;}
+
+        /* --- Shopping Cart Drawer --- */
+        .cart-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 2500; backdrop-filter: blur(3px);
+        }
+        .cart-drawer {
+            position: fixed; top: 0; right: -450px; width: 100%; max-width: 420px; height: 100vh;
+            background: #FFF; z-index: 3000; box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column; transition: right 0.3s ease;
+        }
+        .cart-drawer.open { right: 0; }
+        
+        .cart-header {
+            padding: 25px; border-bottom: 1px solid var(--border-light); display: flex;
+            justify-content: space-between; align-items: center; background: var(--bg-offwhite);
+        }
+        .cart-header h3 { font-size: 1.2rem; font-weight: 900; color: #111827; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .cart-close-btn { background: none; border: none; font-size: 1.3rem; color: #6B7280; cursor: pointer; }
+        
+        .cart-items-container { flex: 1; overflow-y: auto; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
+        
+        .cart-item {
+            display: flex; align-items: center; justify-content: space-between; padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .cart-item-info { flex: 1; padding-right: 15px; }
+        .cart-item-title { font-weight: 800; font-size: 0.95rem; color: #111827; margin-bottom: 3px; }
+        .cart-item-specs { font-size: 0.8rem; color: #6B7280; margin-bottom: 8px; }
+        .cart-item-price { font-weight: 800; color: var(--primary-blue); font-size: 0.95rem; }
+        
+        .cart-item-actions { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { width: 28px; height: 28px; border: 1px solid var(--border-light); background: #F8FAFC; border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .qty-val { font-size: 0.9rem; font-weight: 700; width: 20px; text-align: center; }
+        .remove-btn { color: #EF4444; background: none; border: none; cursor: pointer; font-size: 1rem; margin-left: 5px; }
+
+        .cart-footer { padding: 25px; border-top: 1px solid var(--border-light); background: var(--bg-offwhite); }
+        .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .cart-total-label { font-size: 1rem; font-weight: 700; color: #6B7280; text-transform: uppercase; }
+        .cart-total-value { font-size: 1.8rem; font-weight: 900; color: var(--primary-blue); }
+        
+        .btn-checkout {
+            width: 100%; padding: 16px; border-radius: 8px; background: var(--accent-green); color: #FFF;
+            font-size: 1rem; font-weight: 800; border: none; cursor: pointer; transition: 0.2s;
+            text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-checkout:hover { background: #20BA56; }
+
+        /* --- Checkout Modal --- */
+        .checkout-modal-content { max-width: 500px; flex-direction: column; padding: 30px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #374151; margin-bottom: 5px; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.9rem; }
+        .form-control:focus { outline: 2px solid var(--primary-blue); border-color: transparent; }
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
@@ -313,7 +349,6 @@
             .repairs-img-container { min-height: 250px; }
             .repairs-center, .repairs-grid-right { padding: 30px; }
             .repairs-grid-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
-            
             .proof-section, footer { grid-template-columns: 1fr 1fr; }
             .trust-bar { justify-content: center; }
             .google-rating, .payment-types { border: none; padding: 0; }
@@ -326,6 +361,7 @@
             .proof-section, footer, .repairs-grid-right { grid-template-columns: 1fr; }
             .arrow-left { left: 0; }
             .arrow-right { right: 0; }
+            .modal-actions { flex-direction: column; }
         }
     </style>
 </head>
@@ -348,7 +384,7 @@
     <!-- Main Navbar -->
     <nav class="navbar">
         <a href="#" class="logo-box">
-            <!-- Upload your actual logo image and replace this src -->
+            <!-- PUT YOUR LOGO IMAGE HERE -->
             <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT Logo">
         </a>
         <ul class="nav-links">
@@ -356,23 +392,21 @@
             <li><a href="#phones">SHOP PHONES</a></li>
             <li><a href="#repairs">REPAIRS</a></li>
             <li><a href="#accessories">ACCESSORIES</a></li>
-            <li><a href="#about">ABOUT US</a></li>
             <li><a href="#contact">CONTACT US</a></li>
         </ul>
         <div class="nav-icons">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <i class="fa-regular fa-user"></i>
-            <a href="https://wa.me/18683308360" target="_blank" style="color: #111827; position: relative;">
+            <!-- Updated Shopping Cart Trigger -->
+            <button class="cart-icon-btn" onclick="openCart()">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span style="position: absolute; top:-8px; right:-10px; background:var(--primary-blue); color:#FFF; font-size:0.6rem; font-weight:bold; border-radius:50%; width:16px; height:16px; display:flex; align-items:center; justify-content:center;">2</span>
-            </a>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-welcome">WELCOME TO</div>
-        <!-- Upload your actual logo image and replace this src -->
+        <!-- PUT YOUR LOGO IMAGE HERE -->
         <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT" class="hero-logo-img">
         
         <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
@@ -416,67 +450,58 @@
         </div>
         <div class="carousel-container">
             <button class="arrow-btn arrow-left" onclick="slideCarousel(-350)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="product-track" id="productTrack">
-                <!-- Javascript will inject all phones here -->
-            </div>
+            <div class="product-track" id="productTrack"></div>
             <button class="arrow-btn arrow-right" onclick="slideCarousel(350)"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </section>
 
-    <!-- Accessories Section (NEW based on your screenshot) -->
+    <!-- Accessories Section -->
     <section class="accessories-section" id="accessories">
         <h2 class="accessories-header">ACCESSORIES</h2>
         
         <div class="accessories-grid">
-            <!-- Card 1 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-solid fa-mobile-screen"></i></div>
                 <h3 class="acc-title">Premium Phone Cases</h3>
                 <p class="acc-sub">Various Styles & Colors</p>
-                <div class="acc-price">TT$80 - $150</div>
-                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20Premium%20Phone%20Cases." class="acc-btn">Order via WhatsApp</a>
+                <div class="acc-price">TT$150</div>
+                <button onclick="addAccessoryToCart('Premium Phone Case', 150)" class="acc-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
             </div>
 
-            <!-- Card 2 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-regular fa-square"></i></div>
                 <h3 class="acc-title">Clear Hydrogel Screen Protector</h3>
                 <p class="acc-sub">Crystal Clear Protection</p>
                 <div class="acc-price">TT$100</div>
-                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Clear%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
+                <button onclick="addAccessoryToCart('Clear Screen Protector', 100)" class="acc-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
             </div>
 
-            <!-- Card 3 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-solid fa-eye-slash"></i></div>
                 <h3 class="acc-title">Privacy Hydrogel Screen Protector</h3>
                 <p class="acc-sub">Anti-Spy Protection</p>
                 <div class="acc-price">TT$150</div>
-                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20a%20Privacy%20Hydrogel%20Screen%20Protector." class="acc-btn">Order via WhatsApp</a>
+                <button onclick="addAccessoryToCart('Privacy Screen Protector', 150)" class="acc-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
             </div>
 
-            <!-- Card 4 -->
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-solid fa-headphones"></i></div>
                 <h3 class="acc-title">AirPods 4th Gen</h3>
                 <p class="acc-sub">Brand New in Box</p>
                 <div class="acc-price">TT$1,300</div>
-                <a href="https://wa.me/18683308360?text=I'm%20interested%20in%20the%20AirPods%204th%20Gen." class="acc-btn">Order via WhatsApp</a>
+                <button onclick="addAccessoryToCart('AirPods 4th Gen', 1300)" class="acc-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
             </div>
         </div>
     </section>
 
-    <!-- Expert Repairs Banner (UPDATED layout) -->
+    <!-- Expert Repairs Banner -->
     <section class="repairs-banner" id="repairs">
-        <!-- Replace URL with your specific broken phone picture if desired -->
         <div class="repairs-img-container"></div>
-        
         <div class="repairs-center">
             <h2>EXPERT REPAIRS<br>DONE RIGHT</h2>
             <p>From screen replacements to water damage, we've got you covered.</p>
             <a href="https://wa.me/18683308360?text=I%20would%20like%20to%20book%20a%20repair%20for%20my%20device." target="_blank" class="btn-outline-light">BOOK A REPAIR NOW →</a>
         </div>
-        
         <div class="repairs-grid-right">
             <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-mobile-button"></i></div><span>Screen Replacement</span></div>
             <div class="repair-item-row"><div class="repair-icon-box"><i class="fa-solid fa-droplet"></i></div><span>Water Damage</span></div>
@@ -517,7 +542,7 @@
                 <i class="fa-brands fa-cc-visa" style="color: #1434CB;"></i>
                 <i class="fa-brands fa-cc-mastercard" style="color: #EB001B;"></i>
                 <i class="fa-brands fa-apple-pay" style="color: #000;"></i>
-                <i class="fa-solid fa-credit-card" style="color: #6B7280;"></i> <!-- Representing Linx/Debit -->
+                <i class="fa-solid fa-credit-card" style="color: #6B7280;"></i>
             </div>
         </div>
     </section>
@@ -563,23 +588,24 @@
 
                 <div class="variant-group">
                     <h4>Storage Capacity</h4>
-                    <div class="variant-options" id="storageOptions">
-                        <!-- Storage buttons injected here -->
-                    </div>
+                    <div class="variant-options" id="storageOptions"></div>
                 </div>
 
                 <div class="variant-group">
                     <h4>Color</h4>
-                    <div class="variant-options" id="colorOptions">
-                        <!-- Color swatches injected here -->
-                    </div>
+                    <div class="variant-options" id="colorOptions"></div>
                 </div>
 
-                <a href="#" id="modalBuyBtn" target="_blank" class="modal-buy-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
-                </a>
+                <!-- Updated Dual Buttons: Add to Cart & Buy Now -->
+                <div class="modal-actions">
+                    <button onclick="addCurrentToCart()" class="btn-add-cart">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <a href="#" id="modalBuyBtn" target="_blank" class="modal-buy-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Buy Now
+                    </a>
+                </div>
                 
-                <!-- Payment callout inside the modal -->
                 <div class="payment-info-modal">
                     Secure payment available in-store via 
                     <i class="fa-brands fa-cc-visa"></i> 
@@ -590,7 +616,222 @@
         </div>
     </div>
 
+    <!-- Slide-out Shopping Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Your Shopping Cart</h3>
+            <button class="cart-close-btn" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items-container" id="cartItemsContainer">
+            <!-- Dynamic Cart Items Injected Here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span class="cart-total-label">Subtotal:</span>
+                <span class="cart-total-value" id="cartTotalDisplay">TT$0</span>
+            </div>
+            <button class="btn-checkout" onclick="openCheckoutModal()">
+                <i class="fa-brands fa-whatsapp"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Details Modal -->
+    <div id="checkoutModal" class="modal-overlay" onclick="closeCheckoutModal(event)">
+        <div class="modal-content checkout-modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="document.getElementById('checkoutModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Checkout Details</h2>
+            
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="custName" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label>Delivery Address / Town</label>
+                <input type="text" id="custAddress" class="form-control" placeholder="e.g. Chaguanas / Tunapuna Store Pickup" required>
+            </div>
+            <div class="form-group">
+                <label>Preferred Payment Method</label>
+                <select id="custPayment" class="form-control">
+                    <option value="Linx / Card on Delivery">Linx / Card on Delivery</option>
+                    <option value="Cash on Delivery / Pickup">Cash on Delivery / Pickup</option>
+                    <option value="Online Bank Transfer">Online Bank Transfer</option>
+                </select>
+            </div>
+            
+            <button onclick="processWhatsAppOrder()" class="btn-checkout" style="margin-top: 10px;">
+                <i class="fa-brands fa-whatsapp"></i> Send Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
     <script>
+        // ==========================================
+        // CART STATE & LOCAL STORAGE ENGINE
+        // ==========================================
+        let cart = JSON.parse(localStorage.getItem('urbanConnectCart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('urbanConnectCart', JSON.stringify(cart));
+            updateCartBadge();
+            renderCart();
+        }
+
+        function updateCartBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartBadge').innerText = totalItems;
+        }
+
+        function openCart() {
+            document.getElementById('cartOverlay').style.display = 'block';
+            document.getElementById('cartDrawer').classList.add('open');
+            renderCart();
+        }
+
+        function closeCart() {
+            document.getElementById('cartOverlay').style.display = 'none';
+            document.getElementById('cartDrawer').classList.remove('open');
+        }
+
+        function addCurrentToCart() {
+            if (!currentSelection.phoneObj) return;
+            const item = {
+                id: `${currentSelection.phoneObj.id}-${currentSelection.gb}-${currentSelection.colorObj.name}`,
+                title: currentSelection.phoneObj.name,
+                specs: `${currentSelection.gb} • ${currentSelection.colorObj.name} (${currentSelection.phoneObj.condition})`,
+                price: currentSelection.price,
+                qty: 1
+            };
+            
+            const existingIndex = cart.findIndex(i => i.id === item.id);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push(item);
+            }
+            
+            saveCart();
+            document.getElementById('productModal').style.display = 'none';
+            openCart();
+        }
+
+        function addAccessoryToCart(name, price) {
+            const item = {
+                id: `acc-${name.toLowerCase().replace(/\s+/g, '-')}`,
+                title: name,
+                specs: 'Accessory',
+                price: price,
+                qty: 1
+            };
+            const existingIndex = cart.findIndex(i => i.id === item.id);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push(item);
+            }
+            saveCart();
+            openCart();
+        }
+
+        function changeQty(index, amount) {
+            cart[index].qty += amount;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            saveCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            if (cart.length === 0) {
+                container.innerHTML = `<div style="text-align:center; color:#6B7280; margin-top:50px;">Your cart is empty.</div>`;
+                document.getElementById('cartTotalDisplay').innerText = `TT$0`;
+                return;
+            }
+            
+            container.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, idx) => {
+                total += item.price * item.qty;
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-specs">${item.specs}</div>
+                        <div class="cart-item-price">TT$${(item.price * item.qty).toLocaleString()}</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <button class="qty-btn" onclick="changeQty(${idx}, -1)">-</button>
+                        <span class="qty-val">${item.qty}</span>
+                        <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
+                        <button class="remove-btn" onclick="changeQty(${idx}, -999)"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            
+            document.getElementById('cartTotalDisplay').innerText = `TT$${total.toLocaleString()}`;
+        }
+
+        // ==========================================
+        // CHECKOUT ENGINE
+        // ==========================================
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            closeCart();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeCheckoutModal(e) {
+            if (e.target.id === 'checkoutModal') {
+                document.getElementById('checkoutModal').style.display = 'none';
+            }
+        }
+
+        function processWhatsAppOrder() {
+            const name = document.getElementById('custName').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const payment = document.getElementById('custPayment').value;
+            
+            if (!name || !address) {
+                alert("Please enter your name and delivery address.");
+                return;
+            }
+
+            let total = 0;
+            let itemList = "";
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                itemList += `▪️ *${item.qty}x* ${item.title} (${item.specs}) - TT$${itemTotal.toLocaleString()}\n`;
+            });
+
+            const waNumber = '18683308360';
+            const message = `🛍️ *NEW ORDER - URBAN CONNECT TT* 🛍️\n\n` +
+                            `*Customer:* ${name}\n` +
+                            `*Address/Town:* ${address}\n` +
+                            `*Payment:* ${payment}\n` +
+                            `---------------------------------\n` +
+                            `${itemList}` +
+                            `---------------------------------\n` +
+                            `*TOTAL DUE: TT$${total.toLocaleString()}*\n\n` +
+                            `Please confirm order availability and delivery details!`;
+
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://wa.me/${waNumber}?text=${encodedMsg}`, '_blank');
+            
+            // Empty the cart after successful order submission
+            cart = [];
+            saveCart();
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
         // Sideways scrolling
         function slideCarousel(offset) {
             const track = document.getElementById('productTrack');
@@ -598,7 +839,7 @@
         }
 
         // ==========================================
-        // PHONE DATA ENGINE (Expanded Color Palette)
+        // PHONE DATA ENGINE
         // ==========================================
         const allPhonesData = [
             // --- iPhone 17 Series ---
@@ -636,7 +877,6 @@
                     { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
                 ]
             },
-
             // --- iPhone 16 Series ---
             {
                 id: '16promax', name: 'iPhone 16 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
@@ -678,7 +918,6 @@
                     { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
                 ]
             },
-
             // --- iPhone 15 Series ---
             {
                 id: '15promax', name: 'iPhone 15 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
@@ -726,7 +965,6 @@
                     { name: 'Pink', hex: '#E3C8CD', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg' }
                 ]
             },
-
             // --- iPhone 14 Series ---
             {
                 id: '14promax', name: 'iPhone 14 Pro Max', condition: 'ESIM', badgeClass: 'badge-esim',
@@ -774,7 +1012,6 @@
                     { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg' }
                 ]
             },
-
             // --- iPhone 13 Series ---
             {
                 id: '13promax', name: 'iPhone 13 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
@@ -825,7 +1062,6 @@
                     { name: 'Product RED', hex: '#C7222A', img: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg' }
                 ]
             },
-
             // --- iPhone 12 Series ---
             {
                 id: '12promax', name: 'iPhone 12 Pro Max', condition: 'Open Box', badgeClass: 'badge-open-box',
@@ -879,9 +1115,9 @@
 
         let currentSelection = { phoneObj: null, gb: null, price: null, colorObj: null };
 
-        // Generate the Carousel HTML dynamically based on the JS object
         function populateCarousel() {
             const track = document.getElementById('productTrack');
+            track.innerHTML = '';
             allPhonesData.forEach(phone => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
@@ -902,9 +1138,6 @@
             });
         }
 
-        // Initialize Carousel
-        populateCarousel();
-
         function openPhoneModal(id) {
             const data = allPhonesData.find(p => p.id === id);
             if(!data) return;
@@ -912,19 +1145,15 @@
             currentSelection.phoneObj = data;
             currentSelection.gb = data.storage[0].gb;
             currentSelection.price = data.storage[0].price;
-            currentSelection.colorObj = data.colors[0]; // Set default color
+            currentSelection.colorObj = data.colors[0];
 
-            // Populate Modal Text
             document.getElementById('modalTitle').innerText = data.name;
             document.getElementById('modalCondition').innerText = data.condition;
-            
-            // Set Badge Styling inside Modal
-            const condBadge = document.getElementById('modalCondition');
-            condBadge.className = `modal-condition ${data.badgeClass}`;
+            document.getElementById('modalCondition').className = `modal-condition ${data.badgeClass}`;
             
             renderStorageOptions(data.storage);
             renderColorOptions(data.colors);
-            updateModalDisplay(); // Also updates image
+            updateModalDisplay();
 
             document.getElementById('productModal').style.display = 'flex';
         }
@@ -953,34 +1182,30 @@
                 const btn = document.createElement('button');
                 btn.className = `color-btn ${color.name === currentSelection.colorObj.name ? 'active' : ''}`;
                 btn.style.backgroundColor = color.hex;
-                btn.title = color.name; // Tooltip on hover
+                btn.title = color.name;
                 
                 btn.onclick = () => {
                     currentSelection.colorObj = color;
-                    renderColorOptions(colorsArray); // Re-render to update active border
-                    updateModalDisplay(); // Updates the picture!
+                    renderColorOptions(colorsArray);
+                    updateModalDisplay();
                 };
                 container.appendChild(btn);
             });
         }
 
         function updateModalDisplay() {
-            // Update the Image based on selected color object
             const imgElement = document.getElementById('modalImg');
-            imgElement.style.opacity = 0; // Fade out effect
+            imgElement.style.opacity = 0;
             setTimeout(() => {
                 imgElement.src = currentSelection.colorObj.img;
-                imgElement.style.opacity = 1; // Fade in effect
+                imgElement.style.opacity = 1;
             }, 150);
             
-            // Update Price
             document.getElementById('modalPrice').innerText = `TT$${currentSelection.price.toLocaleString()}`;
             
-            // Update WhatsApp Link
             const waNumber = '18683308360';
-            const msg = `Hi Urban Connect TT! I'm interested in the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price}. I'd like to pay via Card/Cash. Is this available?`;
-            const encodedMsg = encodeURIComponent(msg);
-            document.getElementById('modalBuyBtn').href = `https://wa.me/${waNumber}?text=${encodedMsg}`;
+            const msg = `Hi Urban Connect TT! I'd like to immediately buy the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price.toLocaleString()}. Is this available?`;
+            document.getElementById('modalBuyBtn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
         }
 
         function closeModal(e) {
@@ -988,6 +1213,10 @@
                 document.getElementById('productModal').style.display = 'none';
             }
         }
+
+        // Initialize Carousel & Cart Badge on Page Load
+        populateCarousel();
+        updateCartBadge();
     </script>
 </body>
 </html>
