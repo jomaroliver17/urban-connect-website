@@ -50,7 +50,7 @@
             position: sticky; top: 0; z-index: 1000;
         }
         .logo-box img { 
-            height: 45px; 
+            height: 48px; 
             object-fit: contain;
         }
         
@@ -73,22 +73,24 @@
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(to right, rgba(7, 13, 24, 0.85) 0%, rgba(10, 22, 40, 0.75) 100%),
+            background: linear-gradient(to bottom, rgba(7, 13, 24, 0.25) 0%, rgba(10, 22, 40, 0.65) 100%),
                         url(https://cdn.phototourl.com/free/2026-07-27-a8b2f350-72b7-4e30-a0a5-17fabbfd7cb6.png) center/cover no-repeat;
-            color: var(--text-light); text-align: center; padding: 120px 20px;
-            display: flex; flex-direction: column; align-items: center;
+            color: var(--text-light); 
+            text-align: center; 
+            min-height: 550px;
+            padding: 40px 20px 60px;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            justify-content: flex-end;
         }
-        .hero-welcome { font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; color: #60A5FA; text-transform: uppercase; margin-bottom: 15px; }
-        .hero-logo-img { max-width: 500px; width: 100%; margin-bottom: 20px; }
-        .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
-        .hero p { font-size: 1.1rem; color: #D1D5DB; margin-bottom: 40px; }
         
         .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .btn { padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; border: 2px solid transparent; text-transform: uppercase; }
         .btn-blue { background-color: var(--primary-blue); color: #FFF; }
         .btn-blue:hover { background-color: var(--primary-blue-hover); }
-        .btn-dark { background-color: transparent; color: #FFF; border-color: rgba(255,255,255,0.3); }
-        .btn-dark:hover { background-color: rgba(255,255,255,0.1); border-color: #FFF; }
+        .btn-dark { background-color: rgba(15, 23, 42, 0.85); color: #FFF; border-color: rgba(255,255,255,0.3); backdrop-filter: blur(4px); }
+        .btn-dark:hover { background-color: rgba(255,255,255,0.15); border-color: #FFF; }
         .btn-white { background-color: #FFF; color: #111827; }
         .btn-white:hover { background-color: #F3F4F6; }
         .btn-white i { color: var(--accent-green); font-size: 1.2rem; }
@@ -354,6 +356,7 @@
             .google-rating, .payment-types { border: none; padding: 0; }
             .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
             .modal-left, .modal-right { width: 100%; }
+            .hero { min-height: 450px; }
         }
         @media (max-width: 768px) {
             .top-bar, .nav-links { display: none; }
@@ -362,6 +365,7 @@
             .arrow-left { left: 0; }
             .arrow-right { right: 0; }
             .modal-actions { flex-direction: column; }
+            .hero { min-height: 380px; padding-bottom: 40px; }
         }
     </style>
 </head>
@@ -384,8 +388,7 @@
     <!-- Main Navbar -->
     <nav class="navbar">
         <a href="#" class="logo-box">
-            <!-- PUT YOUR LOGO IMAGE HERE -->
-            <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT Logo">
+            <img src="https://cdn.phototourl.com/free/2026-07-27-4fc718a1-7d1c-492c-ba7e-1d36df89ae22.png" alt="Urban Connect TT Logo">
         </a>
         <ul class="nav-links">
             <li><a href="#" class="active">HOME</a></li>
@@ -395,7 +398,6 @@
             <li><a href="#contact">CONTACT US</a></li>
         </ul>
         <div class="nav-icons">
-            <!-- Updated Shopping Cart Trigger -->
             <button class="cart-icon-btn" onclick="openCart()">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-badge" id="cartBadge">0</span>
@@ -405,12 +407,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-welcome">WELCOME TO</div>
-        <!-- PUT YOUR LOGO IMAGE HERE -->
-        <img src="YOUR_LOGO_IMAGE.png" alt="Urban Connect TT" class="hero-logo-img">
-        
-        <h1>TRINIDAD & TOBAGO'S TRUSTED PHONE STORE</h1>
-        <p>Premium Phones. Expert Repairs. Unbeatable Prices.</p>
         <div class="hero-buttons">
             <a href="#phones" class="btn btn-blue"><i class="fa-solid fa-mobile-screen"></i> SHOP PHONES</a>
             <a href="#repairs" class="btn btn-dark"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR</a>
@@ -596,7 +592,6 @@
                     <div class="variant-options" id="colorOptions"></div>
                 </div>
 
-                <!-- Updated Dual Buttons: Add to Cart & Buy Now -->
                 <div class="modal-actions">
                     <button onclick="addCurrentToCart()" class="btn-add-cart">
                         <i class="fa-solid fa-cart-plus"></i> Add to Cart
@@ -826,7 +821,6 @@
             const encodedMsg = encodeURIComponent(message);
             window.open(`https://wa.me/${waNumber}?text=${encodedMsg}`, '_blank');
             
-            // Empty the cart after successful order submission
             cart = [];
             saveCart();
             document.getElementById('checkoutModal').style.display = 'none';
