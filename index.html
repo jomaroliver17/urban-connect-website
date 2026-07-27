@@ -50,7 +50,7 @@
             position: sticky; top: 0; z-index: 1000;
         }
         .logo-box img { 
-            height: 48px; 
+            height: 65px; 
             object-fit: contain;
         }
         
@@ -73,19 +73,52 @@
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(to bottom, rgba(7, 13, 24, 0.25) 0%, rgba(10, 22, 40, 0.65) 100%),
-                        url(https://cdn.phototourl.com/free/2026-07-27-a8b2f350-72b7-4e30-a0a5-17fabbfd7cb6.png) center/cover no-repeat;
+            background: linear-gradient(to bottom, rgba(7, 13, 24, 0.45) 0%, rgba(10, 22, 40, 0.85) 100%),
+                        url(https://cdn.phototourl.com/member/2026-07-27-05d346b3-1d8c-4286-ab6c-9c437d13ba4a.png) center/cover no-repeat;
             color: var(--text-light); 
             text-align: center; 
-            min-height: 550px;
-            padding: 40px 20px 60px;
+            min-height: 300px;
+            padding: 40px 20px;
             display: flex; 
             flex-direction: column; 
             align-items: center;
-            justify-content: flex-end;
+            justify-content: center;
+            gap: 30px;
         }
         
-        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .hero-welcome {
+            color: #60A5FA;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 0px;
+        }
+        .hero-logo {
+            max-width: 95%;
+            width: 700px;
+            margin-bottom: 20px;
+        }
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #E5E7EB;
+        }
+        
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: auto; }
         .btn { padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; border: 2px solid transparent; text-transform: uppercase; }
         .btn-blue { background-color: var(--primary-blue); color: #FFF; }
         .btn-blue:hover { background-color: var(--primary-blue-hover); }
@@ -356,7 +389,7 @@
             .google-rating, .payment-types { border: none; padding: 0; }
             .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
             .modal-left, .modal-right { width: 100%; }
-            .hero { min-height: 450px; }
+            .hero { min-height: 250px; } /* Slimmer for tablet */
         }
         @media (max-width: 768px) {
             .top-bar, .nav-links { display: none; }
@@ -365,7 +398,9 @@
             .arrow-left { left: 0; }
             .arrow-right { right: 0; }
             .modal-actions { flex-direction: column; }
-            .hero { min-height: 380px; padding-bottom: 40px; }
+            .hero { min-height: 200px; padding-bottom: 30px; } /* Slimmer for mobile */
+            .hero-title { font-size: 1.6rem; }
+            .hero-logo { width: 100%; }
         }
     </style>
 </head>
@@ -407,6 +442,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-content">
+            <p class="hero-welcome">WELCOME TO</p>
+            <img src="https://cdn.phototourl.com/member/2026-07-27-7f7bdd63-6722-44ef-849b-90c12a2916da.png" alt="Urban Connect TT Hero Logo" class="hero-logo">
+            <h1 class="hero-title">TRINIDAD & TOBAGO'S<br>TRUSTED PHONE STORE</h1>
+            <p class="hero-subtitle">Premium Phones. Expert Repairs. Unbeatable Prices.</p>
+        </div>
         <div class="hero-buttons">
             <a href="#phones" class="btn btn-blue"><i class="fa-solid fa-mobile-screen"></i> SHOP PHONES</a>
             <a href="#repairs" class="btn btn-dark"><i class="fa-solid fa-wrench"></i> BOOK A REPAIR</a>
@@ -842,9 +883,9 @@
                 defaultImg: 'https://cdn.phototourl.com/member/2026-07-27-e567ebc6-0cc0-4317-adde-2f7fa315fb08.jpg',
                 storage: [ {gb:'256GB', price:10499}, {gb:'512GB', price:11999}, {gb:'1TB', price:13399} ],
                 colors: [
-                    { name: 'Cosmic Orange', hex: '#1C1C1E', img: 'https://cdn.phototourl.com/member/2026-07-27-e567ebc6-0cc0-4317-adde-2f7fa315fb08.jpg' },
-                    { name: 'Blue', hex: '#F2F1ED', img: 'https://cdn.phototourl.com/member/2026-07-27-961645b2-5230-4190-9629-b72186d4e3b7.jpg' },
-                    { name: 'Silver', hex: '#A8A6A1', img: 'https://cdn.phototourl.com/member/2026-07-27-208ce9aa-0adb-45b2-b9bc-a23620dd5898.jpg' }
+                    { name: 'Cosmic Orange', hex: '#FFA500', img: 'https://cdn.phototourl.com/member/2026-07-27-e567ebc6-0cc0-4317-adde-2f7fa315fb08.jpg' },
+                    { name: 'Deep Blue', hex: '#0A58CA', img: 'https://cdn.phototourl.com/member/2026-07-27-961645b2-5230-4190-9629-b72186d4e3b7.jpg' },
+                    { name: 'Silver', hex: '#C0C0C0', img: 'https://cdn.phototourl.com/member/2026-07-27-208ce9aa-0adb-45b2-b9bc-a23620dd5898.jpg' }
                 ]
             },
             {
@@ -852,9 +893,9 @@
                 defaultImg: 'https://cdn.phototourl.com/member/2026-07-27-e567ebc6-0cc0-4317-adde-2f7fa315fb08.jpg',
                 storage: [ {gb:'256GB', price:9599}, {gb:'512GB', price:10599} ],
                 colors: [
-                    { name: 'Cosmic Orange', hex: '#1C1C1E', img: 'https://cdn.phototourl.com/member/2026-07-27-e567ebc6-0cc0-4317-adde-2f7fa315fb08.jpg' },
-                    { name: 'Blue', hex: '#F2F1ED', img: 'https://cdn.phototourl.com/member/2026-07-27-961645b2-5230-4190-9629-b72186d4e3b7.jpg' },
-                    { name: 'Silver', hex: '#A8A6A1', img: 'https://cdn.phototourl.com/member/2026-07-27-208ce9aa-0adb-45b2-b9bc-a23620dd5898.jpg' }
+                    { name: 'Cosmic Orange', hex: '#FFA500', img: 'https://cdn.phototourl.com/member/2026-07-27-e567ebc6-0cc0-4317-adde-2f7fa315fb08.jpg' },
+                    { name: 'Deep Blue', hex: '#0A58CA', img: 'https://cdn.phototourl.com/member/2026-07-27-961645b2-5230-4190-9629-b72186d4e3b7.jpg' },
+                    { name: 'Silver', hex: '#C0C0C0', img: 'https://cdn.phototourl.com/member/2026-07-27-208ce9aa-0adb-45b2-b9bc-a23620dd5898.jpg' }
                 ]
             },
             {
@@ -865,8 +906,8 @@
                     { name: 'Black', hex: '#313336', img: 'https://cdn.phototourl.com/member/2026-07-27-42152010-a1e3-467e-ba56-064280eef4b8.jpg' },
                     { name: 'Blue', hex: '#CEE2E8', img: 'https://cdn.phototourl.com/member/2026-07-27-36a5ee39-d8ef-4483-8bba-19d118df8ae9.jpg' },
                     { name: 'Sage', hex: '#CDE1D6', img: 'https://cdn.phototourl.com/member/2026-07-27-9db7ce4d-564f-460b-94f3-ead26166955a.jpg' },
-                    { name: 'Lavender', hex: '#F9E596', img: 'https://cdn.phototourl.com/member/2026-07-27-3f5a30a9-eaf0-466d-b302-5fb99693ef58.jpg' },
-                    { name: 'White', hex: '#E3C8CD', img: 'https://cdn.phototourl.com/member/2026-07-27-5ce9abc1-648b-4ab2-9298-470822c934a2.jpg' }
+                    { name: 'Lavender', hex: '#E6E6FA', img: 'https://cdn.phototourl.com/member/2026-07-27-3f5a30a9-eaf0-466d-b302-5fb99693ef58.jpg' },
+                    { name: 'White', hex: '#FFFFFF', img: 'https://cdn.phototourl.com/member/2026-07-27-5ce9abc1-648b-4ab2-9298-470822c934a2.jpg' }
                 ]
             },
             // --- iPhone 16 Series ---
