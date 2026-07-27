@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Urban Connect TT | Trinidad & Tobago's Trusted Phone Store</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -50,7 +50,7 @@
             position: sticky; top: 0; z-index: 1000;
         }
         .logo-box img { 
-            height: 65px; 
+            height: 55px; 
             object-fit: contain;
         }
         
@@ -58,206 +58,204 @@
         .nav-links a { text-decoration: none; color: #111827; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
         
-        .nav-icons { display: flex; align-items: center; gap: 20px; font-size: 1.1rem; color: #111827; }
-        .nav-icons i { cursor: pointer; transition: color 0.2s; }
-        .nav-icons i:hover { color: var(--primary-blue); }
+        .nav-icons { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; color: #111827; }
         
+        /* Hamburger Button for Mobile */
+        .hamburger-btn {
+            display: none; background: none; border: none; font-size: 1.5rem;
+            color: #111827; cursor: pointer; padding: 5px;
+        }
+
         /* Cart Icon Styling */
         .cart-icon-btn {
-            background: none; border: none; font-size: 1.2rem; color: #111827; cursor: pointer; position: relative; transition: color 0.2s;
+            background: none; border: none; font-size: 1.3rem; color: #111827;
+            cursor: pointer; position: relative; transition: color 0.2s; padding: 5px;
         }
         .cart-icon-btn:hover { color: var(--primary-blue); }
         .cart-badge {
-            position: absolute; top: -8px; right: -10px; background: var(--primary-blue); color: #FFF; font-size: 0.65rem; font-weight: bold; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+            position: absolute; top: -4px; right: -6px; background: var(--primary-blue);
+            color: #FFF; font-size: 0.65rem; font-weight: bold; border-radius: 50%;
+            width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
         }
+
+        /* --- Mobile Navigation Drawer --- */
+        .mobile-nav-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1500; backdrop-filter: blur(3px);
+        }
+        .mobile-nav-drawer {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+            background: #FFF; z-index: 2000; box-shadow: 10px 0 30px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column; transition: left 0.3s ease; padding: 25px;
+        }
+        .mobile-nav-drawer.open { left: 0; }
+        .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 15px; margin-bottom: 20px; }
+        .mobile-nav-header img { height: 40px; }
+        .mobile-nav-close { background: none; border: none; font-size: 1.5rem; color: #6B7280; cursor: pointer; }
+        .mobile-nav-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .mobile-nav-list a { text-decoration: none; color: #111827; font-weight: 700; font-size: 1rem; display: block; }
+        .mobile-nav-info { margin-top: auto; border-top: 1px solid var(--border-light); padding-top: 20px; font-size: 0.8rem; color: var(--text-gray); display: flex; flex-direction: column; gap: 10px; }
+        .mobile-nav-info span { display: flex; align-items: center; gap: 10px; }
 
         /* --- Hero Section --- */
         .hero {
             background: linear-gradient(to bottom, rgba(7, 13, 24, 0.45) 0%, rgba(10, 22, 40, 0.85) 100%),
                         url(https://cdn.phototourl.com/member/2026-07-27-05d346b3-1d8c-4286-ab6c-9c437d13ba4a.png) center/cover no-repeat;
-            color: var(--text-light); 
-            text-align: center; 
-            min-height: 300px;
-            padding: 40px 20px;
-            display: flex; 
-            flex-direction: column; 
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
+            color: var(--text-light); text-align: center; min-height: 380px;
+            padding: 50px 20px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 30px;
         }
         
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .hero-welcome {
-            color: #60A5FA;
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 0px;
-        }
-        .hero-logo {
-            max-width: 95%;
-            width: 700px;
-            margin-bottom: 20px;
-        }
-        .hero-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #E5E7EB;
-        }
+        .hero-content { display: flex; flex-direction: column; align-items: center; margin-top: 10px; }
+        .hero-welcome { color: #60A5FA; font-size: 1rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 5px; }
+        .hero-logo { max-width: 90%; width: 600px; margin-bottom: 20px; }
+        .hero-title { font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 10px; text-transform: uppercase; }
+        .hero-subtitle { font-size: 1.1rem; font-weight: 400; color: #E5E7EB; }
         
-        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: auto; }
-        .btn { padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; border: 2px solid transparent; text-transform: uppercase; }
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; max-width: 800px; }
+        .btn { padding: 16px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.2s; cursor: pointer; border: 2px solid transparent; text-transform: uppercase; min-height: 48px; }
         .btn-blue { background-color: var(--primary-blue); color: #FFF; }
         .btn-blue:hover { background-color: var(--primary-blue-hover); }
         .btn-dark { background-color: rgba(15, 23, 42, 0.85); color: #FFF; border-color: rgba(255,255,255,0.3); backdrop-filter: blur(4px); }
         .btn-dark:hover { background-color: rgba(255,255,255,0.15); border-color: #FFF; }
         .btn-white { background-color: #FFF; color: #111827; }
         .btn-white:hover { background-color: #F3F4F6; }
-        .btn-white i { color: var(--accent-green); font-size: 1.2rem; }
+        .btn-white i { color: var(--accent-green); font-size: 1.3rem; }
 
         /* --- Trust Badges Bar --- */
         .trust-bar {
-            background-color: var(--bg-navy); padding: 25px 50px;
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background-color: var(--bg-navy); padding: 30px 50px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .trust-item { display: flex; align-items: center; gap: 15px; color: #FFF; }
         .trust-icon {
-            width: 45px; height: 45px; border-radius: 12px; background: rgba(255,255,255,0.05);
-            display: flex; align-items: center; justify-content: center; color: #60A5FA; font-size: 1.4rem; border: 1px solid rgba(255,255,255,0.1);
+            width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.05);
+            display: flex; align-items: center; justify-content: center; color: #60A5FA;
+            font-size: 1.4rem; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;
         }
-        .trust-text h4 { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; }
+        .trust-text h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; }
         .trust-text p { font-size: 0.75rem; color: #9CA3AF; }
 
         /* --- Dynamic Product Section --- */
-        .carousel-section { padding: 70px 50px; max-width: 1600px; margin: 0 auto; background: #FFF; }
-        .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 2px solid #F3F4F6; padding-bottom: 15px;}
-        .section-header-row h2 { font-size: 1.8rem; font-weight: 800; color: #111827; text-transform: uppercase; }
-        .view-all-btn { color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.9rem; border: 1px solid var(--primary-blue); padding: 8px 16px; border-radius: 6px; }
+        .carousel-section { padding: 60px 50px; max-width: 1600px; margin: 0 auto; background: #FFF; }
+        .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; border-bottom: 2px solid #F3F4F6; padding-bottom: 15px; flex-wrap: wrap; gap: 15px;}
+        .section-header-row h2 { font-size: 1.6rem; font-weight: 800; color: #111827; text-transform: uppercase; }
+        .view-all-btn { color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 0.85rem; border: 1px solid var(--primary-blue); padding: 10px 18px; border-radius: 6px; }
         .view-all-btn:hover { background: var(--primary-blue); color: #FFF; }
         
         .carousel-container { position: relative; display: flex; align-items: center; }
         .arrow-btn {
-            width: 50px; height: 50px; border-radius: 50%; background: #FFF; border: 1px solid var(--border-light);
+            width: 48px; height: 48px; border-radius: 50%; background: #FFF; border: 1px solid var(--border-light);
             box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center;
             font-size: 1.2rem; color: #111827; cursor: pointer; position: absolute; z-index: 10; transition: all 0.2s;
         }
         .arrow-btn:hover { background: var(--primary-blue); color: #FFF; border-color: var(--primary-blue); }
-        .arrow-left { left: -25px; }
-        .arrow-right { right: -25px; }
+        .arrow-left { left: -20px; }
+        .arrow-right { right: -20px; }
 
-        .product-track { display: flex; gap: 30px; overflow-x: auto; scroll-behavior: smooth; padding: 15px 10px 40px; scrollbar-width: none; }
+        .product-track {
+            display: flex; gap: 20px; overflow-x: auto; scroll-behavior: smooth;
+            padding: 10px 5px 30px; scrollbar-width: none; scroll-snap-type: x mandatory;
+        }
         .product-track::-webkit-scrollbar { display: none; }
 
         .product-card {
             background: #FFFFFF; border: 1px solid var(--border-light); border-radius: 12px;
-            padding: 25px; min-width: 280px; max-width: 280px; flex-shrink: 0;
-            display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+            padding: 20px; min-width: 260px; max-width: 260px; flex-shrink: 0;
+            display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; scroll-snap-align: center;
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: transparent; }
         
-        .product-image-box { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .product-image-box { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
         .product-image-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-        .product-info h3 { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
-        .product-info .specs { font-size: 0.85rem; color: #6B7280; margin-bottom: 15px; font-weight: 500;}
-        .product-info .price { font-size: 1.6rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 15px; }
+        .product-info h3 { font-size: 1.05rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+        .product-info .specs { font-size: 0.8rem; color: #6B7280; margin-bottom: 12px; font-weight: 500;}
+        .product-info .price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 15px; }
         
-        .badge-tag { display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #FFF; margin-top: auto; align-self: flex-start; }
+        .badge-tag { display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: #FFF; margin-top: auto; align-self: flex-start; }
         .badge-brand-new { background-color: #111827; }
         .badge-open-box { background-color: #4B5563; }
         .badge-esim { background-color: #0369A1; }
 
         /* --- Accessories Section --- */
-        .accessories-section { padding: 70px 50px; background: var(--bg-offwhite); }
-        .accessories-header { font-size: 1.8rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 40px; }
-        .accessories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .accessories-section { padding: 60px 50px; background: var(--bg-offwhite); }
+        .accessories-header { font-size: 1.6rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 35px; }
+        .accessories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
         
         .accessory-card {
             background: #FFF; border-radius: 12px; border: 1px solid var(--border-light);
-            padding: 30px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 25px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
             transition: box-shadow 0.2s, transform 0.2s;
         }
         .accessory-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        .acc-icon { font-size: 4rem; color: #D1D5DB; margin-bottom: 25px; height: 80px; display: flex; align-items: center; justify-content: center; }
-        .acc-title { font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
-        .acc-sub { font-size: 0.8rem; color: #6B7280; margin-bottom: 20px; }
-        .acc-price { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
+        .acc-icon { font-size: 3.5rem; color: #D1D5DB; margin-bottom: 20px; height: 70px; display: flex; align-items: center; justify-content: center; }
+        .acc-title { font-size: 1.05rem; font-weight: 800; color: #111827; margin-bottom: 5px; }
+        .acc-sub { font-size: 0.8rem; color: #6B7280; margin-bottom: 15px; }
+        .acc-price { font-size: 1.3rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 20px; }
         
         .acc-btn {
-            background: var(--card-btn-dark); color: #FFF; width: 100%; padding: 12px;
-            border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
-            transition: background 0.2s; margin-top: auto; border: none; cursor: pointer; text-transform: uppercase;
+            background: var(--card-btn-dark); color: #FFF; width: 100%; padding: 14px;
+            border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.85rem;
+            transition: background 0.2s; margin-top: auto; border: none; cursor: pointer; text-transform: uppercase; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
         .acc-btn:hover { background: #1E293B; }
 
         /* --- Expert Repairs Banner --- */
         .repairs-banner {
-            background-color: var(--bg-navy);
-            color: #FFF; display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 40px;
-            padding: 0 50px 0 0; align-items: center; border-top: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
+            background-color: var(--bg-navy); color: #FFF; display: grid;
+            grid-template-columns: 1fr 1.5fr 1.5fr; gap: 40px; padding: 0 50px 0 0;
+            align-items: center; border-top: 1px solid rgba(255,255,255,0.05); overflow: hidden;
         }
         .repairs-img-container { height: 100%; min-height: 350px; background: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&w=800&q=80') center left/cover no-repeat; }
         .repairs-center { padding: 50px 0; }
-        .repairs-center h2 { font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase;}
-        .repairs-center p { color: #D1D5DB; font-size: 1rem; margin-bottom: 25px; max-width: 300px; }
+        .repairs-center h2 { font-size: 2.2rem; font-weight: 900; line-height: 1.1; margin-bottom: 15px; text-transform: uppercase;}
+        .repairs-center p { color: #D1D5DB; font-size: 0.95rem; margin-bottom: 25px; max-width: 320px; }
         .repairs-center .btn-outline-light { 
-            display: inline-block; padding: 12px 24px; border: 2px solid rgba(255,255,255,0.3); 
-            color: #FFF; text-decoration: none; font-weight: 700; border-radius: 6px; font-size: 0.85rem; 
-            transition: 0.2s; text-transform: uppercase;
+            display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border: 2px solid rgba(255,255,255,0.3); 
+            color: #FFF; text-decoration: none; font-weight: 700; border-radius: 8px; font-size: 0.85rem; 
+            transition: 0.2s; text-transform: uppercase; min-height: 48px;
         }
         .repairs-center .btn-outline-light:hover { background: #FFF; color: var(--bg-navy); }
-        .repairs-grid-right { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px; }
+        .repairs-grid-right { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 50px 0; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px; }
         .repair-item-row { display: flex; align-items: center; gap: 15px; }
-        .repair-icon-box { font-size: 1.6rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9; }
-        .repair-item-row span { font-size: 0.95rem; font-weight: 400; color: #E5E7EB; }
+        .repair-icon-box { font-size: 1.5rem; color: #FFF; background: transparent; flex-shrink: 0; opacity: 0.9; }
+        .repair-item-row span { font-size: 0.9rem; font-weight: 400; color: #E5E7EB; }
 
         /* --- Social Proof & Payment Section --- */
         .proof-section { background: #FFF; padding: 50px; border-bottom: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; align-items: center; }
         .google-rating { text-align: center; border-right: 1px solid var(--border-light); padding-right: 20px; }
         .google-rating h4 { font-size: 0.8rem; font-weight: 700; color: #6B7280; text-transform: uppercase; margin-bottom: 5px; }
-        .google-rating .score { font-size: 3rem; font-weight: 900; color: #111827; line-height: 1; }
-        .google-rating .stars { color: #FBBF24; font-size: 1.3rem; margin: 8px 0; }
+        .google-rating .score { font-size: 2.8rem; font-weight: 900; color: #111827; line-height: 1; }
+        .google-rating .stars { color: #FBBF24; font-size: 1.2rem; margin: 8px 0; }
         .google-rating p { font-size: 0.8rem; color: #6B7280; margin-bottom: 12px; }
-        .btn-outline { display: inline-block; padding: 8px 20px; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; transition: 0.2s;}
+        .btn-outline { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border: 2px solid var(--primary-blue); color: var(--primary-blue); font-weight: 700; text-decoration: none; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; transition: 0.2s; min-height: 44px;}
         .btn-outline:hover { background: var(--primary-blue); color: #FFF; }
-        .trust-badges-center { display: flex; justify-content: space-around; text-align: center; }
-        .badge-col i { font-size: 2.5rem; color: #374151; margin-bottom: 15px; }
-        .badge-col h5 { font-size: 0.9rem; font-weight: 800; color: #111827; text-transform: uppercase; }
+        .trust-badges-center { display: flex; justify-content: space-around; text-align: center; gap: 15px; flex-wrap: wrap;}
+        .badge-col i { font-size: 2.2rem; color: #374151; margin-bottom: 10px; }
+        .badge-col h5 { font-size: 0.85rem; font-weight: 800; color: #111827; text-transform: uppercase; }
         .payment-types { text-align: center; border-left: 1px solid var(--border-light); padding-left: 20px; }
-        .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 10px; text-transform: uppercase; }
+        .payment-types p { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 8px; text-transform: uppercase; }
         .payment-types .sub-text { font-size: 0.75rem; color: #6B7280; margin-bottom: 15px; font-weight: 400; text-transform: none; }
-        .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 2.2rem; color: #111827; }
+        .pay-icons { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 2rem; color: #111827; flex-wrap: wrap;}
         
         /* --- Footer --- */
-        footer { background-color: var(--bg-dark); color: #FFF; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 60px 50px; font-size: 0.85rem; }
+        footer { background-color: var(--bg-dark); color: #FFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding: 60px 50px; font-size: 0.85rem; }
         .footer-col { display: flex; flex-direction: column; gap: 12px; }
-        .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 15px; line-height: 1.6; font-size: 0.9rem;}
-        .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; }
-        .footer-social-icons { display: flex; gap: 15px; margin-top: 10px; }
-        .footer-social-icons a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem; }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; font-size: 0.85rem;}
+        .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; flex-shrink: 0; }
+        .footer-social-icons { display: flex; gap: 12px; margin-top: 5px; }
+        .footer-social-icons a { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem; }
         .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
 
         /* Floating WhatsApp */
         .floating-whatsapp {
-            position: fixed; bottom: 30px; right: 30px; background-color: var(--accent-green); color: #FFF;
-            width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 2.2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); text-decoration: none; z-index: 1100; transition: transform 0.2s;
+            position: fixed; bottom: 20px; right: 20px; background-color: var(--accent-green); color: #FFF;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); text-decoration: none; z-index: 1100; transition: transform 0.2s;
         }
         .floating-whatsapp:hover { transform: scale(1.08); }
 
@@ -265,59 +263,59 @@
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center;
-            padding: 20px; backdrop-filter: blur(5px);
+            padding: 15px; backdrop-filter: blur(5px);
         }
         .modal-content {
-            background: #FFF; border-radius: 16px; width: 100%; max-width: 900px;
+            background: #FFF; border-radius: 16px; width: 100%; max-width: 850px;
             display: flex; overflow: hidden; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-            animation: modalFadeIn 0.3s ease;
+            animation: modalFadeIn 0.3s ease; max-height: 90vh;
         }
         @keyframes modalFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
         .modal-close {
-            position: absolute; top: 20px; right: 20px; background: #F3F4F6; border: none;
+            position: absolute; top: 15px; right: 15px; background: #F3F4F6; border: none;
             width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
             display: flex; align-items: center; justify-content: center; color: #111827; transition: 0.2s; z-index: 10;
         }
         .modal-close:hover { background: #E5E7EB; }
 
-        .modal-left { width: 50%; background: #F8FAFC; padding: 40px; display: flex; align-items: center; justify-content: center; position: relative;}
-        .modal-left img { max-width: 100%; max-height: 400px; object-fit: contain; transition: opacity 0.3s ease; }
-        .modal-right { width: 50%; padding: 40px; display: flex; flex-direction: column; }
-        .modal-title { font-size: 2rem; font-weight: 900; margin-bottom: 5px; color: #111827; line-height: 1.1;}
-        .modal-condition { display: inline-block; padding: 4px 10px; background: #111827; color: #FFF; font-size: 0.75rem; font-weight: 700; border-radius: 4px; margin-bottom: 15px; text-transform: uppercase; align-self: flex-start; }
-        .modal-price { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 25px; }
+        .modal-left { width: 50%; background: #F8FAFC; padding: 30px; display: flex; align-items: center; justify-content: center; position: relative;}
+        .modal-left img { max-width: 100%; max-height: 350px; object-fit: contain; transition: opacity 0.3s ease; }
+        .modal-right { width: 50%; padding: 30px; display: flex; flex-direction: column; overflow-y: auto;}
+        .modal-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 5px; color: #111827; line-height: 1.1;}
+        .modal-condition { display: inline-block; padding: 4px 10px; background: #111827; color: #FFF; font-size: 0.75rem; font-weight: 700; border-radius: 4px; margin-bottom: 12px; text-transform: uppercase; align-self: flex-start; }
+        .modal-price { font-size: 1.8rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 20px; }
 
-        .variant-group { margin-bottom: 25px; }
-        .variant-group h4 { font-size: 0.85rem; font-weight: 800; color: #374151; margin-bottom: 12px; text-transform: uppercase; }
+        .variant-group { margin-bottom: 20px; }
+        .variant-group h4 { font-size: 0.8rem; font-weight: 800; color: #374151; margin-bottom: 10px; text-transform: uppercase; }
         .variant-options { display: flex; gap: 10px; flex-wrap: wrap; }
         
         .var-btn {
-            padding: 12px 18px; border: 2px solid #E5E7EB; border-radius: 8px; background: #FFF;
-            font-size: 0.95rem; font-weight: 700; color: #374151; cursor: pointer; transition: all 0.2s;
+            padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; background: #FFF;
+            font-size: 0.9rem; font-weight: 700; color: #374151; cursor: pointer; transition: all 0.2s; min-height: 44px; display: flex; align-items: center; justify-content: center;
         }
         .var-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
         .var-btn.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #FFF; }
 
         /* Color Swatches */
         .color-btn {
-            width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 0 0 1px #D1D5DB;
-            cursor: pointer; transition: all 0.2s; position: relative;
+            width: 44px; height: 44px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 0 0 1px #D1D5DB;
+            cursor: pointer; transition: all 0.2s; position: relative; flex-shrink: 0;
         }
         .color-btn:hover { transform: scale(1.1); }
         .color-btn.active { box-shadow: 0 0 0 2px var(--primary-blue); }
 
-        .modal-actions { display: flex; gap: 15px; margin-top: auto; }
+        .modal-actions { display: flex; gap: 12px; margin-top: auto; flex-wrap: wrap;}
         .btn-add-cart {
-            flex: 1; padding: 16px; border-radius: 8px; background: var(--card-btn-dark); color: #FFF;
-            font-size: 0.95rem; font-weight: 800; border: none; cursor: pointer; transition: 0.2s; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px;
+            flex: 1; min-width: 140px; padding: 14px; border-radius: 8px; background: var(--card-btn-dark); color: #FFF;
+            font-size: 0.9rem; font-weight: 800; border: none; cursor: pointer; transition: 0.2s; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px;
         }
         .btn-add-cart:hover { background: #1E293B; }
         
         .modal-buy-btn {
-            flex: 1; padding: 16px; border-radius: 8px; background: var(--accent-green); color: #FFF;
-            text-align: center; font-size: 0.95rem; font-weight: 800; text-decoration: none;
-            display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; border: none; cursor: pointer; text-transform: uppercase;
+            flex: 1; min-width: 140px; padding: 14px; border-radius: 8px; background: var(--accent-green); color: #FFF;
+            text-align: center; font-size: 0.9rem; font-weight: 800; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; border: none; cursor: pointer; text-transform: uppercase; min-height: 48px;
         }
         .modal-buy-btn:hover { background: #20BA56; }
         
@@ -330,55 +328,57 @@
             background: rgba(0,0,0,0.5); z-index: 2500; backdrop-filter: blur(3px);
         }
         .cart-drawer {
-            position: fixed; top: 0; right: -450px; width: 100%; max-width: 420px; height: 100vh;
+            position: fixed; top: 0; right: -100%; width: 100%; max-width: 420px; height: 100vh;
             background: #FFF; z-index: 3000; box-shadow: -10px 0 30px rgba(0,0,0,0.15);
             display: flex; flex-direction: column; transition: right 0.3s ease;
         }
         .cart-drawer.open { right: 0; }
         
         .cart-header {
-            padding: 25px; border-bottom: 1px solid var(--border-light); display: flex;
+            padding: 20px; border-bottom: 1px solid var(--border-light); display: flex;
             justify-content: space-between; align-items: center; background: var(--bg-offwhite);
         }
-        .cart-header h3 { font-size: 1.2rem; font-weight: 900; color: #111827; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
-        .cart-close-btn { background: none; border: none; font-size: 1.3rem; color: #6B7280; cursor: pointer; }
+        .cart-header h3 { font-size: 1.1rem; font-weight: 900; color: #111827; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .cart-close-btn { background: none; border: none; font-size: 1.5rem; color: #6B7280; cursor: pointer; padding: 5px; }
         
-        .cart-items-container { flex: 1; overflow-y: auto; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
+        .cart-items-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
         
         .cart-item {
             display: flex; align-items: center; justify-content: space-between; padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light); gap: 10px;
         }
-        .cart-item-info { flex: 1; padding-right: 15px; }
-        .cart-item-title { font-weight: 800; font-size: 0.95rem; color: #111827; margin-bottom: 3px; }
-        .cart-item-specs { font-size: 0.8rem; color: #6B7280; margin-bottom: 8px; }
-        .cart-item-price { font-weight: 800; color: var(--primary-blue); font-size: 0.95rem; }
+        .cart-item-info { flex: 1; }
+        .cart-item-title { font-weight: 800; font-size: 0.9rem; color: #111827; margin-bottom: 3px; }
+        .cart-item-specs { font-size: 0.75rem; color: #6B7280; margin-bottom: 6px; }
+        .cart-item-price { font-weight: 800; color: var(--primary-blue); font-size: 0.9rem; }
         
-        .cart-item-actions { display: flex; align-items: center; gap: 10px; }
-        .qty-btn { width: 28px; height: 28px; border: 1px solid var(--border-light); background: #F8FAFC; border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .cart-item-actions { display: flex; align-items: center; gap: 8px; }
+        .qty-btn { width: 36px; height: 36px; border: 1px solid var(--border-light); background: #F8FAFC; border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
         .qty-val { font-size: 0.9rem; font-weight: 700; width: 20px; text-align: center; }
-        .remove-btn { color: #EF4444; background: none; border: none; cursor: pointer; font-size: 1rem; margin-left: 5px; }
+        .remove-btn { color: #EF4444; background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-left: 5px; padding: 5px; }
 
-        .cart-footer { padding: 25px; border-top: 1px solid var(--border-light); background: var(--bg-offwhite); }
-        .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .cart-total-label { font-size: 1rem; font-weight: 700; color: #6B7280; text-transform: uppercase; }
-        .cart-total-value { font-size: 1.8rem; font-weight: 900; color: var(--primary-blue); }
+        .cart-footer { padding: 20px; border-top: 1px solid var(--border-light); background: var(--bg-offwhite); }
+        .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .cart-total-label { font-size: 0.95rem; font-weight: 700; color: #6B7280; text-transform: uppercase; }
+        .cart-total-value { font-size: 1.6rem; font-weight: 900; color: var(--primary-blue); }
         
         .btn-checkout {
             width: 100%; padding: 16px; border-radius: 8px; background: var(--accent-green); color: #FFF;
-            font-size: 1rem; font-weight: 800; border: none; cursor: pointer; transition: 0.2s;
-            text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-size: 0.95rem; font-weight: 800; border: none; cursor: pointer; transition: 0.2s;
+            text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
         }
         .btn-checkout:hover { background: #20BA56; }
 
         /* --- Checkout Modal --- */
-        .checkout-modal-content { max-width: 500px; flex-direction: column; padding: 30px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #374151; margin-bottom: 5px; }
-        .form-control { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.9rem; }
+        .checkout-modal-content { max-width: 500px; flex-direction: column; padding: 25px; }
+        .form-group { margin-bottom: 15px; width: 100%; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #374151; margin-bottom: 6px; }
+        .form-control { width: 100%; padding: 14px; border: 1px solid var(--border-light); border-radius: 8px; font-size: 16px; background: #FFF; color: #111827; }
         .form-control:focus { outline: 2px solid var(--primary-blue); border-color: transparent; }
 
-        /* Responsive Breakpoints */
+        /* ==========================================
+           RESPONSIVE MOBILE & TABLET BREAKPOINTS
+        ========================================== */
         @media (max-width: 1024px) {
             .repairs-banner { grid-template-columns: 1fr; padding: 0; }
             .repairs-img-container { min-height: 250px; }
@@ -387,26 +387,64 @@
             .proof-section, footer { grid-template-columns: 1fr 1fr; }
             .trust-bar { justify-content: center; }
             .google-rating, .payment-types { border: none; padding: 0; }
-            .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
-            .modal-left, .modal-right { width: 100%; }
-            .hero { min-height: 250px; } /* Slimmer for tablet */
         }
+
         @media (max-width: 768px) {
             .top-bar, .nav-links { display: none; }
-            .navbar, .carousel-section, .proof-section, footer, .accessories-section { padding: 30px 20px; }
-            .proof-section, footer, .repairs-grid-right { grid-template-columns: 1fr; }
-            .arrow-left { left: 0; }
-            .arrow-right { right: 0; }
-            .modal-actions { flex-direction: column; }
-            .hero { min-height: 200px; padding-bottom: 30px; } /* Slimmer for mobile */
-            .hero-title { font-size: 1.6rem; }
-            .hero-logo { width: 100%; }
+            .hamburger-btn { display: block; }
+            .navbar { padding: 12px 20px; }
+            
+            .hero { min-height: auto; padding: 40px 16px; gap: 20px; }
+            .hero-title { font-size: 1.75rem; }
+            .hero-subtitle { font-size: 0.95rem; }
+            .hero-buttons { flex-direction: column; width: 100%; max-width: 340px; gap: 12px; }
+            .btn { width: 100%; }
+            
+            .trust-bar { padding: 25px 20px; grid-template-columns: 1fr; gap: 15px; }
+            .trust-item { background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; }
+            
+            .carousel-section { padding: 40px 16px; }
+            .section-header-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .arrow-btn { display: none; } /* Native swipe is superior on touch screens */
+            .product-track { padding-bottom: 20px; gap: 15px; }
+            
+            .accessories-section { padding: 40px 16px; }
+            .accessories-grid { grid-template-columns: 1fr; gap: 15px; }
+            
+            .repairs-center { padding: 30px 20px; text-align: center; }
+            .repairs-center p { margin: 0 auto 25px; }
+            .repairs-grid-right { grid-template-columns: 1fr; padding: 25px 20px; gap: 15px; }
+            
+            .proof-section { grid-template-columns: 1fr; padding: 40px 20px; gap: 30px; text-align: center; }
+            .google-rating { border-right: none; border-bottom: 1px solid var(--border-light); padding-bottom: 25px; }
+            .trust-badges-center { flex-direction: column; gap: 25px; border-bottom: 1px solid var(--border-light); padding-bottom: 25px; }
+            .payment-types { border-left: none; }
+            
+            footer { grid-template-columns: 1fr; padding: 40px 20px; gap: 25px; text-align: center; }
+            .footer-col p { justify-content: center; }
+            .footer-social-icons { justify-content: center; }
+            
+            /* Bottom-Sheet Style Modals for Mobile */
+            .modal-content {
+                flex-direction: column; max-height: 85vh; width: 100%;
+                border-radius: 20px 20px 0 0; margin-top: auto; position: absolute; bottom: 0;
+            }
+            .modal-left { width: 100%; padding: 20px; max-height: 220px; }
+            .modal-left img { max-height: 180px; }
+            .modal-right { width: 100%; padding: 20px; }
+            .modal-title { font-size: 1.5rem; }
+            .modal-price { font-size: 1.5rem; margin-bottom: 15px; }
+            .modal-actions { flex-direction: column; gap: 10px; }
+            .btn-add-cart, .modal-buy-btn { width: 100%; }
+            .var-btn { flex: 1; text-align: center; }
+            
+            .checkout-modal-content { border-radius: 20px 20px 0 0; position: absolute; bottom: 0; max-height: 90vh; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Info Bar -->
+    <!-- Top Info Bar (Desktop) -->
     <div class="top-bar">
         <div class="top-info">
             <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
@@ -422,9 +460,15 @@
 
     <!-- Main Navbar -->
     <nav class="navbar">
-        <a href="#" class="logo-box">
-            <img src="https://cdn.phototourl.com/free/2026-07-27-4fc718a1-7d1c-492c-ba7e-1d36df89ae22.png" alt="Urban Connect TT Logo">
-        </a>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="hamburger-btn" aria-label="Open Menu" onclick="openMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="#" class="logo-box">
+                <img src="https://cdn.phototourl.com/free/2026-07-27-4fc718a1-7d1c-492c-ba7e-1d36df89ae22.png" alt="Urban Connect TT Logo">
+            </a>
+        </div>
+        
         <ul class="nav-links">
             <li><a href="#" class="active">HOME</a></li>
             <li><a href="#phones">SHOP PHONES</a></li>
@@ -432,13 +476,35 @@
             <li><a href="#accessories">ACCESSORIES</a></li>
             <li><a href="#contact">CONTACT US</a></li>
         </ul>
+        
         <div class="nav-icons">
-            <button class="cart-icon-btn" onclick="openCart()">
+            <button class="cart-icon-btn" aria-label="Shopping Cart" onclick="openCart()">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-badge" id="cartBadge">0</span>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <img src="https://cdn.phototourl.com/free/2026-07-27-4fc718a1-7d1c-492c-ba7e-1d36df89ae22.png" alt="Urban Connect TT">
+            <button class="mobile-nav-close" aria-label="Close Menu" onclick="closeMobileMenu()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="#" onclick="closeMobileMenu()">HOME</a></li>
+            <li><a href="#phones" onclick="closeMobileMenu()">SHOP PHONES</a></li>
+            <li><a href="#repairs" onclick="closeMobileMenu()">REPAIRS</a></li>
+            <li><a href="#accessories" onclick="closeMobileMenu()">ACCESSORIES</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">CONTACT US</a></li>
+        </ul>
+        <div class="mobile-nav-info">
+            <span><i class="fa-solid fa-phone" style="color: #60A5FA;"></i> (868) 330-8360</span>
+            <span><i class="fa-solid fa-location-dot" style="color: #60A5FA;"></i> 59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-regular fa-clock" style="color: #60A5FA;"></i> Mon-Sat 8AM-5PM • Sun 8AM-3PM</span>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -486,9 +552,9 @@
             <a href="#phones" class="view-all-btn">VIEW ALL PHONES ></a>
         </div>
         <div class="carousel-container">
-            <button class="arrow-btn arrow-left" onclick="slideCarousel(-350)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="arrow-btn arrow-left" aria-label="Previous Products" onclick="slideCarousel(-300)"><i class="fa-solid fa-chevron-left"></i></button>
             <div class="product-track" id="productTrack"></div>
-            <button class="arrow-btn arrow-right" onclick="slideCarousel(350)"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="arrow-btn arrow-right" aria-label="Next Products" onclick="slideCarousel(300)"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </section>
 
@@ -601,19 +667,19 @@
         <div class="footer-col">
             <h4>FOLLOW US</h4>
             <div class="footer-social-icons">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/18683308360" class="floating-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://wa.me/18683308360" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
     <!-- Dynamic Product Modal -->
     <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="document.getElementById('productModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+            <button class="modal-close" aria-label="Close Modal" onclick="document.getElementById('productModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
             
             <div class="modal-left">
                 <img id="modalImg" src="" alt="Phone Image">
@@ -657,7 +723,7 @@
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
             <h3><i class="fa-solid fa-cart-shopping"></i> Your Shopping Cart</h3>
-            <button class="cart-close-btn" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+            <button class="cart-close-btn" aria-label="Close Cart" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="cart-items-container" id="cartItemsContainer">
             <!-- Dynamic Cart Items Injected Here -->
@@ -676,19 +742,19 @@
     <!-- Checkout Details Modal -->
     <div id="checkoutModal" class="modal-overlay" onclick="closeCheckoutModal(event)">
         <div class="modal-content checkout-modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="document.getElementById('checkoutModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
-            <h2 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Checkout Details</h2>
+            <button class="modal-close" aria-label="Close Checkout" onclick="document.getElementById('checkoutModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase;">Checkout Details</h2>
             
             <div class="form-group">
-                <label>Full Name</label>
+                <label for="custName">Full Name</label>
                 <input type="text" id="custName" class="form-control" placeholder="John Doe" required>
             </div>
             <div class="form-group">
-                <label>Delivery Address / Town</label>
+                <label for="custAddress">Delivery Address / Town</label>
                 <input type="text" id="custAddress" class="form-control" placeholder="e.g. Chaguanas / Tunapuna Store Pickup" required>
             </div>
             <div class="form-group">
-                <label>Preferred Payment Method</label>
+                <label for="custPayment">Preferred Payment Method</label>
                 <select id="custPayment" class="form-control">
                     <option value="Linx / Card on Delivery">Linx / Card on Delivery</option>
                     <option value="Cash on Delivery / Pickup">Cash on Delivery / Pickup</option>
@@ -696,13 +762,26 @@
                 </select>
             </div>
             
-            <button onclick="processWhatsAppOrder()" class="btn-checkout" style="margin-top: 10px;">
+            <button onclick="processWhatsAppOrder()" class="btn-checkout" style="margin-top: 15px;">
                 <i class="fa-brands fa-whatsapp"></i> Send Order via WhatsApp
             </button>
         </div>
     </div>
 
     <script>
+        // ==========================================
+        // MOBILE NAVIGATION LOGIC
+        // ==========================================
+        function openMobileMenu() {
+            document.getElementById('mobileNavOverlay').style.display = 'block';
+            document.getElementById('mobileNavDrawer').classList.add('open');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileNavOverlay').style.display = 'none';
+            document.getElementById('mobileNavDrawer').classList.remove('open');
+        }
+
         // ==========================================
         // CART STATE & LOCAL STORAGE ENGINE
         // ==========================================
@@ -800,10 +879,10 @@
                         <div class="cart-item-price">TT$${(item.price * item.qty).toLocaleString()}</div>
                     </div>
                     <div class="cart-item-actions">
-                        <button class="qty-btn" onclick="changeQty(${idx}, -1)">-</button>
+                        <button class="qty-btn" aria-label="Decrease quantity" onclick="changeQty(${idx}, -1)">-</button>
                         <span class="qty-val">${item.qty}</span>
-                        <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
-                        <button class="remove-btn" onclick="changeQty(${idx}, -999)"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="qty-btn" aria-label="Increase quantity" onclick="changeQty(${idx}, 1)">+</button>
+                        <button class="remove-btn" aria-label="Remove item" onclick="changeQty(${idx}, -999)"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 `;
                 container.appendChild(div);
