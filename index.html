@@ -49,10 +49,7 @@
             align-items: center; padding: 15px 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo-box img { 
-            height: 55px; 
-            object-fit: contain;
-        }
+        .logo-box img { height: 55px; object-fit: contain; }
         
         .nav-links { display: flex; list-style: none; gap: 30px; }
         .nav-links a { text-decoration: none; color: #111827; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
@@ -60,13 +57,8 @@
         
         .nav-icons { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; color: #111827; }
         
-        /* Hamburger Button for Mobile */
-        .hamburger-btn {
-            display: none; background: none; border: none; font-size: 1.5rem;
-            color: #111827; cursor: pointer; padding: 5px;
-        }
+        .hamburger-btn { display: none; background: none; border: none; font-size: 1.5rem; color: #111827; cursor: pointer; padding: 5px; }
 
-        /* Cart Icon Styling */
         .cart-icon-btn {
             background: none; border: none; font-size: 1.3rem; color: #111827;
             cursor: pointer; position: relative; transition: color 0.2s; padding: 5px;
@@ -105,7 +97,6 @@
             padding: 50px 20px; display: flex; flex-direction: column;
             align-items: center; justify-content: center; gap: 30px;
         }
-        
         .hero-content { display: flex; flex-direction: column; align-items: center; margin-top: 10px; }
         .hero-welcome { color: #60A5FA; font-size: 1rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 5px; }
         .hero-logo { max-width: 90%; width: 600px; margin-bottom: 20px; }
@@ -180,7 +171,7 @@
         .badge-open-box { background-color: #4B5563; }
         .badge-esim { background-color: #0369A1; }
 
-        /* --- Accessories Section --- */
+        /* --- Accessories & Custom Balance Section --- */
         .accessories-section { padding: 60px 50px; background: var(--bg-offwhite); }
         .accessories-header { font-size: 1.6rem; font-weight: 900; color: #111827; text-transform: uppercase; margin-bottom: 35px; }
         .accessories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
@@ -202,6 +193,14 @@
             transition: background 0.2s; margin-top: auto; border: none; cursor: pointer; text-transform: uppercase; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
         .acc-btn:hover { background: #1E293B; }
+
+        /* Custom Balance Input Box Styling */
+        .custom-balance-input {
+            width: 100%; padding: 10px; border: 2px solid var(--border-light);
+            border-radius: 6px; font-size: 1rem; text-align: center; font-weight: 700;
+            margin-bottom: 15px; color: var(--text-main);
+        }
+        .custom-balance-input:focus { outline: none; border-color: var(--primary-blue); }
 
         /* --- Expert Repairs Banner --- */
         .repairs-banner {
@@ -251,7 +250,6 @@
         .footer-social-icons a { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem; }
         .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
 
-        /* Floating WhatsApp */
         .floating-whatsapp {
             position: fixed; bottom: 20px; right: 20px; background-color: var(--accent-green); color: #FFF;
             width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
@@ -297,7 +295,6 @@
         .var-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
         .var-btn.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #FFF; }
 
-        /* Color Swatches */
         .color-btn {
             width: 44px; height: 44px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 0 0 1px #D1D5DB;
             cursor: pointer; transition: all 0.2s; position: relative; flex-shrink: 0;
@@ -357,6 +354,17 @@
         .qty-val { font-size: 0.9rem; font-weight: 700; width: 20px; text-align: center; }
         .remove-btn { color: #EF4444; background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-left: 5px; padding: 5px; }
 
+        /* Currency Toggle Box */
+        .currency-toggle-box {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #E2E8F0; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px;
+        }
+        .currency-toggle-box label { font-size: 0.85rem; font-weight: 800; color: #374151; text-transform: uppercase; }
+        .currency-select {
+            padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border-dark);
+            background: #FFF; font-weight: 800; font-size: 0.85rem; color: #111827; cursor: pointer;
+        }
+
         .cart-footer { padding: 20px; border-top: 1px solid var(--border-light); background: var(--bg-offwhite); }
         .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .cart-total-label { font-size: 0.95rem; font-weight: 700; color: #6B7280; text-transform: uppercase; }
@@ -376,9 +384,6 @@
         .form-control { width: 100%; padding: 14px; border: 1px solid var(--border-light); border-radius: 8px; font-size: 16px; background: #FFF; color: #111827; }
         .form-control:focus { outline: 2px solid var(--primary-blue); border-color: transparent; }
 
-        /* ==========================================
-           RESPONSIVE MOBILE & TABLET BREAKPOINTS
-        ========================================== */
         @media (max-width: 1024px) {
             .repairs-banner { grid-template-columns: 1fr; padding: 0; }
             .repairs-img-container { min-height: 250px; }
@@ -405,7 +410,7 @@
             
             .carousel-section { padding: 40px 16px; }
             .section-header-row { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .arrow-btn { display: none; } /* Native swipe is superior on touch screens */
+            .arrow-btn { display: none; }
             .product-track { padding-bottom: 20px; gap: 15px; }
             
             .accessories-section { padding: 40px 16px; }
@@ -424,7 +429,6 @@
             .footer-col p { justify-content: center; }
             .footer-social-icons { justify-content: center; }
             
-            /* Bottom-Sheet Style Modals for Mobile */
             .modal-content {
                 flex-direction: column; max-height: 85vh; width: 100%;
                 border-radius: 20px 20px 0 0; margin-top: auto; position: absolute; bottom: 0;
@@ -558,11 +562,20 @@
         </div>
     </section>
 
-    <!-- Accessories Section -->
+    <!-- Accessories & Custom Balance Section -->
     <section class="accessories-section" id="accessories">
-        <h2 class="accessories-header">ACCESSORIES</h2>
+        <h2 class="accessories-header">ACCESSORIES & CUSTOM SERVICES</h2>
         
         <div class="accessories-grid">
+            <!-- Custom Balance / Deposit Card -->
+            <div class="accessory-card" style="border: 2px dashed var(--primary-blue); background: #EFF6FF;">
+                <div class="acc-icon" style="color: var(--primary-blue);"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3 class="acc-title">Add Custom Balance</h3>
+                <p class="acc-sub">Pay for repairs, layaway, or custom deposit</p>
+                <input type="number" id="customBalanceInput" class="custom-balance-input" placeholder="Enter Amount (TTD)" min="1">
+                <button onclick="addCustomBalance()" class="acc-btn" style="background: var(--primary-blue);"><i class="fa-solid fa-plus-circle"></i> Add Balance</button>
+            </div>
+
             <div class="accessory-card">
                 <div class="acc-icon"><i class="fa-solid fa-mobile-screen"></i></div>
                 <h3 class="acc-title">Premium Phone Cases</h3>
@@ -729,6 +742,15 @@
             <!-- Dynamic Cart Items Injected Here -->
         </div>
         <div class="cart-footer">
+            <!-- Currency Toggle at Checkout -->
+            <div class="currency-toggle-box">
+                <label for="cartCurrency"><i class="fa-solid fa-coins"></i> Display Currency:</label>
+                <select id="cartCurrency" class="currency-select" onchange="switchCurrency(this.value)">
+                    <option value="TTD">TTD ($)</option>
+                    <option value="USD">USD ($) - 1:7</option>
+                </select>
+            </div>
+
             <div class="cart-total-row">
                 <span class="cart-total-label">Subtotal:</span>
                 <span class="cart-total-value" id="cartTotalDisplay">TT$0</span>
@@ -783,9 +805,10 @@
         }
 
         // ==========================================
-        // CART STATE & LOCAL STORAGE ENGINE
+        // CART STATE, CURRENCY & LOCAL STORAGE
         // ==========================================
         let cart = JSON.parse(localStorage.getItem('urbanConnectCart')) || [];
+        let currentCurrency = 'TTD'; // Default checkout currency
 
         function saveCart() {
             localStorage.setItem('urbanConnectCart', JSON.stringify(cart));
@@ -807,6 +830,20 @@
         function closeCart() {
             document.getElementById('cartOverlay').style.display = 'none';
             document.getElementById('cartDrawer').classList.remove('open');
+        }
+
+        // Switch between TTD and USD (Divides TTD by 7)
+        function switchCurrency(curr) {
+            currentCurrency = curr;
+            renderCart();
+        }
+
+        function formatPrice(priceTTD) {
+            if (currentCurrency === 'USD') {
+                const priceUSD = (priceTTD / 7).toFixed(2);
+                return `US$${Number(priceUSD).toLocaleString()}`;
+            }
+            return `TT$${priceTTD.toLocaleString()}`;
         }
 
         function addCurrentToCart() {
@@ -849,6 +886,30 @@
             openCart();
         }
 
+        // Add Custom Balance / Deposit Feature
+        function addCustomBalance() {
+            const inputField = document.getElementById('customBalanceInput');
+            const amount = parseFloat(inputField.value);
+            
+            if (isNaN(amount) || amount <= 0) {
+                alert("Please enter a valid amount in TTD.");
+                return;
+            }
+            
+            const item = {
+                id: `custom-balance-${Date.now()}`,
+                title: "Custom Service Balance / Deposit",
+                specs: "Custom Payment",
+                price: amount,
+                qty: 1
+            };
+            
+            cart.push(item);
+            inputField.value = "";
+            saveCart();
+            openCart();
+        }
+
         function changeQty(index, amount) {
             cart[index].qty += amount;
             if (cart[index].qty <= 0) {
@@ -861,22 +922,22 @@
             const container = document.getElementById('cartItemsContainer');
             if (cart.length === 0) {
                 container.innerHTML = `<div style="text-align:center; color:#6B7280; margin-top:50px;">Your cart is empty.</div>`;
-                document.getElementById('cartTotalDisplay').innerText = `TT$0`;
+                document.getElementById('cartTotalDisplay').innerText = formatPrice(0);
                 return;
             }
             
             container.innerHTML = '';
-            let total = 0;
+            let totalTTD = 0;
             
             cart.forEach((item, idx) => {
-                total += item.price * item.qty;
+                totalTTD += item.price * item.qty;
                 const div = document.createElement('div');
                 div.className = 'cart-item';
                 div.innerHTML = `
                     <div class="cart-item-info">
                         <div class="cart-item-title">${item.title}</div>
                         <div class="cart-item-specs">${item.specs}</div>
-                        <div class="cart-item-price">TT$${(item.price * item.qty).toLocaleString()}</div>
+                        <div class="cart-item-price">${formatPrice(item.price * item.qty)}</div>
                     </div>
                     <div class="cart-item-actions">
                         <button class="qty-btn" aria-label="Decrease quantity" onclick="changeQty(${idx}, -1)">-</button>
@@ -888,7 +949,7 @@
                 container.appendChild(div);
             });
             
-            document.getElementById('cartTotalDisplay').innerText = `TT$${total.toLocaleString()}`;
+            document.getElementById('cartTotalDisplay').innerText = formatPrice(totalTTD);
         }
 
         // ==========================================
@@ -919,23 +980,26 @@
                 return;
             }
 
-            let total = 0;
+            let totalTTD = 0;
             let itemList = "";
             cart.forEach(item => {
                 const itemTotal = item.price * item.qty;
-                total += itemTotal;
-                itemList += `▪️ *${item.qty}x* ${item.title} (${item.specs}) - TT$${itemTotal.toLocaleString()}\n`;
+                totalTTD += itemTotal;
+                itemList += `▪️ *${item.qty}x* ${item.title} (${item.specs}) - ${formatPrice(itemTotal)}\n`;
             });
 
+            const formattedTotal = formatPrice(totalTTD);
             const waNumber = '18683308360';
             const message = `🛍️ *NEW ORDER - URBAN CONNECT TT* 🛍️\n\n` +
                             `*Customer:* ${name}\n` +
                             `*Address/Town:* ${address}\n` +
                             `*Payment:* ${payment}\n` +
+                            `*Selected Currency:* ${currentCurrency}\n` +
                             `---------------------------------\n` +
                             `${itemList}` +
                             `---------------------------------\n` +
-                            `*TOTAL DUE: TT$${total.toLocaleString()}*\n\n` +
+                            `*TOTAL DUE: ${formattedTotal}*\n` +
+                            `(Exchange Rate: $7 TTD = $1 USD)\n\n` +
                             `Please confirm order availability and delivery details!`;
 
             const encodedMsg = encodeURIComponent(message);
@@ -952,8 +1016,14 @@
             track.scrollBy({ left: offset, behavior: 'smooth' });
         }
 
+        function closeModal(e) {
+            if (e.target.id === 'productModal') {
+                document.getElementById('productModal').style.display = 'none';
+            }
+        }
+
         // ==========================================
-        // PHONE DATA ENGINE
+        // PHONE DATA ENGINE & RENDERER
         // ==========================================
         const allPhonesData = [
             // --- iPhone 17 Series ---
@@ -1234,108 +1304,91 @@
 
         let currentSelection = { phoneObj: null, gb: null, price: null, colorObj: null };
 
-        function populateCarousel() {
+        function renderProducts() {
             const track = document.getElementById('productTrack');
             track.innerHTML = '';
             allPhonesData.forEach(phone => {
+                const startPrice = phone.storage[0].price;
                 const card = document.createElement('div');
                 card.className = 'product-card';
-                card.onclick = () => openPhoneModal(phone.id);
-                
+                card.onclick = () => openModal(phone.id);
                 card.innerHTML = `
                     <div class="product-image-box">
                         <img src="${phone.defaultImg}" alt="${phone.name}">
                     </div>
                     <div class="product-info">
                         <h3>${phone.name}</h3>
-                        <p class="specs">${phone.storage[0].gb} • ${phone.colors.length} Color(s)</p>
-                        <div class="price">TT$${phone.storage[0].price.toLocaleString()}</div>
+                        <div class="specs">Available in ${phone.storage.map(s => s.gb).join(', ')}</div>
+                        <div class="price">From TT$${startPrice.toLocaleString()}</div>
                     </div>
-                    <div class="badge-tag ${phone.badgeClass}">${phone.condition}</div>
+                    <span class="badge-tag ${phone.badgeClass}">${phone.condition}</span>
                 `;
                 track.appendChild(card);
             });
         }
 
-        function openPhoneModal(id) {
-            const data = allPhonesData.find(p => p.id === id);
-            if(!data) return;
-
-            currentSelection.phoneObj = data;
-            currentSelection.gb = data.storage[0].gb;
-            currentSelection.price = data.storage[0].price;
-            currentSelection.colorObj = data.colors[0];
-
-            document.getElementById('modalTitle').innerText = data.name;
-            document.getElementById('modalCondition').innerText = data.condition;
-            document.getElementById('modalCondition').className = `modal-condition ${data.badgeClass}`;
+        function openModal(phoneId) {
+            const phone = allPhonesData.find(p => p.id === phoneId);
+            if (!phone) return;
             
-            renderStorageOptions(data.storage);
-            renderColorOptions(data.colors);
+            currentSelection.phoneObj = phone;
+            currentSelection.gb = phone.storage[0].gb;
+            currentSelection.price = phone.storage[0].price;
+            currentSelection.colorObj = phone.colors[0];
+
+            document.getElementById('modalTitle').innerText = phone.name;
+            document.getElementById('modalCondition').innerText = phone.condition;
             updateModalDisplay();
+
+            const storageContainer = document.getElementById('storageOptions');
+            storageContainer.innerHTML = '';
+            phone.storage.forEach((st, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `var-btn ${idx === 0 ? 'active' : ''}`;
+                btn.innerText = `${st.gb} - TT$${st.price.toLocaleString()}`;
+                btn.onclick = () => {
+                    document.querySelectorAll('#storageOptions .var-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentSelection.gb = st.gb;
+                    currentSelection.price = st.price;
+                    updateModalDisplay();
+                };
+                storageContainer.appendChild(btn);
+            });
+
+            const colorContainer = document.getElementById('colorOptions');
+            colorContainer.innerHTML = '';
+            phone.colors.forEach((col, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `color-btn ${idx === 0 ? 'active' : ''}`;
+                btn.style.backgroundColor = col.hex;
+                btn.title = col.name;
+                btn.onclick = () => {
+                    document.querySelectorAll('#colorOptions .color-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentSelection.colorObj = col;
+                    updateModalDisplay();
+                };
+                colorContainer.appendChild(btn);
+            });
 
             document.getElementById('productModal').style.display = 'flex';
         }
 
-        function renderStorageOptions(storageArray) {
-            const container = document.getElementById('storageOptions');
-            container.innerHTML = '';
-            storageArray.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = `var-btn ${opt.gb === currentSelection.gb ? 'active' : ''}`;
-                btn.innerText = opt.gb;
-                btn.onclick = () => {
-                    currentSelection.gb = opt.gb;
-                    currentSelection.price = opt.price;
-                    renderStorageOptions(storageArray);
-                    updateModalDisplay();
-                };
-                container.appendChild(btn);
-            });
-        }
-
-        function renderColorOptions(colorsArray) {
-            const container = document.getElementById('colorOptions');
-            container.innerHTML = '';
-            colorsArray.forEach(color => {
-                const btn = document.createElement('button');
-                btn.className = `color-btn ${color.name === currentSelection.colorObj.name ? 'active' : ''}`;
-                btn.style.backgroundColor = color.hex;
-                btn.title = color.name;
-                
-                btn.onclick = () => {
-                    currentSelection.colorObj = color;
-                    renderColorOptions(colorsArray);
-                    updateModalDisplay();
-                };
-                container.appendChild(btn);
-            });
-        }
-
         function updateModalDisplay() {
-            const imgElement = document.getElementById('modalImg');
-            imgElement.style.opacity = 0;
-            setTimeout(() => {
-                imgElement.src = currentSelection.colorObj.img;
-                imgElement.style.opacity = 1;
-            }, 150);
-            
+            document.getElementById('modalImg').src = currentSelection.colorObj.img;
             document.getElementById('modalPrice').innerText = `TT$${currentSelection.price.toLocaleString()}`;
             
             const waNumber = '18683308360';
-            const msg = `Hi Urban Connect TT! I'd like to immediately buy the ${currentSelection.phoneObj.condition} ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name} color) for TT$${currentSelection.price.toLocaleString()}. Is this available?`;
+            const msg = `Hi Urban Connect TT, I am interested in buying the ${currentSelection.phoneObj.name} (${currentSelection.gb}, ${currentSelection.colorObj.name}) listed at TT$${currentSelection.price.toLocaleString()}. Is it available?`;
             document.getElementById('modalBuyBtn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
         }
 
-        function closeModal(e) {
-            if (e.target.id === 'productModal') {
-                document.getElementById('productModal').style.display = 'none';
-            }
-        }
-
-        // Initialize Carousel & Cart Badge on Page Load
-        populateCarousel();
-        updateCartBadge();
+        // Initialize Store on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartBadge();
+        });
     </script>
 </body>
 </html>
