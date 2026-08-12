@@ -1,1 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Repairs | Urban Connect TT</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- SHARED STYLES (Kept identical to maintain quality) --- */
+        :root {
+            --bg-dark: #070D18;
+            --bg-navy: #0A1628;
+            --primary-blue: #0A58CA;
+            --primary-blue-hover: #084298;
+            --accent-green: #25D366;
+            --text-main: #111827;
+            --text-light: #FFFFFF;
+            --text-gray: #6B7280;
+            --bg-light: #FFFFFF;
+            --bg-offwhite: #F8FAFC;
+            --border-light: #E5E7EB;
+            --border-dark: #1E293B;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-offwhite); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: var(--bg-dark); color: var(--text-light);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 50px; font-size: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .top-info { display: flex; gap: 25px; flex-wrap: wrap; }
+        .top-info span { display: inline-flex; align-items: center; gap: 8px; color: #D1D5DB; }
+        .top-info i { color: #60A5FA; }
+        .top-socials { display: flex; gap: 15px; }
+        .top-socials i { cursor: pointer; color: #FFF; font-size: 0.95rem; transition: color 0.2s; }
+        .top-socials i:hover { color: #60A5FA; }
+
+        /* --- Main Navigation --- */
+        .navbar {
+            background-color: #FFFFFF; display: flex; justify-content: space-between;
+            align-items: center; padding: 15px 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-box img { height: 55px; object-fit: contain; }
+        
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #111827; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+        
+        .nav-icons { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; color: #111827; }
+        .hamburger-btn { display: none; background: none; border: none; font-size: 1.5rem; color: #111827; cursor: pointer; padding: 5px; }
+        .cart-icon-btn {
+            background: none; border: none; font-size: 1.3rem; color: #111827;
+            cursor: pointer; position: relative; transition: color 0.2s; padding: 5px;
+        }
+        .cart-icon-btn:hover { color: var(--primary-blue); }
+        .cart-badge {
+            position: absolute; top: -4px; right: -6px; background: var(--primary-blue);
+            color: #FFF; font-size: 0.65rem; font-weight: bold; border-radius: 50%;
+            width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* --- Mobile Navigation Drawer --- */
+        .mobile-nav-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1500; backdrop-filter: blur(3px);
+        }
+        .mobile-nav-drawer {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+            background: #FFF; z-index: 2000; box-shadow: 10px 0 30px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column; transition: left 0.3s ease; padding: 25px;
+        }
+        .mobile-nav-drawer.open { left: 0; }
+        .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 15px; margin-bottom: 20px; }
+        .mobile-nav-header img { height: 40px; }
+        .mobile-nav-close { background: none; border: none; font-size: 1.5rem; color: #6B7280; cursor: pointer; }
+        .mobile-nav-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+        .mobile-nav-list a { text-decoration: none; color: #111827; font-weight: 700; font-size: 1rem; display: block; }
+
+        /* --- REPAIRS SECTION STYLES --- */
+        .page-header {
+            background-color: var(--bg-dark);
+            color: #FFF; text-align: center; padding: 60px 20px;
+        }
+        .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+        .page-header p { color: #9CA3AF; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .services-container {
+            max-width: 1200px; margin: 50px auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        
+        .service-card {
+            background: #FFF; border-radius: 12px; padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border-light);
+            text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: #D1D5DB;
+        }
+        
+        .service-icon {
+            width: 70px; height: 70px; background: #EFF6FF; color: var(--primary-blue);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin: 0 auto 20px auto;
+        }
+        
+        .service-card h3 { font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 15px; text-transform: uppercase; }
+        .service-card p { font-size: 0.95rem; color: var(--text-gray); margin-bottom: 25px; line-height: 1.6; }
+        
+        .btn-book {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: #111827; color: #FFF; text-decoration: none; padding: 12px 24px;
+            border-radius: 6px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;
+            transition: background 0.2s; width: 100%;
+        }
+        .btn-book:hover { background: var(--primary-blue); }
+        .btn-book i { font-size: 1rem; }
+
+        /* Promotional Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--bg-navy));
+            border-radius: 12px; margin: 0 auto 50px auto; max-width: 1200px; padding: 40px;
+            display: flex; justify-content: space-between; align-items: center; color: #FFF;
+            flex-wrap: wrap; gap: 20px; text-align: left;
+        }
+        .promo-text h2 { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase;}
+        .promo-text p { font-size: 1.05rem; opacity: 0.9; }
+        .promo-btn {
+            background: var(--accent-green); color: #FFF; text-decoration: none; padding: 15px 30px;
+            border-radius: 8px; font-weight: 800; font-size: 1rem; text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.2s;
+        }
+        .promo-btn:hover { background: #20BA56; transform: scale(1.02); }
+
+        /* --- Footer --- */
+        footer { background-color: var(--bg-dark); color: #FFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding: 60px 50px; font-size: 0.85rem; }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; font-size: 0.85rem;}
+        .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; flex-shrink: 0; }
+        .footer-social-icons { display: flex; gap: 12px; margin-top: 5px; }
+        .footer-social-icons a { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; font-size: 1.1rem; }
+        .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
+
+        .floating-whatsapp {
+            position: fixed; bottom: 20px; right: 20px; background-color: var(--accent-green); color: #FFF;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); text-decoration: none; z-index: 1100; transition: transform 0.2s;
+        }
+        .floating-whatsapp:hover { transform: scale(1.08); }
+
+        /* --- Shopping Cart Drawer (Hidden by default, identical to index) --- */
+        .cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2500; backdrop-filter: blur(3px); }
+        .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 420px; height: 100vh; background: #FFF; z-index: 3000; box-shadow: -10px 0 30px rgba(0,0,0,0.15); display: flex; flex-direction: column; transition: right 0.3s ease; }
+        .cart-drawer.open { right: 0; }
+        .cart-header { padding: 20px; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; background: var(--bg-offwhite); }
+        .cart-close-btn { background: none; border: none; font-size: 1.5rem; color: #6B7280; cursor: pointer; padding: 5px; }
+        .cart-items-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+
+        @media (max-width: 768px) {
+            .top-bar, .nav-links { display: none; }
+            .hamburger-btn { display: block; }
+            .navbar { padding: 12px 20px; }
+            .promo-banner { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .promo-btn { width: 100%; justify-content: center; }
+            footer { grid-template-columns: 1fr; padding: 40px 20px; gap: 25px; text-align: center; }
+            .footer-col p { justify-content: center; }
+            .footer-social-icons { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-info">
+            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
+            <span><i class="fa-regular fa-clock"></i> Mon - Fri 9AM - 5PM • Sat 8AM - 5PM • Sun 8AM - 3PM</span>
+        </div>
+        <div class="top-socials">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="navbar">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="hamburger-btn" aria-label="Open Menu" onclick="openMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo-box">
+                <img src="https://cdn.phototourl.com/free/2026-07-27-4fc718a1-7d1c-492c-ba7e-1d36df89ae22.png" alt="Urban Connect TT Logo">
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="phones.html">SHOP PHONES</a></li>
+            <li><a href="repairs.html" class="active">REPAIRS</a></li>
+            <li><a href="accessories.html">ACCESSORIES</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+        
+        <div class="nav-icons">
+            <button class="cart-icon-btn" aria-label="Shopping Cart" onclick="openCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <img src="https://cdn.phototourl.com/free/2026-07-27-4fc718a1-7d1c-492c-ba7e-1d36df89ae22.png" alt="Urban Connect TT">
+            <button class="mobile-nav-close" aria-label="Close Menu" onclick="closeMobileMenu()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="phones.html">SHOP PHONES</a></li>
+            <li><a href="repairs.html">REPAIRS</a></li>
+            <li><a href="accessories.html">ACCESSORIES</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Expert Device Repairs</h1>
+        <p>Fast, reliable, and professional phone repair services to get your device back to 100%.</p>
+    </header>
+
+    <!-- Services Grid -->
+    <section class="services-container">
+        
+        <!-- Service 1 -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3>Screen Replacement</h3>
+            <p>Cracked or shattered display? We offer premium LCD and OLED screen replacements to restore your phone's pristine look and touch sensitivity.</p>
+            <a href="https://wa.me/18683308360?text=Hi,%20I%20need%20a%20quote%20for%20a%20Screen%20Replacement." target="_blank" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Get a Quote
+            </a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Black / Back Glass Repair</h3>
+            <p>Shattered back glass? We use specialized equipment to safely remove and replace the back glass of your iPhone or premium Android device.</p>
+            <a href="https://wa.me/18683308360?text=Hi,%20I%20need%20a%20quote%20for%20Back%20Glass%20Repair." target="_blank" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Get a Quote
+            </a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-battery-full"></i></div>
+            <h3>Battery Replacement</h3>
+            <p>Phone dying too quickly or randomly shutting off? Upgrade to a brand new battery and get your device lasting all day again.</p>
+            <a href="https://wa.me/18683308360?text=Hi,%20I%20need%20a%20quote%20for%20a%20Battery%20Replacement." target="_blank" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Get a Quote
+            </a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-plug"></i></div>
+            <h3>Charging Port Repair</h3>
+            <p>Having trouble getting a charge or transferring data? We can clean, repair, or completely replace faulty charging ports.</p>
+            <a href="https://wa.me/18683308360?text=Hi,%20I%20need%20a%20quote%20for%20a%20Charging%20Port%20Repair." target="_blank" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Get a Quote
+            </a>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-droplet"></i></div>
+            <h3>Water Damage Diagnostics</h3>
+            <p>Dropped your phone in water? Bring it in immediately for our specialized ultrasonic cleaning and diagnostic recovery process.</p>
+            <a href="https://wa.me/18683308360?text=Hi,%20I%20need%20help%20with%20a%20water-damaged%20device." target="_blank" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Contact Us
+            </a>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+            <h3>Motherboard Repair</h3>
+            <p>Advanced micro-soldering services available for complex logic board issues, including touch IC, audio IC, and power management failure.</p>
+            <a href="https://wa.me/18683308360?text=Hi,%20I%20need%20a%20quote%20for%20Motherboard%20Diagnostics." target="_blank" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <div style="padding: 0 20px;">
+        <div class="promo-banner">
+            <div class="promo-text">
+                <h2>Not Sure What's Wrong?</h2>
+                <p>Bring your device to our Tunapuna store for a professional diagnostic check. We'll identify the issue and give you an upfront, transparent quote.</p>
+            </div>
+            <a href="https://wa.me/18683308360" target="_blank" class="promo-btn">
+                <i class="fa-brands fa-whatsapp"></i> Message a Technician
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-col">
+            <h4>ADDRESS</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span>59 Eastern Main Road,<br>Tunapuna</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>PHONE</h4>
+            <p><i class="fa-solid fa-phone"></i> <span>(868) 330-8360</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>HOURS</h4>
+            <p><i class="fa-regular fa-clock"></i> <span>Mon - Fri 9AM - 5PM<br>Sat 8AM - 5PM<br>Sun 8AM - 3PM</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>FOLLOW US</h4>
+            <div class="footer-social-icons">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/18683308360" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <!-- Slide-out Shopping Cart Drawer (Empty shell to prevent JS errors) -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Your Shopping Cart</h3>
+            <button class="cart-close-btn" aria-label="Close Cart" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items-container" id="cartItemsContainer">
+            <div style="text-align:center; color:#6B7280; margin-top:50px;">Your cart is empty.</div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // MOBILE NAVIGATION LOGIC
+        // ==========================================
+        function openMobileMenu() {
+            document.getElementById('mobileNavOverlay').style.display = 'block';
+            document.getElementById('mobileNavDrawer').classList.add('open');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileNavOverlay').style.display = 'none';
+            document.getElementById('mobileNavDrawer').classList.remove('open');
+        }
+
+        // ==========================================
+        // CART LOGIC (Keeps Badge synced across pages)
+        // ==========================================
+        function updateCartBadge() {
+            let cart = JSON.parse(localStorage.getItem('urbanConnectCart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartBadge').innerText = totalItems;
+        }
+
+        function openCart() {
+            document.getElementById('cartOverlay').style.display = 'block';
+            document.getElementById('cartDrawer').classList.add('open');
+        }
+
+        function closeCart() {
+            document.getElementById('cartOverlay').style.display = 'none';
+            document.getElementById('cartDrawer').classList.remove('open');
+        }
+        
+        // Initialize cart badge on page load
+        updateCartBadge();
+    </script>
+</body>
+</html>
