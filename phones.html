@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Shop Phones | Urban Connect TT</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- SHARED STYLES (Identical to maintain premium quality) --- */
+        :root {
+            --bg-dark: #070D18;
+            --bg-navy: #0A1628;
+            --primary-blue: #0A58CA;
+            --primary-blue-hover: #084298;
+            --accent-green: #25D366;
+            --text-main: #111827;
+            --text-light: #FFFFFF;
+            --text-gray: #6B7280;
+            --bg-light: #FFFFFF;
+            --bg-offwhite: #F8FAFC;
+            --border-light: #E5E7EB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-offwhite); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
+
+        /* --- Top Bar & Navbar --- */
+        .top-bar { background-color: var(--bg-dark); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 10px 50px; font-size: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .top-info { display: flex; gap: 25px; flex-wrap: wrap; }
+        .top-info span { display: inline-flex; align-items: center; gap: 8px; color: #D1D5DB; }
+        .top-info i { color: #60A5FA; }
+        .top-socials { display: flex; gap: 15px; }
+        .top-socials i { cursor: pointer; color: #FFF; font-size: 0.95rem; transition: color 0.2s; }
+        .top-socials i:hover { color: #60A5FA; }
+
+        .navbar { background-color: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo-box img { height: 55px; object-fit: contain; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #111827; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+        .nav-icons { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; color: #111827; }
+        .hamburger-btn { display: none; background: none; border: none; font-size: 1.5rem; color: #111827; cursor: pointer; padding: 5px; }
+        .cart-icon-btn { background: none; border: none; font-size: 1.3rem; color: #111827; cursor: pointer; position: relative; transition: color 0.2s; padding: 5px; }
+        .cart-icon-btn:hover { color: var(--primary-blue); }
+        .cart-badge { position: absolute; top: -4px; right: -6px; background: var(--primary-blue); color: #FFF; font-size: 0.65rem; font-weight: bold; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+
+        /* --- SHOP SECTION --- */
+        .page-header { background-color: var(--bg-dark); color: #FFF; text-align: center; padding: 60px 20px; }
+        .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+        .page-header p { color: #9CA3AF; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .shop-container { max-width: 1300px; margin: 50px auto; padding: 0 20px; }
+        
+        .filters { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid var(--border-light); flex-wrap: wrap; gap: 15px; }
+        .filters h3 { font-size: 1.2rem; font-weight: 800; color: var(--bg-dark); }
+        .filter-select { padding: 10px 15px; border: 1px solid var(--border-light); border-radius: 6px; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--text-main); outline: none; cursor: pointer; background: #FFF; }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        
+        .product-card { background: #FFF; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        
+        .product-image-container { width: 100%; height: 280px; background-color: #F3F4F6; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; padding: 20px; }
+        .product-image-container img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.3s ease; }
+        
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+        .product-title { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
+        .product-price { font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 15px; }
+        
+        .color-selector { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .color-swatch { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; box-shadow: 0 0 0 1px #E5E7EB; transition: transform 0.2s; }
+        .color-swatch:hover { transform: scale(1.1); }
+        .color-swatch.active { border-color: #FFF; box-shadow: 0 0 0 2px var(--primary-blue); }
+        
+        .add-to-cart-btn { margin-top: auto; width: 100%; padding: 12px; background: var(--bg-dark); color: #FFF; border: none; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; cursor: pointer; transition: background 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .add-to-cart-btn:hover { background: var(--primary-blue); }
+
+        /* --- Footer --- */
+        footer { background-color: var(--bg-dark); color: #FFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding: 60px 50px; font-size: 0.85rem; margin-top: 50px; }
+        .footer-col { display: flex; flex-direction: column; gap: 12px; }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .footer-col p { color: #9CA3AF; display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; }
+        .footer-col i { color: #60A5FA; margin-top: 4px; font-size: 1.1rem; }
+        .footer-social-icons { display: flex; gap: 12px; margin-top: 5px; }
+        .footer-social-icons a { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #FFF; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; }
+        .footer-social-icons a:hover { background: #60A5FA; border-color: #60A5FA; }
+
+        @media (max-width: 768px) {
+            .top-bar, .nav-links { display: none; }
+            .hamburger-btn { display: block; }
+            .navbar { padding: 12px 20px; }
+            .filters { flex-direction: column; align-items: stretch; }
+            footer { grid-template-columns: 1fr; padding: 40px 20px; text-align: center; }
+            .footer-col p { justify-content: center; }
+            .footer-social-icons { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar & Navbar -->
+    <div class="top-bar">
+        <div class="top-info">
+            <span><i class="fa-solid fa-location-dot"></i> 59 Eastern Main Road, Tunapuna</span>
+            <span><i class="fa-solid fa-phone"></i> (868) 330-8360</span>
+        </div>
+        <div class="top-socials">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo-box">
+                <img src="https://cdn.phototourl.com/free/2026-07-27-4fc718a1-7d1c-492c-ba7e-1d36df89ae22.png" alt="Urban Connect TT Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="phones.html" class="active">SHOP PHONES</a></li>
+            <li><a href="repairs.html">REPAIRS</a></li>
+            <li><a href="accessories.html">ACCESSORIES</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+        <div class="nav-icons">
+            <button class="cart-icon-btn">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Premium Devices</h1>
+        <p>Browse our inventory of high-quality Apple devices. Select a model below to view available colors.</p>
+    </header>
+
+    <!-- Shop Container -->
+    <section class="shop-container">
+        <div class="filters">
+            <h3>Latest Inventory</h3>
+            <select class="filter-select" id="modelFilter">
+                <option value="all">All Models</option>
+                <option value="17">iPhone 17 Series</option>
+                <option value="16">iPhone 16 Series</option>
+                <option value="15">iPhone 15 Series</option>
+                <option value="14">iPhone 14 Series</option>
+                <option value="13">iPhone 13 Series</option>
+            </select>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Products injected dynamically via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-col">
+            <h4>ADDRESS</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span>59 Eastern Main Road,<br>Tunapuna</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>PHONE</h4>
+            <p><i class="fa-solid fa-phone"></i> <span>(868) 330-8360</span></p>
+        </div>
+        <div class="footer-col">
+            <h4>HOURS</h4>
+            <p><i class="fa-regular fa-clock"></i> <span>Mon - Fri 9AM - 5PM<br>Sat 8AM - 5PM<br>Sun 8AM - 3PM</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // ==========================================
+        // PRODUCT DATA (Add your cdn.phototourl.com links to the 'img' values)
+        // ==========================================
+        const products = [
+            {
+                id: 'ip17pm', series: '17', name: 'iPhone 17 Pro Max', price: 'Contact for Price',
+                colors: [
+                    { name: 'Orange', hex: '#E67E22', img: 'https://placehold.co/400x500/E67E22/FFF?text=iPhone+17+Pro\\nOrange' },
+                    { name: 'Blue', hex: '#2C3E50', img: 'https://placehold.co/400x500/2C3E50/FFF?text=iPhone+17+Pro\\nBlue' },
+                    { name: 'Silver', hex: '#BDC3C7', img: 'https://placehold.co/400x500/BDC3C7/000?text=iPhone+17+Pro\\nSilver' }
+                ]
+            },
+            {
+                id: 'ip17', series: '17', name: 'iPhone 17', price: 'Contact for Price',
+                colors: [
+                    { name: 'Lavender', hex: '#9B59B6', img: 'https://placehold.co/400x500/9B59B6/FFF?text=iPhone+17\\nLavender' },
+                    { name: 'Sage', hex: '#87A96B', img: 'https://placehold.co/400x500/87A96B/FFF?text=iPhone+17\\nSage' },
+                    { name: 'Blue', hex: '#3498DB', img: 'https://placehold.co/400x500/3498DB/FFF?text=iPhone+17\\nBlue' },
+                    { name: 'Black', hex: '#111827', img: 'https://placehold.co/400x500/111827/FFF?text=iPhone+17\\nBlack' },
+                    { name: 'White', hex: '#F9FAFB', img: 'https://placehold.co/400x500/F9FAFB/000?text=iPhone+17\\nWhite' }
+                ]
+            },
+            {
+                id: 'ip16pm', series: '16', name: 'iPhone 16 Pro Max', price: 'Contact for Price',
+                colors: [
+                    { name: 'Desert', hex: '#C2B280', img: 'https://placehold.co/400x500/C2B280/000?text=iPhone+16+Pro\\nDesert' },
+                    { name: 'Natural', hex: '#A8A6A1', img: 'https://placehold.co/400x500/A8A6A1/000?text=iPhone+16+Pro\\nNatural' },
+                    { name: 'Black', hex: '#2A2A2A', img: 'https://placehold.co/400x500/2A2A2A/FFF?text=iPhone+16+Pro\\nBlack' },
+                    { name: 'White', hex: '#F1F1F1', img: 'https://placehold.co/400x500/F1F1F1/000?text=iPhone+16+Pro\\nWhite' }
+                ]
+            },
+            {
+                id: 'ip16', series: '16', name: 'iPhone 16', price: 'Contact for Price',
+                colors: [
+                    { name: 'Teal', hex: '#008080', img: 'https://placehold.co/400x500/008080/FFF?text=iPhone+16\\nTeal' },
+                    { name: 'Pink', hex: '#FFC0CB', img: 'https://placehold.co/400x500/FFC0CB/000?text=iPhone+16\\nPink' },
+                    { name: 'Blue', hex: '#4B7596', img: 'https://placehold.co/400x500/4B7596/FFF?text=iPhone+16\\nBlue' },
+                    { name: 'Black', hex: '#1C1C1E', img: 'https://placehold.co/400x500/1C1C1E/FFF?text=iPhone+16\\nBlack' },
+                    { name: 'White', hex: '#F5F5F7', img: 'https://placehold.co/400x500/F5F5F7/000?text=iPhone+16\\nWhite' }
+                ]
+            },
+            {
+                id: 'ip15pm', series: '15', name: 'iPhone 15 Pro Max', price: 'Contact for Price',
+                colors: [
+                    { name: 'Natural', hex: '#A8A6A1', img: 'https://placehold.co/400x500/A8A6A1/000?text=iPhone+15+Pro\\nNatural' },
+                    { name: 'Blue', hex: '#3B444B', img: 'https://placehold.co/400x500/3B444B/FFF?text=iPhone+15+Pro\\nBlue' },
+                    { name: 'White', hex: '#EBEBE4', img: 'https://placehold.co/400x500/EBEBE4/000?text=iPhone+15+Pro\\nWhite' },
+                    { name: 'Black', hex: '#444446', img: 'https://placehold.co/400x500/444446/FFF?text=iPhone+15+Pro\\nBlack' }
+                ]
+            },
+            {
+                id: 'ip15', series: '15', name: 'iPhone 15', price: 'Contact for Price',
+                colors: [
+                    { name: 'Pink', hex: '#FBD0D4', img: 'https://placehold.co/400x500/FBD0D4/000?text=iPhone+15\\nPink' },
+                    { name: 'Yellow', hex: '#FCEEA7', img: 'https://placehold.co/400x500/FCEEA7/000?text=iPhone+15\\nYellow' },
+                    { name: 'Green', hex: '#CEE3D4', img: 'https://placehold.co/400x500/CEE3D4/000?text=iPhone+15\\nGreen' },
+                    { name: 'Blue', hex: '#CEE2E6', img: 'https://placehold.co/400x500/CEE2E6/000?text=iPhone+15\\nBlue' },
+                    { name: 'Black', hex: '#35393B', img: 'https://placehold.co/400x500/35393B/FFF?text=iPhone+15\\nBlack' }
+                ]
+            },
+            {
+                id: 'ip14pm', series: '14', name: 'iPhone 14 Pro Max', price: 'Contact for Price',
+                colors: [
+                    { name: 'Deep Purple', hex: '#594F63', img: 'https://placehold.co/400x500/594F63/FFF?text=iPhone+14+Pro\\nPurple' },
+                    { name: 'Gold', hex: '#F4E8CE', img: 'https://placehold.co/400x500/F4E8CE/000?text=iPhone+14+Pro\\nGold' },
+                    { name: 'Silver', hex: '#F0F2F2', img: 'https://placehold.co/400x500/F0F2F2/000?text=iPhone+14+Pro\\nSilver' },
+                    { name: 'Space Black', hex: '#403E3D', img: 'https://placehold.co/400x500/403E3D/FFF?text=iPhone+14+Pro\\nBlack' }
+                ]
+            },
+            {
+                id: 'ip13pm', series: '13', name: 'iPhone 13 Pro Max', price: 'Contact for Price',
+                colors: [
+                    { name: 'Alpine Green', hex: '#576856', img: 'https://placehold.co/400x500/576856/FFF?text=iPhone+13+Pro\\nGreen' },
+                    { name: 'Sierra Blue', hex: '#A7C1D9', img: 'https://placehold.co/400x500/A7C1D9/000?text=iPhone+13+Pro\\nBlue' },
+                    { name: 'Gold', hex: '#FAE7CF', img: 'https://placehold.co/400x500/FAE7CF/000?text=iPhone+13+Pro\\nGold' },
+                    { name: 'Graphite', hex: '#5C5B57', img: 'https://placehold.co/400x500/5C5B57/FFF?text=iPhone+13+Pro\\nGraphite' }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // RENDER LOGIC
+        // ==========================================
+        const grid = document.getElementById('productGrid');
+        const filterSelect = document.getElementById('modelFilter');
+
+        function renderProducts(filterSeries = 'all') {
+            grid.innerHTML = '';
+            
+            const filtered = filterSeries === 'all' 
+                ? products 
+                : products.filter(p => p.series === filterSeries);
+
+            filtered.forEach(product => {
+                const defaultColor = product.colors[0];
+                
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <img id="img-${product.id}" src="${defaultColor.img}" alt="${product.name} - ${defaultColor.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">${product.price}</p>
+                        
+                        <div class="color-selector" id="colors-${product.id}">
+                            ${product.colors.map((color, index) => `
+                                <div class="color-swatch ${index === 0 ? 'active' : ''}" 
+                                     style="background-color: ${color.hex};" 
+                                     title="${color.name}"
+                                     onclick="changeColor('${product.id}', '${color.img}', this)">
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <button class="add-to-cart-btn" onclick="addToCart('${product.name}')">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Handle Image Swapping
+        window.changeColor = function(productId, imageSrc, element) {
+            // Update Image
+            const imgElement = document.getElementById(`img-${productId}`);
+            imgElement.style.opacity = '0'; // Smooth transition out
+            
+            setTimeout(() => {
+                imgElement.src = imageSrc;
+                imgElement.style.opacity = '1'; // Smooth transition in
+            }, 150);
+
+            // Update Active Swatch Ring
+            const container = document.getElementById(`colors-${productId}`);
+            const swatches = container.querySelectorAll('.color-swatch');
+            swatches.forEach(swatch => swatch.classList.remove('active'));
+            element.classList.add('active');
+        };
+
+        // Simple Cart Demo Function
+        window.addToCart = function(productName) {
+            alert(productName + " added to your cart!");
+            // You can integrate your existing localStorage cart logic here
+        };
+
+        // Event Listener for Dropdown Filter
+        filterSelect.addEventListener('change', (e) => {
+            renderProducts(e.target.value);
+        });
+
+        // Initial Render
+        renderProducts();
+    </script>
+</body>
+</html>
